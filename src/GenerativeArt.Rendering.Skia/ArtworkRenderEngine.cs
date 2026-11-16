@@ -76,6 +76,7 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
                 TopographicContourRenderer.ValidateBudget(recipe);
                 break;
             case "sdf-orbits":
+                SdfPigmentRenderer.Validate(recipe);
                 break;
             case "voronoi-mosaic":
                 VoronoiMosaicRenderer.ValidateBudget(recipe);

@@ -1,5 +1,9 @@
 # Quality gates e criteri di accettazione
 
+## Gate M4D.4-R1 — Orbite SDF (verificato Windows headless)
+
+Build Release e 859/859 test; otto nuovi PNG Full HD, due fine-2x, tutte le 81 ricette validate. Copertura AA confrontata con riferimento 4×, conservazione dei tratti sottili, alpha e pigmenti trasparenti, JSON, budget e cancellazione verificati. Smoke Studio con 36 slider SDF e ripristino; CLI fine-2x identica al motore comune e 15 hash PNG precedenti invariati. [Guida/evidenze](M4D4_SDF_MACCHIE_FUSIONI.md). Restano desktop/DPI reali, poster nuovi 4K e altri OS.
+
 ## Gate M4D.3-R1 — Profondità (verificato Windows headless)
 
 Build Release senza avvisi/errori, 801/801 test; dieci nuovi PNG Full HD decodificati, due fine-2x, tutte le 73 ricette validate. Ombre gaussiane, blur alpha-safe, opacità di gruppo, aperture even-odd, seed/JSON e budget prima dell'output coperti dai test. Studio: controlli/default/ripristino/input numerico verificati headless. Quindici PNG precedenti identici a seed 42 / 160×120. [Guida ed evidenze](M4D3_PROFONDITA.md). Restano desktop/DPI reali, poster nuovi 4K e altri OS; i gate sotto documentano le revisioni storiche.

@@ -1,20 +1,21 @@
-# Nuova chat — GenerativeArt Studio M4D.3-R1
+# Nuova chat — GenerativeArt Studio M4D.4-R1
 
-Allegare `GenerativeArt_M4D3_R1_PROFONDITA_COMPLETO.zip` e scrivere:
+Allegare `GenerativeArt_M4D4_R1_SDF_MACCHIE_FUSIONI_COMPLETO.zip` e scrivere:
 
 ---
 
-Continuiamo da **M4D.3-R1**. Leggi `docs/CURRENT_STATE.md`, `docs/HANDOFF.md`, `docs/ROADMAP.md` e `docs/M4D3_PROFONDITA.md`.
+Continuiamo da **M4D.4-R1**. Leggi `docs/CURRENT_STATE.md`, `docs/HANDOFF.md`, `docs/ROADMAP.md` e `docs/M4D4_SDF_MACCHIE_FUSIONI.md`.
 
-C#/.NET 10, Avalonia/SkiaSharp; niente Go/Kotlin/Java/Python nell'applicazione. **Build Release senza avvisi/errori e 801/801 test Windows** (Codex, SDK 10.0.201). Catalogo a 17, 73 ricette: nuovi carta ritagliata/bokeh con ombre, piani e fuoco; paesaggi migliorati. Dieci ricette Full HD verificate, due fine-2x, smoke Studio e confronto effetti spenti/accesi. Quindici PNG precedenti identici a seed 42 / 160×120.
+C#/.NET 10, Avalonia/SkiaSharp; niente Go/Kotlin/Java/Python nell'applicazione. **Build Release senza avvisi/errori e 859/859 test Windows** (Codex, SDK 10.0.201). Catalogo a 17, 81 ricette. Orbite SDF riprogettato con macchie deformabili, quattro pigmenti/fusione, marbling, rilievo, piani e AA locale; stili pigment/glass, sei palette, 36 slider. Otto nuove ricette Full HD, due fine-2x, Studio/CLI e 15 hash PNG precedenti verificati. Confronto AA contro riferimento 4×: −71,3% errore alpha nel caso registrato.
 
-L'utente vuole **nuovi algoritmi/ricette con dettaglio, controllo e profondità tramite ombre, livelli e sfocati**, migliorando anche i primi generatori. `SkiaRasterSurface.DrawLayer`/`LayerEffects` sono già riutilizzati da tre generatori; M4C.3 resta aperta per editor livelli/maschere arbitrarie/blend. Nuovi lavori Studio con `StudioRecipeDefaults.ParametersFor`; ripristino JSON conservativo e default catalogo storici. Nuovi parametri nei vecchi artwork sempre opzionali. Preservare ID/versioni/schema v1/seed/alpha/CLI e budget; massimo livelli filtrati 8.388.608 pixel nativi e 800 milioni di unità raster. Nessun accumulo di frame o annidamento di livelli filtrati. Consegnare **ZIP integrale** con codice, test, ricette, anteprime, licenze e documentazione.
+L'utente vuole nuovi algoritmi/ricette ricchi di dettaglio, controllo e profondità; per SDF ha chiesto una revisione completa con macchie/fusione colore, complessità e migliore antialiasing. `PigmentSdfField` e `SdfPixelCoverage` sono indipendenti da Skia. Default catalogo SDF classic per JSON precedenti; nuovi lavori Studio pigment/sorbet via `StudioRecipeDefaults.ParametersFor`. Conservare ripristino, ID/versioni/schema v1/seed/alpha e budget. Nuovi controlli nei vecchi artwork sempre opzionali. SDF moderno: 260 milioni di valutazioni e massimo 8.388.608 pixel nativi più DepthLayerPolicy. Un PixelBuffer riutilizzato e tre righe di campioni; nessun accumulo di frame.
 
-**README:** solo descrizione del progetto, installazione ed esecuzione, con screenshot sotto il titolo. Changelog, roadmap, numeri dei test e note di consegna nei documenti separati.
+Base `DrawLayer`/`LayerEffects` già disponibile per ombre gaussiane, blur e SrcOver; M4C.3 resta aperta per editor livelli/maschere arbitrarie/blend, M4B.2 per noise ciclico/animazioni fluide. Consegnare **ZIP integrale** con codice, test, ricette, anteprime, licenze e documentazione.
 
-Proseguire con algoritmi ricchi, M4C.3 editor livelli/maschere/blend e M4B.2 noise ciclico/animazioni fluide. Desktop/DPI reali, nuovi poster 4K e altri OS restano da verificare.
+**README:** solo descrizione, installazione ed esecuzione, screenshot sotto il titolo; changelog/roadmap/test/consegne nei file separati.
 
 Validazione: `clear && dotnet clean && .\tools\validate.ps1`.
-Smoke: `dotnet run --project .\tools\GenerativeArt.Smoke -c Release -- depth-studio .`; modalità `depth` per dieci render Full HD, `depth-compare` per il confronto, `depth-compat` per gli hash dei 15 default precedenti.
+Smoke: `dotnet run --project .\tools\GenerativeArt.Smoke -c Release -- sdf-studio .`; `sdf` per otto render Full HD, `sdf-compare` per i tre stili, `sdf-aa` per il riferimento 4×, `depth-compat` per gli hash precedenti.
+Restano desktop/DPI reali, altri OS, nuovi poster 4K e animazioni lunghe da verificare.
 
 ---

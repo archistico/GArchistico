@@ -1,5 +1,13 @@
 # Test, build e smoke test — GenerativeArt
 
+## M4D.4-R1 — SDF organico e antialiasing verificati
+
+**Codex Windows, SDK 10.0.201: tools/validate.ps1 completato, build Release zero avvisi/errori e 859/859 test** (Core 115, Algorithms 175, Application 135, Rendering.Skia 434). Tutte le 81 ricette validate; otto nuovi PNG Full HD, due fine-2x. Studio: 36 slider SDF, palette/ruoli colore e scelte, nuovi default e ripristino JSON. CLI fine-2x identica al runtime headless; quindici PNG precedenti identici.
+
+Test numerici di copertura, tratti subpixel conservativi, campo seeded e pesi cromatici normalizzati, separazione colore/geometria, alpha e pigmenti trasparenti, controllo dei budget/cancellazione. AA contro riferimento 4× con e senza warp; nel caso registrato errore medio alpha 14,35 vs 49,93 della soglia (−71,3%). Guida [`M4D4_SDF_MACCHIE_FUSIONI.md`](M4D4_SDF_MACCHIE_FUSIONI.md), evidenze `validation/M4D4_R1_*`. Tool: `sdf`, `sdf-studio`, `sdf-compare`, `sdf-aa` e `depth-compat`.
+
+Restore da cache NuGet locale, pacchetti sotto artifacts/nuget, audit online e telemetria build disattivati nell'ambiente Codex; nessuna configurazione globale modificata. Desktop/DPI reali, altri OS e nuovi poster 4K restano da verificare. Gli stati sotto sono storici.
+
 ## M4D.3-R1 — Profondità verificata
 
 **Codex Windows, SDK 10.0.201: tools/validate.ps1 completato, build Release senza avvisi/errori e 801/801 test** (Core 115, Algorithms 168, Application 134, Rendering.Skia 384). Dieci nuovi PNG Full HD, due fine-2x, tutte le 73 ricette validate; confronto degli effetti a seed/risoluzione uguali. Smoke Studio: due nuovi artwork, paesaggi e Domain Warp, slider/colori/scelte, default e ripristino JSON, input numerico esatto. Quindici PNG dei generatori precedenti identici a seed 42 / 160×120. Log e dati `validation/M4D3_R1_*`. Guida e comandi `depth`, `depth-studio`, `depth-compare` e `depth-compat` in [`M4D3_PROFONDITA.md`](M4D3_PROFONDITA.md).

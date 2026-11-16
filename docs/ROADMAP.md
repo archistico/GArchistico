@@ -1,6 +1,6 @@
 # ROADMAP UNICA — GenerativeArt Studio
 
-**Aggiornamento:** 16 novembre 2026, M4D.3-R1 (profondità: carta ritagliata/bokeh, paesaggi migliorati; 17 generatori, 73 ricette, build Release e 801/801 test Windows, dieci nuovi PNG Full HD e Studio verificati). Questa è **l'unica roadmap autorevole**. Per lo stato verificato usare `CURRENT_STATE.md`.
+**Aggiornamento:** 16 novembre 2026, M4D.4-R1: SDF riprogettato, 17 generatori e 81 ricette, build Release e 859/859 test Windows; Full HD/Studio/CLI e AA verificati. Questa è **l'unica roadmap autorevole**. Per lo stato verificato usare `CURRENT_STATE.md`.
 
 ## 1. Obiettivo finale
 
@@ -40,6 +40,7 @@ Un solo **framework C#/.NET 10**, una CLI headless e uno **Studio Avalonia (XAML
 | **M4D.1-R1 — Dettaglio e controllo** | **Build Release e 626/626 test; otto PNG Full HD e controlli Studio headless (Codex Windows)** | Guilloché/incisione, dieci controlli Domain Warp, otto ricette, catalogo a 13; compositore M4C.3 e nuovi loop ancora futuri |
 | **M4D.2-R1 — Pittura e generatori iniziali** | **Build Release e 733/733 test, 14 PNG Full HD, Studio e 12 frame CLI verificati (Codex Windows)** | Pennelli/paesaggi, evoluzione dei primi cinque renderer, catalogo a 15, 63 ricette, 13 PNG storici identici; desktop/DPI e altri OS aperti |
 | **M4D.3-R1 — Profondità** | **Build Release e 801/801 test, dieci PNG Full HD e Studio verificati (Codex Windows)** | Carta/bokeh e livelli riutilizzabili, paesaggi migliorati, 17 generatori e 73 ricette; 15 PNG precedenti identici. Editor livelli/maschere/blend ancora aperto |
+| **M4D.4-R1 — SDF macchie/fusioni** | **Build Release e 859/859 test; otto PNG Full HD, Studio, CLI e AA verificati** | SDF organico, pigmenti/vetro, 36 slider, sei palette, 81 ricette; classico e 15 hash PNG precedenti preservati |
 | M4–M8 — Motore artistico ed export avanzato | Pianificati | Vedi sotto; non dichiararli già implementati |
 
 Non abbiamo ancora risultati documentati per Linux/macOS, stress di animazioni lunghe o parità visiva multipiattaforma.
@@ -111,6 +112,8 @@ Marching Squares (casi ambigui e stitching), SDF 2D e operazioni CSG, campioname
 **Implementati:** dithering Bayer, grana seeded, carta/pigmenti e, in M4D.3-R1, base di livelli SrcOver con blur gaussiano/drop shadow/opacità, aperture even-odd e alone bokeh. Build, alpha e budget verificati su Windows. **M4C.3 ancora da completare:** editor di livelli, maschere arbitrarie e modalità blend nelle ricette. Restano bloom generale, vignettatura e gestione lineare/sRGB; HDR solo dopo benchmark. **Gate:** filtri deterministici con alpha corretto e memoria limitata.
 
 ### M4D — Pennelli e materia
+
+**M4D.4-R1 implementata e verificata:** riprogettazione di Orbite SDF in macchie/fusioni con quattro pigmenti, venature, rilievo, piani e AA locale; classico preservato per i JSON precedenti. Otto ricette Full HD, due fine-2x; 859/859 test, Studio/CLI e confronto AA contro riferimento 4×. Guida [`M4D4_SDF_MACCHIE_FUSIONI.md`](M4D4_SDF_MACCHIE_FUSIONI.md). Restano simulazioni pittoriche più avanzate e editor generale M4C.3.
 
 **M4D.3-R1 implementata e verificata:** carta ritagliata/bokeh, livelli filtrati riutilizzabili e profondità nei paesaggi. Dieci ricette Full HD, due fine-2x; catalogo a 17, 73 ricette, 801/801 test, Studio e quindici PNG precedenti identici. Guida [`M4D3_PROFONDITA.md`](M4D3_PROFONDITA.md). Non chiude l'editor generale M4C.3.
 

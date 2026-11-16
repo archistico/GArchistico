@@ -1,6 +1,6 @@
-# Stato corrente — GenerativeArt Studio M4D.3-R1
+# Stato corrente — GenerativeArt Studio M4D.4-R1
 
-**Data:** 16 novembre 2026. M4D.3-R1: profondità con carta ritagliata, bokeh e paesaggi migliorati. **17 generatori, 73 ricette, build Release senza avvisi/errori e 801/801 test Windows** (Codex, SDK 10.0.201). Dieci nuove ricette Full HD, due fine-2x, controlli Studio e ripristino JSON verificati. Quindici PNG precedenti identici a seed 42 / 160×120. Guida [`M4D3_PROFONDITA.md`](M4D3_PROFONDITA.md), evidenze `docs/validation/M4D3_R1_*`. Livelli SrcOver, blur gaussiano e ombre riutilizzabili; editor di livelli/maschere/blend M4C.3 ancora aperto. Desktop/DPI reali, nuovi poster 4K e altri OS da verificare. Cache NuGet locale, telemetria build e audit online disattivati.
+**Data:** 16 novembre 2026. **M4D.4-R1 — Orbite SDF riprogettato:** macchie organiche, fusione di quattro pigmenti, venature, rilievo, piani e antialiasing locale. **17 generatori, 81 ricette, build Release senza avvisi/errori e 859/859 test Windows** (Codex, SDK 10.0.201). Otto nuovi PNG Full HD, due fine-2x; controlli Studio, JSON, export CLI e 15 PNG precedenti identici verificati. Confronto AA contro riferimento 4×: errore alpha ridotto del 71,3% nel caso registrato. Guida [`M4D4_SDF_MACCHIE_FUSIONI.md`](M4D4_SDF_MACCHIE_FUSIONI.md), evidenze `docs/validation/M4D4_R1_*`. Desktop/DPI reali, altri OS, nuovi poster 4K ed editor livelli/maschere/blend restano aperti. Restore da cache NuGet locale, audit online e telemetria build disattivati.
 
 ## Stato incrementale
 
@@ -18,6 +18,7 @@
 | **M4D.1-R1** | Guilloché/incisione, dettaglio Domain Warp, slider fini, otto ricette | **Build Release OK, 626/626 test; otto PNG Full HD, smoke Studio headless e compatibilità PNG (Codex Windows)** |
 | **M4D.2-R1** | Pennelli/paesaggi e cinque generatori iniziali ampliati, quattordici ricette | **Build Release OK, 733/733 test; Full HD, 12 frame CLI, Studio e compatibilità PNG verificati (Codex Windows)** |
 | **M4D.3-R1** | Carta ritagliata/bokeh, livelli filtrati riutilizzabili, paesaggi con profondità e dieci ricette | **Build Release OK, 801/801 test; dieci PNG Full HD, Studio e 15 hash PNG precedenti verificati (Codex Windows)** |
+| **M4D.4-R1** | Orbite SDF: macchie/fusioni, stili pigment/glass, antialiasing locale e otto ricette | **Build Release OK, 859/859 test; Full HD/fine-2x, Studio, CLI, copertura AA e hash PNG precedenti verificati** |
 
 ## M4C.2-R3 — richieste emerse nella validazione Windows
 
@@ -45,7 +46,7 @@ Le texture sono un'approssimazione raster procedurale, **non** un simulatore fis
 
 ## Azione successiva
 
-**Proseguire lo sviluppo**: arricchire nuovi algoritmi e ricette con dettaglio e profondità; estendere la base di compositing a editor livelli/maschere/blend M4C.3, noise ciclico M4B.2 e animazioni fluide. Ombre gaussiane e blur per piano sono ora implementati in M4D.3; domain warping e LIC in M4B.1. Restano verifiche desktop/DPI, poster grandi, animazioni lunghe e altri OS.
+**Proseguire lo sviluppo**: nuovi algoritmi/ricette con dettaglio e profondità; estendere compositing a editor livelli/maschere/blend M4C.3, noise ciclico M4B.2 e animazioni fluide. SDF moderno ora disponibile in M4D.4; vecchie ricette SDF restano classic per compatibilità. Restano QA desktop/DPI, poster, altri OS e animazioni lunghe.
 
 ## Comandi Windows — PowerShell 7
 

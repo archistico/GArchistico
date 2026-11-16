@@ -13,18 +13,19 @@ using GenerativeArt.Application.Recipes;
 using GenerativeArt.Rendering.Skia;
 using GenerativeArt.Studio;
 using SkiaSharp;
-if (args.Length != 2 || args[0] is not ("picker" or "render" or "detail" or "studio" or "evolution" or "evolution-studio" or "compare" or "depth" or "depth-studio" or "depth-compare" or "depth-compat"))
+if (args.Length != 2 || args[0] is not ("picker" or "render" or "detail" or "studio" or "evolution" or "evolution-studio" or "compare" or "depth" or "depth-studio" or "depth-compare" or "depth-compat" or "sdf" or "sdf-studio" or "sdf-compare" or "sdf-aa"))
 {
-    Console.Error.WriteLine("Uso: GenerativeArt.Smoke picker|render|detail|studio|evolution|evolution-studio|compare|depth|depth-studio|depth-compare|depth-compat <cartella solution>");
+    Console.Error.WriteLine("Uso: GenerativeArt.Smoke picker|render|detail|studio|evolution|evolution-studio|compare|depth|depth-studio|depth-compare|depth-compat|sdf|sdf-studio|sdf-compare|sdf-aa <cartella solution>");
     Environment.ExitCode = 2;
     return;
 }
 string root = Path.GetFullPath(args[1]);
-string output = Path.Combine(root, "artifacts", args[0].StartsWith("depth", StringComparison.Ordinal) ? "m4d3-smoke"
+string output = Path.Combine(root, "artifacts", args[0].StartsWith("sdf", StringComparison.Ordinal) ? "m4d4-smoke"
+    : args[0].StartsWith("depth", StringComparison.Ordinal) ? "m4d3-smoke"
     : args[0] is "evolution" or "evolution-studio" or "compare" ? "m4d2-smoke"
     : args[0] is "detail" or "studio" ? "m4d1-smoke" : "m4b1-smoke");
 Directory.CreateDirectory(output);
-if (args[0] is "studio" or "evolution-studio" or "depth-studio")
+if (args[0] is "studio" or "evolution-studio" or "depth-studio" or "sdf-studio")
 {
     AppBuilder.Configure<StudioApp>().UseSkia()
         .UseHeadless(new AvaloniaHeadlessPlatformOptions { UseHeadlessDrawing = false }).SetupWithoutStarting();
@@ -33,7 +34,8 @@ if (args[0] is "studio" or "evolution-studio" or "depth-studio")
     var registry = BuiltInArtworkCatalog.Create();
     var select = typeof(StudioWindow).GetMethod("SelectArtwork", BindingFlags.NonPublic | BindingFlags.Instance)!;
     var panel = (StackPanel)typeof(StudioWindow).GetField("_parameterItems", BindingFlags.NonPublic | BindingFlags.Instance)!.GetValue(window)!;
-    string[] studioIds = args[0] == "depth-studio" ? ["paper-cut", "bokeh-depth", "strata-landscape", "domain-warp"]
+    string[] studioIds = args[0] == "sdf-studio" ? ["sdf-orbits", "paper-cut", "domain-warp"]
+        : args[0] == "depth-studio" ? ["paper-cut", "bokeh-depth", "strata-landscape", "domain-warp"]
         : args[0] == "evolution-studio"
         ? ["flow-brush", "strata-landscape", "parametric-curves", "noise-flow", "plasma-noise", "spaced-streamlines", "looping-flow", "domain-warp"]
         : ["guilloche", "tonal-engraving", "domain-warp"];
@@ -45,7 +47,7 @@ if (args[0] is "studio" or "evolution-studio" or "depth-studio")
         int expected = descriptor.Parameters.Count(p => p.Kind is ParameterKind.Integer or ParameterKind.Number);
         int actual = panel.GetVisualDescendants().OfType<Slider>().Count();
         if (actual != expected) throw new Exception($"Missing numeric controls for {id}: {actual}/{expected}");
-        if (LegacyArtworkControls.ForArtwork(id).Count > 0 || args[0] == "depth-studio")
+        if (LegacyArtworkControls.ForArtwork(id).Count > 0 || args[0] is "depth-studio" or "sdf-studio")
         {
             var values = (Dictionary<string,string>)typeof(StudioWindow).GetField("_parameters", BindingFlags.NonPublic | BindingFlags.Instance)!.GetValue(window)!;
             foreach (var pair in GenerativeArt.Application.Rendering.StudioRecipeDefaults.ParametersFor(id))
@@ -121,6 +123,93 @@ if (args[0] == "picker")
 var catalog = BuiltInArtworkCatalog.Create();
 var engine = new ArtworkRenderEngine(catalog);
 var report = new List<object>();
+if (args[0] == "sdf-aa")
+{
+    var d = catalog.Get("sdf-orbits");
+    var values = new Dictionary<string,string>(GenerativeArt.Application.Rendering.StudioRecipeDefaults.ParametersFor(d.Id))
+    {
+        ["background-color"]="#00000000", ["fill-color"]="#FFFFFF", ["ink-color"]="#FFFFFF",
+        ["accent-color"]="#FFFFFF", ["pigment-color-4"]="#FFFFFF", ["layers"]="1", ["blobs"]="4",
+        ["marbling"]="0", ["relief"]="0", ["highlight"]="0", ["shadow-opacity"]="0", ["depth-blur"]="0",
+        ["outline"]="0", ["contour-opacity"]="0", ["opacity"]="1", ["warp-amount"]="0.09"
+    };
+    SKBitmap Make(int scale)
+    {
+        using var png = new MemoryStream();
+        engine.Render(ArtworkRecipe.Create(d,new GenerativeArt.Core.Geometry.CanvasSize(128*scale,96*scale),42,values),png);
+        return SKBitmap.Decode(png.ToArray()) ?? throw new Exception("Invalid SDF AA reference");
+    }
+    using var image=Make(1); using var reference=Make(4);
+    double analyticError=0,binaryError=0; int edges=0, cx=64,cy=48;double nearest=double.MaxValue;
+    var averaged=new double[128*96];
+    for(int y=0;y<96;y++)for(int x=0;x<128;x++)
+    {
+        double alpha=0;
+        for(int dy=0;dy<4;dy++)for(int dx=0;dx<4;dx++)alpha+=reference.GetPixel(x*4+dx,y*4+dy).Alpha/16d;
+        averaged[y*128+x]=alpha;
+        if(alpha is <=0 or >=255)continue;
+        byte actual=image.GetPixel(x,y).Alpha;
+        analyticError+=Math.Abs(actual-alpha);binaryError+=Math.Abs((actual>=128?255:0)-alpha);edges++;
+        double distance=(x-64)*(x-64)+(y-48)*(y-48);
+        if(actual is >20 and <235 && x>=8 && x<120 && y>=8 && y<88 && distance<nearest){nearest=distance;cx=x;cy=y;}
+    }
+    if(edges<50 || analyticError>=binaryError*.75 || nearest==double.MaxValue)throw new Exception("SDF AA regression");
+    using var sheet=new SKBitmap(860,354);using var canvas=new SKCanvas(sheet);canvas.Clear(new SKColor(16,21,30));
+    using var font=new SKFont{Size=18};using var ink=new SKPaint{Color=new SKColor(220,233,238),IsAntialias=true};
+    string[] labels=["Soglia netta", "Copertura locale", "Riferimento 4×"];
+    for(int side=0;side<3;side++)
+    {
+        using var zoom=new SKBitmap(256,256);
+        for(int y=0;y<256;y++)for(int x=0;x<256;x++)
+        {
+            int sx=cx-8+x/16,sy=cy-8+y/16;byte alpha=image.GetPixel(sx,sy).Alpha;
+            if(side==0)alpha=alpha>=128?(byte)255:(byte)0;
+            if(side==2)alpha=(byte)Math.Round(averaged[sy*128+sx]);
+            zoom.SetPixel(x,y,new SKColor(255,255,255,alpha));
+        }
+        canvas.DrawText(labels[side],side*280+20,30,SKTextAlign.Left,font,ink);
+        canvas.DrawBitmap(zoom,side*280+20,50,new SKSamplingOptions(SKFilterMode.Nearest));
+    }
+    canvas.DrawText("Alpha del bordo · ingrandimento 16× · stessa geometria deformata",20,336,SKTextAlign.Left,font,ink);
+    using var data=sheet.Encode(SKEncodedImageFormat.Png,100);
+    using(var file=File.Create(Path.Combine(output,"sdf-antialiasing.png")))data.SaveTo(file);
+    File.WriteAllText(Path.Combine(output,"antialiasing-report.json"),JsonSerializer.Serialize(new
+    {
+        seed=42,width=128,height=96,referenceScale=4,edgePixels=edges,cropCenterX=cx,cropCenterY=cy,
+        analyticMeanAbsoluteAlphaError=analyticError/edges,binaryMeanAbsoluteAlphaError=binaryError/edges,
+        improvementFraction=1-analyticError/binaryError,parameters=values
+    },new JsonSerializerOptions{WriteIndented=true}));
+    Console.WriteLine($"SDF AA: {edges} edge pixels; error reduction {1-analyticError/binaryError:P1} against binary coverage.");
+    return;
+}
+if (args[0] == "sdf-compare")
+{
+    var descriptor = catalog.Get("sdf-orbits");
+    var size = new GenerativeArt.Core.Geometry.CanvasSize(1920,1080);
+    var fresh = new Dictionary<string,string>(GenerativeArt.Application.Rendering.StudioRecipeDefaults.ParametersFor("sdf-orbits"));
+    var glass = new Dictionary<string,string>(fresh) { ["style"]="glass", ["palette"]="iris", ["highlight"]="0.85", ["relief"]="0.75" };
+    ArtworkRecipe[] recipes=[ArtworkRecipe.Create(descriptor,size,42),ArtworkRecipe.Create(descriptor,size,42,fresh),ArtworkRecipe.Create(descriptor,size,42,glass)];
+    string[] labels=["Classico · compatibilità", "Nuovo · pigmenti e fusioni", "Nuovo · vetro e riflessi"];
+    using var sheet=new SKBitmap(1560,390);
+    using var canvas=new SKCanvas(sheet);canvas.Clear(new SKColor(16,21,30));
+    using var font=new SKFont { Size=20 };
+    using var ink=new SKPaint { Color=new SKColor(220,233,238),IsAntialias=true };
+    for(int i=0;i<recipes.Length;i++)
+    {
+        using var stream=new MemoryStream();engine.Render(recipes[i],stream);
+        using var image=SKBitmap.Decode(stream.ToArray())??throw new Exception("Invalid SDF comparison");
+        using var preview=MakePreview(image);
+        canvas.DrawText(labels[i],i*520+20,35,SKTextAlign.Left,font,ink);
+        canvas.DrawBitmap(preview,i*520+20,60,new SKSamplingOptions(SKFilterMode.Nearest));
+        report.Add(new{label=labels[i],recipes[i].ArtworkId,recipes[i].Seed,width=1920,height=1080,parameters=recipes[i].Parameters});
+        Console.WriteLine("SDF comparison: "+labels[i]);
+    }
+    canvas.DrawText("Seed 42 · 1920×1080 · tre stili, parametri conservati nel report",20,367,SKTextAlign.Left,font,ink);
+    using var encoded=sheet.Encode(SKEncodedImageFormat.Png,100);
+    using(var file=File.Create(Path.Combine(output,"sdf-comparison.png")))encoded.SaveTo(file);
+    File.WriteAllText(Path.Combine(output,"comparison-parameters.json"),JsonSerializer.Serialize(report,new JsonSerializerOptions{WriteIndented=true}));
+    return;
+}
 if (args[0] == "depth-compat")
 {
     using var baseline = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(root,"docs","validation","M4D3_R1_compatibility.json")));
@@ -227,6 +316,9 @@ if (args[0] == "depth") newRecipes = new HashSet<string>([
     "paper-cut-lagoon-portal-1920", "paper-cut-canyon-vortex-1920", "paper-cut-ivory-petal-1920", "paper-cut-nocturne-1920",
     "bokeh-aurora-current-1920", "bokeh-amber-spiral-1920", "bokeh-pearl-mist-1920", "bokeh-pearl-orbit-fine-1920",
     "strata-glacier-atmosphere-1920", "strata-desert-soft-light-1920"]);
+if (args[0] == "sdf") newRecipes = new HashSet<string>([
+    "sdf-sorbet-pigment-1920", "sdf-lagoon-river-1920", "sdf-iris-glass-1920", "sdf-nocturne-marble-1920",
+    "sdf-ember-islands-1920", "sdf-sorbet-fused-fine-1920", "sdf-lagoon-ink-wash-1920", "sdf-nocturne-glass-fine-1920"]);
 foreach (string file in Directory.GetFiles(Path.Combine(root, "examples", "recipes"), "*.json"))
 {
     ArtworkRecipe recipe = ArtworkRecipeJson.Deserialize(File.ReadAllBytes(file), catalog);

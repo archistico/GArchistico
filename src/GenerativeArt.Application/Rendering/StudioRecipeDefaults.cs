@@ -15,6 +15,13 @@ public static class StudioRecipeDefaults
     /// <summary>Impostazioni per nuovi lavori dello Studio; le ricette importate conservano i loro valori.</summary>
     public static IReadOnlyDictionary<string, string> ParametersFor(string artworkId) => artworkId switch
     {
+        "sdf-orbits" => new Dictionary<string, string>
+        {
+            ["style"] = "pigment", ["palette"] = "sorbet", ["smoothness"] = "0.065",
+            ["blobs"] = "14", ["layers"] = "2", ["blob-radius"] = "0.135", ["spread"] = "1.1",
+            ["color-mix"] = "1", ["color-mode"] = "linear", ["marbling"] = "0.45", ["relief"] = "0.55",
+            ["contour-opacity"] = "0.04", ["outline"] = "0.04"
+        },
         "strata-landscape" => new Dictionary<string, string>
         {
             ["depth-blur"] = "6", ["soft-shadow"] = "0.22", ["soft-shadow-softness"] = "5",

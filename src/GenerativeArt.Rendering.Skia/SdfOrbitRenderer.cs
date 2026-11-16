@@ -17,6 +17,11 @@ internal static class SdfOrbitRenderer
 {
     internal static void Render(SkiaRasterSurface surface, ArtworkRecipe recipe, CancellationToken ct)
     {
+        if (recipe.Parameters["style"] != "classic")
+        {
+            SdfPigmentRenderer.Render(surface, recipe, ct);
+            return;
+        }
         CanvasSize size = recipe.Size;
         float smoothness = (float)Number(recipe, "smoothness");
         float scale = (float)Number(recipe, "shape-scale");
@@ -30,7 +35,7 @@ internal static class SdfOrbitRenderer
                         Color32.Opaque(132, 58, 73), Color32.Opaque(249, 225, 190)),
             "iris" => (Color32.Opaque(22, 18, 51), Color32.Opaque(215, 177, 251),
                        Color32.Opaque(76, 55, 151), Color32.Opaque(150, 240, 230)),
-            _ => throw new ArgumentException("Palette SDF sconosciuta.")
+            _ => PreviewColors(recipe)
         };
         background = ArtworkInk.Resolve(recipe, "background-color", background);
         ink = ArtworkInk.Resolve(recipe, "ink-color", ink);
@@ -81,6 +86,12 @@ internal static class SdfOrbitRenderer
             }
         }
         surface.DrawPixels(pixels, nativeResolution: true);
+    }
+
+    private static (Color32, Color32, Color32, Color32) PreviewColors(ArtworkRecipe recipe)
+    {
+        var colors = ArtworkPaint.LegacyColors(recipe, "background-color", "ink-color", "fill-color", "accent-color");
+        return (colors[0], colors[1], colors[2], colors[3]);
     }
 
     private static int Int(ArtworkRecipe recipe, string key) =>

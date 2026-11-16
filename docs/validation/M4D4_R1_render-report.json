@@ -1,0 +1,66 @@
+[
+  {
+    "recipe": "sdf-ember-islands-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 1.5458303,
+    "bytes": 812491,
+    "processPeakWorkingSetBytes": 101879808
+  },
+  {
+    "recipe": "sdf-iris-glass-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 1.2888245,
+    "bytes": 820154,
+    "processPeakWorkingSetBytes": 124317696
+  },
+  {
+    "recipe": "sdf-lagoon-ink-wash-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 1.3532391,
+    "bytes": 2048474,
+    "processPeakWorkingSetBytes": 124317696
+  },
+  {
+    "recipe": "sdf-lagoon-river-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 1.224268,
+    "bytes": 1021483,
+    "processPeakWorkingSetBytes": 132845568
+  },
+  {
+    "recipe": "sdf-nocturne-glass-fine-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 3.2156981,
+    "bytes": 598507,
+    "processPeakWorkingSetBytes": 267902976
+  },
+  {
+    "recipe": "sdf-nocturne-marble-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 2.0551735,
+    "bytes": 1483266,
+    "processPeakWorkingSetBytes": 267902976
+  },
+  {
+    "recipe": "sdf-sorbet-fused-fine-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 3.5477027,
+    "bytes": 990868,
+    "processPeakWorkingSetBytes": 267902976
+  },
+  {
+    "recipe": "sdf-sorbet-pigment-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 1.2241689,
+    "bytes": 974497,
+    "processPeakWorkingSetBytes": 267902976
+  }
+]

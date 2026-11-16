@@ -1,8 +1,17 @@
-# Handoff — GenerativeArt Studio M4D.3-R1 (16/11/2026)
+# Handoff — GenerativeArt Studio M4D.4-R1 (16/11/2026)
 
 ## Base di partenza, stato e preferenze
 
-**ZIP corrente:** `GenerativeArt_M4D3_R1_PROFONDITA_COMPLETO.zip`, integrale. M4D.3-R1: profondità con carta ritagliata, bokeh e paesaggi migliorati. **17 generatori, 73 ricette, build Release senza avvisi/errori e 801/801 test Windows** (Codex, SDK 10.0.201). Dieci nuove ricette Full HD, due fine-2x, controlli Studio e ripristino JSON verificati. Quindici PNG precedenti identici a seed 42 / 160×120. Guida [`M4D3_PROFONDITA.md`](M4D3_PROFONDITA.md), evidenze `docs/validation/M4D3_R1_*`. Livelli SrcOver, blur gaussiano e ombre riutilizzabili; editor di livelli/maschere/blend M4C.3 ancora aperto. Desktop/DPI reali, nuovi poster 4K e altri OS da verificare. Cache NuGet locale, telemetria build e audit online disattivati. L'utente chiede nuovi algoritmi/ricette ricchi di controlli, ombre, livelli e sfocati.
+**ZIP corrente:** `GenerativeArt_M4D4_R1_SDF_MACCHIE_FUSIONI_COMPLETO.zip`, integrale. **M4D.4-R1 — Orbite SDF riprogettato:** macchie organiche, fusione di quattro pigmenti, venature, rilievo, piani e antialiasing locale. **17 generatori, 81 ricette, build Release senza avvisi/errori e 859/859 test Windows** (Codex, SDK 10.0.201). Otto nuovi PNG Full HD, due fine-2x; controlli Studio, JSON, export CLI e 15 PNG precedenti identici verificati. Confronto AA contro riferimento 4×: errore alpha ridotto del 71,3% nel caso registrato. Guida [`M4D4_SDF_MACCHIE_FUSIONI.md`](M4D4_SDF_MACCHIE_FUSIONI.md), evidenze `docs/validation/M4D4_R1_*`. Desktop/DPI reali, altri OS, nuovi poster 4K ed editor livelli/maschere/blend restano aperti. Restore da cache NuGet locale, audit online e telemetria build disattivati. L'utente vuole macchie/fusione colore, complessità, controllo e migliore antialiasing.
+
+## Novità M4D.4-R1 — Orbite SDF riprogettato
+
+- `PigmentSdfField`: unione morbida di ellissi seeded, domain warp e quattro pesi cromatici normalizzati. `SdfPixelCoverage`: copertura locale di bordo/tratto, conservazione dell'energia dei tratti subpixel.
+- `SdfPigmentRenderer`: stili pigment/glass, tre layout, quattro pigmenti con alpha, miscela RGB lineare o logaritmica approssimata, marbling, rilievo/riflessi, ombre gaussiane e blur per piano.
+- `SdfPigmentControls.All` centralizza 31 nuovi controlli opzionali nei JSON v1. I default del catalogo restano classic; nuovi lavori Studio pigment/sorbet, 14 macchie per piano e due piani. Ripristino JSON conservativo. Ruoli colore vecchi riutilizzati, più pigmento 4/ombra; sei palette.
+- Antialiasing anche standard, footprint da differenze centrali su tre righe, nessun campo float a pieno canvas. Fine-2x ammesso sui nuovi default Full HD. Budget SDF 260 milioni di valutazioni (incluse righe/colonne esterne), pixel nativi ≤ 8.388.608 più DepthLayerPolicy, prima di superfici/output.
+- Otto ricette Full HD, due fine-2x, 81 ricette totali; screenshot Studio e confronti artistico/AA. Build Release e 859/859 test. Otto PNG, Studio (36 slider SDF), CLI fine-2x e 15 hash PNG precedenti verificati.
+- Guida `M4D4_SDF_MACCHIE_FUSIONI.md`, evidenze `docs/validation/M4D4_R1_*`. Modi tool `sdf`, `sdf-studio`, `sdf-compare`, `sdf-aa`; `depth-compat` conserva la verifica degli hash precedenti. M4C.3 editor/maschere/blend e noise 4D restano futuri.
 
 ## Novità M4D.3-R1 — Profondità
 

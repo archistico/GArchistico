@@ -1,10 +1,10 @@
 # GenerativeArt
 
-![GenerativeArt Studio con anteprima e controlli del tunnel di carta ritagliata](docs/images/generativeart-studio.png)
+![GenerativeArt Studio con anteprima e controlli delle macchie SDF](docs/images/generativeart-studio.png)
 
 GenerativeArt è un'applicazione desktop e un framework **C# / .NET 10** per creare arte generativa. Lo Studio offre un'interfaccia visuale; la CLI permette di generare le immagini da terminale usando lo stesso motore.
 
-I generatori comprendono curve parametriche e Guilloché, flussi e streamlines, pennelli organici, paesaggi a strati, tunnel di carta ritagliata, composizioni bokeh, campi di rumore e Domain Warp, texture LIC, incisioni a tratteggio, isolinee, mosaici Voronoi, forme SDF e distribuzioni Poisson.
+I generatori comprendono curve parametriche e Guilloché, flussi e streamlines, pennelli organici, paesaggi a strati, tunnel di carta ritagliata, composizioni bokeh, campi di rumore e Domain Warp, texture LIC, incisioni a tratteggio, isolinee, mosaici Voronoi, macchie SDF con fusione cromatica e distribuzioni Poisson.
 
 È possibile regolare geometria, densità, colori, trasparenza e finiture come carta, pigmenti, grana e dithering. Le composizioni di profondità offrono ombre morbide, piani sovrapposti e fuoco selettivo. Le ricette JSON conservano seed e parametri per riprodurre le opere. L'anteprima supporta zoom e spostamento, mentre l'esportazione produce PNG alla risoluzione scelta; i generatori animati dispongono anche di riproduzione e sequenze di fotogrammi.
 

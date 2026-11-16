@@ -1,5 +1,13 @@
 # Registro modifiche — GenerativeArt Studio
 
+## 2026-11-16 — M4D.4-R1 — Orbite SDF: macchie e fusioni
+
+- Nuovo campo `PigmentSdfField` e renderer SDF organico: ellissi deformate, unione morbida, fusione cromatica di quattro pigmenti, venature, rilievo/riflessi e piani con ombre/blur.
+- Stili pigment/glass, layout cluster/orbital/river, sei palette e 36 controlli numerici Studio. Trentuno controlli nuovi facoltativi nei JSON v1. Nuovi lavori Studio con macchie; classico e ricette precedenti preservati.
+- Copertura locale di bordi e tratti subpixel anche in standard; fine-2x disponibile. Confronto contro riferimento 4×, errore alpha ridotto del 71,3% nel caso documentato. Buffer per piano riutilizzato e tre righe di campioni, budget prima dell'output.
+- Otto nuove ricette Full HD, due fine-2x; 81 ricette totali e 17 generatori. Confronti artistico/AA, screenshot README e guida `M4D4_SDF_MACCHIE_FUSIONI.md`.
+- Build Release senza avvisi/errori, **859/859 test Windows**, Full HD/Studio/CLI e hash dei quindici renderer precedenti verificati. Nessuna nuova dipendenza di produzione.
+
 ## 2026-11-16 — M4D.3-R1 — Profondità, carta e bokeh
 
 - Nuovi algoritmi `OrganicAperture` e `DepthParticleField`; artwork `paper-cut` e `bokeh-depth` con ombre gaussiane, strati ordinati, luce e fuoco controllabili. Catalogo a 17.
