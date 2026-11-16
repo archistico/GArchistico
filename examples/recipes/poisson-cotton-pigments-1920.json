@@ -1,0 +1,25 @@
+{
+  "formatVersion": 1,
+  "artworkId": "poisson-stippling",
+  "algorithmVersion": 1,
+  "seed": "71302",
+  "width": 1920,
+  "height": 1080,
+  "parameters": {
+    "spacing": 0.007,
+    "max-points": 16000,
+    "dot-size": 2.1,
+    "radius-variation": 0.62,
+    "pigment-frequency": 0.014,
+    "dot-style": "mixed",
+    "palette": "paper",
+    "background-color": "#F3E6CD",
+    "dot-color-1": "#394B57",
+    "dot-color-2": "#AF614C",
+    "dot-color-3": "#177C79",
+    "paper-texture": "cotton",
+    "paper-strength": 0.28,
+    "pigment-granulation": 0.31,
+    "ink-absorption": 0.13
+  }
+}

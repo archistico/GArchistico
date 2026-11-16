@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><IsPackable>true</IsPackable></PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="SkiaSharp" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" />
+    <ProjectReference Include="../GenerativeArt.Core/GenerativeArt.Core.csproj" />
+    <ProjectReference Include="../GenerativeArt.Application/GenerativeArt.Application.csproj" />
+    <ProjectReference Include="../GenerativeArt.Algorithms/GenerativeArt.Algorithms.csproj" />
+  </ItemGroup>
+</Project>

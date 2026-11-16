@@ -1,0 +1,9 @@
+{
+  "formatVersion": 1, "artworkId": "domain-warp", "algorithmVersion": 1,
+  "seed": "39017", "width": 1920, "height": 1080,
+  "parameters": {
+    "frequency": 0.0009, "octaves": 3, "warp-amount": 1.4, "warp-layers": 2,
+    "pattern": "clouds", "bands": 8, "palette": "ember",
+    "grain-amount": 0.025, "pigment-granulation": 0.16
+  }
+}

@@ -1,0 +1,25 @@
+funzionalita,gart_zip,jdxyw_go_master,generativeart_csharp_m3a,decisione,milestone
+RNG per canvas,presente parziale,presente,presente,mantieni seed/versione,M3C
+Perlin Simplex 2D3D,presente,presente,presente,non duplicare,M1
+Worley,presente,presente,non ancora,porting futuro,M7
+Colori OKLAB,presente,presente,presente,estendi cache,M4
+Palette coseno,non identificato,presente,non ancora,aggiungi utility,M3C
+HDR float64 lineare,non identificato come engine,presente,non ancora,optional renderer con budget,M6C
+Blend modes 9,parziale Skia,presente,parziale Skia,numeric contracts,M4C
+Bloom,presente,presente,non ancora,composable FX,M4C
+Paper texture postprocessing,presente come brush/effetti,presente,non ancora,pipeline,M4C
+SDF 2D CSG,parziale,presente,non ancora,nuovo modulo,M4B
+Marching squares,non identificato,presente,non ancora,nuovo modulo,M3C
+RK4 flow,presente,presente,presente M3A,conserva,M3A
+Evenly spaced streamlines,presente flow2,presente,non ancora,griglia spaziale,M3B
+4D periodic noise looping,parziale/noise avanzato,presente,non ancora,loop compatibili,M6
+SVG/PDF vector,non identificato,presente,non ancora,recording vettoriale,M5E
+Plotter SVG 2opt,non identificato,presente,non ancora,path scheduling,M5F
+PNG recipe metadata,non identificato,presente,non ancora,schema versionato,M5B
+PNG16 HDR Radiance,non identificato,presente,non ancora,optional export,M6C
+APNG GIF animato,GIF/video presente,presente,non ancora,streaming,M6B
+Poster/contact sheets,non identificato,presente,non ancora,UI Sweeper,M5C
+Artwork registry typed,esempi e arts,presente registry,non ancora,nuovo app layer,M3C
+Escher Penrose tilings,non identificato,presente artisticamente,non ancora,futuro opere,M7
+Raymarch SDF3D optics,parziale 3D,presente,non ancora,futuro sperimentale,M7
+CLI headless,JVM/examples,presente,presente,evoluzione,M3C

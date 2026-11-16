@@ -1,0 +1,19 @@
+{
+  "formatVersion": 1,
+  "artworkId": "parametric-curves",
+  "algorithmVersion": 1,
+  "seed": "82931",
+  "width": 1920,
+  "height": 1080,
+  "parameters": {
+    "scale": 0.4,
+    "background-color": "#F4E9D5",
+    "curve-color": "#C52F5361",
+    "orbit-color": "#B48F5E",
+    "render-quality": "fine-2x",
+    "paper-texture": "cotton",
+    "paper-strength": 0.29,
+    "pigment-granulation": 0.15,
+    "ink-absorption": 0.26
+  }
+}

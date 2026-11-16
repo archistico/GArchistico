@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../GenerativeArt.Application/GenerativeArt.Application.csproj" />
+    <ProjectReference Include="../GenerativeArt.Core/GenerativeArt.Core.csproj" />
+    <ProjectReference Include="../GenerativeArt.Algorithms/GenerativeArt.Algorithms.csproj" />
+    <ProjectReference Include="../GenerativeArt.Rendering.Skia/GenerativeArt.Rendering.Skia.csproj" />
+  </ItemGroup>
+</Project>

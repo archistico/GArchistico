@@ -1,0 +1,160 @@
+{
+  "algorithm": "gart-classic-simplex-fixedperm-v1",
+  "source": "gart-main.zip/gart/src/main/kotlin/dev/oblac/gart/noise/{SimplexNoise.kt,PerlinPermTable.kt}",
+  "description": "Campioni della formula originale, solo dati",
+  "samples": [
+    {
+      "dimension": 2,
+      "coordinates": [
+        0.0,
+        0.0
+      ],
+      "value": 0.0
+    },
+    {
+      "dimension": 2,
+      "coordinates": [
+        0.1,
+        0.2
+      ],
+      "value": -0.294107569872242
+    },
+    {
+      "dimension": 2,
+      "coordinates": [
+        -0.1,
+        0.2
+      ],
+      "value": 0.3033623593446643
+    },
+    {
+      "dimension": 2,
+      "coordinates": [
+        -3.75,
+        -2.125
+      ],
+      "value": 0.18735110642489908
+    },
+    {
+      "dimension": 2,
+      "coordinates": [
+        12.34,
+        -56.78
+      ],
+      "value": 0.06586518489189512
+    },
+    {
+      "dimension": 2,
+      "coordinates": [
+        256.125,
+        15.5
+      ],
+      "value": -0.7880543472456225
+    },
+    {
+      "dimension": 2,
+      "coordinates": [
+        1.0,
+        1.0
+      ],
+      "value": -0.44026771907549944
+    },
+    {
+      "dimension": 2,
+      "coordinates": [
+        0.25,
+        0.25
+      ],
+      "value": -0.4987035860723359
+    },
+    {
+      "dimension": 2,
+      "coordinates": [
+        -0.0001,
+        -1e-05
+      ],
+      "value": 0.0004374999646499529
+    },
+    {
+      "dimension": 3,
+      "coordinates": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "value": 0.0
+    },
+    {
+      "dimension": 3,
+      "coordinates": [
+        0.1,
+        0.2,
+        0.3
+      ],
+      "value": 0.6358903679999998
+    },
+    {
+      "dimension": 3,
+      "coordinates": [
+        -0.1,
+        0.2,
+        0.3
+      ],
+      "value": 0.10088756490534977
+    },
+    {
+      "dimension": 3,
+      "coordinates": [
+        -3.75,
+        -2.125,
+        8.5
+      ],
+      "value": 0.15981115671793744
+    },
+    {
+      "dimension": 3,
+      "coordinates": [
+        12.34,
+        -56.78,
+        90.12
+      ],
+      "value": -0.3075616506939727
+    },
+    {
+      "dimension": 3,
+      "coordinates": [
+        256.125,
+        15.5,
+        -4.25
+      ],
+      "value": 0.11481115366619776
+    },
+    {
+      "dimension": 3,
+      "coordinates": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "value": 0.0
+    },
+    {
+      "dimension": 3,
+      "coordinates": [
+        0.25,
+        0.25,
+        0.25
+      ],
+      "value": 0.9265007812499998
+    },
+    {
+      "dimension": 3,
+      "coordinates": [
+        -0.0001,
+        -1e-05,
+        -0.1
+      ],
+      "value": -0.00042658673145847664
+    }
+  ]
+}

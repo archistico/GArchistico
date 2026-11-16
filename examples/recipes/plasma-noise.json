@@ -1,0 +1,13 @@
+{
+  "formatVersion": 1,
+  "artworkId": "plasma-noise",
+  "algorithmVersion": 1,
+  "seed": "42",
+  "width": 256,
+  "height": 256,
+  "parameters": {
+    "frequency": 0.016,
+    "octaves": 4,
+    "palette": "deep"
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "algorithm": "seeded-simplex2d3d-splitmix64-v1",
+  "source": "formula simplex Gȧrt + permutazione Fisher-Yates SplitMix64-v1; non OpenSimplex Gȧrt",
+  "description": "Dati di regressione, non test C# eseguiti",
+  "samples": [
+    {
+      "seed": "0",
+      "dimension": 2,
+      "coordinates": [
+        0.1,
+        0.2
+      ],
+      "value": -0.2797572474996312
+    },
+    {
+      "seed": "0",
+      "dimension": 2,
+      "coordinates": [
+        -3.75,
+        -2.125
+      ],
+      "value": 0.7995152668950247
+    },
+    {
+      "seed": "0",
+      "dimension": 3,
+      "coordinates": [
+        0.1,
+        0.2,
+        0.3
+      ],
+      "value": -0.683831573333333
+    },
+    {
+      "seed": "0",
+      "dimension": 3,
+      "coordinates": [
+        -3.75,
+        -2.125,
+        8.5
+      ],
+      "value": -0.20419067624409953
+    },
+    {
+      "seed": "42",
+      "dimension": 2,
+      "coordinates": [
+        0.1,
+        0.2
+      ],
+      "value": 0.2971559181809211
+    },
+    {
+      "seed": "42",
+      "dimension": 2,
+      "coordinates": [
+        -3.75,
+        -2.125
+      ],
+      "value": -0.36980708683366337
+    },
+    {
+      "seed": "42",
+      "dimension": 3,
+      "coordinates": [
+        0.1,
+        0.2,
+        0.3
+      ],
+      "value": -0.03416035199999995
+    },
+    {
+      "seed": "42",
+      "dimension": 3,
+      "coordinates": [
+        -3.75,
+        -2.125,
+        8.5
+      ],
+      "value": 0.3157676979064962
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "formatVersion": 1,
+  "artworkId": "looping-flow",
+  "algorithmVersion": 1,
+  "seed": "42",
+  "width": 192,
+  "height": 192,
+  "parameters": {
+    "loop-radius": 1.8,
+    "palette": "aurora"
+  },
+  "animation": {
+    "frameCount": 8,
+    "framesPerSecond": 24
+  }
+}

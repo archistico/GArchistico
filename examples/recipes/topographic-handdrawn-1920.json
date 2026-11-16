@@ -1,0 +1,21 @@
+{
+  "formatVersion": 1,
+  "artworkId": "topographic-contours",
+  "algorithmVersion": 1,
+  "seed": "2048",
+  "width": 1920,
+  "height": 1080,
+  "parameters": {
+    "cell-size": 4,
+    "contours": 22,
+    "frequency": 0.016,
+    "line-width": 1.35,
+    "line-style": "handdrawn",
+    "stroke-roughness": 2.8,
+    "palette": "nocturne",
+    "line-color": "#88D6DA",
+    "major-line-color": "#FFE1A6",
+    "band-color-3": "#284E65",
+    "band-color-4": "#456B81"
+  }
+}

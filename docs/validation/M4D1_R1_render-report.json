@@ -1,0 +1,66 @@
+[
+  {
+    "recipe": "domain-warp-copper-ribbons-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 1.2952327,
+    "bytes": 2830123,
+    "processPeakWorkingSetBytes": 85626880
+  },
+  {
+    "recipe": "domain-warp-silk-detail-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 4.0209092,
+    "bytes": 3281450,
+    "processPeakWorkingSetBytes": 185266176
+  },
+  {
+    "recipe": "engraving-copper-rings-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 0.7729554,
+    "bytes": 1709360,
+    "processPeakWorkingSetBytes": 185266176
+  },
+  {
+    "recipe": "engraving-midnight-diamond-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 1.5269891,
+    "bytes": 1803074,
+    "processPeakWorkingSetBytes": 194818048
+  },
+  {
+    "recipe": "engraving-terrain-banknote-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 1.1675266,
+    "bytes": 3603039,
+    "processPeakWorkingSetBytes": 194818048
+  },
+  {
+    "recipe": "guilloche-banknote-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 0.4875365,
+    "bytes": 2113642,
+    "processPeakWorkingSetBytes": 194818048
+  },
+  {
+    "recipe": "guilloche-copper-orbits-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 0.4435675,
+    "bytes": 2741338,
+    "processPeakWorkingSetBytes": 194818048
+  },
+  {
+    "recipe": "guilloche-midnight-lace-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 0.2956056,
+    "bytes": 2055090,
+    "processPeakWorkingSetBytes": 194818048
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "formatVersion": 1,
+  "artworkId": "voronoi-mosaic",
+  "algorithmVersion": 1,
+  "seed": "30520",
+  "width": 1920,
+  "height": 1080,
+  "parameters": {
+    "sites": 196,
+    "relaxations": 2,
+    "jitter": 0.9,
+    "gutter": 1.2,
+    "palette": "glass",
+    "edge-color": "#13252E",
+    "accent-color": "#FFF0B4",
+    "tile-color-1": "#145169",
+    "tile-color-2": "#21878A",
+    "tile-color-3": "#93A895",
+    "tile-color-4": "#D39660",
+    "tile-color-5": "#A84F61",
+    "render-quality": "fine-2x"
+  }
+}

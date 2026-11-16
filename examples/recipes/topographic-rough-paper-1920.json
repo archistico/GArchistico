@@ -1,0 +1,21 @@
+{
+  "formatVersion": 1,
+  "artworkId": "topographic-contours",
+  "algorithmVersion": 1,
+  "seed": "2048",
+  "width": 1920,
+  "height": 1080,
+  "parameters": {
+    "cell-size": 4,
+    "contours": 22,
+    "frequency": 0.016,
+    "line-width": 1.55,
+    "line-style": "handdrawn",
+    "stroke-roughness": 1.9,
+    "palette": "terra",
+    "paper-texture": "rough",
+    "paper-strength": 0.31,
+    "pigment-granulation": 0.19,
+    "ink-absorption": 0.17
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "formatVersion": 1,
+  "artworkId": "parametric-curves",
+  "algorithmVersion": 1,
+  "seed": "73011",
+  "width": 1920,
+  "height": 1080,
+  "parameters": {
+    "scale": 0.41,
+    "background-color": "#F5EBDD",
+    "curve-color": "#B51C385C",
+    "orbit-color": "#E48433"
+  }
+}

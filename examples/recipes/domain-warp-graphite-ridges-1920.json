@@ -1,0 +1,9 @@
+{
+  "formatVersion": 1, "artworkId": "domain-warp", "algorithmVersion": 1,
+  "seed": "12173", "width": 1920, "height": 1080,
+  "parameters": {
+    "frequency": 0.0018, "octaves": 3, "warp-amount": 1.2, "warp-layers": 2,
+    "pattern": "ridges", "bands": 8, "palette": "graphite",
+    "paper-texture": "rough", "paper-strength": 0.18, "ink-absorption": 0.1
+  }
+}

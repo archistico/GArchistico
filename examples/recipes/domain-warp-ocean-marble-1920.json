@@ -1,0 +1,9 @@
+{
+  "formatVersion": 1, "artworkId": "domain-warp", "algorithmVersion": 1,
+  "seed": "84127", "width": 1920, "height": 1080,
+  "parameters": {
+    "frequency": 0.001, "octaves": 3, "warp-amount": 1.3, "warp-layers": 2,
+    "pattern": "marble", "bands": 4, "palette": "ocean",
+    "grain-amount": 0.035, "paper-texture": "cotton", "paper-strength": 0.12
+  }
+}

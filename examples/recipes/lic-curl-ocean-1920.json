@@ -1,0 +1,8 @@
+{
+  "formatVersion": 1, "artworkId": "lic-flow", "algorithmVersion": 1,
+  "seed": "83129", "width": 1920, "height": 1080,
+  "parameters": {
+    "field": "curl", "frequency": 0.0045, "length": 24,
+    "contrast": 5.5, "texture-scale": 1.4, "palette": "ocean"
+  }
+}

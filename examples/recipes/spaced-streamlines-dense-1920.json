@@ -1,0 +1,9 @@
+{
+  "formatVersion": 1, "artworkId": "spaced-streamlines", "algorithmVersion": 1,
+  "seed": "73011", "width": 1920, "height": 1080,
+  "parameters": {
+    "max-lines": 8000, "separation": 5, "line-width": 1.35,
+    "background-color": "#F5F1E5", "ink-color-1": "#C823323D",
+    "ink-color-2": "#C840596A", "ink-color-3": "#DA6D8998", "ink-color-4": "#C893AEB6"
+  }
+}

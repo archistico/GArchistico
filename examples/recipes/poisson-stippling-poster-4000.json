@@ -1,0 +1,14 @@
+{
+  "formatVersion": 1,
+  "artworkId": "poisson-stippling",
+  "algorithmVersion": 1,
+  "seed": "2026",
+  "width": 4000,
+  "height": 4000,
+  "parameters": {
+    "dot-size": 2.5,
+    "max-points": 8000,
+    "palette": "cobalt",
+    "spacing": 0.012
+  }
+}

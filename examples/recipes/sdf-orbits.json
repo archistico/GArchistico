@@ -1,0 +1,15 @@
+{
+  "formatVersion": 1,
+  "artworkId": "sdf-orbits",
+  "algorithmVersion": 1,
+  "seed": "42",
+  "width": 1200,
+  "height": 1200,
+  "parameters": {
+    "bands": 12,
+    "edge-width": 0.004,
+    "palette": "mineral",
+    "shape-scale": 1.0,
+    "smoothness": 0.055
+  }
+}

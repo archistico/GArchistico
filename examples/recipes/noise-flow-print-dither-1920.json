@@ -1,0 +1,19 @@
+{
+  "formatVersion": 1,
+  "artworkId": "noise-flow",
+  "algorithmVersion": 1,
+  "seed": "73011",
+  "width": 1920,
+  "height": 1080,
+  "parameters": {
+    "lines": 300,
+    "background-color": "#142B3F",
+    "ink-color-1": "#B4E9B7C6",
+    "ink-color-2": "#C3FFD298",
+    "ink-color-3": "#A9FFA8A2",
+    "grain-amount": 0.06,
+    "grain-size": 1,
+    "dither-mode": "bayer8",
+    "dither-levels": 12
+  }
+}

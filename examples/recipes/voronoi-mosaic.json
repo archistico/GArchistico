@@ -1,0 +1,15 @@
+{
+  "formatVersion": 1,
+  "artworkId": "voronoi-mosaic",
+  "algorithmVersion": 1,
+  "seed": "2026",
+  "width": 1200,
+  "height": 1200,
+  "parameters": {
+    "sites": 96,
+    "relaxations": 1,
+    "jitter": 0.7,
+    "gutter": 2.6,
+    "palette": "glass"
+  }
+}

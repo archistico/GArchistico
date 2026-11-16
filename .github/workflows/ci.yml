@@ -1,0 +1,21 @@
+name: .NET Build & Tests
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Restore
+        run: dotnet restore GenerativeArt.sln
+      - name: Build Release
+        run: dotnet build GenerativeArt.sln --no-restore -c Release
+      - name: Test Release
+        run: dotnet test GenerativeArt.sln --no-build -c Release --logger 'trx;LogFileName=test-results.trx'

@@ -1,0 +1,37 @@
+area,funzionalita,go,stato_csharp,priorita,azione,fonte_go
+Core,Perlin e Simplex,si,M1 completato,P0,non duplicare,common/noise.go
+Core,OKLab e gradiente lineare,si,M1 completato,P0,estendere gamut e OKLCH,render/canvas.go
+Flow,integratori Euler RK2 RK4,si,M3A validato,P0,conservare,render/field_engine.go
+Flow,griglia bilineare,indiretta,M3B predisposto,P0,validazione .NET,render/field_engine.go
+Flow,curl finite differences,si,M3B predisposto,P0,validazione .NET,common/noise.go
+Flow,streamlines spazialmente distanziate,si,M3B predisposto,P0,validazione .NET,render/field_engine.go
+Flow,derivate analitiche fBm,si,assente,P1,derivazione e confronto numerico,common/noise.go
+Flow,LIC texture,si,assente,P1,aggiungere kernel e tile,render/field_engine.go
+Noise,Simplex 4D ciclico,si,assente,P1,algoritmo periodico seeded,common/noise.go
+Noise,domain warping,si,assente,P1,aggiungere,common/noise.go
+Noise,Gabor noise,si,assente,P2,aggiungere,common/noise.go
+Noise,erosion noise e curl 3D,si,assente,P2,aggiungere,common/noise.go
+Geometry,Marching Squares,si,assente,P1,16 maschere e stitching,render/field_engine.go
+Geometry,Poisson disk sampling,si,assente,P2,aggiungere,render/field_engine.go
+Geometry,Delaunay Voronoi CVT,si,assente,P2,robustezza degenerazioni,render/geometry2d.go
+Geometry,SDF2D CSG,si,assente,P1,interfacce indipendenti da Skia,render/sdf2d.go
+Geometry,SDF3D raymarch,si,assente,P3,modulo specialistico,render/sdf3d.go
+Rendering,canvas HDR lineare,si,assente,P2,buffer opzionale memoria budget,render/canvas.go
+Rendering,bloom ACES e color grading,si,assente,P1,pipeline effetti componibili,render/postprocess.go
+Rendering,filtri Kuwahara e engraving,si,assente,P2,moduli artistici,render/postprocess.go
+Rendering,brush e pigmento,si,assente,P2,unire cataloghi algoritmici,render/brushes.go
+Rendering,clip stack e livelli,si,assente,P2,renderer e comando grafiche,render/pipeline.go
+Application,registry generatori,si,assente,P1,metadati tipizzati versionati,arts/registry.go
+Application,ricette seed e parametri,si,assente,P1,schema stabile,platform.go
+Application,Sweeper e curatela,si,assente,P1,deterministico con budget,cmd/genart/studio.go
+Application,punteggio estetico euristico,si,assente,P2,metrica opzionale trasparente,render/aesthetic.go
+Export,PNG recipe embedded,si,assente,P1,CRC parser robusto,platform.go
+Export,SVG recorder vettoriale,si,assente,P1,non usare raster spacciato per vettore,render/vector_bridge.go
+Export,PDF e SVG plotter,si,assente,P2,ottimizzazione strokes e PDF,render/vector_bridge.go
+Export,poster contact sheets,si,assente,P1,preview e schede stampabili,poster.go
+Export,GIF e APNG,si,assente,P2,streaming e durata corretta,platform.go
+Export,PNG16 e HDR,si,assente,P2,tone mapping e limiti memoria,platform.go
+Desktop,studio interattivo,si,assente,P1,Avalonia solo C#,cmd/genart/studio_ui.go
+Advanced,reaction diffusion anisotropa,si,assente,P3,modulo simulazione,render/field_engine.go
+Advanced,conformal e armoniche,si,assente,P3,modulo matematico specialistico,common/conformal.go
+Artworks,164 generatori registrati (+1 alias),si,2 demo CLI oggi,P2,portare per famiglie dopo infrastruttura,arts/registry.go

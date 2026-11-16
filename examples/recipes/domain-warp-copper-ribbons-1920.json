@@ -1,0 +1,11 @@
+{
+  "formatVersion": 1, "artworkId": "domain-warp", "algorithmVersion": 1,
+  "seed": "17539", "width": 1920, "height": 1080,
+  "parameters": {
+    "frequency": 0.0009, "octaves": 3, "warp-amount": 1.1, "warp-layers": 2,
+    "pattern": "marble", "bands": 5, "palette": "ember",
+    "lacunarity": 1.9, "persistence": 0.45, "warp-frequency": 0.65,
+    "rotation": -40, "stretch-x": 2.4, "stretch-y": 0.7, "offset-x": -0.5, "offset-y": 0.6,
+    "contrast": 1.5, "gamma": 1.2, "paper-texture": "rough", "paper-strength": 0.08
+  }
+}

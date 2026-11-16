@@ -1,0 +1,18 @@
+{
+  "formatVersion": 1,
+  "artworkId": "plasma-noise",
+  "algorithmVersion": 1,
+  "seed": "73011",
+  "width": 1920,
+  "height": 1080,
+  "parameters": {
+    "frequency": 0.008,
+    "octaves": 5,
+    "palette": "deep",
+    "gradient-color-1": "#101431",
+    "gradient-color-2": "#641B93",
+    "gradient-color-3": "#00C8C0",
+    "gradient-color-4": "#FFF17A",
+    "render-quality": "fine-2x"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "formatVersion": 1,
+  "artworkId": "looping-flow",
+  "algorithmVersion": 1,
+  "seed": "73011",
+  "width": 1920,
+  "height": 1080,
+  "parameters": {
+    "loop-radius": 2.2,
+    "palette": "mist",
+    "background-color": "#080D19",
+    "ink-color-1": "#BA80DEFF",
+    "ink-color-2": "#D0C0F5FF",
+    "ink-color-3": "#B4FFC6A1",
+    "ink-color-4": "#A5ECA2FF"
+  },
+  "animation": {
+    "frameCount": 16,
+    "framesPerSecond": 18
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "formatVersion": 1, "artworkId": "tonal-engraving", "algorithmVersion": 1,
+  "seed": "51749", "width": 1920, "height": 1080,
+  "parameters": {
+    "field": "rings", "frequency": 0.0016, "octaves": 3, "warp-amount": 0.4, "bands": 5,
+    "spacing": 5.5, "line-width": 0.75, "hatch-layers": 2, "angle": -25, "cross-angle": 85, "bend": 5,
+    "contrast": 2, "tone-offset": -0.1, "gamma": 1.2, "tone-direction": "normal", "wash": 0.08,
+    "mask": "circle", "mask-radius": 0.92, "mask-feather": 0.03,
+    "center-x": 0.5, "center-y": 0.5, "palette": "copper",
+    "paper-texture": "rough", "paper-strength": 0.12
+  }
+}

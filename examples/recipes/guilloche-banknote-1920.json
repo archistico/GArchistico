@@ -1,0 +1,12 @@
+{
+  "formatVersion": 1, "artworkId": "guilloche", "algorithmVersion": 1,
+  "seed": "64197", "width": 1920, "height": 1080,
+  "parameters": {
+    "curve": "inside", "fixed-teeth": 72, "moving-teeth": 19, "pen-radius": 0.42,
+    "waves": 5, "wave-amount": 0.035, "samples": 10000, "layers": 64,
+    "inner-scale": 0.38, "layer-bias": 1.3, "twist": 32,
+    "scale": 0.92, "rotation": -12, "center-x": 0.5, "center-y": 0.5,
+    "line-width": 0.55, "opacity": 0.65, "palette": "banknote",
+    "paper-texture": "cotton", "paper-strength": 0.12
+  }
+}

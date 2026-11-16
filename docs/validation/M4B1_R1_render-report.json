@@ -1,0 +1,58 @@
+[
+  {
+    "recipe": "domain-warp-ember-clouds-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 1.3148014,
+    "bytes": 3424924,
+    "processPeakWorkingSetBytes": 85413888
+  },
+  {
+    "recipe": "domain-warp-graphite-ridges-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 1.351971,
+    "bytes": 3150505,
+    "processPeakWorkingSetBytes": 97726464
+  },
+  {
+    "recipe": "domain-warp-ocean-marble-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 1.0698339,
+    "bytes": 5222210,
+    "processPeakWorkingSetBytes": 97726464
+  },
+  {
+    "recipe": "lic-curl-ocean-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 9.5260774,
+    "bytes": 5106506,
+    "processPeakWorkingSetBytes": 97726464
+  },
+  {
+    "recipe": "lic-vortex-graphite-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 12.3759356,
+    "bytes": 5218416,
+    "processPeakWorkingSetBytes": 135036928
+  },
+  {
+    "recipe": "spaced-streamlines-dense-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 5.5359509,
+    "bytes": 4419040,
+    "processPeakWorkingSetBytes": 176496640
+  },
+  {
+    "recipe": "spaced-streamlines-silk-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 15.9038635,
+    "bytes": 5031727,
+    "processPeakWorkingSetBytes": 183132160
+  }
+]

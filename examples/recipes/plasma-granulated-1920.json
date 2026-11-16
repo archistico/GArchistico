@@ -1,0 +1,16 @@
+{
+  "formatVersion": 1,
+  "artworkId": "plasma-noise",
+  "algorithmVersion": 1,
+  "seed": "73011",
+  "width": 1920,
+  "height": 1080,
+  "parameters": {
+    "frequency": 0.008,
+    "octaves": 5,
+    "palette": "moss",
+    "paper-texture": "none",
+    "pigment-granulation": 0.32,
+    "ink-absorption": 0.09
+  }
+}

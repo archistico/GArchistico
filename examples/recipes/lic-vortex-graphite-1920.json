@@ -1,0 +1,9 @@
+{
+  "formatVersion": 1, "artworkId": "lic-flow", "algorithmVersion": 1,
+  "seed": "51873", "width": 1920, "height": 1080,
+  "parameters": {
+    "field": "vortex", "frequency": 0.006, "length": 32,
+    "contrast": 6, "texture-scale": 1.1, "palette": "graphite",
+    "paper-texture": "cotton", "paper-strength": 0.1
+  }
+}
