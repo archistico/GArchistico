@@ -1,5 +1,13 @@
 # Registro modifiche — GenerativeArt Studio
 
+## 2026-11-16 — M4D.2-R1 — Pittura ed evoluzione dei generatori iniziali
+
+- Nuovi algoritmi `OrganicStroke` e `FractalProfile1D`; artwork `flow-brush` e `strata-landscape` con setole/pressione, campi curl/vortice/braid, profili frattali, luce, atmosfera e ombre. Catalogo a 15.
+- Curve parametriche, Noise Flow, Plasma, Streamlines distanziate e Flow Loop ampliati con controlli artistici opzionali. Noise Flow fino a 10000 tracce. Nuovi lavori Studio con preset più ricchi; apertura JSON e default di catalogo preservati.
+- Quattordici ricette Full HD e anteprime; 63 ricette totali. Confronto dei cinque generatori iniziali a pari seed/risoluzione. Tredici renderer precedenti verificati con PNG identici via SHA-256.
+- FlowTracer cancellabile internamente, budget per vertici/setole/campioni e sequenze. Modificare solo opacità nei flussi storici conserva le traiettorie. Esportazione CLI verificata su 12 fotogrammi Full HD distinti.
+- Codex Windows: build Release senza avvisi/errori, **733/733 test**, quattordici PNG Full HD e smoke Studio. Screenshot aggiornato; README mantiene solo descrizione/installazione/esecuzione, senza changelog o roadmap. Guida `M4D2_PITTURA_EVOLUZIONE.md`, log/dati `docs/validation/M4D2_R1_*`.
+
 ## 2026-11-16 — M4D.1-R1 — Dettaglio e controllo
 
 - Algoritmi `GuillocheCurve` (trocoidi razionali chiuse con armoniche) e `TonalHatching` (copertura tonale filtrata, fino a quattro direzioni). Artwork `guilloche` e `tonal-engraving`, colori indipendenti, finiture e fine-2x; catalogo a 13.

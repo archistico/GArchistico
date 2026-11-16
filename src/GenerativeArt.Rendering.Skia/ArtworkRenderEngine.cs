@@ -51,6 +51,10 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
                 $"Finitura artistica: massimo {ArtisticFinishOptions.MaximumFinishPixels:N0} pixel.");
         switch (recipe.ArtworkId)
         {
+            case "flow-brush":
+            case "strata-landscape":
+                PainterlyRenderer.Validate(recipe);
+                break;
             case "guilloche":
             case "tonal-engraving":
                 LineworkRenderer.ValidateBudget(recipe);
@@ -62,6 +66,7 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
             case "parametric-curves":
             case "noise-flow":
             case "spaced-streamlines":
+                LegacyArtworkEvolution.Validate(recipe);
                 break;
             case "topographic-contours":
                 TopographicContourRenderer.ValidateBudget(recipe);
@@ -75,10 +80,12 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
                 PoissonStippleRenderer.ValidateBudget(recipe);
                 break;
             case "plasma-noise":
+                LegacyArtworkEvolution.Validate(recipe);
                 // Il campo plasma crea un PixelBuffer addizionale, ma rimane
                 // nel budget generale di 16 Mpixel già verificato sopra.
                 break;
             case "looping-flow":
+                LegacyArtworkEvolution.Validate(recipe);
                 RecipeAnimation anim = recipe.Animation ??
                     throw new ArgumentException("looping-flow richiede animation.", nameof(recipe));
                 if (size.Width is < 64 or > 4096 || size.Height is < 64 or > 4096 ||
@@ -104,6 +111,8 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
         using var surface = new SkiaRasterSurface(recipe.Size, RasterQualityPolicy.Scale(recipe));
         switch (recipe.ArtworkId)
         {
+            case "flow-brush":
+            case "strata-landscape": PainterlyRenderer.Render(surface, recipe, cancellationToken); break;
             case "guilloche":
             case "tonal-engraving": LineworkRenderer.Render(surface, recipe, cancellationToken); break;
             case "domain-warp":
@@ -125,6 +134,7 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
 
     private static void RenderParametric(SkiaRasterSurface renderer, ArtworkRecipe recipe, CancellationToken ct)
     {
+        if (LegacyArtworkEvolution.IsExtended(recipe)) { LegacyArtworkEvolution.Parametric(renderer, recipe, ct); return; }
         CanvasSize size = recipe.Size;
         if (ArtworkInk.IsAuto(recipe, "background-color"))
         {
@@ -164,6 +174,7 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
 
     private static void RenderNoiseFlow(SkiaRasterSurface surface, ArtworkRecipe recipe, CancellationToken ct)
     {
+        if (LegacyArtworkEvolution.HasFlowGeometryChanges(recipe)) { LegacyArtworkEvolution.NoiseFlow(surface, recipe, ct); return; }
         CanvasSize size = recipe.Size;
         if (ArtworkInk.IsAuto(recipe, "background-color"))
         {
@@ -188,6 +199,8 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
         var random = new SplitMix64Random(recipe.Seed);
         var bounds = new FlowBounds(0, 0, size.Width, size.Height);
         int lines = Integer(recipe, "lines");
+        float strokeWidth = (float)Number(recipe, "line-width");
+        double opacity = Number(recipe, "opacity");
         for (int i = 0; i < lines; i++)
         {
             ct.ThrowIfCancellationRequested();
@@ -201,8 +214,9 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
                 _ => new Color32(158, 252, 128, 165)
             };
             ink = ArtworkInk.Resolve(recipe, $"ink-color-{i % 3 + 1}", ink);
+            ink = ArtworkPaint.Alpha(ink, opacity);
             for (int j = 1; j < trace.Count; j++)
-                surface.DrawLine(trace[j - 1].X, trace[j - 1].Y, trace[j].X, trace[j].Y, ink, 1.2f);
+                surface.DrawLine(trace[j - 1].X, trace[j - 1].Y, trace[j].X, trace[j].Y, ink, strokeWidth);
         }
     }
 
@@ -211,7 +225,9 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
         CanvasSize size = recipe.Size;
         int w = size.Width, h = size.Height;
         var bounds = new FlowBounds(0, 0, w, h);
-        var curl = new CurlNoiseField2D(recipe.Seed, frequency: .0065f, derivativeStep: .5f);
+        IVectorField2D curl = recipe.Parameters["field"] == "curl"
+            ? new CurlNoiseField2D(recipe.Seed, frequency: (float)Number(recipe, "frequency"), derivativeStep: .5f)
+            : ArtisticFlow.Field(recipe.Parameters["field"], recipe.Seed, bounds, Number(recipe, "frequency"));
         int cols = Math.Max(2, (int)Math.Ceiling(w / 12d) + 1);
         int rows = Math.Max(2, (int)Math.Ceiling(h / 12d) + 1);
         var field = VectorGrid2D.FromField(bounds, cols, rows, curl);
@@ -226,12 +242,13 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
         {
             Bounds = bounds,
             Separation = separation,
-            StepSize = MathF.Min(2.4f, separation * .25f),
+            StepSize = MathF.Min((float)Number(recipe, "integration-step"), separation * .25f),
             Margin = MathF.Min(6f, minDimension * .1f),
-            MaxStepsPerDirection = 190,
+            MaxStepsPerDirection = Integer(recipe, "max-steps"),
             MaxLines = maxLines,
             MaxCandidates = candidates,
             DistributeSeedBudget = maxLines > 500 || separation != MathF.Min(13f, minDimension * .2f)
+                || LegacyArtworkEvolution.HasFlowGeometryChanges(recipe)
         }, ct);
         ct.ThrowIfCancellationRequested();
         surface.Clear(ArtworkInk.Resolve(recipe, "background-color", Color32.Opaque(15, 19, 36)));
@@ -247,6 +264,7 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
                 _ => new Color32(180, 139, 172, 255)
             };
             color = ArtworkInk.Resolve(recipe, $"ink-color-{i % 4 + 1}", color);
+            color = ArtworkPaint.Alpha(color, Number(recipe, "opacity"));
             for (int j = 1; j < path.Count; j++)
                 surface.DrawLine(path[j - 1].X, path[j - 1].Y, path[j].X, path[j].Y, color,
                     lineWidth);
@@ -255,6 +273,7 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
 
     private static void RenderLoop(SkiaRasterSurface surface, ArtworkRecipe recipe, int frameIndex, CancellationToken ct)
     {
+        if (LegacyArtworkEvolution.HasFlowGeometryChanges(recipe)) { LegacyArtworkEvolution.Loop(surface, recipe, frameIndex, ct); return; }
         var size = recipe.Size;
         var bounds = new FlowBounds(0, 0, size.Width, size.Height);
         LoopFrame time = LoopFrame.At(frameIndex, recipe.Animation!.FrameCount, recipe.Animation.FramesPerSecond);
@@ -280,7 +299,7 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
             _ => throw new ArgumentException("Palette non supportata.")
         };
         for (int i = 0; i < palette.Length; i++)
-            palette[i] = ArtworkInk.Resolve(recipe, $"ink-color-{i + 1}", palette[i]);
+            palette[i] = ArtworkPaint.Alpha(ArtworkInk.Resolve(recipe, $"ink-color-{i + 1}", palette[i]), Number(recipe, "opacity"));
         const int maxSteps = 95;
         int lines = Math.Min(54, Math.Max(18, size.Width * size.Height / 12000));
         var random = new SplitMix64Random(recipe.Seed);
@@ -295,12 +314,13 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
             Color32 ink = palette[i % palette.Length];
             for (int j = 1; j < path.Count; j++)
                 surface.DrawLine(path[j - 1].X, path[j - 1].Y,
-                    path[j].X, path[j].Y, ink, 1.35f);
+                    path[j].X, path[j].Y, ink, (float)Number(recipe, "line-width"));
         }
     }
 
     private static void RenderPlasma(SkiaRasterSurface surface, ArtworkRecipe recipe, CancellationToken ct)
     {
+        if (LegacyArtworkEvolution.IsExtended(recipe)) { LegacyArtworkEvolution.Plasma(surface, recipe, ct); return; }
         CanvasSize size = recipe.Size;
         double frequency = Number(recipe, "frequency");
         int octaves = Integer(recipe, "octaves");

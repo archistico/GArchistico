@@ -1,0 +1,32 @@
+{
+    "formatVersion":  1,
+    "artworkId":  "noise-flow",
+    "algorithmVersion":  1,
+    "seed":  "81397",
+    "width":  1920,
+    "height":  1080,
+    "parameters":  {
+                       "background-color":  "#F2ECDD",
+                       "curvature":  2.2,
+                       "dither-levels":  8,
+                       "dither-mode":  "none",
+                       "field":  "braid",
+                       "frequency":  0.002,
+                       "grain-amount":  0,
+                       "grain-size":  1,
+                       "ink-absorption":  0,
+                       "ink-color-1":  "#8026404B",
+                       "ink-color-2":  "#80507883",
+                       "ink-color-3":  "#80B18A63",
+                       "line-width":  0.8,
+                       "lines":  2200,
+                       "opacity":  0.65,
+                       "paper-strength":  0.12,
+                       "paper-texture":  "cotton",
+                       "pigment-granulation":  0,
+                       "render-quality":  "standard",
+                       "start-layout":  "grid",
+                       "step-size":  2.6,
+                       "steps":  480
+                   }
+}

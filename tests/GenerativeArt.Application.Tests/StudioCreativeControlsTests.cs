@@ -9,6 +9,21 @@ namespace GenerativeArt.Application.Tests;
 
 public sealed class StudioCreativeControlsTests
 {
+    [Theory]
+    [InlineData("parametric-curves", "style", "woven")]
+    [InlineData("noise-flow", "field", "curl")]
+    [InlineData("plasma-noise", "pattern", "marble")]
+    [InlineData("spaced-streamlines", "max-lines", "3000")]
+    [InlineData("looping-flow", "lines", "220")]
+    public void FreshStudioWorksUseArtisticDefaultsWithoutChangingCatalogDefaults(string id, string key, string value)
+    {
+        var descriptor = _catalog.Get(id);
+        var fresh = descriptor.ValidateParameters(StudioRecipeDefaults.ParametersFor(id));
+        Assert.Equal(value, fresh[key]);
+        Assert.NotEqual(fresh[key], descriptor.ValidateParameters()[key]);
+        Assert.All(LegacyArtworkControls.ForArtwork(id), p => Assert.True(p.OptionalInJson));
+    }
+
     private readonly ArtworkRegistry _catalog = BuiltInArtworkCatalog.Create();
 
     [Fact]

@@ -14,7 +14,7 @@ public static class FlowTracer
     /// </summary>
     public static IReadOnlyList<Vector2> Trace(IVectorField2D field, Vector2 start,
         int steps, float step = 1f, FlowIntegrationMethod method = FlowIntegrationMethod.Rk2,
-        FlowBounds? bounds = null, bool velocity = false)
+        FlowBounds? bounds = null, bool velocity = false, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(field);
         if (steps < 0 || steps > MaxSteps) throw new ArgumentOutOfRangeException(nameof(steps));
@@ -25,11 +25,13 @@ public static class FlowTracer
         if (!Enum.IsDefined(method)) throw new ArgumentOutOfRangeException(nameof(method));
         if (bounds.HasValue && !bounds.Value.Contains(start))
             throw new ArgumentOutOfRangeException(nameof(start), "Il punto iniziale è esterno ai limiti.");
+        cancellationToken.ThrowIfCancellationRequested();
 
         var points = new List<Vector2>(Math.Min(steps + 1, 8192)) { start };
         Vector2 point = start;
         for (int i = 0; i < steps; i++)
         {
+            if ((i & 31) == 0) cancellationToken.ThrowIfCancellationRequested();
             if (!FlowIntegrator.TryAdvance(field, point, step, method, out Vector2 next, velocity)) break;
             if (bounds.HasValue && !bounds.Value.Contains(next)) break;
             points.Add(next);

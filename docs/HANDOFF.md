@@ -1,8 +1,16 @@
-# Handoff — GenerativeArt Studio M4D.1-R1 (16/11/2026)
+# Handoff — GenerativeArt Studio M4D.2-R1 (16/11/2026)
 
 ## Base di partenza, stato e preferenze
 
-**ZIP corrente:** `GenerativeArt_M4D1_R1_DETTAGLIO_CONTROLLO_COMPLETO.zip`, integrale. **626/626 test e build Release senza avvisi/errori (Codex, Windows, SDK 10.0.201)**. Otto nuovi PNG Full HD verificati, controlli Studio headless e compatibilità byte-per-byte dei tre PNG Domain Warp precedenti. Guida `M4D1_DETTAGLIO_CONTROLLO.md`, log/dati in `docs/validation/M4D1_R1_*`. L'utente chiede di proseguire senza aspettare, con dettaglio e controllo artistico.
+**ZIP corrente:** `GenerativeArt_M4D2_R1_PITTURA_EVOLUZIONE_COMPLETO.zip`, integrale. **733/733 test e build Release senza avvisi/errori (Codex, Windows, SDK 10.0.201)**. Due nuovi artwork e primi cinque generatori ampliati; 14 ricette Full HD, 12 frame CLI, confronto visuale, smoke Studio e compatibilità byte-per-byte dei 13 renderer precedenti verificati. Guida `M4D2_PITTURA_EVOLUZIONE.md`, dati in `docs/validation/M4D2_R1_*`. L'utente vuole nuovi algoritmi/ricette e generatori iniziali meno basici, con dettaglio e controllo.
+
+## Novità M4D.2-R1 — Pittura e generatori iniziali
+
+- `OrganicStroke` e `FractalProfile1D`; artwork `flow-brush` e `strata-landscape`. Catalogo a 15, quattordici nuove ricette Full HD, 63 totali, anteprime e confronto a pari seed dei primi cinque generatori.
+- Estensioni opzionali di Curve parametriche, Noise Flow, Plasma, Streamlines distanziate e Flow Loop. `StudioRecipeDefaults.ParametersFor` applicato solo ai nuovi lavori, mai alle ricette ripristinate. CLI/API conserva i default del catalogo; 13 PNG precedenti identici tramite hash.
+- `LegacyArtworkControls` centralizza i default neutrali; renderer storici conservati accanto alle varianti estese. Cambiare solo opacità/spessore nei flussi storici non deve spostare le tracce. FlowTracer cancellabile internamente.
+- Build Release e 733/733 test Windows, quattordici PNG Full HD, smoke Studio e sequenza CLI 12 frame verificati. Guida `M4D2_PITTURA_EVOLUZIONE.md`, evidenze `docs/validation/M4D2_R1_*`. Le comparazioni degli hash riguardano seed 42 / 160×120, non tutti i possibili input.
+- Nessuna nuova dipendenza di produzione. Compositore generale M4C.3 e noise 4D rimangono futuri; le sovrapposizioni dei paesaggi appartengono al loro renderer.
 
 ## Novità M4D.1-R1 — Dettaglio e controllo
 
@@ -47,7 +55,8 @@
 ## Vincoli importanti
 
 - Stack **C#/.NET 10**, Avalonia (XAML consentito), SkiaSharp, minimo PowerShell; non introdurre Kotlin, Go, Python, Java nel prodotto.
-- ID dei tredici generatori, `algorithmVersion`, schema JSON v1, seed, default cromatici, CLI, preferiti e layout Studio: preservare.
+- ID dei quindici generatori, `algorithmVersion`, schema JSON v1, seed, default cromatici, CLI, preferiti e layout Studio: preservare.
+- **README:** solo descrizione del progetto, installazione ed esecuzione, con screenshot sotto il titolo. Changelog, roadmap, risultati dei test e note di consegna restano nei file separati; non reinserirli nel README.
 - Finiture dopo downsample a risoluzione finale; alpha invariato; effetti spenti conservano la codifica PNG storica; niente accumulo di frame in memoria.
 - Post-processing fino a 16.777.216 pixel finali in modalità standard (limite globale). In fine-2x il limite di 16.777.216 sottopixel implica max 4.194.304 pixel finali; un poster grande può richiedere tempi/RAM elevati.
 - Il nuovo assorbimento è un'approssimazione dei bordi, non una simulazione fisica dell'acquerello.

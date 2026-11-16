@@ -119,7 +119,7 @@ public sealed class StudioWindow : Window
             return Task.CompletedTask;
         });
         _cancelExport.IsEnabled = false;
-        Title = "GenerativeArt Studio · M4D.1-R1";
+        Title = "GenerativeArt Studio · M4D.2-R1";
         Width = 1510;
         Height = 850;
         MinWidth = 1120;
@@ -525,6 +525,9 @@ public sealed class StudioWindow : Window
             _invalidNumericInputs.Clear();
             foreach (ArtworkParameterSpec item in descriptor.Parameters)
                 _parameters.Add(item.Id, restore is null ? item.DefaultValue : restore.Parameters[item.Id]);
+            if (restore is null)
+                foreach (var pair in descriptor.ValidateParameters(StudioRecipeDefaults.ParametersFor(descriptor.Id)))
+                    _parameters[pair.Key] = pair.Value;
             _seed.Text = (restore?.Seed ?? 42UL).ToString(CultureInfo.InvariantCulture);
             _width.Text = (restore?.Size.Width ?? StudioRecipeDefaults.Width).ToString(CultureInfo.InvariantCulture);
             _height.Text = (restore?.Size.Height ?? StudioRecipeDefaults.Height).ToString(CultureInfo.InvariantCulture);

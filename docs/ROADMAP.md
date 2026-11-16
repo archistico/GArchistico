@@ -1,6 +1,6 @@
 # ROADMAP UNICA — GenerativeArt Studio
 
-**Aggiornamento:** 16 novembre 2026, M4D.1-R1 (Guilloché/incisione, controlli Domain Warp e Studio, otto ricette; build Release e 626/626 test Windows da Codex, otto PNG Full HD, smoke controlli e compatibilità storica verificati). Questa è **l'unica roadmap autorevole**. Per lo stato verificato usare `CURRENT_STATE.md`.
+**Aggiornamento:** 16 novembre 2026, M4D.2-R1 (pennelli/paesaggi, cinque generatori iniziali ampliati; 15 generatori, 63 ricette, build Release e 733/733 test Windows da Codex, 14 preset Full HD, sequenza CLI e Studio verificati). Questa è **l'unica roadmap autorevole**. Per lo stato verificato usare `CURRENT_STATE.md`.
 
 ## 1. Obiettivo finale
 
@@ -38,6 +38,7 @@ Un solo **framework C#/.NET 10**, una CLI headless e uno **Studio Avalonia (XAML
 | **M4C.2-R4 — Fix test budget materia** | **Build Release OK, 521/521 test (Codex Windows)** | Accettazione standard fino a 4096×4096; rifiuto oltre limite e fine-2x eccessivo prima dell'output; prodotto invariato; smoke manuali aperti |
 | **M4B.1-R1 — Domain Warp/LIC e streamlines dense** | **Build Release e 558/558 test; sette PNG Full HD e picker headless OK (Codex Windows)** | Due nuovi algoritmi/artwork, catalogo a 11, sette ricette, massimo 10000 streamlines con distanza/spessore, footer picker fisso; desktop/DPI e altri OS aperti |
 | **M4D.1-R1 — Dettaglio e controllo** | **Build Release e 626/626 test; otto PNG Full HD e controlli Studio headless (Codex Windows)** | Guilloché/incisione, dieci controlli Domain Warp, otto ricette, catalogo a 13; compositore M4C.3 e nuovi loop ancora futuri |
+| **M4D.2-R1 — Pittura e generatori iniziali** | **Build Release e 733/733 test, 14 PNG Full HD, Studio e 12 frame CLI verificati (Codex Windows)** | Pennelli/paesaggi, evoluzione dei primi cinque renderer, catalogo a 15, 63 ricette, 13 PNG storici identici; desktop/DPI e altri OS aperti |
 | M4–M8 — Motore artistico ed export avanzato | Pianificati | Vedi sotto; non dichiararli già implementati |
 
 Non abbiamo ancora risultati documentati per Linux/macOS, stress di animazioni lunghe o parità visiva multipiattaforma.
@@ -110,6 +111,8 @@ Marching Squares (casi ambigui e stitching), SDF 2D e operazioni CSG, campioname
 
 ### M4D — Pennelli e materia
 
+**M4D.2-R1 implementata su richiesta di nuovi algoritmi e primi generatori più ricchi:** setole con pressione/rastremazione e profili frattali, artwork pennelli/paesaggi; cinque generatori iniziali estesi e nuovi default per lavori Studio. Build Release, 733/733 test, 14 preset Full HD, sequenza CLI e smoke Studio verificati. Guida [`M4D2_PITTURA_EVOLUZIONE.md`](M4D2_PITTURA_EVOLUZIONE.md). Restano pennelli/simulazioni più avanzate e compositore generale.
+
 **M4D.1-R1 implementata su richiesta di dettaglio e controllo:** Guilloché e incisione tonale, otto ricette Full HD, colori e precisione indipendenti; Domain Warp esteso con default neutrali; input numerico fine e protezione degli editor rimossi nello Studio. Build Release, 626/626 test, PNG Full HD e smoke controlli verificati da Codex su Windows. Guida [`M4D1_DETTAGLIO_CONTROLLO.md`](M4D1_DETTAGLIO_CONTROLLO.md). Questo incremento non chiude tutta M4D né il compositore M4C.3.
 
 Setole, pressione, pennellate organiche, simulazioni più ricche dell.acquerello, marbling, incisione e ombre. I semplici filtri cartacei/pigmenti sono già disponibili in M4C.2. **Crinis** è benchmark estetico prioritario. **Gate:** primitive riutilizzabili e opere visive di confronto.
@@ -144,6 +147,6 @@ Encoder progressivi con tempo fotogrammi corretto, cancellazione e cleanup; **pr
 
 Ogni milestone richiede codice C# con test xUnit, controllo dei parametri, budget e gestione errori; quando coinvolge rendering serve smoke di output. Lo stato si distingue in **previsto**, **implementato**, **build confermata**, **suite confermata**, **smoke confermato**, **gate chiuso**. Non promuovere uno stato sulla base di analisi statica o integrità ZIP. L'assenza di SDK in un ambiente non cancella le verifiche Windows già fornite dall'utente.
 
-Aggiornare a ogni consegna **README, CURRENT_STATE, ROADMAP, CHANGELOG e HANDOFF**. Consegnare **ZIP completo**, con codice, test, esempi, licenze e documentazione, non soltanto differenze. Conservare il vincolo C# + PowerShell minimo.
+Aggiornare a ogni consegna **CURRENT_STATE, ROADMAP, CHANGELOG e HANDOFF**. Il **README** mantiene solo descrizione del progetto, installazione ed esecuzione, con screenshot sotto il titolo; aggiornarlo quando cambia l'uso del prodotto, senza inserirvi changelog, roadmap o note di consegna. Consegnare **ZIP completo**, con codice, test, esempi, licenze e documentazione, non soltanto differenze. Conservare il vincolo C# + PowerShell minimo.
 
 **Riferimenti:** [`VISIONE_PRODOTTO.md`](VISIONE_PRODOTTO.md), [`ARCHITETTURA_PRODOTTO.md`](ARCHITETTURA_PRODOTTO.md), [`QUALITY_GATES.md`](QUALITY_GATES.md), [`RIFERIMENTI_ARTISTICI_PREFERITI.md`](RIFERIMENTI_ARTISTICI_PREFERITI.md).

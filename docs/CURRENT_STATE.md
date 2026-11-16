@@ -1,6 +1,6 @@
-# Stato corrente — GenerativeArt Studio M4D.1-R1
+# Stato corrente — GenerativeArt Studio M4D.2-R1
 
-**Data:** 16 novembre 2026. **M4D.1-R1: build Release senza avvisi/errori e 626/626 test superati da Codex su Windows, SDK 10.0.201.** Guilloché e incisione tonale portano il catalogo a 13; dieci controlli Domain Warp opzionali e otto nuove ricette Full HD, tre in fine-2x (49 ricette totali). Otto PNG generati/decodificati e controllati visivamente; i tre PNG Domain Warp precedenti mantengono SHA-256 identico. Smoke Studio headless su nuovi editor, cambio generatore e input preciso: corretto un errore da eventi ritardati degli editor rimossi. Guida [`M4D1_DETTAGLIO_CONTROLLO.md`](M4D1_DETTAGLIO_CONTROLLO.md), evidenze `docs/validation/M4D1_R1_*`. Desktop/DPI reali, poster 4K e altri OS aperti. Validazione da cache NuGet locale, telemetria disattivata e audit online non eseguito.
+**Data:** 16 novembre 2026. **M4D.2-R1: build Release senza avvisi/errori e 733/733 test superati da Codex su Windows, SDK 10.0.201.** Nuovi Pennelli nel flusso e Paesaggi a strati; Curve parametriche, Noise Flow, Plasma, Streamlines distanziate e Flow Loop ampliati. Catalogo a 15 e 63 ricette; 14 nuovi preset Full HD verificati, confronto a seed/risoluzione uguali e 12 frame CLI distinti decodificati. PNG dei 13 generatori precedenti identici via SHA-256 con parametri storici. Nuovi default Studio applicati solo ai lavori nuovi, ripristino JSON verificato headless. Guida [`M4D2_PITTURA_EVOLUZIONE.md`](M4D2_PITTURA_EVOLUZIONE.md), evidenze `docs/validation/M4D2_R1_*`. README descrittivo con screenshot, senza cronologia. Desktop/DPI, nuovi poster 4K e altri OS aperti. Cache NuGet locale, telemetria build disattivata e audit online non eseguito.
 
 ## Stato incrementale
 
@@ -16,6 +16,7 @@
 | **M4C.2-R4** | Test materia allineati ai budget standard/fine-2x | **Build Release OK, 521/521 test (Codex Windows)** |
 | **M4B.1-R1** | Domain Warp, LIC Flow, sette ricette, streamlines dense, picker con footer fisso | **Build Release OK, 558/558 test; sette PNG Full HD e smoke picker headless (Codex Windows)** |
 | **M4D.1-R1** | Guilloché/incisione, dettaglio Domain Warp, slider fini, otto ricette | **Build Release OK, 626/626 test; otto PNG Full HD, smoke Studio headless e compatibilità PNG (Codex Windows)** |
+| **M4D.2-R1** | Pennelli/paesaggi e cinque generatori iniziali ampliati, quattordici ricette | **Build Release OK, 733/733 test; Full HD, 12 frame CLI, Studio e compatibilità PNG verificati (Codex Windows)** |
 
 ## M4C.2-R3 — richieste emerse nella validazione Windows
 

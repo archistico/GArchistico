@@ -76,6 +76,8 @@ public static class ArtworkRolePalettePreview
         ArgumentException.ThrowIfNullOrEmpty(artworkId);
         ArgumentException.ThrowIfNullOrEmpty(palette);
         ArgumentException.ThrowIfNullOrEmpty(role);
+        if (artworkId is "flow-brush" or "strata-landscape")
+            return PainterlyPalettes.SuggestHex(artworkId, palette, role);
         if (!Roles.TryGetValue(artworkId, out string[]? roles))
             throw new ArgumentException("Artwork non presente nella mappa dei campioni.", nameof(artworkId));
         int index = Array.IndexOf(roles, role);

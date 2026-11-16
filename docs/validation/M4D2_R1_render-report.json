@@ -1,0 +1,114 @@
+[
+  {
+    "recipe": "flow-brush-ember-vortex-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 2.0708223,
+    "bytes": 4318449,
+    "processPeakWorkingSetBytes": 105877504
+  },
+  {
+    "recipe": "flow-brush-ink-dry-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 0.6090312,
+    "bytes": 3019059,
+    "processPeakWorkingSetBytes": 113872896
+  },
+  {
+    "recipe": "flow-brush-lagoon-silk-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 0.8028164,
+    "bytes": 4217069,
+    "processPeakWorkingSetBytes": 115097600
+  },
+  {
+    "recipe": "looping-flow-aurora-dense-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 0.1513163,
+    "bytes": 459249,
+    "processPeakWorkingSetBytes": 115097600
+  },
+  {
+    "recipe": "noise-flow-braid-paper-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 0.4376668,
+    "bytes": 4126085,
+    "processPeakWorkingSetBytes": 115609600
+  },
+  {
+    "recipe": "noise-flow-curl-dense-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 0.7574702,
+    "bytes": 4690310,
+    "processPeakWorkingSetBytes": 124338176
+  },
+  {
+    "recipe": "parametric-harmonic-iris-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 0.459979,
+    "bytes": 2863978,
+    "processPeakWorkingSetBytes": 124338176
+  },
+  {
+    "recipe": "parametric-woven-copper-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 0.4844117,
+    "bytes": 3334489,
+    "processPeakWorkingSetBytes": 124338176
+  },
+  {
+    "recipe": "plasma-marble-ember-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 1.6212336,
+    "bytes": 2404766,
+    "processPeakWorkingSetBytes": 199483392
+  },
+  {
+    "recipe": "plasma-ridged-moss-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 0.7769189,
+    "bytes": 2241758,
+    "processPeakWorkingSetBytes": 199483392
+  },
+  {
+    "recipe": "spaced-streamlines-vortex-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 2.8407038,
+    "bytes": 2765777,
+    "processPeakWorkingSetBytes": 199483392
+  },
+  {
+    "recipe": "strata-desert-dunes-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 0.4696813,
+    "bytes": 1071410,
+    "processPeakWorkingSetBytes": 199483392
+  },
+  {
+    "recipe": "strata-dusk-ridges-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 0.3286545,
+    "bytes": 713658,
+    "processPeakWorkingSetBytes": 199483392
+  },
+  {
+    "recipe": "strata-glacier-waves-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 0.3816792,
+    "bytes": 690257,
+    "processPeakWorkingSetBytes": 199483392
+  }
+]

@@ -1,5 +1,9 @@
 # Test, build e smoke test — GenerativeArt
 
+## M4D.2-R1 — Pittura e generatori iniziali
+
+**Codex Windows, SDK 10.0.201: build Release senza avvisi/errori e 733/733 test** (Core 115, Algorithms 162, Application 133, Rendering.Skia 323). Quattordici preset Full HD renderizzati/decodificati, tutte le 63 ricette validate, confronto a seed 42 e PNG dei 13 generatori precedenti identici via SHA-256. Smoke Studio su nuovi artwork e cinque renderer ampliati: default nuovi e ripristino JSON verificati. Esportazione CLI di 12 PNG Full HD distinti, decodifica di tutti i frame. Guida [`M4D2_PITTURA_EVOLUZIONE.md`](M4D2_PITTURA_EVOLUZIONE.md), evidenze `docs/validation/M4D2_R1_*`. Desktop/DPI, poster dei nuovi artwork e altri OS restano aperti.
+
 ## M4D.1-R1 — Dettaglio/controllo verificati
 
 **Codex, Windows, SDK 10.0.201: build Release con zero avvisi/errori e 626/626 test** (Core 115, Algorithms 158, Application 128, Rendering.Skia 225). Otto nuovi PNG Full HD generati/decodificati, tre in fine-2x; tutte le 49 ricette validate. Smoke headless del pannello dei nuovi artwork e Domain Warp, cambio rapido generatore, decimali esatti e slider fini. I tre PNG Domain Warp precedenti conservano SHA-256 identico. Guida e comandi in [`M4D1_DETTAGLIO_CONTROLLO.md`](M4D1_DETTAGLIO_CONTROLLO.md); evidenze `docs/validation/M4D1_R1_*`. Poster grandi, desktop/DPI e altri OS restano da provare. Gli stati sotto sono storici.

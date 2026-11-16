@@ -2,7 +2,7 @@
 
 Questa pagina separa le **fonti operative** (da aggiornare a ogni incremento), i **contratti tecnici** e il materiale di **studio/storico**. Non usare piani o stato contenuti nei documenti tecnici più vecchi per sovrascrivere `ROADMAP.md` e `CURRENT_STATE.md`.
 
-**Stato corrente:** **M4D.1-R1**, Guilloché/incisione e controllo del dettaglio; 13 generatori, 49 ricette, **build Release e 626/626 test Windows** da Codex. Otto PNG Full HD, editor Studio headless e PNG Domain Warp storici verificati. Guida [`M4D1_DETTAGLIO_CONTROLLO.md`](M4D1_DETTAGLIO_CONTROLLO.md); limiti aperti in `CURRENT_STATE.md`.
+**Stato corrente:** **M4D.2-R1**, pennelli/paesaggi ed evoluzione dei primi generatori; 15 generatori, 63 ricette, **build Release e 733/733 test Windows** da Codex. Quattordici render Full HD, 12 frame CLI, confronto visuale, smoke Studio e PNG storici verificati. Guida [`M4D2_PITTURA_EVOLUZIONE.md`](M4D2_PITTURA_EVOLUZIONE.md); limiti aperti in `CURRENT_STATE.md`.
 
 ## Fonti operative — leggere in ordine
 
@@ -16,6 +16,7 @@ Questa pagina separa le **fonti operative** (da aggiornare a ogni incremento), i
 | [`TESTING.md`](TESTING.md) | Comandi e stato della validazione |
 | [`QUALITY_GATES.md`](QUALITY_GATES.md) | Condizioni di accettazione di ogni fase |
 | [`CHANGELOG.md`](CHANGELOG.md) | Cronologia delle consegne |
+| [`M4D2_PITTURA_EVOLUZIONE.md`](M4D2_PITTURA_EVOLUZIONE.md) | Pennelli/paesaggi, primi generatori ampliati, 14 ricette, confronto prima/dopo e verifiche |
 | [`M4D1_DETTAGLIO_CONTROLLO.md`](M4D1_DETTAGLIO_CONTROLLO.md) | Guilloché/incisione, controlli dettagliati, Domain Warp esteso, otto ricette e verifiche |
 | [`M4B1_DOMAIN_WARP_LIC.md`](M4B1_DOMAIN_WARP_LIC.md) | Domain Warp/LIC, sette ricette, streamlines fino a 10000, picker, budget, test e smoke |
 | [`M4A4_LABORATORIO_ARTISTICO.md`](M4A4_LABORATORIO_ARTISTICO.md) | Laboratorio artistico R1 validato, qualità di stampa e roadmap anti-alias |

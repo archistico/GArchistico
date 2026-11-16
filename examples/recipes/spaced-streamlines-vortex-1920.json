@@ -1,0 +1,32 @@
+{
+  "formatVersion": 1,
+  "artworkId": "spaced-streamlines",
+  "algorithmVersion": 1,
+  "seed": "58123",
+  "width": 1920,
+  "height": 1080,
+  "parameters": {
+    "background-color": "auto",
+    "dither-levels": 8,
+    "dither-mode": "none",
+    "field": "vortex",
+    "frequency": 0.003,
+    "grain-amount": 0,
+    "grain-size": 1,
+    "ink-absorption": 0,
+    "ink-color-1": "auto",
+    "ink-color-2": "auto",
+    "ink-color-3": "auto",
+    "ink-color-4": "auto",
+    "integration-step": 2.4,
+    "line-width": 0.85,
+    "max-lines": 3600,
+    "max-steps": 320,
+    "opacity": 0.55,
+    "paper-strength": 0,
+    "paper-texture": "none",
+    "pigment-granulation": 0,
+    "render-quality": "standard",
+    "separation": 5.5
+  }
+}

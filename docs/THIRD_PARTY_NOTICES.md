@@ -16,6 +16,10 @@
 
 Guilloché usa un'implementazione C# autonoma delle equazioni di ipotrocoidi/epitrocoidi e delle armoniche radiali. `TonalHatching` è un filtro analitico autonomo di tratti periodici e copertura tonale; per il contesto scientifico vedere gli autori di [Real-Time Hatching](https://gfx.cs.princeton.edu/proj/hatching/). Non sono importati codice, immagini o tonal art maps del paper. Le nuove ricette contengono soltanto parametri del framework.
 
+## Riferimenti M4D.2
+
+Le setole di `OrganicStroke`, i profili di `FractalProfile1D` e le nuove ricette pittoriche sono implementazioni C# autonome. I riferimenti artistici restano quelli documentati in `RIFERIMENTI_ARTISTICI_PREFERITI.md`; non sono stati importati sorgenti Kotlin/Go, asset o nuove dipendenze di produzione per M4D.2.
+
 ## Test
 
 xUnit, runner Visual Studio, Microsoft.NET.Test.Sdk e coverlet sono dipendenze di sviluppo e restano versionati in `Directory.Packages.props`.

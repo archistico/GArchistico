@@ -1,0 +1,119 @@
+[
+  {
+    "artworkId": "domain-warp",
+    "seed": 42,
+    "width": 160,
+    "height": 120,
+    "oldSha256": "86d73f3c4e11d9ea4157485ad671eeb6e6d46bbb36ffccd9a3217d7f7a11484f",
+    "newSha256": "86d73f3c4e11d9ea4157485ad671eeb6e6d46bbb36ffccd9a3217d7f7a11484f",
+    "identical": true
+  },
+  {
+    "artworkId": "guilloche",
+    "seed": 42,
+    "width": 160,
+    "height": 120,
+    "oldSha256": "20f207153bf5213648de5c1b414307733e6e7ba435b4812683a1c5bf35ac466a",
+    "newSha256": "20f207153bf5213648de5c1b414307733e6e7ba435b4812683a1c5bf35ac466a",
+    "identical": true
+  },
+  {
+    "artworkId": "lic-flow",
+    "seed": 42,
+    "width": 160,
+    "height": 120,
+    "oldSha256": "7fbd088655449e03c22977da1b4b75175507cb47bd68b088f39304883194c7f8",
+    "newSha256": "7fbd088655449e03c22977da1b4b75175507cb47bd68b088f39304883194c7f8",
+    "identical": true
+  },
+  {
+    "artworkId": "looping-flow",
+    "seed": 42,
+    "width": 160,
+    "height": 120,
+    "oldSha256": "8b024f65a429d1b78808ea00e6536d09ceea4a26c6431f7bc172b227962711b9",
+    "newSha256": "8b024f65a429d1b78808ea00e6536d09ceea4a26c6431f7bc172b227962711b9",
+    "identical": true
+  },
+  {
+    "artworkId": "noise-flow",
+    "seed": 42,
+    "width": 160,
+    "height": 120,
+    "oldSha256": "81cf2bd5cf26b2255d1b1ab12945983642deb04f48534ad6e5d26d0161efe995",
+    "newSha256": "81cf2bd5cf26b2255d1b1ab12945983642deb04f48534ad6e5d26d0161efe995",
+    "identical": true
+  },
+  {
+    "artworkId": "parametric-curves",
+    "seed": 42,
+    "width": 160,
+    "height": 120,
+    "oldSha256": "8fb5c9aadc0db46848226190cb1dcf21640995110ecb7b82c3b84a5cd7fccd9a",
+    "newSha256": "8fb5c9aadc0db46848226190cb1dcf21640995110ecb7b82c3b84a5cd7fccd9a",
+    "identical": true
+  },
+  {
+    "artworkId": "plasma-noise",
+    "seed": 42,
+    "width": 160,
+    "height": 120,
+    "oldSha256": "97166e8704684e5bcd56eb723aee234494d8ff9b36e19f064770bf9f8d42ab33",
+    "newSha256": "97166e8704684e5bcd56eb723aee234494d8ff9b36e19f064770bf9f8d42ab33",
+    "identical": true
+  },
+  {
+    "artworkId": "poisson-stippling",
+    "seed": 42,
+    "width": 160,
+    "height": 120,
+    "oldSha256": "cb228e3b7f7fc7f8d7b74f98e8d02b955083a11b67b05388ce0910d130e99f62",
+    "newSha256": "cb228e3b7f7fc7f8d7b74f98e8d02b955083a11b67b05388ce0910d130e99f62",
+    "identical": true
+  },
+  {
+    "artworkId": "sdf-orbits",
+    "seed": 42,
+    "width": 160,
+    "height": 120,
+    "oldSha256": "923ee7d368821cacdeaad409fcd16165811ebab2937b12fac82b58a94715c2d4",
+    "newSha256": "923ee7d368821cacdeaad409fcd16165811ebab2937b12fac82b58a94715c2d4",
+    "identical": true
+  },
+  {
+    "artworkId": "spaced-streamlines",
+    "seed": 42,
+    "width": 160,
+    "height": 120,
+    "oldSha256": "bdfde03d9e27f2e88f13e556a3504832869f44d93db144ea75a63b0896466c1e",
+    "newSha256": "bdfde03d9e27f2e88f13e556a3504832869f44d93db144ea75a63b0896466c1e",
+    "identical": true
+  },
+  {
+    "artworkId": "tonal-engraving",
+    "seed": 42,
+    "width": 160,
+    "height": 120,
+    "oldSha256": "d53340d10b145aad891bea8c8eba4b19983c6d68313fea9601ef7dc680d379d4",
+    "newSha256": "d53340d10b145aad891bea8c8eba4b19983c6d68313fea9601ef7dc680d379d4",
+    "identical": true
+  },
+  {
+    "artworkId": "topographic-contours",
+    "seed": 42,
+    "width": 160,
+    "height": 120,
+    "oldSha256": "64cf0d78c573997981b66d549db1eaa411524610359552adf63ba7fa53845536",
+    "newSha256": "64cf0d78c573997981b66d549db1eaa411524610359552adf63ba7fa53845536",
+    "identical": true
+  },
+  {
+    "artworkId": "voronoi-mosaic",
+    "seed": 42,
+    "width": 160,
+    "height": 120,
+    "oldSha256": "f999c2884a3f86813641361527401bb62492d4d9550961f94f17a47e69d3d0f7",
+    "newSha256": "f999c2884a3f86813641361527401bb62492d4d9550961f94f17a47e69d3d0f7",
+    "identical": true
+  }
+]

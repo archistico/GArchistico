@@ -31,6 +31,8 @@ public sealed class RasterQualityTests
     }
 
     [Theory]
+    [InlineData("flow-brush")]
+    [InlineData("strata-landscape")]
     [InlineData("guilloche")]
     [InlineData("tonal-engraving")]
     [InlineData("domain-warp")]

@@ -17,6 +17,7 @@ public sealed class CatalogTests
         string[] expectedIds =
         [
             "domain-warp",
+            "flow-brush",
             "guilloche",
             "lic-flow",
             "looping-flow",
@@ -26,6 +27,7 @@ public sealed class CatalogTests
             "poisson-stippling",
             "sdf-orbits",
             "spaced-streamlines",
+            "strata-landscape",
             "tonal-engraving",
             "topographic-contours",
             "voronoi-mosaic"
@@ -44,10 +46,11 @@ public sealed class CatalogTests
         Assert.Equal(ArtworkCapabilities.Raster, catalog.Get("voronoi-mosaic").Capabilities);
         Assert.Equal(ArtworkCapabilities.Raster, catalog.Get("topographic-contours").Capabilities);
         Assert.Equal(ArtworkCapabilities.Raster, catalog.Get("plasma-noise").Capabilities);
-        Assert.Equal(new[] { "frequency", "octaves", "palette",
+        string[] expectedPlasma = ["frequency", "octaves", .. LegacyArtworkControls.ForArtwork("plasma-noise").Select(p => p.Id), "palette",
             "gradient-color-1", "gradient-color-2", "gradient-color-3", "gradient-color-4", "render-quality",
             "grain-amount", "grain-size", "dither-mode", "dither-levels",
-            "paper-texture", "paper-strength", "pigment-granulation", "ink-absorption" },
+            "paper-texture", "paper-strength", "pigment-granulation", "ink-absorption"];
+        Assert.Equal(expectedPlasma,
             catalog.Get("plasma-noise").Parameters.Select(p => p.Id).ToArray());
     }
 
@@ -55,7 +58,7 @@ public sealed class CatalogTests
     public void AllArtworksExposeOptionalFinishingControlsWithNeutralDefaults()
     {
         ArtworkRegistry catalog = BuiltInArtworkCatalog.Create();
-        Assert.Equal(13, catalog.All.Count);
+        Assert.Equal(15, catalog.All.Count);
         foreach (ArtworkDescriptor art in catalog.All)
         {
             Assert.Equal(new[] { "grain-amount", "grain-size", "dither-mode", "dither-levels" },
