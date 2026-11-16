@@ -1,4 +1,4 @@
-# SHA-256 manifest - GenerativeArt M4D.1-R1 (dettaglio e controllo)
+# SHA-256 manifest - GenerativeArt M4D.1-R1 (README e screenshot)
 f11f8c3bd3ab526feafb7e79c172d64991835ccc2c44077657f014349b6e350e  ./.editorconfig
 7f007417f54fc4589e03a5b3959a742b1af952da9e23fc175ec7eb021cfa5694  ./.github/workflows/ci.yml
 67961d9c0817991dbbc8adbc8fda43ec1163e859866d84167391fe374f2afedd  ./.gitignore
@@ -16,6 +16,7 @@ f9ad7dd857a78bcc70698b5e33f1f20538481f5db60d8f783b648dcae5977e2a  ./docs/CHANGEL
 6fa185e2203a3b4642a63d4b14400fe3d3e3f4a911446d35dac3ece9cf69cc66  ./docs/ESPERIENZA_STUDIO.md
 5732cbd2771aca374ce875239a415f385fec7c1239065a862fedf9f84cf1b7b1  ./docs/FEATURE_MATRIX_GART_GO_CSHARP.csv
 a984ba5fd237455c7eab6380fbcab13a470ada443376a8aa864fe2adb14e2494  ./docs/HANDOFF.md
+f09db7efd37d3a9b078ed2fe9a739387e27e76936de71ff73579041356a4fc6d  ./docs/images/generativeart-studio.png
 c2de43e569ad88aa956ac05fb6bf5722f171e1b25b315a2031a97c691ba12271  ./docs/INDEX.md
 b10ee04b5c9edc7968257dcd02c664c7f7b77606fb2eed6d4191dad393f5ca70  ./docs/M1C_SPEC.md
 af4936e9c3d9b06ca135683eba6b237c2f24c3af1d5eed1cdf5d7711631bc688  ./docs/M1D_SPEC.md
@@ -129,7 +130,7 @@ f95ac9141bb016ba2c23826ef307137cb952705a846a15492ebf1586ff0530f4  ./examples/rec
 fe0e85cd3e7d7e10107fe3fe05f2a65a180822cd9392abbd4d7311a3160eff48  ./global.json
 574ac5e2c8d58779f5e27fcc6646b49d63078ca5dd4445efb8f20f642c43091c  ./licenses/GART_BSD2.txt
 2465d2a0c4b8d33282a8af36dbde964f3b5dd8fdf29ac2dfc6c1eab724429dab  ./licenses/JDXYW_MIT.txt
-8536a554579f7948e19f66c7372530dd34cf872c5ef4b198dfee77f7ea46e616  ./README.md
+4a1a81b334d72df4189dde02877ef6e6dc06c7c9024e3753307f220e6aae3dd5  ./README.md
 1964e92c02c32e491e77ccd2a1956bac3e2ededf7fb22b03877b7e198985977c  ./reference/gart/color_kotlin_golden.json
 e5e845405a14920eceeed1448c5a27aefe4aba96e3115099845decdf75aae817  ./reference/gart/perlin_golden.json
 21899759e9e23fae24b8e8c78809c9c260d581af900bbfdbfcb23c013e3c0d24  ./reference/gart/permutation256_gart.json
