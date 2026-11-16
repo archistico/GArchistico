@@ -16,12 +16,14 @@ public sealed class CatalogTests
         // non soltanto il numero dei generatori disponibili.
         string[] expectedIds =
         [
+            "bokeh-depth",
             "domain-warp",
             "flow-brush",
             "guilloche",
             "lic-flow",
             "looping-flow",
             "noise-flow",
+            "paper-cut",
             "parametric-curves",
             "plasma-noise",
             "poisson-stippling",
@@ -58,7 +60,7 @@ public sealed class CatalogTests
     public void AllArtworksExposeOptionalFinishingControlsWithNeutralDefaults()
     {
         ArtworkRegistry catalog = BuiltInArtworkCatalog.Create();
-        Assert.Equal(15, catalog.All.Count);
+        Assert.Equal(17, catalog.All.Count);
         foreach (ArtworkDescriptor art in catalog.All)
         {
             Assert.Equal(new[] { "grain-amount", "grain-size", "dither-mode", "dither-levels" },

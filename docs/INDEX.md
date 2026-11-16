@@ -2,7 +2,7 @@
 
 Questa pagina separa le **fonti operative** (da aggiornare a ogni incremento), i **contratti tecnici** e il materiale di **studio/storico**. Non usare piani o stato contenuti nei documenti tecnici più vecchi per sovrascrivere `ROADMAP.md` e `CURRENT_STATE.md`.
 
-**Stato corrente:** **M4D.2-R1**, pennelli/paesaggi ed evoluzione dei primi generatori; 15 generatori, 63 ricette, **build Release e 733/733 test Windows** da Codex. Quattordici render Full HD, 12 frame CLI, confronto visuale, smoke Studio e PNG storici verificati. Guida [`M4D2_PITTURA_EVOLUZIONE.md`](M4D2_PITTURA_EVOLUZIONE.md); limiti aperti in `CURRENT_STATE.md`.
+**Stato corrente:** M4D.3-R1: profondità con carta ritagliata, bokeh e paesaggi migliorati. **17 generatori, 73 ricette, build Release senza avvisi/errori e 801/801 test Windows** (Codex, SDK 10.0.201). Dieci nuove ricette Full HD, due fine-2x, controlli Studio e ripristino JSON verificati. Quindici PNG precedenti identici a seed 42 / 160×120. Guida [`M4D3_PROFONDITA.md`](M4D3_PROFONDITA.md), evidenze `docs/validation/M4D3_R1_*`. Livelli SrcOver, blur gaussiano e ombre riutilizzabili; editor di livelli/maschere/blend M4C.3 ancora aperto. Desktop/DPI reali, nuovi poster 4K e altri OS da verificare. Cache NuGet locale, telemetria build e audit online disattivati.
 
 ## Fonti operative — leggere in ordine
 
@@ -16,6 +16,7 @@ Questa pagina separa le **fonti operative** (da aggiornare a ogni incremento), i
 | [`TESTING.md`](TESTING.md) | Comandi e stato della validazione |
 | [`QUALITY_GATES.md`](QUALITY_GATES.md) | Condizioni di accettazione di ogni fase |
 | [`CHANGELOG.md`](CHANGELOG.md) | Cronologia delle consegne |
+| [`M4D3_PROFONDITA.md`](M4D3_PROFONDITA.md) | Carta/bokeh, paesaggi migliorati, ombre/blur per piano, dieci ricette, budget e verifiche |
 | [`M4D2_PITTURA_EVOLUZIONE.md`](M4D2_PITTURA_EVOLUZIONE.md) | Pennelli/paesaggi, primi generatori ampliati, 14 ricette, confronto prima/dopo e verifiche |
 | [`M4D1_DETTAGLIO_CONTROLLO.md`](M4D1_DETTAGLIO_CONTROLLO.md) | Guilloché/incisione, controlli dettagliati, Domain Warp esteso, otto ricette e verifiche |
 | [`M4B1_DOMAIN_WARP_LIC.md`](M4B1_DOMAIN_WARP_LIC.md) | Domain Warp/LIC, sette ricette, streamlines fino a 10000, picker, budget, test e smoke |

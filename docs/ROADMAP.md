@@ -1,6 +1,6 @@
 # ROADMAP UNICA — GenerativeArt Studio
 
-**Aggiornamento:** 16 novembre 2026, M4D.2-R1 (pennelli/paesaggi, cinque generatori iniziali ampliati; 15 generatori, 63 ricette, build Release e 733/733 test Windows da Codex, 14 preset Full HD, sequenza CLI e Studio verificati). Questa è **l'unica roadmap autorevole**. Per lo stato verificato usare `CURRENT_STATE.md`.
+**Aggiornamento:** 16 novembre 2026, M4D.3-R1 (profondità: carta ritagliata/bokeh, paesaggi migliorati; 17 generatori, 73 ricette, build Release e 801/801 test Windows, dieci nuovi PNG Full HD e Studio verificati). Questa è **l'unica roadmap autorevole**. Per lo stato verificato usare `CURRENT_STATE.md`.
 
 ## 1. Obiettivo finale
 
@@ -39,6 +39,7 @@ Un solo **framework C#/.NET 10**, una CLI headless e uno **Studio Avalonia (XAML
 | **M4B.1-R1 — Domain Warp/LIC e streamlines dense** | **Build Release e 558/558 test; sette PNG Full HD e picker headless OK (Codex Windows)** | Due nuovi algoritmi/artwork, catalogo a 11, sette ricette, massimo 10000 streamlines con distanza/spessore, footer picker fisso; desktop/DPI e altri OS aperti |
 | **M4D.1-R1 — Dettaglio e controllo** | **Build Release e 626/626 test; otto PNG Full HD e controlli Studio headless (Codex Windows)** | Guilloché/incisione, dieci controlli Domain Warp, otto ricette, catalogo a 13; compositore M4C.3 e nuovi loop ancora futuri |
 | **M4D.2-R1 — Pittura e generatori iniziali** | **Build Release e 733/733 test, 14 PNG Full HD, Studio e 12 frame CLI verificati (Codex Windows)** | Pennelli/paesaggi, evoluzione dei primi cinque renderer, catalogo a 15, 63 ricette, 13 PNG storici identici; desktop/DPI e altri OS aperti |
+| **M4D.3-R1 — Profondità** | **Build Release e 801/801 test, dieci PNG Full HD e Studio verificati (Codex Windows)** | Carta/bokeh e livelli riutilizzabili, paesaggi migliorati, 17 generatori e 73 ricette; 15 PNG precedenti identici. Editor livelli/maschere/blend ancora aperto |
 | M4–M8 — Motore artistico ed export avanzato | Pianificati | Vedi sotto; non dichiararli già implementati |
 
 Non abbiamo ancora risultati documentati per Linux/macOS, stress di animazioni lunghe o parità visiva multipiattaforma.
@@ -51,7 +52,7 @@ Grana per-pixel deterministica da seed e coordinate, con dimensione cella 1–12
 
 Trama procedurale cotton/rough, pigmenti granulari da noise spaziale e assorbimento locale del colore scuro lungo i bordi, con ring buffer di tre righe. JSON v1 e comportamento storico preservati, cinque esempi Full HD e test dedicati. Specifica [`M4C2_MATERIA_CARTA_PIGMENTI.md`](M4C2_MATERIA_CARTA_PIGMENTI.md).
 
-**Priorità prossima:** M4C.3 compositing a livelli e maschere, M4B domain warping/loop fluidi; gate Windows e QA per R2–M4C.2 alla prima occasione.
+**Priorità prossima:** nuovi algoritmi/ricette con profondità e controllo; estendere i livelli filtrati M4D.3 a editor/maschere/blend M4C.3, poi noise ciclico e loop fluidi M4B.2. Continuare QA desktop/DPI e poster.
 
 ## 3. R0 — Primo Studio utilizzabile
 
@@ -107,9 +108,11 @@ Marching Squares (casi ambigui e stitching), SDF 2D e operazioni CSG, campioname
 
 ### M4C — Pixel/colore/post-processing
 
-**Già implementati (gate aperto):** dithering Bayer, grana seeded, carta cotone/ruvida, granulazione e assorbimento. **Da sviluppare:** livelli/maschere/blending M4C.3, convolution controllata senza aloni, bloom, vignettatura e gestione consapevole lineare/sRGB; HDR solo dopo benchmark. **Gate:** filtri stabili e deterministici con alpha corretto, limiti memoria.
+**Implementati:** dithering Bayer, grana seeded, carta/pigmenti e, in M4D.3-R1, base di livelli SrcOver con blur gaussiano/drop shadow/opacità, aperture even-odd e alone bokeh. Build, alpha e budget verificati su Windows. **M4C.3 ancora da completare:** editor di livelli, maschere arbitrarie e modalità blend nelle ricette. Restano bloom generale, vignettatura e gestione lineare/sRGB; HDR solo dopo benchmark. **Gate:** filtri deterministici con alpha corretto e memoria limitata.
 
 ### M4D — Pennelli e materia
+
+**M4D.3-R1 implementata e verificata:** carta ritagliata/bokeh, livelli filtrati riutilizzabili e profondità nei paesaggi. Dieci ricette Full HD, due fine-2x; catalogo a 17, 73 ricette, 801/801 test, Studio e quindici PNG precedenti identici. Guida [`M4D3_PROFONDITA.md`](M4D3_PROFONDITA.md). Non chiude l'editor generale M4C.3.
 
 **M4D.2-R1 implementata su richiesta di nuovi algoritmi e primi generatori più ricchi:** setole con pressione/rastremazione e profili frattali, artwork pennelli/paesaggi; cinque generatori iniziali estesi e nuovi default per lavori Studio. Build Release, 733/733 test, 14 preset Full HD, sequenza CLI e smoke Studio verificati. Guida [`M4D2_PITTURA_EVOLUZIONE.md`](M4D2_PITTURA_EVOLUZIONE.md). Restano pennelli/simulazioni più avanzate e compositore generale.
 

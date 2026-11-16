@@ -134,8 +134,16 @@ public sealed class ArtworkEvolutionTests
     [InlineData("strata-landscape", "sun-x", "0.2")]
     [InlineData("strata-landscape", "sun-y", "0.3")]
     [InlineData("strata-landscape", "palette", "desert")]
-    public void EveryArtisticControlChangesTheRaster(string id, string key, string value) =>
-        Assert.False(Render(Recipe(id)).AsSpan().SequenceEqual(Render(Recipe(id, new() { [key] = value }))));
+    public void EveryArtisticControlChangesTheRaster(string id, string key, string value)
+    {
+        // I controlli delle ombre storiche restano verificati sul percorso storico;
+        // i nuovi lavori Studio selezionano invece le ombre gaussiane.
+        var values = id == "strata-landscape" && key is "shadow" or "shadow-width"
+            ? new Dictionary<string,string> { ["soft-shadow"] = "0", ["shadow"] = "0.16" } : new();
+        byte[] before = Render(Recipe(id, values));
+        values[key] = value;
+        Assert.False(before.AsSpan().SequenceEqual(Render(Recipe(id, values))));
+    }
 
     [Fact]
     public void AngularCurvatureAndLoopPhasesAreEffective()

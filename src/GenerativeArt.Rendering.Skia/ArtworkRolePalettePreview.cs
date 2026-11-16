@@ -11,6 +11,8 @@ public static class ArtworkRolePalettePreview
 {
     private static readonly IReadOnlyDictionary<string, string[]> Roles = new Dictionary<string, string[]>(StringComparer.Ordinal)
     {
+        ["paper-cut"] = ["background-color", "depth-color-1", "depth-color-2", "depth-color-3", "highlight-color", "shadow-color"],
+        ["bokeh-depth"] = ["background-color", "depth-color-1", "depth-color-2", "depth-color-3", "highlight-color", "shadow-color"],
         ["guilloche"] = ["background-color", "ink-color-1", "ink-color-2", "ink-color-3"],
         ["tonal-engraving"] = ["background-color", "ink-color-1", "ink-color-2", "ink-color-3"],
         ["domain-warp"] = ["gradient-color-1", "gradient-color-2", "gradient-color-3", "gradient-color-4"],
@@ -29,6 +31,12 @@ public static class ArtworkRolePalettePreview
     // Gli array sono nell'ordine di Roles. Alpha è sempre anteposto in AARRGGBB.
     private static readonly IReadOnlyDictionary<string, string[]> Presets = new Dictionary<string, string[]>(StringComparer.Ordinal)
     {
+        ["paper-cut|lagoon"] = ["#061C30", "#174B62", "#3F9B9F", "#DDE5C8", "#F8F0CB", "#071528"],
+        ["paper-cut|canyon"] = ["#27142B", "#7A354A", "#CE805B", "#F2CF91", "#FFF0C5", "#26132C"],
+        ["paper-cut|ivory"] = ["#424953", "#7F8C97", "#C4CAC7", "#F2EBDD", "#FFFFFF", "#26303C"],
+        ["bokeh-depth|aurora"] = ["#081421", "#185A79", "#49ACAD", "#DDAD85", "#EAF9E5", "#040A18"],
+        ["bokeh-depth|amber"] = ["#1C1222", "#6D3660", "#C66B56", "#EFC080", "#FFF1C9", "#130A1D"],
+        ["bokeh-depth|pearl"] = ["#18243A", "#536B9F", "#9FADCB", "#E8DAD8", "#FFFFFF", "#0C1425"],
         ["guilloche|banknote"] = ["#F4F0DC", "#164F55", "#587B68", "#AD8050"],
         ["guilloche|copper"] = ["#F2DFCA", "#522C31", "#9C5141", "#CB8D52"],
         ["guilloche|midnight"] = ["#0B152B", "#63C8CA", "#A5BCE3", "#E6C28A"],

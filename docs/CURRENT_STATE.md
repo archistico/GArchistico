@@ -1,6 +1,6 @@
-# Stato corrente — GenerativeArt Studio M4D.2-R1
+# Stato corrente — GenerativeArt Studio M4D.3-R1
 
-**Data:** 16 novembre 2026. **M4D.2-R1: build Release senza avvisi/errori e 733/733 test superati da Codex su Windows, SDK 10.0.201.** Nuovi Pennelli nel flusso e Paesaggi a strati; Curve parametriche, Noise Flow, Plasma, Streamlines distanziate e Flow Loop ampliati. Catalogo a 15 e 63 ricette; 14 nuovi preset Full HD verificati, confronto a seed/risoluzione uguali e 12 frame CLI distinti decodificati. PNG dei 13 generatori precedenti identici via SHA-256 con parametri storici. Nuovi default Studio applicati solo ai lavori nuovi, ripristino JSON verificato headless. Guida [`M4D2_PITTURA_EVOLUZIONE.md`](M4D2_PITTURA_EVOLUZIONE.md), evidenze `docs/validation/M4D2_R1_*`. README descrittivo con screenshot, senza cronologia. Desktop/DPI, nuovi poster 4K e altri OS aperti. Cache NuGet locale, telemetria build disattivata e audit online non eseguito.
+**Data:** 16 novembre 2026. M4D.3-R1: profondità con carta ritagliata, bokeh e paesaggi migliorati. **17 generatori, 73 ricette, build Release senza avvisi/errori e 801/801 test Windows** (Codex, SDK 10.0.201). Dieci nuove ricette Full HD, due fine-2x, controlli Studio e ripristino JSON verificati. Quindici PNG precedenti identici a seed 42 / 160×120. Guida [`M4D3_PROFONDITA.md`](M4D3_PROFONDITA.md), evidenze `docs/validation/M4D3_R1_*`. Livelli SrcOver, blur gaussiano e ombre riutilizzabili; editor di livelli/maschere/blend M4C.3 ancora aperto. Desktop/DPI reali, nuovi poster 4K e altri OS da verificare. Cache NuGet locale, telemetria build e audit online disattivati.
 
 ## Stato incrementale
 
@@ -17,6 +17,7 @@
 | **M4B.1-R1** | Domain Warp, LIC Flow, sette ricette, streamlines dense, picker con footer fisso | **Build Release OK, 558/558 test; sette PNG Full HD e smoke picker headless (Codex Windows)** |
 | **M4D.1-R1** | Guilloché/incisione, dettaglio Domain Warp, slider fini, otto ricette | **Build Release OK, 626/626 test; otto PNG Full HD, smoke Studio headless e compatibilità PNG (Codex Windows)** |
 | **M4D.2-R1** | Pennelli/paesaggi e cinque generatori iniziali ampliati, quattordici ricette | **Build Release OK, 733/733 test; Full HD, 12 frame CLI, Studio e compatibilità PNG verificati (Codex Windows)** |
+| **M4D.3-R1** | Carta ritagliata/bokeh, livelli filtrati riutilizzabili, paesaggi con profondità e dieci ricette | **Build Release OK, 801/801 test; dieci PNG Full HD, Studio e 15 hash PNG precedenti verificati (Codex Windows)** |
 
 ## M4C.2-R3 — richieste emerse nella validazione Windows
 
@@ -44,7 +45,7 @@ Le texture sono un'approssimazione raster procedurale, **non** un simulatore fis
 
 ## Azione successiva
 
-**Proseguire lo sviluppo**: M4C.3 compositing artistico per livelli/maschere; M4B.2 noise ciclico e animazioni fluide. Domain warping e LIC sono ora implementati e verificati in M4B.1. Restano verifiche desktop/DPI, poster grandi, animazioni lunghe e piattaforme diverse da Windows.
+**Proseguire lo sviluppo**: arricchire nuovi algoritmi e ricette con dettaglio e profondità; estendere la base di compositing a editor livelli/maschere/blend M4C.3, noise ciclico M4B.2 e animazioni fluide. Ombre gaussiane e blur per piano sono ora implementati in M4D.3; domain warping e LIC in M4B.1. Restano verifiche desktop/DPI, poster grandi, animazioni lunghe e altri OS.
 
 ## Comandi Windows — PowerShell 7
 

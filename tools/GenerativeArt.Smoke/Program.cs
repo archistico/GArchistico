@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Reflection;
+using System.Security.Cryptography;
 using System.Text.Json;
 using Avalonia;
 using Avalonia.Controls;
@@ -12,17 +13,18 @@ using GenerativeArt.Application.Recipes;
 using GenerativeArt.Rendering.Skia;
 using GenerativeArt.Studio;
 using SkiaSharp;
-if (args.Length != 2 || args[0] is not ("picker" or "render" or "detail" or "studio" or "evolution" or "evolution-studio" or "compare"))
+if (args.Length != 2 || args[0] is not ("picker" or "render" or "detail" or "studio" or "evolution" or "evolution-studio" or "compare" or "depth" or "depth-studio" or "depth-compare" or "depth-compat"))
 {
-    Console.Error.WriteLine("Uso: GenerativeArt.Smoke picker|render|detail|studio|evolution|evolution-studio|compare <cartella solution>");
+    Console.Error.WriteLine("Uso: GenerativeArt.Smoke picker|render|detail|studio|evolution|evolution-studio|compare|depth|depth-studio|depth-compare|depth-compat <cartella solution>");
     Environment.ExitCode = 2;
     return;
 }
 string root = Path.GetFullPath(args[1]);
-string output = Path.Combine(root, "artifacts", args[0] is "evolution" or "evolution-studio" or "compare" ? "m4d2-smoke"
+string output = Path.Combine(root, "artifacts", args[0].StartsWith("depth", StringComparison.Ordinal) ? "m4d3-smoke"
+    : args[0] is "evolution" or "evolution-studio" or "compare" ? "m4d2-smoke"
     : args[0] is "detail" or "studio" ? "m4d1-smoke" : "m4b1-smoke");
 Directory.CreateDirectory(output);
-if (args[0] is "studio" or "evolution-studio")
+if (args[0] is "studio" or "evolution-studio" or "depth-studio")
 {
     AppBuilder.Configure<StudioApp>().UseSkia()
         .UseHeadless(new AvaloniaHeadlessPlatformOptions { UseHeadlessDrawing = false }).SetupWithoutStarting();
@@ -31,7 +33,8 @@ if (args[0] is "studio" or "evolution-studio")
     var registry = BuiltInArtworkCatalog.Create();
     var select = typeof(StudioWindow).GetMethod("SelectArtwork", BindingFlags.NonPublic | BindingFlags.Instance)!;
     var panel = (StackPanel)typeof(StudioWindow).GetField("_parameterItems", BindingFlags.NonPublic | BindingFlags.Instance)!.GetValue(window)!;
-    string[] studioIds = args[0] == "evolution-studio"
+    string[] studioIds = args[0] == "depth-studio" ? ["paper-cut", "bokeh-depth", "strata-landscape", "domain-warp"]
+        : args[0] == "evolution-studio"
         ? ["flow-brush", "strata-landscape", "parametric-curves", "noise-flow", "plasma-noise", "spaced-streamlines", "looping-flow", "domain-warp"]
         : ["guilloche", "tonal-engraving", "domain-warp"];
     foreach (string id in studioIds)
@@ -42,7 +45,7 @@ if (args[0] is "studio" or "evolution-studio")
         int expected = descriptor.Parameters.Count(p => p.Kind is ParameterKind.Integer or ParameterKind.Number);
         int actual = panel.GetVisualDescendants().OfType<Slider>().Count();
         if (actual != expected) throw new Exception($"Missing numeric controls for {id}: {actual}/{expected}");
-        if (LegacyArtworkControls.ForArtwork(id).Count > 0)
+        if (LegacyArtworkControls.ForArtwork(id).Count > 0 || args[0] == "depth-studio")
         {
             var values = (Dictionary<string,string>)typeof(StudioWindow).GetField("_parameters", BindingFlags.NonPublic | BindingFlags.Instance)!.GetValue(window)!;
             foreach (var pair in GenerativeArt.Application.Rendering.StudioRecipeDefaults.ParametersFor(id))
@@ -118,6 +121,57 @@ if (args[0] == "picker")
 var catalog = BuiltInArtworkCatalog.Create();
 var engine = new ArtworkRenderEngine(catalog);
 var report = new List<object>();
+if (args[0] == "depth-compat")
+{
+    using var baseline = JsonDocument.Parse(File.ReadAllBytes(Path.Combine(root,"docs","validation","M4D3_R1_compatibility.json")));
+    foreach (var entry in baseline.RootElement.EnumerateArray())
+    {
+        string id = entry.GetProperty("ArtworkId").GetString()!;
+        var d = catalog.Get(id);
+        var r = ArtworkRecipe.Create(d,
+            new GenerativeArt.Core.Geometry.CanvasSize(entry.GetProperty("width").GetInt32(), entry.GetProperty("height").GetInt32()),
+            entry.GetProperty("Seed").GetUInt64(), animation:d.SupportsAnimation ? new RecipeAnimation(4,18) : null);
+        using var png = new MemoryStream(); engine.Render(r,png,d.SupportsAnimation ? 0 : null);
+        if (Convert.ToHexStringLower(SHA256.HashData(png.ToArray())) != entry.GetProperty("sha256").GetString())
+            throw new Exception("Historical PNG changed: " + id);
+        Console.WriteLine("Historical PNG identical: " + id);
+    }
+    return;
+}
+if (args[0] == "depth-compare")
+{
+    string[] names = ["paper-cut-canyon-vortex-1920", "bokeh-aurora-current-1920", "strata-glacier-atmosphere-1920"];
+    using var sheet = new SKBitmap(1040, 1000);
+    using var canvas = new SKCanvas(sheet);
+    canvas.Clear(new SKColor(16, 21, 30));
+    using var font = new SKFont { Size = 18 };
+    using var ink = new SKPaint { Color = new SKColor(220, 233, 238), IsAntialias = true };
+    canvas.DrawText("Stessa ricetta: effetti di profondità spenti", 20, 26, SKTextAlign.Left, font, ink);
+    canvas.DrawText("Ombre gaussiane, piani e fuoco", 540, 26, SKTextAlign.Left, font, ink);
+    for (int row = 0; row < names.Length; row++)
+    {
+        var after = ArtworkRecipeJson.Deserialize(File.ReadAllBytes(Path.Combine(root,"examples","recipes",names[row]+".json")), catalog);
+        var values = new Dictionary<string,string>(after.Parameters);
+        foreach (string key in new[] { "depth-blur", "shadow-opacity", "soft-shadow", "glow", "rim-light" })
+            if (values.ContainsKey(key)) values[key] = "0";
+        var before = ArtworkRecipe.Create(catalog.Get(after.ArtworkId), after.Size, after.Seed, values);
+        for (int side = 0; side < 2; side++)
+        {
+            using var stream = new MemoryStream(); engine.Render(side == 0 ? before : after, stream);
+            using var image = SKBitmap.Decode(stream.ToArray()) ?? throw new Exception("Invalid depth comparison PNG");
+            using var preview = MakePreview(image);
+            canvas.DrawText(catalog.Get(after.ArtworkId).Title, side * 520 + 20, row * 320 + 57, SKTextAlign.Left, font, ink);
+            canvas.DrawBitmap(preview, side * 520 + 20, row * 320 + 70, new SKSamplingOptions(SKFilterMode.Nearest));
+        }
+        report.Add(new { recipe=names[row], after.ArtworkId, after.Seed, width=after.Size.Width, height=after.Size.Height,
+            flatParameters=before.Parameters, depthParameters=after.Parameters });
+        Console.WriteLine("Depth comparison: " + names[row]);
+    }
+    using var data = sheet.Encode(SKEncodedImageFormat.Png,100);
+    using (var stream = File.Create(Path.Combine(output,"depth-comparison.png"))) data.SaveTo(stream);
+    File.WriteAllText(Path.Combine(output,"comparison-parameters.json"), JsonSerializer.Serialize(report,new JsonSerializerOptions{WriteIndented=true}));
+    return;
+}
 if (args[0] == "compare")
 {
     string[] ids = ["parametric-curves", "noise-flow", "spaced-streamlines", "plasma-noise", "looping-flow"];
@@ -169,6 +223,10 @@ if (args[0] == "evolution") newRecipes = new HashSet<string>([
     "parametric-woven-copper-1920", "parametric-harmonic-iris-1920",
     "noise-flow-curl-dense-1920", "noise-flow-braid-paper-1920", "plasma-ridged-moss-1920", "plasma-marble-ember-1920",
     "spaced-streamlines-vortex-1920", "looping-flow-aurora-dense-1920"]);
+if (args[0] == "depth") newRecipes = new HashSet<string>([
+    "paper-cut-lagoon-portal-1920", "paper-cut-canyon-vortex-1920", "paper-cut-ivory-petal-1920", "paper-cut-nocturne-1920",
+    "bokeh-aurora-current-1920", "bokeh-amber-spiral-1920", "bokeh-pearl-mist-1920", "bokeh-pearl-orbit-fine-1920",
+    "strata-glacier-atmosphere-1920", "strata-desert-soft-light-1920"]);
 foreach (string file in Directory.GetFiles(Path.Combine(root, "examples", "recipes"), "*.json"))
 {
     ArtworkRecipe recipe = ArtworkRecipeJson.Deserialize(File.ReadAllBytes(file), catalog);
@@ -206,6 +264,7 @@ foreach (string file in Directory.GetFiles(Path.Combine(root, "examples", "recip
     Console.WriteLine($"Rendered {name}: {timer.Elapsed.TotalSeconds:F2}s");
 }
 File.WriteAllText(Path.Combine(output, "render-report.json"), JsonSerializer.Serialize(report, new JsonSerializerOptions { WriteIndented = true }));
+if (report.Count != newRecipes.Count) throw new Exception("Missing Full HD smoke recipes");
 Console.WriteLine("All recipes validated; Full HD smoke completed.");
 
 static SKBitmap MakePreview(SKBitmap bitmap)

@@ -3,9 +3,11 @@ namespace GenerativeArt.Application.Catalog;
 /// <summary>
 /// Catalogo unico delle opere; i renderer sono collegati dal runtime headless.
 /// </summary>
-public static class BuiltInArtworkCatalog
+public static partial class BuiltInArtworkCatalog
 {
     public static ArtworkRegistry Create() => new([
+        PaperCutDescriptor(),
+        BokehDescriptor(),
         FlowBrushDescriptor(),
         StrataDescriptor(),
         GuillocheDescriptor(),
@@ -280,6 +282,7 @@ public static class BuiltInArtworkCatalog
          ArtworkParameterSpec.Number("sun-radius", "Raggio sole relativo (0 = nascosto)", .055, 0, .2, "Luce"),
          ArtworkParameterSpec.Number("sun-x", "Posizione sole X", .78, 0, 1, "Luce"),
          ArtworkParameterSpec.Number("sun-y", "Posizione sole Y", .14, 0, 1, "Luce"),
+         .. TerrainDepthControls(),
          ArtworkParameterSpec.Choice("palette", "Palette", "dusk", ["dusk", "desert", "glacier"], "Colori"),
          ArtworkParameterSpec.ColorOverride("background-color", "Cielo"),
          ArtworkParameterSpec.ColorOverride("layer-color-1", "Strati lontani"),

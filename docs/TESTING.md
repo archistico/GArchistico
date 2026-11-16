@@ -1,5 +1,11 @@
 # Test, build e smoke test — GenerativeArt
 
+## M4D.3-R1 — Profondità verificata
+
+**Codex Windows, SDK 10.0.201: tools/validate.ps1 completato, build Release senza avvisi/errori e 801/801 test** (Core 115, Algorithms 168, Application 134, Rendering.Skia 384). Dieci nuovi PNG Full HD, due fine-2x, tutte le 73 ricette validate; confronto degli effetti a seed/risoluzione uguali. Smoke Studio: due nuovi artwork, paesaggi e Domain Warp, slider/colori/scelte, default e ripristino JSON, input numerico esatto. Quindici PNG dei generatori precedenti identici a seed 42 / 160×120. Log e dati `validation/M4D3_R1_*`. Guida e comandi `depth`, `depth-studio`, `depth-compare` e `depth-compat` in [`M4D3_PROFONDITA.md`](M4D3_PROFONDITA.md).
+
+Alpha del blur, ombra direzionale, opacità del gruppo, aperture e ripristino del canvas sono coperti da test nativi Skia; budget rifiutati prima dell'output e cancellazione verificati. Restore locale da cache NuGet con pacchetti sotto artifacts/nuget, audit online e telemetria build disattivati nell'ambiente Codex. Desktop/DPI reali, nuovi poster 4K, altri OS e animazioni lunghe restano da verificare. Gli stati sotto sono storici.
+
 ## M4D.2-R1 — Pittura e generatori iniziali
 
 **Codex Windows, SDK 10.0.201: build Release senza avvisi/errori e 733/733 test** (Core 115, Algorithms 162, Application 133, Rendering.Skia 323). Quattordici preset Full HD renderizzati/decodificati, tutte le 63 ricette validate, confronto a seed 42 e PNG dei 13 generatori precedenti identici via SHA-256. Smoke Studio su nuovi artwork e cinque renderer ampliati: default nuovi e ripristino JSON verificati. Esportazione CLI di 12 PNG Full HD distinti, decodifica di tutti i frame. Guida [`M4D2_PITTURA_EVOLUZIONE.md`](M4D2_PITTURA_EVOLUZIONE.md), evidenze `docs/validation/M4D2_R1_*`. Desktop/DPI, poster dei nuovi artwork e altri OS restano aperti.

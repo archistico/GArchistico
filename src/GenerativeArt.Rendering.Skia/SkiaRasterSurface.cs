@@ -15,6 +15,7 @@ public sealed class SkiaRasterSurface : IDisposable
 {
     private readonly SKSurface _surface;
     private bool _disposed;
+    private bool _layerActive;
 
     public CanvasSize Size { get; }
     public int RasterScale { get; }
@@ -39,6 +40,71 @@ public sealed class SkiaRasterSurface : IDisposable
     {
         ThrowIfDisposed();
         _surface.Canvas.Clear(ToSkColor(color));
+    }
+
+    /// <summary>Un solo livello temporaneo alla volta, rilasciato anche in caso di errore/cancellazione.</summary>
+    public void DrawLayer(Action<SkiaRasterSurface> draw, LayerEffects effects,
+        CancellationToken cancellationToken = default)
+    {
+        ThrowIfDisposed();
+        ArgumentNullException.ThrowIfNull(draw);
+        effects.Validate();
+        cancellationToken.ThrowIfCancellationRequested();
+        if (!effects.IsEnabled) { draw(this); cancellationToken.ThrowIfCancellationRequested(); return; }
+        if (_layerActive) throw new InvalidOperationException("Livelli filtrati annidati non ammessi.");
+        if (Size.PixelCount * RasterScale * RasterScale > 8_388_608)
+            throw new ArgumentOutOfRangeException(nameof(effects), "Livelli filtrati: massimo 8.388.608 pixel nativi.");
+        using var blur = effects.Blur > 0 ? SKImageFilter.CreateBlur((float)effects.Blur, (float)effects.Blur) : null;
+        using var shadow = effects.ShadowOpacity > 0 ? SKImageFilter.CreateDropShadow(
+            (float)effects.ShadowX, (float)effects.ShadowY,
+            (float)effects.ShadowSoftness, (float)effects.ShadowSoftness,
+            ToSkColor(ArtworkPaint.Alpha(effects.ShadowColor ?? Color32.Opaque(0, 0, 0), effects.ShadowOpacity)), blur) : null;
+        using var paint = new SKPaint
+        {
+            ImageFilter = shadow ?? blur,
+            Color = SKColors.White.WithAlpha((byte)Math.Round(255 * (effects.Opacity ?? 1)))
+        };
+        int saved = _surface.Canvas.SaveLayer(paint);
+        _layerActive = true;
+        try { draw(this); cancellationToken.ThrowIfCancellationRequested(); }
+        finally { _surface.Canvas.RestoreToCount(saved); _layerActive = false; }
+    }
+
+    /// <summary>Foglio con apertura trasparente; riempimento even-odd, senza cancellare gli strati sotto.</summary>
+    public void DrawAperture(IReadOnlyList<Vector2> hole, Color32 color)
+    {
+        ThrowIfDisposed();
+        ArgumentNullException.ThrowIfNull(hole);
+        if (hole.Count < 4) throw new ArgumentException("Apertura incompleta.", nameof(hole));
+        using var builder = new SKPathBuilder { FillType = SKPathFillType.EvenOdd };
+        builder.AddRect(new SKRect(-1024, -1024, Size.Width + 1024, Size.Height + 1024));
+        for (int i = 0; i < hole.Count; i++)
+        {
+            EnsureFinite(hole[i].X, nameof(hole)); EnsureFinite(hole[i].Y, nameof(hole));
+            if (i == 0) builder.MoveTo(hole[i].X, hole[i].Y);
+            else builder.LineTo(hole[i].X, hole[i].Y);
+        }
+        builder.Close();
+        using var path = builder.Detach();
+        using var paint = new SKPaint { Color = ToSkColor(color), IsAntialias = true };
+        _surface.Canvas.DrawPath(path, paint);
+    }
+
+    /// <summary>Disco illuminato proceduralmente; il gradiente conserva alpha e colore del pigmento.</summary>
+    public void DrawLitDisc(float x, float y, float radius, Color32 color, double lightAngle, double strength)
+    {
+        ThrowIfDisposed();
+        EnsureFinite(x, nameof(x)); EnsureFinite(y, nameof(y)); EnsureFinitePositive(radius, nameof(radius));
+        if (!double.IsFinite(lightAngle) || !double.IsFinite(strength) || strength is < 0 or > 1)
+            throw new ArgumentOutOfRangeException(nameof(strength));
+        var light = new SKPoint(x + radius * .38f * (float)Math.Cos(lightAngle),
+            y + radius * .38f * (float)Math.Sin(lightAngle));
+        Color32 white = new(color.A, 255, 255, 255), dark = new(color.A, 8, 12, 25);
+        using var shader = SKShader.CreateRadialGradient(light, radius * 1.5f,
+            [ToSkColor(ArtworkPaint.Mix(color, white, strength * .7)), ToSkColor(color),
+             ToSkColor(ArtworkPaint.Mix(color, dark, strength * .7))], [0f, .4f, 1f], SKShaderTileMode.Clamp);
+        using var paint = new SKPaint { IsAntialias = true, Shader = shader };
+        _surface.Canvas.DrawCircle(x, y, radius, paint);
     }
 
     public void DrawLine(float x1, float y1, float x2, float y2, Color32 color, float strokeWidth = 1)

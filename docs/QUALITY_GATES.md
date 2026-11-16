@@ -1,5 +1,9 @@
 # Quality gates e criteri di accettazione
 
+## Gate M4D.3-R1 — Profondità (verificato Windows headless)
+
+Build Release senza avvisi/errori, 801/801 test; dieci nuovi PNG Full HD decodificati, due fine-2x, tutte le 73 ricette validate. Ombre gaussiane, blur alpha-safe, opacità di gruppo, aperture even-odd, seed/JSON e budget prima dell'output coperti dai test. Studio: controlli/default/ripristino/input numerico verificati headless. Quindici PNG precedenti identici a seed 42 / 160×120. [Guida ed evidenze](M4D3_PROFONDITA.md). Restano desktop/DPI reali, poster nuovi 4K e altri OS; i gate sotto documentano le revisioni storiche.
+
 ## Gate M4C.2-R3 — Test JSON, poster e anteprima (aperto)
 
 Riscontro Windows R2: compilazione OK, 506/507 test superati; `RecipeTests.MissingParametersAreRejected` costruiva un JSON malformato per la trailing comma. Verificare R3 con suite completa, validazione semantica della rimozione `scale`, rendering ed export **2500×2000 standard con grana e/o carta** (anche Plasma), output PNG 2500×2000 decodificabile e alpha preservato. Verificare che `fine-2x` continui a rifiutare 2500×2000 prima di esportare (budget sottopixel) e che l'anteprima regolabile mostri tutta la composizione con `Adatta`, senza deformazioni, anche dopo resize; `100%` permette pan con bordi corretti. Misurare RAM/performance per poster grandi. Testare anche `Raster = output` e riquadro con dimensioni più piccole dello schermo. Dettagli `M4C2_R3_PREVIEW_E_BUDGET.md`.

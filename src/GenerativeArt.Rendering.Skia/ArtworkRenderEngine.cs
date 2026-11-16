@@ -51,6 +51,10 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
                 $"Finitura artistica: massimo {ArtisticFinishOptions.MaximumFinishPixels:N0} pixel.");
         switch (recipe.ArtworkId)
         {
+            case "paper-cut":
+            case "bokeh-depth":
+                DepthArtworkRenderer.Validate(recipe);
+                break;
             case "flow-brush":
             case "strata-landscape":
                 PainterlyRenderer.Validate(recipe);
@@ -111,6 +115,8 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
         using var surface = new SkiaRasterSurface(recipe.Size, RasterQualityPolicy.Scale(recipe));
         switch (recipe.ArtworkId)
         {
+            case "paper-cut":
+            case "bokeh-depth": DepthArtworkRenderer.Render(surface, recipe, cancellationToken); break;
             case "flow-brush":
             case "strata-landscape": PainterlyRenderer.Render(surface, recipe, cancellationToken); break;
             case "guilloche":

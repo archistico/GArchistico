@@ -1,5 +1,13 @@
 # Registro modifiche — GenerativeArt Studio
 
+## 2026-11-16 — M4D.3-R1 — Profondità, carta e bokeh
+
+- Nuovi algoritmi `OrganicAperture` e `DepthParticleField`; artwork `paper-cut` e `bokeh-depth` con ombre gaussiane, strati ordinati, luce e fuoco controllabili. Catalogo a 17.
+- Livelli riutilizzabili SrcOver con blur, drop shadow e opacità di gruppo; aperture even-odd e dischi illuminati. Budget prima delle superfici/output, cancellazione e alpha premoltiplicato.
+- Paesaggi a strati con sei parametri opzionali: lontananza sfocata, ombre morbide direzionali e bordi luminosi. Nuovi lavori Studio con profondità attiva; JSON precedenti e default catalogo preservati.
+- Dieci ricette Full HD, due fine-2x, 73 ricette totali; anteprime e confronto effetti spenti/accesi. Screenshot Studio aggiornato. README mantiene solo descrizione, installazione ed esecuzione.
+- Build Release senza avvisi/errori, **801/801 test Windows**; smoke Full HD/Studio e 15 PNG precedenti identici. Guida `M4D3_PROFONDITA.md`, evidenze `docs/validation/M4D3_R1_*`. M4C.3 resta aperta per editor livelli/maschere/blend; nessuna nuova dipendenza di produzione.
+
 ## 2026-11-16 — M4D.2-R1 — Pittura ed evoluzione dei generatori iniziali
 
 - Nuovi algoritmi `OrganicStroke` e `FractalProfile1D`; artwork `flow-brush` e `strata-landscape` con setole/pressione, campi curl/vortice/braid, profili frattali, luce, atmosfera e ombre. Catalogo a 15.

@@ -15,6 +15,7 @@ public sealed class StudioCreativeControlsTests
     [InlineData("plasma-noise", "pattern", "marble")]
     [InlineData("spaced-streamlines", "max-lines", "3000")]
     [InlineData("looping-flow", "lines", "220")]
+    [InlineData("strata-landscape", "depth-blur", "6")]
     public void FreshStudioWorksUseArtisticDefaultsWithoutChangingCatalogDefaults(string id, string key, string value)
     {
         var descriptor = _catalog.Get(id);

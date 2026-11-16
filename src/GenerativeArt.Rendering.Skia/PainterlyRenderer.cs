@@ -21,6 +21,10 @@ internal static class PainterlyRenderer
             : (long)Int(recipe, "layers") * (Int(recipe, "samples") + 1);
         if (cost > (recipe.ArtworkId == "flow-brush" ? 4_000_000 : 250_000))
             throw new ArgumentOutOfRangeException(nameof(recipe), "Budget pittorico superato: ridurre setole, strati, tracce o campioni.");
+        if (recipe.ArtworkId == "strata-landscape" &&
+            (Number(recipe, "depth-blur") > 0 || Number(recipe, "soft-shadow") > 0))
+            DepthLayerPolicy.Validate(recipe, Int(recipe, "layers"),
+                Number(recipe, "depth-blur") + Number(recipe, "soft-shadow-softness"));
     }
 
     internal static void Render(SkiaRasterSurface surface, ArtworkRecipe recipe, CancellationToken ct)
@@ -112,7 +116,7 @@ internal static class PainterlyRenderer
             }
             polygon[^2] = new Vector2(width, height + 1);
             polygon[^1] = new Vector2(0, height + 1);
-            if (shadow > 0)
+            if (shadow > 0 && Number(recipe, "soft-shadow") == 0)
                 for (int pass = 3; pass >= 1; pass--)
                 {
                     float spread = (float)(Number(recipe, "shadow-width") * unit * pass / 3);
@@ -123,8 +127,19 @@ internal static class PainterlyRenderer
             int index = Math.Min(2, (int)palettePosition);
             Color32 fill = Mix(colors[1 + index], colors[2 + index], palettePosition - index);
             fill = Mix(fill, colors[0], atmosphere * (1 - t));
-            surface.DrawPolygon(polygon, fill, edgeWidth > 0 ? Alpha(colors[5], .45) : Color32.Transparent,
-                Math.Max(.01f, edgeWidth));
+            double angle = Number(recipe, "light-angle") * Math.PI / 180;
+            double distance = Number(recipe, "soft-shadow-distance") * unit;
+            var effects = new LayerEffects(Number(recipe, "depth-blur") * unit * Math.Pow(1 - t, 1.4),
+                Number(recipe, "soft-shadow"), -Math.Cos(angle) * distance, -Math.Sin(angle) * distance,
+                Number(recipe, "soft-shadow-softness") * unit, colors[5]);
+            surface.DrawLayer(s =>
+            {
+                s.DrawPolygon(polygon, fill, edgeWidth > 0 ? Alpha(colors[5], .45) : Color32.Transparent,
+                    Math.Max(.01f, edgeWidth));
+                if (Number(recipe, "rim-light") > 0)
+                    s.DrawPolyline(top, 1, 1, Alpha(colors[6], Number(recipe, "rim-light")),
+                        (float)Math.Max(.1, unit * .8));
+            }, effects, ct);
         }
     }
 }

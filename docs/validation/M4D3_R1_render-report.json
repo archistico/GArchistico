@@ -1,0 +1,82 @@
+[
+  {
+    "recipe": "bokeh-amber-spiral-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 1.6659475,
+    "bytes": 1716500,
+    "processPeakWorkingSetBytes": 89460736
+  },
+  {
+    "recipe": "bokeh-aurora-current-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 1.2644209,
+    "bytes": 1370701,
+    "processPeakWorkingSetBytes": 115023872
+  },
+  {
+    "recipe": "bokeh-pearl-mist-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 1.2040082,
+    "bytes": 1373495,
+    "processPeakWorkingSetBytes": 116035584
+  },
+  {
+    "recipe": "bokeh-pearl-orbit-fine-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 2.4653533,
+    "bytes": 1062046,
+    "processPeakWorkingSetBytes": 234389504
+  },
+  {
+    "recipe": "paper-cut-canyon-vortex-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 1.6007316,
+    "bytes": 1317283,
+    "processPeakWorkingSetBytes": 234389504
+  },
+  {
+    "recipe": "paper-cut-ivory-petal-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 3.6780367,
+    "bytes": 834506,
+    "processPeakWorkingSetBytes": 234389504
+  },
+  {
+    "recipe": "paper-cut-lagoon-portal-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 1.3273549,
+    "bytes": 1237205,
+    "processPeakWorkingSetBytes": 234389504
+  },
+  {
+    "recipe": "paper-cut-nocturne-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 1.5414766,
+    "bytes": 1104570,
+    "processPeakWorkingSetBytes": 234389504
+  },
+  {
+    "recipe": "strata-desert-soft-light-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 1.7954803,
+    "bytes": 1020090,
+    "processPeakWorkingSetBytes": 234389504
+  },
+  {
+    "recipe": "strata-glacier-atmosphere-1920",
+    "width": 1920,
+    "height": 1080,
+    "seconds": 1.9040965,
+    "bytes": 966446,
+    "processPeakWorkingSetBytes": 234389504
+  }
+]

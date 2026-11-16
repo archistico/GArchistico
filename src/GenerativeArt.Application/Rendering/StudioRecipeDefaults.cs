@@ -15,6 +15,11 @@ public static class StudioRecipeDefaults
     /// <summary>Impostazioni per nuovi lavori dello Studio; le ricette importate conservano i loro valori.</summary>
     public static IReadOnlyDictionary<string, string> ParametersFor(string artworkId) => artworkId switch
     {
+        "strata-landscape" => new Dictionary<string, string>
+        {
+            ["depth-blur"] = "6", ["soft-shadow"] = "0.22", ["soft-shadow-softness"] = "5",
+            ["soft-shadow-distance"] = "8", ["shadow"] = "0", ["rim-light"] = "0.18"
+        },
         "parametric-curves" => new Dictionary<string, string>
         {
             ["style"] = "woven", ["layers"] = "28", ["samples"] = "4800", ["frequency-x"] = "7",

@@ -119,7 +119,7 @@ public sealed class StudioWindow : Window
             return Task.CompletedTask;
         });
         _cancelExport.IsEnabled = false;
-        Title = "GenerativeArt Studio · M4D.2-R1";
+        Title = "GenerativeArt Studio · M4D.3-R1";
         Width = 1510;
         Height = 850;
         MinWidth = 1120;

@@ -1,8 +1,17 @@
-# Handoff — GenerativeArt Studio M4D.2-R1 (16/11/2026)
+# Handoff — GenerativeArt Studio M4D.3-R1 (16/11/2026)
 
 ## Base di partenza, stato e preferenze
 
-**ZIP corrente:** `GenerativeArt_M4D2_R1_PITTURA_EVOLUZIONE_COMPLETO.zip`, integrale. **733/733 test e build Release senza avvisi/errori (Codex, Windows, SDK 10.0.201)**. Due nuovi artwork e primi cinque generatori ampliati; 14 ricette Full HD, 12 frame CLI, confronto visuale, smoke Studio e compatibilità byte-per-byte dei 13 renderer precedenti verificati. Guida `M4D2_PITTURA_EVOLUZIONE.md`, dati in `docs/validation/M4D2_R1_*`. L'utente vuole nuovi algoritmi/ricette e generatori iniziali meno basici, con dettaglio e controllo.
+**ZIP corrente:** `GenerativeArt_M4D3_R1_PROFONDITA_COMPLETO.zip`, integrale. M4D.3-R1: profondità con carta ritagliata, bokeh e paesaggi migliorati. **17 generatori, 73 ricette, build Release senza avvisi/errori e 801/801 test Windows** (Codex, SDK 10.0.201). Dieci nuove ricette Full HD, due fine-2x, controlli Studio e ripristino JSON verificati. Quindici PNG precedenti identici a seed 42 / 160×120. Guida [`M4D3_PROFONDITA.md`](M4D3_PROFONDITA.md), evidenze `docs/validation/M4D3_R1_*`. Livelli SrcOver, blur gaussiano e ombre riutilizzabili; editor di livelli/maschere/blend M4C.3 ancora aperto. Desktop/DPI reali, nuovi poster 4K e altri OS da verificare. Cache NuGet locale, telemetria build e audit online disattivati. L'utente chiede nuovi algoritmi/ricette ricchi di controlli, ombre, livelli e sfocati.
+
+## Novità M4D.3-R1 — Profondità
+
+- `OrganicAperture` e `DepthParticleField`; artwork `paper-cut` e `bokeh-depth`. Catalogo a 17, dieci nuove ricette Full HD, 73 totali, due fine-2x e confronto effetti spenti/accesi.
+- `SkiaRasterSurface.DrawLayer` e `LayerEffects`: blur gaussiano, drop shadow e opacità SrcOver di gruppo. Un piano filtrato alla volta; nessun annidamento filtrato. Default neutro uguale al disegno diretto. Alpha premoltiplicato e ripristino canvas anche dopo errore/cancellazione.
+- Paesaggi a strati: sei nuovi controlli JSON opzionali e neutrali. `soft-shadow > 0` sostituisce le precedenti ombre a tre tratti; atmosfera storica invariata. Nuovi lavori Studio con effetti attivi, import JSON conservativo.
+- `DepthLayerPolicy`: massimo 8.388.608 pixel nativi e 800 milioni di unità di lavoro filtrato prima di allocazione/output. Budget aggiuntivi per vertici/copertura dischi. Non rimuoverli per ammettere tutti i massimi degli slider insieme.
+- Build Release e 801/801 test, dieci PNG Full HD, tutte le 73 ricette validate, smoke Studio con default/ripristino, quindici PNG precedenti identici. Guida `M4D3_PROFONDITA.md`, log/dati `docs/validation/M4D3_R1_*`. `depth-compat` del tool ripete gli hash dei default storici a seed 42 / 160×120.
+- Base di compositing già riutilizzata da tre generatori; M4C.3 resta aperta per editor livelli, maschere arbitrarie e blend configurabili. Nessuna nuova dipendenza di produzione.
 
 ## Novità M4D.2-R1 — Pittura e generatori iniziali
 
@@ -55,7 +64,7 @@
 ## Vincoli importanti
 
 - Stack **C#/.NET 10**, Avalonia (XAML consentito), SkiaSharp, minimo PowerShell; non introdurre Kotlin, Go, Python, Java nel prodotto.
-- ID dei quindici generatori, `algorithmVersion`, schema JSON v1, seed, default cromatici, CLI, preferiti e layout Studio: preservare.
+- ID dei diciassette generatori, `algorithmVersion`, schema JSON v1, seed, default cromatici, CLI, preferiti e layout Studio: preservare.
 - **README:** solo descrizione del progetto, installazione ed esecuzione, con screenshot sotto il titolo. Changelog, roadmap, risultati dei test e note di consegna restano nei file separati; non reinserirli nel README.
 - Finiture dopo downsample a risoluzione finale; alpha invariato; effetti spenti conservano la codifica PNG storica; niente accumulo di frame in memoria.
 - Post-processing fino a 16.777.216 pixel finali in modalità standard (limite globale). In fine-2x il limite di 16.777.216 sottopixel implica max 4.194.304 pixel finali; un poster grande può richiedere tempi/RAM elevati.
@@ -63,7 +72,7 @@
 
 ## Prossime attività
 
-1. M4C.3 livelli/maschere/blend controllati dall'utente, mantenendo output deterministici.
+1. Estendere i livelli filtrati M4D.3 a editor/maschere arbitrarie/blend configurabili M4C.3, mantenendo output deterministici.
 2. M4B.2 noise ciclico e nuovi effetti animati; domain warping e LIC già disponibili in M4B.1. Priorità a loop morbidi e export progressivo nel modello.
 3. Sviluppo M4D pennelli organici, M5 export media.
 4. All'occasione valida le revisioni recenti: suite, alpha, PNG Full HD, memory budget, confronto default storico, carico CPU e comportamento loop.
