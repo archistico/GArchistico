@@ -19,7 +19,8 @@ internal static class PainterlyRenderer
             ? (long)Int(recipe, "strokes") * Int(recipe, "bristles") * (2L * Int(recipe, "steps") + 1)
                 * (Number(recipe, "shadow") > 0 ? 2 : 1)
             : (long)Int(recipe, "layers") * (Int(recipe, "samples") + 1);
-        if (cost > (recipe.ArtworkId == "flow-brush" ? 4_000_000 : 250_000))
+        if (cost > RenderWorkPolicy.Limit(recipe, recipe.ArtworkId == "flow-brush" ? 4_000_000 : 250_000,
+                recipe.ArtworkId == "flow-brush" ? 80_000_000 : 500_000))
             throw new ArgumentOutOfRangeException(nameof(recipe), "Budget pittorico superato: ridurre setole, strati, tracce o campioni.");
         if (recipe.ArtworkId == "strata-landscape" &&
             (Number(recipe, "depth-blur") > 0 || Number(recipe, "soft-shadow") > 0))

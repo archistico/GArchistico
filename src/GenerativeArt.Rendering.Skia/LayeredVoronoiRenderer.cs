@@ -23,7 +23,7 @@ internal static class LayeredVoronoiRenderer
             int count = SitesAtDepth(r, depth);
             tiles += count; geometry += (long)count * count * (Int(r, "relaxations") + 1);
         }
-        if (tiles > 1400 || geometry > 1_600_000)
+        if (tiles > RenderWorkPolicy.Limit(r, 1400, 2048) || geometry > RenderWorkPolicy.Limit(r, 1_600_000, 2_500_000))
             throw new ArgumentOutOfRangeException(nameof(r), "Budget Voronoi stratificato: massimo 1.400 tessere e 1.600.000 unità geometriche. Ridurre piani, siti o rilassamenti.");
         DepthLayerPolicy.Validate(r, layers, Number(r, "depth-blur") + Number(r, "shadow-softness"));
     }

@@ -30,6 +30,7 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
     {
         ArgumentNullException.ThrowIfNull(recipe);
         recipe.ValidateAgainst(_catalog);
+        RenderWorkPolicy.Validate(recipe);
         if (recipe.Animation is null)
         {
             if (frameIndex is not null)
@@ -120,7 +121,7 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
                     throw new ArgumentException("looping-flow richiede animation.", nameof(recipe));
                 if (size.Width is < 64 or > 4096 || size.Height is < 64 or > 4096 ||
                     anim.FrameCount is < 2 or > 120 || anim.FramesPerSecond is < 1 or > 120 ||
-                    size.PixelCount * anim.FrameCount > 40_000_000L)
+                    size.PixelCount * anim.FrameCount > RenderWorkPolicy.Limit(recipe, 40_000_000L, 1_061_683_200L))
                     throw new ArgumentOutOfRangeException(nameof(recipe),
                         "Loop: 64..4096 px per lato, 2..120 frame, 1..120 fps e massimo 40 milioni di pixel cumulativi.");
                 break;
@@ -138,7 +139,7 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
             throw new ArgumentException("Lo stream PNG deve essere scrivibile.", nameof(destination));
         cancellationToken.ThrowIfCancellationRequested();
 
-        using var surface = new SkiaRasterSurface(recipe.Size, RasterQualityPolicy.Scale(recipe));
+        using var surface = new SkiaRasterSurface(recipe.Size, RasterQualityPolicy.Scale(recipe), RenderWorkPolicy.Production(recipe));
         switch (recipe.ArtworkId)
         {
             case "paper-cut":
@@ -283,6 +284,7 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
         float lineWidth = (float)Number(recipe, "line-width");
         int candidates = maxLines <= 500 && separation == MathF.Min(13f, minDimension * .2f)
             ? 8_000 : Math.Clamp(maxLines * 20, 8_000, 200_000);
+        if (RenderWorkPolicy.Production(recipe)) candidates = Math.Clamp(maxLines * 200, 8_000, 2_000_000);
         var paths = EvenStreamlineTracer.Trace(field, new EvenStreamlineOptions
         {
             Bounds = bounds,
@@ -292,6 +294,8 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
             MaxStepsPerDirection = Integer(recipe, "max-steps"),
             MaxLines = maxLines,
             MaxCandidates = candidates,
+            Production = RenderWorkPolicy.Production(recipe),
+            MaximumIndexedSamples = RenderWorkPolicy.Production(recipe) ? 32_100_000 : 2_000_000,
             DistributeSeedBudget = maxLines > 500 || separation != MathF.Min(13f, minDimension * .2f)
                 || LegacyArtworkEvolution.HasFlowGeometryChanges(recipe)
         }, ct);
@@ -310,9 +314,10 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
             };
             color = ArtworkInk.Resolve(recipe, $"ink-color-{i % 4 + 1}", color);
             color = ArtworkPaint.Alpha(color, Number(recipe, "opacity"));
-            for (int j = 1; j < path.Count; j++)
-                surface.DrawLine(path[j - 1].X, path[j - 1].Y, path[j].X, path[j].Y, color,
-                    lineWidth);
+            if (RenderWorkPolicy.Production(recipe)) surface.DrawPolyline(path, 1, 1, color, lineWidth);
+            else
+                for (int j = 1; j < path.Count; j++)
+                    surface.DrawLine(path[j - 1].X, path[j - 1].Y, path[j].X, path[j].Y, color, lineWidth);
         }
     }
 
@@ -385,7 +390,7 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
         int samplingScale = surface.RasterScale;
         var rasterSize = new CanvasSize(size.Width * samplingScale, size.Height * samplingScale);
         var pixels = new PixelBuffer(rasterSize);
-        for (int y = 0; y < rasterSize.Height; y++)
+        GenerativeArt.Core.Rendering.RasterRows.For(0, rasterSize.Height, RenderWorkPolicy.Production(recipe), ct, y =>
         {
             ct.ThrowIfCancellationRequested();
             Span<uint> row = pixels.GetWritablePackedArgbRow(y);
@@ -411,7 +416,7 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
                     Blend(left.R, right.R, t), Blend(left.G, right.G, t),
                     Blend(left.B, right.B, t)).PackedArgb;
             }
-        }
+        });
         surface.DrawPixels(pixels, nativeResolution: true);
     }
 

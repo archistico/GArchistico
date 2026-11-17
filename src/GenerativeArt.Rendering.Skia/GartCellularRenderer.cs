@@ -16,8 +16,9 @@ internal static class GartCellularRenderer
     {
         if (recipe.ArtworkId == "ocellus-eyespots")
         {
-            long work = recipe.Size.PixelCount * OcellusField.MaximumLevels * ArtworkPaint.Int(recipe, "eyes");
-            if (work > 900_000_000L)
+            int scale = RenderWorkPolicy.Production(recipe) ? RasterQualityPolicy.Scale(recipe) : 1;
+            long work = recipe.Size.PixelCount * scale * scale * OcellusField.MaximumLevels * ArtworkPaint.Int(recipe, "eyes");
+            if (work > RenderWorkPolicy.Limit(recipe, 900_000_000, 40_000_000_000))
                 throw new ArgumentOutOfRangeException(nameof(recipe), "Ocellus: lavoro eccessivo per il numero di occhi e pixel.");
             return;
         }
@@ -25,8 +26,9 @@ internal static class GartCellularRenderer
         if (ArtworkPaint.Number(recipe, "small-radius") >= ArtworkPaint.Number(recipe, "big-radius"))
             throw new ArgumentException("Rete: il raggio minimo deve essere inferiore a quello massimo.", nameof(recipe));
         long pixels = recipe.Size.PixelCount;
-        if (pixels > 4_194_304L ||
-            pixels * ArtworkPaint.Int(recipe, "layers") * ArtworkPaint.Int(recipe, "bubbles") > 3_000_000_000L)
+        if (pixels > RenderWorkPolicy.Limit(recipe, 4_194_304, GenerativeArt.Application.Rendering.ProductionRenderProfile.MaximumLogicalPixels) ||
+            pixels * (RenderWorkPolicy.Production(recipe) ? (long)Math.Pow(RasterQualityPolicy.Scale(recipe), 2) : 1)
+                * ArtworkPaint.Int(recipe, "layers") * ArtworkPaint.Int(recipe, "bubbles") > RenderWorkPolicy.Limit(recipe, 3_000_000_000, 160_000_000_000))
             throw new ArgumentOutOfRangeException(nameof(recipe), "Rete: combinazione pixel/livelli/celle fuori budget.");
     }
 
@@ -43,6 +45,8 @@ internal static class GartCellularRenderer
     private static void RenderOcellus(SkiaRasterSurface surface, ArtworkRecipe recipe, CancellationToken ct)
     {
         int w = recipe.Size.Width, h = recipe.Size.Height;
+        int sampling = RenderWorkPolicy.Production(recipe) ? surface.RasterScale : 1;
+        var raster = new GenerativeArt.Core.Geometry.CanvasSize(w * sampling, h * sampling);
         var eyes = OcellusField.Generate(recipe.Seed, w, h, ArtworkPaint.Int(recipe, "eyes"),
             ArtworkPaint.Int(recipe, "min-depth"), ArtworkPaint.Number(recipe, "depth-bias"),
             ArtworkPaint.Number(recipe, "core-radius"), ArtworkPaint.Number(recipe, "room"),
@@ -84,21 +88,22 @@ internal static class GartCellularRenderer
             }
             melt[k] = Math.Max(.01, fuse * (reach + side * band) * (k == 1 ? pool : 1));
         }
-        var pixels = new PixelBuffer(recipe.Size);
-        var distances = new double[eyes.Length];
-        for (int y = 0; y < h; y++)
+        var pixels = new PixelBuffer(raster);
+        var serialDistances = new double[eyes.Length];
+        GenerativeArt.Core.Rendering.RasterRows.For(0, raster.Height, RenderWorkPolicy.Production(recipe), ct, y =>
         {
             ct.ThrowIfCancellationRequested();
+            double[] distances = RenderWorkPolicy.Production(recipe) ? new double[eyes.Length] : serialDistances;
             Span<uint> row = pixels.GetWritablePackedArgbRow(y);
-            for (int x = 0; x < w; x++)
+            for (int x = 0; x < raster.Width; x++)
             {
                 for (int i = 0; i < eyes.Length; i++)
-                    distances[i] = GeometryDistance.Hypotenuse(x + .5 - eyes[i].X, y + .5 - eyes[i].Y);
+                    distances[i] = GeometryDistance.Hypotenuse((x + .5) / sampling - eyes[i].X, (y + .5) / sampling - eyes[i].Y);
                 Color32 color = background;
                 for (int k = 1; k <= OcellusField.MaximumLevels; k++)
                 {
                     double signed = OcellusField.SignedDistance(eyes, radii, distances, k, melt[k]);
-                    double coverage = Math.Clamp(.5 - signed, 0, 1);
+                    double coverage = Math.Clamp(.5 - signed * sampling, 0, 1);
                     if (coverage <= 0) break;
                     Color32 layerInk = colors[k];
                     if (rimLight > 0)
@@ -119,13 +124,15 @@ internal static class GartCellularRenderer
                 }
                 row[x] = color.PackedArgb;
             }
-        }
-        surface.DrawPixels(pixels);
+        });
+        surface.DrawPixels(pixels, nativeResolution: sampling > 1);
     }
 
     private static void RenderRete(SkiaRasterSurface surface, ArtworkRecipe recipe, CancellationToken ct)
     {
-        int w = recipe.Size.Width, h = recipe.Size.Height;
+        int logicalW = recipe.Size.Width, logicalH = recipe.Size.Height;
+        int sampling = RenderWorkPolicy.Production(recipe) ? surface.RasterScale : 1;
+        int w = logicalW * sampling, h = logicalH * sampling;
         int length = checked(w * h);
         int layers = ArtworkPaint.Int(recipe, "layers");
         var composite = new float[length];
@@ -146,31 +153,32 @@ internal static class GartCellularRenderer
         double fade = ArtworkPaint.Number(recipe, "fade");
         double zoom = ArtworkPaint.Number(recipe, "zoom");
         double drain = ArtworkPaint.Number(recipe, "drain");
-        double side = Math.Min(w, h);
+        double side = Math.Min(logicalW, logicalH);
         for (int layer = layers - 1; layer >= 0; layer--)
         {
             ct.ThrowIfCancellationRequested();
             double scale = Math.Pow(zoom, layer);
             ulong layerSeed = recipe.Seed ^ unchecked(0x9E3779B97F4A7C15UL * (ulong)(layer + 1));
-            var field = ReteFoamField.Create(layerSeed, w, h, ArtworkPaint.Int(recipe, "bubbles"),
+            var field = ReteFoamField.Create(layerSeed, logicalW, logicalH, ArtworkPaint.Int(recipe, "bubbles"),
                 Math.Min(.39, ArtworkPaint.Number(recipe, "big-radius") * scale),
                 Math.Min(.049, ArtworkPaint.Number(recipe, "small-radius") * scale),
                 ArtworkPaint.Number(recipe, "tier-ratio"),
                 ArtworkPaint.Number(recipe, "radius-variation"),
                 ArtworkPaint.Number(recipe, "density"), ArtworkPaint.Number(recipe, "fusion"),
                 ArtworkPaint.Number(recipe, "froth"), layer == 0 ? drain : 0,
-                ArtworkPaint.Number(recipe, "sink"), ct);
-            for (int y = 0; y < h; y++)
+                ArtworkPaint.Number(recipe, "sink"), ct, RenderWorkPolicy.Production(recipe));
+            GenerativeArt.Core.Rendering.RasterRows.For(0, h, RenderWorkPolicy.Production(recipe), ct, y =>
             {
                 ct.ThrowIfCancellationRequested();
                 int start = y * w;
                 for (int x = 0; x < w; x++)
                 {
-                    var near = field.Probe(x + .5, y + .5);
+                    double px = (x + .5) / sampling - .5, py = (y + .5) / sampling - .5;
+                    var near = field.Probe(px + .5, py + .5);
                     double boundary = Math.Max(0, (near.Second - near.First) * .5);
                     double thin = Math.Clamp(Math.Sqrt(near.FirstRadius / Math.Max(1, side * .14)), .38, 1);
                     double wet = layer == 0 && drain > 0
-                        ? Math.Clamp(1 - GeometryDistance.Hypotenuse(x - w * 1.02, y - h * 1.05) / (drain * side + .14 * side), 0, 1)
+                        ? Math.Clamp(1 - GeometryDistance.Hypotenuse(px - logicalW * 1.02, py - logicalH * 1.05) / (drain * side + .14 * side), 0, 1)
                         : 0;
                     double width = wall * thin * (.5 + 2.5 * wet * wet);
                     double junction = junctionStrength > 0 || nodes is not null
@@ -178,7 +186,7 @@ internal static class GartCellularRenderer
                     width *= 1 + junctionStrength * 1.35 * junction;
                     double thirdBoundary = Math.Max(0, (near.Third - near.First) * .5);
                     double soft = OcellusField.SmoothMin(boundary, thirdBoundary, knot * width * 2.6);
-                    double wallCoverage = Math.Clamp(.5 + (width * .5 - soft), 0, 1);
+                    double wallCoverage = Math.Clamp(.5 + (width * .5 - soft) * sampling, 0, 1);
                     coverage[start + x] = (float)wallCoverage;
                     if (layer == 0)
                     {
@@ -191,8 +199,8 @@ internal static class GartCellularRenderer
                             double relativeSurface = Math.Abs(near.First) / Math.Max(1, near.FirstRadius);
                             double interior = Math.Clamp(1 - relativeSurface, 0, 1);
                             double rim = Math.Clamp(1 - boundary / Math.Max(1, near.FirstRadius * .7), 0, 1);
-                            double ripple = .5 + .5 * Math.Cos((x + y) * .028 +
-                                near.FirstRadius * .071 + Math.Sin(x * .013 - y * .017));
+                            double ripple = .5 + .5 * Math.Cos((px + py) * .028 +
+                                near.FirstRadius * .071 + Math.Sin(px * .013 - py * .017));
                             double membrane = membraneOpacity * (.16 + .6 * interior) *
                                 (.38 + .62 * rim) * (.55 + .45 * ripple) * (1 - wallCoverage);
                             whiteFilm = 1 - (1 - Math.Clamp(whiteFilm, 0, 1)) * (1 - membrane);
@@ -202,8 +210,8 @@ internal static class GartCellularRenderer
                             nodes[start + x] = (float)Math.Clamp(nodeGlow * junction * wallCoverage, 0, 1);
                     }
                 }
-            }
-            int blurRadius = Math.Clamp((int)Math.Round(blur * layer), 0, 25);
+            });
+            int blurRadius = Math.Clamp((int)Math.Round(blur * layer), 0, 25) * sampling;
             if (blurRadius > 0) BoxBlur(coverage, scratch, w, h, blurRadius, ct);
             float opacity = layer == 0 ? 1f : (float)(rearOpacity * Math.Pow(fade, layer - 1));
             for (int i = 0; i < length; i++)
@@ -220,8 +228,8 @@ internal static class GartCellularRenderer
         Color32 bg = ArtworkInk.Resolve(recipe, "background-color", Color32.FromArgb(ground));
         Color32 dark = ArtworkInk.Resolve(recipe, "wall-color", Color32.FromArgb(wallArgb));
         Color32 pale = ArtworkInk.Resolve(recipe, "film-color", Color32.FromArgb(light));
-        var pixels = new PixelBuffer(recipe.Size);
-        for (int y = 0; y < h; y++)
+        var pixels = new PixelBuffer(new GenerativeArt.Core.Geometry.CanvasSize(w, h));
+        GenerativeArt.Core.Rendering.RasterRows.For(0, h, RenderWorkPolicy.Production(recipe), ct, y =>
         {
             ct.ThrowIfCancellationRequested();
             Span<uint> row = pixels.GetWritablePackedArgbRow(y);
@@ -234,8 +242,8 @@ internal static class GartCellularRenderer
                     c = ArtworkPaint.Alpha(pale, nodes[i]).Over(c);
                 row[x] = c.PackedArgb;
             }
-        }
-        surface.DrawPixels(pixels);
+        });
+        surface.DrawPixels(pixels, nativeResolution: sampling > 1);
     }
 
     /// <summary>Filtro separabile a media mobile, senza allocazioni nascoste per ogni pixel.</summary>

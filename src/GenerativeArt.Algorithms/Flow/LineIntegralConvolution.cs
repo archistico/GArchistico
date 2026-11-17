@@ -12,22 +12,22 @@ public static class LineIntegralConvolution
     public const long MaximumPixels = 16_777_216;
     public const long MaximumSamples = 400_000_000;
 
-    public static void ValidateBudget(int width, int height, int steps)
+    public static void ValidateBudget(int width, int height, int steps, bool production = false)
     {
         long pixels = (long)width * height;
-        if (width < 1 || height < 1 || pixels > MaximumPixels)
-            throw new ArgumentOutOfRangeException(nameof(width), "LIC: massimo 16.777.216 pixel raster.");
-        if (steps is < 0 or > 64 || pixels * (2L * steps + 1) > MaximumSamples)
-            throw new ArgumentOutOfRangeException(nameof(steps), "LIC: massimo 400 milioni di campioni e 64 passi per direzione.");
+        if (width < 1 || height < 1 || pixels > (production ? 35_389_440 : MaximumPixels))
+            throw new ArgumentOutOfRangeException(nameof(width), $"LIC: massimo {(production ? 35_389_440 : MaximumPixels):N0} pixel raster.");
+        if (steps is < 0 or > 64 || pixels * (2L * steps + 1) > (production ? 4_600_000_000 : MaximumSamples))
+            throw new ArgumentOutOfRangeException(nameof(steps), $"LIC: massimo {(production ? 4_600_000_000 : MaximumSamples):N0} campioni e 64 passi per direzione.");
     }
 
     public static float[] Apply(int width, int height, IReadOnlyList<float> texture,
         IVectorField2D field, int steps = 12, float stepSize = 1,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default, bool production = false)
     {
         ArgumentNullException.ThrowIfNull(texture);
         ArgumentNullException.ThrowIfNull(field);
-        ValidateBudget(width, height, steps);
+        ValidateBudget(width, height, steps, production);
         if (!float.IsFinite(stepSize) || stepSize is <= 0 or > 16)
             throw new ArgumentOutOfRangeException(nameof(stepSize));
         if (texture.Count != (long)width * height)
@@ -51,7 +51,7 @@ public static class LineIntegralConvolution
             return top * (1 - ty) + bottom * ty;
         }
 
-        for (int y = 0; y < height; y++)
+        GenerativeArt.Core.Rendering.RasterRows.For(0, height, production, cancellationToken, y =>
         {
             cancellationToken.ThrowIfCancellationRequested();
             for (int x = 0; x < width; x++)
@@ -75,7 +75,7 @@ public static class LineIntegralConvolution
                 }
                 output[y * width + x] = (float)Math.Clamp(sum / weights, 0, 1);
             }
-        }
+        });
         return output;
     }
 }

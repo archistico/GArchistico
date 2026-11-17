@@ -2,6 +2,7 @@ using System.Globalization;
 using System.Text;
 using GenerativeArt.Application.Catalog;
 using GenerativeArt.Application.Recipes;
+using GenerativeArt.Application.Rendering;
 using GenerativeArt.Core.Geometry;
 using GenerativeArt.Rendering.Skia;
 
@@ -20,6 +21,7 @@ internal static class ArtworkRecipeCli
                 "recipe-validate" => Validate(args),
                 "recipe-show" => Show(args),
                 "render-recipe" => Render(args),
+                "prepare-4k" => PrepareFourK(args),
                 _ => 2
             };
         }
@@ -94,6 +96,22 @@ internal static class ArtworkRecipeCli
         ArtworkRegistry catalog = BuiltInArtworkCatalog.Create();
         ArtworkRecipe recipe = ArtworkRecipeFiles.Load(args[1], catalog);
         RecipeOutputWriter.Write(recipe, args[2], new ArtworkRenderEngine(catalog));
+        return 0;
+    }
+
+    private static int PrepareFourK(string[] args)
+    {
+        if (args.Length is < 3 or > 4 || args.Length == 4 && args[3] != "--keep-complexity")
+        {
+            Console.Error.WriteLine("Uso: prepare-4k <origine.json> <nuova-ricetta.json> [--keep-complexity]");
+            return 2;
+        }
+        ArtworkRegistry catalog = BuiltInArtworkCatalog.Create();
+        ArtworkRecipe original = ArtworkRecipeFiles.Load(args[1], catalog);
+        ArtworkRecipe prepared = ProductionRenderProfile.PrepareFourK(original, catalog, args.Length == 3);
+        new ArtworkRenderEngine(catalog).Validate(prepared, prepared.Animation is null ? null : 0);
+        ArtworkRecipeFiles.SaveNew(args[2], prepared, catalog);
+        Console.WriteLine($"Ricetta 4K {prepared.Size.Width}×{prepared.Size.Height}, supersampling 2×: {Path.GetFullPath(args[2])}");
         return 0;
     }
 

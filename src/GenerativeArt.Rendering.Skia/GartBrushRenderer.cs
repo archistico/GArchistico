@@ -31,7 +31,7 @@ internal static class GartBrushRenderer
             double density = micro ? ArtworkPaint.Number(recipe, "fiber-density") : 1d;
             int bristles = Math.Clamp((int)Math.Ceiling(2 * maxHalf / pitch * density), 3, micro ? 360 : 140);
             long budget = micro ? 12_000_000L : 3_000_000L;
-            if ((long)bands * samples * bristles > budget)
+            if ((long)bands * samples * bristles > RenderWorkPolicy.Limit(recipe, budget, 50_000_000))
                 throw new ArgumentOutOfRangeException(nameof(recipe),
                     $"Crinis supera il budget di {budget:N0} campioni delle setole.");
         }
@@ -39,7 +39,7 @@ internal static class GartBrushRenderer
         {
             long dots = (long)ArtworkPaint.Int(recipe, "rings") *
                 ArtworkPaint.Int(recipe, "stamps") * ArtworkPaint.Int(recipe, "particles");
-            if (dots > 120_000L)
+            if (dots > RenderWorkPolicy.Limit(recipe, 120_000, 450_000))
                 throw new ArgumentOutOfRangeException(nameof(recipe),
                     "Flamebrush supera il budget di 120.000 particelle per rendering.");
         }

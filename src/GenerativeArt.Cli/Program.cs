@@ -12,7 +12,7 @@ internal static class Program
     {
         if (args.Length > 0 && args[0] is "list" or "describe")
             return ArtworkCatalogCli.Run(args);
-        if (args.Length > 0 && args[0] is "recipe-new" or "recipe-validate" or "recipe-show" or "render-recipe")
+        if (args.Length > 0 && args[0] is "recipe-new" or "recipe-validate" or "recipe-show" or "render-recipe" or "prepare-4k")
             return ArtworkRecipeCli.Run(args);
         try
         {
@@ -50,5 +50,5 @@ internal static class Program
             ? n : throw new ArgumentOutOfRangeException(nameof(raw), "Dimensione ammessa: 1..4096 pixel.");
 
     private static void PrintHelp() =>
-        Console.WriteLine("Uso: dotnet run --project src/GenerativeArt.Cli -c Release -- list | describe <id> | render-demo|render-flow|render-flow-spaced [file.png] [larghezza] [altezza] [seed] | render-loop-frames [cartella] [larghezza] [altezza] [seed] [fotogrammi] [fps] | recipe-new <id> <file.json> [w] [h] [seed] [frames] [fps] | recipe-validate <file.json> | recipe-show <file.json> | render-recipe <file.json> <destinazione>");
+        Console.WriteLine("Uso: dotnet run --project src/GenerativeArt.Cli -c Release -- list | describe <id> | render-demo|render-flow|render-flow-spaced [file.png] [larghezza] [altezza] [seed] | render-loop-frames [cartella] [larghezza] [altezza] [seed] [fotogrammi] [fps] | recipe-new <id> <file.json> [w] [h] [seed] [frames] [fps] | recipe-validate <file.json> | recipe-show <file.json> | prepare-4k <origine.json> <nuova-ricetta.json> [--keep-complexity] | render-recipe <file.json> <destinazione>");
 }

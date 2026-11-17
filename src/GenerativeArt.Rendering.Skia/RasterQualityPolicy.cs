@@ -24,9 +24,11 @@ public static class RasterQualityPolicy
     public static void Validate(ArtworkRecipe recipe)
     {
         int scale = Scale(recipe);
-        if (scale == 2 && recipe.Size.PixelCount * 4L > MaximumFineRasterPixels)
+        long maximum = RenderWorkPolicy.Limit(recipe, MaximumFineRasterPixels,
+            GenerativeArt.Application.Rendering.ProductionRenderProfile.MaximumNativePixels);
+        if (scale == 2 && recipe.Size.PixelCount * 4L > maximum)
             throw new ArgumentOutOfRangeException(nameof(recipe),
-                $"Qualità fine-2x: massimo {MaximumFineRasterPixels:N0} pixel di superficie temporanea. " +
+                $"Qualità fine-2x: massimo {maximum:N0} pixel di superficie temporanea. " +
                 "Ridurre il canvas oppure usare render-quality=standard.");
     }
 }

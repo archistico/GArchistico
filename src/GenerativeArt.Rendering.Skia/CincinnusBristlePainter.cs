@@ -18,7 +18,7 @@ public static class CincinnusBristlePainter
 
     public static void Paint(SKCanvas canvas, IReadOnlyList<CincinnusBrushStroke> strokes,
         int width, int height, long seed = 1, CincinnusPaintOptions? options = null,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default, bool production = false)
     {
         ArgumentNullException.ThrowIfNull(canvas);
         ArgumentNullException.ThrowIfNull(strokes);
@@ -36,10 +36,10 @@ public static class CincinnusBristlePainter
             if (stroke is null) throw new ArgumentException("Pennellata nulla.", nameof(strokes));
             if (stroke.Spine.Count < 16) continue;
             double hairs = Math.Ceiling(2d * stroke.Spine.Max(p => p.HalfWidth) / options.BristlePitch);
-            if (hairs > MaximumBristlesPerStroke)
+            if (hairs > (production ? 2048 : MaximumBristlesPerStroke))
                 throw new ArgumentOutOfRangeException(nameof(options.BristlePitch), "La densità di setole supera il budget.");
             work += (long)Math.Max(1d, hairs) * stroke.Spine.Count;
-            if (work > MaximumBrushPointWork)
+            if (work > (production ? 16_384_000_000L : MaximumBrushPointWork))
                 throw new InvalidOperationException("Il budget di campioni pennello C3 è stato superato.");
         }
         // Copia della palette per prevenire mutazioni durante il rendering.
@@ -88,7 +88,7 @@ public static class CincinnusBristlePainter
             using (var paint = new SKPaint { Color = Sample(ramp, tone - options.BodyShade),
                 IsAntialias = true, Style = SKPaintStyle.Fill })
                 canvas.DrawPath(body, paint);
-            DrawFibers(canvas, stroke, ramp, tone, options, lightZ, cancellationToken);
+            DrawFibers(canvas, stroke, ramp, tone, options, lightZ, cancellationToken, production ? 2048 : MaximumBristlesPerStroke);
         }
     }
 
@@ -164,12 +164,12 @@ public static class CincinnusBristlePainter
 
     private static void DrawFibers(SKCanvas canvas, CincinnusBrushStroke stroke,
         SKColor[] ramp, float tone, CincinnusPaintOptions options, float lightZ,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken, int maximumBristles)
     {
         IReadOnlyList<CincinnusSpineSample> spine = stroke.Spine;
         float half = spine.Max(p => p.HalfWidth);
         int count = (int)Math.Clamp(Math.Ceiling(2d * half / options.BristlePitch),
-            1d, (double)MaximumBristlesPerStroke);
+            1d, (double)maximumBristles);
         var rng = new SplitMix64Random(stroke.Seed);
         IRandomSource rnd = rng.Fork("cincinnus/simple/hairs/v1");
         float step = Math.Max(.1f, stroke.Length / Math.Max(1, spine.Count - 1));

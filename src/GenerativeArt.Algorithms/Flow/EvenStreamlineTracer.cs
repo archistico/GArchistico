@@ -21,7 +21,7 @@ public static class EvenStreamlineTracer
 
         float separation = options.Separation;
         float dTest = separation * options.TestDistanceFactor;
-        var index = new PointIndex(options.Bounds, dTest);
+        var index = new PointIndex(options.Bounds, dTest, options.Production);
         var result = new List<IReadOnlyList<Vector2>>();
         var queue = new Queue<Vector2>();
         int candidates = 0;
@@ -49,13 +49,33 @@ public static class EvenStreamlineTracer
             candidates++;
         }
 
-        // Reticolo iniziale deterministico con ordine di enumerazione stabile.
-        for (double y = ymin + spacing * .5d; y < ymax && candidates < options.MaxCandidates; y += spacing)
+        // In produzione anche un prefisso corto dei semi copre tutta la tela:
+        // il limite di linee non deve troncare un reticolo ordinato per righe.
+        if (options.Production && options.DistributeSeedBudget)
         {
-            cancellationToken.ThrowIfCancellationRequested();
-            for (double x = xmin + spacing * .5d; x < xmax && candidates < options.MaxCandidates; x += spacing)
-                AddCandidate(new Vector2((float)x, (float)y));
+            int seeds = (int)Math.Clamp(Math.Ceiling((xmax - xmin) * (ymax - ymin) / (spacing * spacing)),
+                1, Math.Max(1, options.MaxCandidates * .75));
+            static double RadicalInverse(int value, int radix)
+            {
+                double result = 0, weight = 1d / radix;
+                while (value > 0) { result += value % radix * weight; value /= radix; weight /= radix; }
+                return result;
+            }
+            for (int i = 1; i <= seeds; i++)
+            {
+                if ((i & 1023) == 0) cancellationToken.ThrowIfCancellationRequested();
+                AddCandidate(new Vector2((float)(xmin + (xmax - xmin) * RadicalInverse(i, 2)),
+                    (float)(ymin + (ymax - ymin) * RadicalInverse(i, 3))));
+            }
         }
+        else
+            // Reticolo storico: stesso ordine e stessi pixel balanced.
+            for (double y = ymin + spacing * .5d; y < ymax && candidates < options.MaxCandidates; y += spacing)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                for (double x = xmin + spacing * .5d; x < xmax && candidates < options.MaxCandidates; x += spacing)
+                    AddCandidate(new Vector2((float)x, (float)y));
+            }
 
         if (queue.Count == 0)
             AddCandidate(new Vector2((float)((xmin + xmax) * .5d), (float)((ymin + ymax) * .5d)));
@@ -63,6 +83,9 @@ public static class EvenStreamlineTracer
         List<Vector2> TraceDirection(Vector2 seed, int sign)
         {
             var side = new List<Vector2>();
+            var loopIndex = options.Production ? new PointIndex(options.Bounds, dTest, true) : null;
+            int loopIndexed = 0;
+            int skip = Math.Max(4, (int)Math.Ceiling(dTest / options.StepSize) + 2);
             Vector2 at = seed;
             for (int i = 0; i < options.MaxStepsPerDirection; i++)
             {
@@ -71,16 +94,23 @@ public static class EvenStreamlineTracer
                     FlowIntegrationMethod.Rk4, out Vector2 next)) break;
                 if (!Inside(next) || !index.ClearSegment(at, next, dTest)) break;
                 // Interrompe i cappi senza penalizzare la normale distanza tra punti adiacenti.
-                int skip = Math.Max(4, (int)Math.Ceiling(dTest / options.StepSize) + 2);
                 bool loop = false;
-                for (int j = 0; j + skip < side.Count; j++)
+                if (loopIndex is not null)
                 {
-                    if (Vector2.DistanceSquared(side[j], next) < dTest * dTest)
-                    {
-                        loop = true;
-                        break;
-                    }
+                    // Indicizza solo i punti già eleggibili nel controllo storico.
+                    // La stessa distanza float conserva la decisione sui cappi.
+                    while (loopIndexed + skip < side.Count) loopIndex.Put(side[loopIndexed++]);
+                    loop = !loopIndex.ClearLoopPoint(next, dTest);
                 }
+                else
+                    for (int j = 0; j + skip < side.Count; j++)
+                    {
+                        if (Vector2.DistanceSquared(side[j], next) < dTest * dTest)
+                        {
+                            loop = true;
+                            break;
+                        }
+                    }
                 if (loop) break;
                 side.Add(next);
                 at = next;
@@ -100,7 +130,7 @@ public static class EvenStreamlineTracer
             for (int j = backward.Count - 1; j >= 0; j--) line.Add(backward[j]);
             line.Add(seed);
             line.AddRange(forward);
-            if (!index.TryInsertPolyline(line, dTest * .4f, 2_000_000)) break;
+            if (!index.TryInsertPolyline(line, dTest * .4f, options.MaximumIndexedSamples)) break;
             result.Add(line);
 
             // Nuovi semi ai due lati della normale, come nello schema Jobard–Lefer.
@@ -133,7 +163,8 @@ public static class EvenStreamlineTracer
             || c.MaxStepsPerDirection < 1 || c.MaxStepsPerDirection > 2000
             || c.MinimumPoints < 2 || c.MinimumPoints > 2 * c.MaxStepsPerDirection + 1
             || c.MaxLines < 1 || c.MaxLines > 10_000
-            || c.MaxCandidates < 1 || c.MaxCandidates > 200_000)
+            || c.MaxCandidates < 1 || c.MaxCandidates > (c.Production ? 2_000_000 : 200_000)
+            || c.MaximumIndexedSamples < 1 || c.MaximumIndexedSamples > (c.Production ? 32_100_000 : 2_000_000))
             throw new ArgumentOutOfRangeException(nameof(c), "Parametri delle streamlines non validi.");
     }
 
@@ -141,13 +172,24 @@ public static class EvenStreamlineTracer
     {
         private readonly FlowBounds _domain;
         private readonly double _cell;
-        private readonly Dictionary<long, List<Vector2>> _buckets = new();
+        private readonly Dictionary<long, List<Vector2>> _buckets;
         private int _storedSamples;
 
-        public PointIndex(FlowBounds domain, float separation)
+        public PointIndex(FlowBounds domain, float separation, bool production = false)
         {
             _domain = domain;
             _cell = separation;
+            _buckets = new Dictionary<long, List<Vector2>>(production ? SpatialKeyComparer.Instance : null);
+        }
+
+        // Il normale hash di Int64 fa XOR delle due metà: una griglia 2D con
+        // milioni di chiavi (x << 32 | y) collasserebbe in poche migliaia di hash.
+        // Non enumeriamo il dizionario: l'hash non modifica ordine, distanze o seed.
+        private sealed class SpatialKeyComparer : IEqualityComparer<long>
+        {
+            internal static readonly SpatialKeyComparer Instance = new();
+            public bool Equals(long x, long y) => x == y;
+            public int GetHashCode(long key) => HashCode.Combine((int)(key >> 32), (int)key);
         }
 
         private (int x, int y) Cell(Vector2 p) =>
@@ -187,6 +229,19 @@ public static class EvenStreamlineTracer
             return true;
         }
 
+        public bool ClearLoopPoint(Vector2 point, float distance)
+        {
+            (int cx, int cy) = Cell(point);
+            float limit = distance * distance;
+            // Un anello extra include anche il margine di arrotondamento float.
+            for (int dy = -2; dy <= 2; dy++)
+            for (int dx = -2; dx <= 2; dx++)
+                if (_buckets.TryGetValue(Key(cx + dx, cy + dy), out var items))
+                    foreach (Vector2 other in items)
+                        if (Vector2.DistanceSquared(other, point) < limit) return false;
+            return true;
+        }
+
         public bool TryInsertPolyline(IReadOnlyList<Vector2> points, float step, int maxStoredSamples)
         {
             // Verifica il budget prima di allocare: nessun inserimento parziale.
@@ -208,7 +263,7 @@ public static class EvenStreamlineTracer
             return true;
         }
 
-        private void Put(Vector2 point)
+        public void Put(Vector2 point)
         {
             (int x, int y) = Cell(point);
             long key = Key(x, y);

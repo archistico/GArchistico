@@ -11,12 +11,13 @@ public static class PoissonDiskSampler
 {
     public const int MaximumGridCells = 6_000_000;
     public const int MaximumPoints = 50_000;
+    public const int MaximumProductionPoints = 500_000;
 
     public static IReadOnlyList<Vector2> Sample(float width, float height, float minimumDistance,
         ulong seed, int maximumPoints = 2_500, int candidatesPerActive = 24,
-        CancellationToken cancellationToken = default)
+        CancellationToken cancellationToken = default, bool production = false)
     {
-        GridDimensions(width, height, minimumDistance, maximumPoints, candidatesPerActive,
+        GridDimensions(width, height, minimumDistance, maximumPoints, candidatesPerActive, production,
             out int columns, out int rows, out float cellSize);
         cancellationToken.ThrowIfCancellationRequested();
 
@@ -42,6 +43,34 @@ public static class PoissonDiskSampler
             MathF.Min(MathF.BitDecrement(height), (float)(rng.NextDouble() * height))));
         float minimumDistanceSquared = minimumDistance * minimumDistance;
 
+        bool Safe(Vector2 point)
+        {
+            int gx = Math.Min(columns - 1, (int)(point.X / cellSize));
+            int gy = Math.Min(rows - 1, (int)(point.Y / cellSize));
+            for (int yy = Math.Max(0, gy - 2); yy <= Math.Min(rows - 1, gy + 2); yy++)
+            for (int xx = Math.Max(0, gx - 2); xx <= Math.Min(columns - 1, gx + 2); xx++)
+            {
+                int neighbor = grid[yy * columns + xx];
+                if (neighbor != 0 && Vector2.DistanceSquared(point, points[neighbor - 1]) < minimumDistanceSquared)
+                    return false;
+            }
+            return true;
+        }
+
+        if (production)
+        {
+            // Distribuisce i punti sul dominio prima della crescita locale Bridson:
+            // un limite finito non deve lasciare una sola isola ad alta risoluzione.
+            int attempts = Math.Min(5_000_000, maximumPoints * 12);
+            for (int i = 0; i < attempts && points.Count < maximumPoints; i++)
+            {
+                if ((i & 255) == 0) cancellationToken.ThrowIfCancellationRequested();
+                var point = new Vector2(MathF.Min(MathF.BitDecrement(width), (float)(rng.NextDouble() * width)),
+                    MathF.Min(MathF.BitDecrement(height), (float)(rng.NextDouble() * height)));
+                if (Safe(point)) Insert(point);
+            }
+        }
+
         while (active.Count > 0 && points.Count < maximumPoints)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -58,22 +87,7 @@ public static class PoissonDiskSampler
                     origin.Y + (float)(radius * Math.Sin(angle)));
                 if (point.X < 0 || point.Y < 0 || point.X >= width || point.Y >= height)
                     continue;
-                int gx = Math.Min(columns - 1, (int)(point.X / cellSize));
-                int gy = Math.Min(rows - 1, (int)(point.Y / cellSize));
-                bool safe = true;
-                for (int yy = Math.Max(0, gy - 2); yy <= Math.Min(rows - 1, gy + 2) && safe; yy++)
-                {
-                    for (int xx = Math.Max(0, gx - 2); xx <= Math.Min(columns - 1, gx + 2); xx++)
-                    {
-                        int neighbor = grid[yy * columns + xx];
-                        if (neighbor != 0 && Vector2.DistanceSquared(point, points[neighbor - 1]) < minimumDistanceSquared)
-                        {
-                            safe = false;
-                            break;
-                        }
-                    }
-                }
-                if (!safe) continue;
+                if (!Safe(point)) continue;
                 Insert(point);
                 accepted = true;
                 break;
@@ -89,18 +103,18 @@ public static class PoissonDiskSampler
 
     /// <summary>Valida senza allocare per impedire output eccessivi prima della scrittura.</summary>
     public static void Validate(float width, float height, float minimumDistance,
-        int maximumPoints = 2_500, int candidatesPerActive = 24) =>
-        GridDimensions(width, height, minimumDistance, maximumPoints, candidatesPerActive,
+        int maximumPoints = 2_500, int candidatesPerActive = 24, bool production = false) =>
+        GridDimensions(width, height, minimumDistance, maximumPoints, candidatesPerActive, production,
             out _, out _, out _);
 
     private static void GridDimensions(float width, float height, float minimumDistance,
-        int maximumPoints, int candidatesPerActive, out int columns, out int rows, out float cellSize)
+        int maximumPoints, int candidatesPerActive, bool production, out int columns, out int rows, out float cellSize)
     {
         if (!float.IsFinite(width) || !float.IsFinite(height) || width <= 0 || height <= 0)
             throw new ArgumentOutOfRangeException(nameof(width), "Area di campionamento non valida.");
         if (!float.IsFinite(minimumDistance) || minimumDistance <= 0)
             throw new ArgumentOutOfRangeException(nameof(minimumDistance));
-        if (maximumPoints < 1 || maximumPoints > MaximumPoints)
+        if (maximumPoints < 1 || maximumPoints > (production ? MaximumProductionPoints : MaximumPoints))
             throw new ArgumentOutOfRangeException(nameof(maximumPoints));
         if (candidatesPerActive is < 1 or > 60)
             throw new ArgumentOutOfRangeException(nameof(candidatesPerActive));

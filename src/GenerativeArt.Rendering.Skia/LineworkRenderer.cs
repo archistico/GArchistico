@@ -23,7 +23,7 @@ internal static class LineworkRenderer
         {
             GuillocheCurve curve = Curve(recipe);
             if ((long)(Math.Max(Int(recipe, "samples"), curve.MinimumSamples) + 1)
-                    * Int(recipe, "layers") > MaximumCurveVertices)
+                    * Int(recipe, "layers") > RenderWorkPolicy.Limit(recipe, MaximumCurveVertices, 50_000_000))
                 throw new ArgumentOutOfRangeException(nameof(recipe),
                     "Guilloché: massimo 4 milioni di vertici complessivi. Ridurre curve o campioni.");
         }
@@ -32,7 +32,7 @@ internal static class LineworkRenderer
             if (Number(recipe, "line-width") > Number(recipe, "spacing"))
                 throw new ArgumentOutOfRangeException(nameof(recipe), "Lo spessore del tratteggio non può superare la distanza fra i tratti.");
             int scale = RasterQualityPolicy.Scale(recipe);
-            if (recipe.Size.PixelCount * scale * scale * Int(recipe, "octaves") * 5 > MaximumNoiseSamples)
+            if (recipe.Size.PixelCount * scale * scale * Int(recipe, "octaves") * 5 > RenderWorkPolicy.Limit(recipe, MaximumNoiseSamples, 2_000_000_000))
                 throw new ArgumentOutOfRangeException(nameof(recipe), "Incisione: massimo 400 milioni di campioni noise.");
         }
     }
@@ -108,7 +108,7 @@ internal static class LineworkRenderer
         var noise = new DomainWarpNoise2D(recipe.Seed, Int(recipe, "octaves"), Number(recipe, "warp-amount"));
         var hatching = new TonalHatching(Number(recipe, "spacing"), Number(recipe, "line-width"),
             Number(recipe, "angle"), Number(recipe, "cross-angle"), Int(recipe, "hatch-layers"));
-        for (int y = 0; y < pixels.Height; y++)
+        GenerativeArt.Core.Rendering.RasterRows.For(0, pixels.Height, RenderWorkPolicy.Production(recipe), ct, y =>
         {
             ct.ThrowIfCancellationRequested();
             Span<uint> row = pixels.GetWritablePackedArgbRow(y);
@@ -134,7 +134,7 @@ internal static class LineworkRenderer
                 color = Alpha(colors[2], hatch.Cross * maskValue).Over(color);
                 row[x] = color.PackedArgb;
             }
-        }
+        });
         surface.DrawPixels(pixels, nativeResolution: true);
     }
 

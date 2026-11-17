@@ -14,14 +14,14 @@ internal static class DepthArtworkRenderer
         if (paper && Number(recipe, "inner-radius") >= Number(recipe, "outer-radius"))
             throw new ArgumentException("Il raggio interno deve essere minore del raggio esterno.", nameof(recipe));
         int planes = Int(recipe, paper ? "layers" : "planes");
-        if (paper && (long)planes * (Int(recipe, "samples") + 1) > 150_000)
+        if (paper && (long)planes * (Int(recipe, "samples") + 1) > RenderWorkPolicy.Limit(recipe, 150_000, 300_000))
             throw new ArgumentOutOfRangeException(nameof(recipe), "Budget contorni: massimo 150.000 vertici.");
         bool glow = !paper && Number(recipe, "glow") > 0;
         double sigma = Number(recipe, "depth-blur") + Number(recipe, "shadow-softness");
         if (glow) sigma += Number(recipe, "radius") * .55;
         DepthLayerPolicy.Validate(recipe, planes * (glow ? 2 : 1), sigma);
         // Limita anche la copertura in casi con migliaia di dischi molto grandi.
-        if (!paper && Int(recipe, "particles") * Math.Pow(Number(recipe, "radius") * Number(recipe, "depth-scale"), 2) > 160_000_000)
+        if (!paper && Int(recipe, "particles") * Math.Pow(Number(recipe, "radius") * Number(recipe, "depth-scale"), 2) > RenderWorkPolicy.Limit(recipe, 160_000_000, 2_000_000_000))
             throw new ArgumentOutOfRangeException(nameof(recipe), "Budget dischi superato: ridurre particelle, raggio o ingrandimento.");
     }
 

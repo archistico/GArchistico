@@ -20,10 +20,10 @@ internal static class ReactionDiffusionRenderer
         int width = checked((recipe.Size.Width + cell - 1) / cell);
         int height = checked((recipe.Size.Height + cell - 1) / cell);
         long pixels = (long)width * height;
-        if (width < 4 || height < 4 || pixels > 350_000)
+        if (width < 4 || height < 4 || pixels > RenderWorkPolicy.Limit(recipe, 350_000, 1_048_576))
             throw new ArgumentOutOfRangeException(nameof(recipe),
                 "Reazione–diffusione: griglia da 4×4 a 350.000 celle. Aumentare cell-size.");
-        if (pixels * ArtworkPaint.Int(recipe, "iterations") > MaximumUpdates)
+        if (pixels * ArtworkPaint.Int(recipe, "iterations") > RenderWorkPolicy.Limit(recipe, MaximumUpdates, 1_500_000_000))
             throw new ArgumentOutOfRangeException(nameof(recipe),
                 "Reazione–diffusione: massimo 75 milioni di aggiornamenti. Ridurre iterazioni o aumentare cell-size.");
     }
@@ -35,7 +35,7 @@ internal static class ReactionDiffusionRenderer
         int width = (recipe.Size.Width + cell - 1) / cell;
         int height = (recipe.Size.Height + cell - 1) / cell;
         var field = new ReactionDiffusionField2D(width, height, recipe.Seed,
-            ArtworkPaint.Int(recipe, "inoculations"), ArtworkPaint.Int(recipe, "inoculation-radius"));
+            ArtworkPaint.Int(recipe, "inoculations"), ArtworkPaint.Int(recipe, "inoculation-radius"), RenderWorkPolicy.Production(recipe));
         field.Evolve(ArtworkPaint.Int(recipe, "iterations"),
             ArtworkPaint.Number(recipe, "feed"), ArtworkPaint.Number(recipe, "kill"),
             ArtworkPaint.Number(recipe, "diffusion-u"), ArtworkPaint.Number(recipe, "diffusion-v"), ct);
@@ -54,7 +54,7 @@ internal static class ReactionDiffusionRenderer
         int scale = surface.RasterScale;
         var native = new CanvasSize(checked(recipe.Size.Width * scale), checked(recipe.Size.Height * scale));
         var pixels = new PixelBuffer(native);
-        for (int y = 0; y < native.Height; y++)
+        GenerativeArt.Core.Rendering.RasterRows.For(0, native.Height, RenderWorkPolicy.Production(recipe), ct, y =>
         {
             ct.ThrowIfCancellationRequested();
             Span<uint> row = pixels.GetWritablePackedArgbRow(y);
@@ -72,7 +72,7 @@ internal static class ReactionDiffusionRenderer
                 tone = Math.Clamp(.5 + (tone - .5) * contrast, 0, 1);
                 row[x] = PatternPalette.Gradient(colors, tone).PackedArgb;
             }
-        }
+        });
         ct.ThrowIfCancellationRequested();
         surface.DrawPixels(pixels, nativeResolution: true);
     }

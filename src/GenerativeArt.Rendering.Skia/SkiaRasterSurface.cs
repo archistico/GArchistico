@@ -16,20 +16,25 @@ public sealed class SkiaRasterSurface : IDisposable
     private readonly SKSurface _surface;
     private bool _disposed;
     private bool _layerActive;
+    private readonly bool _production;
 
     public CanvasSize Size { get; }
     public int RasterScale { get; }
 
-    public SkiaRasterSurface(CanvasSize size, int rasterScale = 1)
+    public SkiaRasterSurface(CanvasSize size, int rasterScale = 1, bool production = false)
     {
         ArgumentNullException.ThrowIfNull(size);
         if (rasterScale is not (1 or 2))
             throw new ArgumentOutOfRangeException(nameof(rasterScale), "Scale raster ammesse: 1 e 2.");
         RasterCanvasBudgetPolicy.ValidateEightKDimensions(size);
-        if (rasterScale == 2 && size.PixelCount * 4L > RasterQualityPolicy.MaximumFineRasterPixels)
+        long maximum = production ? GenerativeArt.Application.Rendering.ProductionRenderProfile.MaximumNativePixels : RasterQualityPolicy.MaximumFineRasterPixels;
+        if (production && (size.Width > 4096 || size.Height > 4096 || size.PixelCount > maximum / 4))
+            throw new ArgumentOutOfRangeException(nameof(size), "Superficie di produzione oltre il formato 4K.");
+        if (rasterScale == 2 && size.PixelCount * 4L > maximum)
             throw new ArgumentOutOfRangeException(nameof(size), "Il canvas 2x supera il budget raster.");
         Size = size;
         RasterScale = rasterScale;
+        _production = production;
         _surface = SKSurface.Create(new SKImageInfo(size.Width * rasterScale, size.Height * rasterScale,
             SKColorType.Bgra8888, SKAlphaType.Premul))
             ?? throw new InvalidOperationException("Creazione della superficie raster Skia fallita.");
@@ -42,7 +47,7 @@ public sealed class SkiaRasterSurface : IDisposable
     {
         ThrowIfDisposed();
         CincinnusBristlePainter.Paint(_surface.Canvas, strokes, Size.Width, Size.Height,
-            seed, options, cancellationToken);
+            seed, options, cancellationToken, _production);
     }
 
     public void Clear(Color32 color)
@@ -57,12 +62,13 @@ public sealed class SkiaRasterSurface : IDisposable
     {
         ThrowIfDisposed();
         ArgumentNullException.ThrowIfNull(draw);
-        effects.Validate();
+        effects.Validate(_production);
         cancellationToken.ThrowIfCancellationRequested();
         if (!effects.IsEnabled) { draw(this); cancellationToken.ThrowIfCancellationRequested(); return; }
         if (_layerActive) throw new InvalidOperationException("Livelli filtrati annidati non ammessi.");
-        if (Size.PixelCount * RasterScale * RasterScale > 8_388_608)
-            throw new ArgumentOutOfRangeException(nameof(effects), "Livelli filtrati: massimo 8.388.608 pixel nativi.");
+        if (Size.PixelCount * RasterScale * RasterScale > (_production
+            ? GenerativeArt.Application.Rendering.ProductionRenderProfile.MaximumNativePixels : 8_388_608))
+            throw new ArgumentOutOfRangeException(nameof(effects), "Livelli filtrati oltre il budget nativo del profilo selezionato.");
         using var blur = effects.Blur > 0 ? SKImageFilter.CreateBlur((float)effects.Blur, (float)effects.Blur) : null;
         using var shadow = effects.ShadowOpacity > 0 ? SKImageFilter.CreateDropShadow(
             (float)effects.ShadowX, (float)effects.ShadowY,

@@ -5,7 +5,12 @@ namespace GenerativeArt.Application.Catalog;
 /// </summary>
 public static partial class BuiltInArtworkCatalog
 {
-    public static ArtworkRegistry Create() => new([
+    public static ArtworkRegistry Create() => new(Descriptors().Select(d => new ArtworkDescriptor(
+        d.Id, d.AlgorithmVersion, d.Title, d.Category, d.Description, d.Capabilities,
+        [.. d.Parameters, ArtworkParameterSpec.Choice("render-profile", "Profilo di lavorazione", "balanced",
+            ["balanced", "production"], "Qualità", optionalInJson: true)])));
+
+    private static IReadOnlyList<ArtworkDescriptor> Descriptors() => [
         PaperCutDescriptor(),
         BokehDescriptor(),
         FlowBrushDescriptor(),
@@ -176,7 +181,7 @@ public static partial class BuiltInArtworkCatalog
             "Distribuzione Poisson disk seeded con pigmenti guidati da noise Simplex.",
             ArtworkCapabilities.Raster,
             [ArtworkParameterSpec.Number("spacing", "Distanza relativa", 0.025, 0.001, 0.2, "Distribuzione"),
-             ArtworkParameterSpec.Integer("max-points", "Punti massimi", 2500, 100, 50000, "Distribuzione"),
+             ArtworkParameterSpec.Integer("max-points", "Punti massimi", 2500, 100, 500000, "Distribuzione"),
              ArtworkParameterSpec.Number("dot-size", "Raggio punti", 1.7, 0.1, 128, "Tratto"),
              ArtworkParameterSpec.Number("radius-variation", "Variazione raggio", 0.36, 0, 1.0, "Tratto", optionalInJson: true),
              ArtworkParameterSpec.Number("pigment-frequency", "Dettaglio cromatico", 0.008, 0.0005, 0.1, "Colore", optionalInJson: true),
@@ -248,7 +253,7 @@ public static partial class BuiltInArtworkCatalog
              ArtworkParameterSpec.Number("paper-strength", "Intensità trama carta", 0, 0, 0.4, "Materia", optionalInJson: true),
              ArtworkParameterSpec.Number("pigment-granulation", "Granulazione pigmento", 0, 0, 0.4, "Materia", optionalInJson: true),
              ArtworkParameterSpec.Number("ink-absorption", "Assorbimento inchiostro", 0, 0, 0.4, "Materia", optionalInJson: true)])
-    ]);
+    ];
 
     private static ArtworkDescriptor FlowBrushDescriptor() => new("flow-brush", 1,
         "Pennelli nel flusso", "Pittura / Flussi",

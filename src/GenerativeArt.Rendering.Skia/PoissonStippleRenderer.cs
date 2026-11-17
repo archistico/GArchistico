@@ -17,9 +17,11 @@ internal static class PoissonStippleRenderer
     {
         if (recipe.Size.Width < 64 || recipe.Size.Height < 64)
             throw new ArgumentOutOfRangeException(nameof(recipe), "Poisson: dimensione minima 64x64.");
+        if (!RenderWorkPolicy.Production(recipe) && Int(recipe, "max-points") > PoissonDiskSampler.MaximumPoints)
+            throw new ArgumentOutOfRangeException(nameof(recipe), "Poisson: oltre 50.000 punti selezionare Profilo di lavorazione → production (massimo 500.000, formato 4K).");
         float r = Distance(recipe);
         PoissonDiskSampler.Validate(recipe.Size.Width, recipe.Size.Height, r,
-            Int(recipe, "max-points"));
+            Int(recipe, "max-points"), production: RenderWorkPolicy.Production(recipe));
     }
 
     internal static void Render(SkiaRasterSurface surface, ArtworkRecipe recipe, CancellationToken ct)
@@ -42,7 +44,7 @@ internal static class PoissonStippleRenderer
         ct.ThrowIfCancellationRequested();
         IReadOnlyList<System.Numerics.Vector2> points = PoissonDiskSampler.Sample(
             size.Width, size.Height, Distance(recipe), recipe.Seed, Int(recipe, "max-points"),
-            cancellationToken: ct);
+            cancellationToken: ct, production: RenderWorkPolicy.Production(recipe));
         var noise = new SeededSimplexNoise(recipe.Seed);
         float radius = (float)Number(recipe, "dot-size") *
             MathF.Max(.5f, MathF.Min(size.Width, size.Height) / 800f);

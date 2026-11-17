@@ -10,19 +10,21 @@ namespace GenerativeArt.Algorithms.Pattern;
 public sealed class ReactionDiffusionField2D
 {
     private double[] _u, _v, _nextU, _nextV;
+    private readonly bool _production;
     public int Width { get; }
     public int Height { get; }
     public long CellCount => (long)Width * Height;
 
     public ReactionDiffusionField2D(int width, int height, ulong seed,
-        int spots = 18, int spotRadius = 4)
+        int spots = 18, int spotRadius = 4, bool production = false)
     {
-        if (width is < 4 or > 2048 || height is < 4 or > 2048 || (long)width * height > 350_000)
-            throw new ArgumentOutOfRangeException(nameof(width), "Griglia massima: 350.000 celle, minimo 4 per lato.");
+        if (width is < 4 or > 2048 || height is < 4 or > 2048 || (long)width * height > (production ? 1_048_576 : 350_000))
+            throw new ArgumentOutOfRangeException(nameof(width), $"Griglia massima: {(production ? 1_048_576 : 350_000):N0} celle, minimo 4 per lato.");
         if (spots is < 1 or > 128) throw new ArgumentOutOfRangeException(nameof(spots));
         if (spotRadius is < 1 or > 24) throw new ArgumentOutOfRangeException(nameof(spotRadius));
         Width = width;
         Height = height;
+        _production = production;
         int length = checked(width * height);
         _u = new double[length];
         _v = new double[length];
@@ -57,13 +59,13 @@ public sealed class ReactionDiffusionField2D
             throw new ArgumentOutOfRangeException(nameof(diffusionU));
         if (!double.IsFinite(diffusionV) || diffusionV is < .02 or > .15)
             throw new ArgumentOutOfRangeException(nameof(diffusionV));
-        if (CellCount * iterations > 75_000_000)
-            throw new ArgumentOutOfRangeException(nameof(iterations), "Reazione–diffusione: massimo 75 milioni di aggiornamenti di cella.");
+        if (CellCount * iterations > (_production ? 1_500_000_000 : 75_000_000))
+            throw new ArgumentOutOfRangeException(nameof(iterations), $"Reazione–diffusione: massimo {(_production ? 1_500_000_000 : 75_000_000):N0} aggiornamenti di cella.");
 
         for (int step = 0; step < iterations; step++)
         {
             cancellationToken.ThrowIfCancellationRequested();
-            for (int y = 0; y < Height; y++)
+            GenerativeArt.Core.Rendering.RasterRows.For(0, Height, _production, cancellationToken, y =>
             {
                 int up = (y == 0 ? Height - 1 : y - 1) * Width;
                 int down = (y == Height - 1 ? 0 : y + 1) * Width;
@@ -82,7 +84,7 @@ public sealed class ReactionDiffusionField2D
                     _nextU[n] = Math.Clamp(u + diffusionU * lapU - reaction + feed * (1 - u), 0, 1);
                     _nextV[n] = Math.Clamp(v + diffusionV * lapV + reaction - (feed + kill) * v, 0, 1);
                 }
-            }
+            });
             (_u, _nextU) = (_nextU, _u);
             (_v, _nextV) = (_nextV, _v);
         }

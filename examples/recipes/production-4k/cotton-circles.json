@@ -1,0 +1,32 @@
+{
+  "formatVersion": 1,
+  "artworkId": "cotton-circles",
+  "algorithmVersion": 1,
+  "seed": "42",
+  "width": 3840,
+  "height": 2160,
+  "parameters": {
+    "arc-scale": 1,
+    "background-color": "auto",
+    "columns": 48,
+    "dither-levels": 8,
+    "dither-mode": "none",
+    "grain-amount": 0,
+    "grain-size": 1,
+    "ink-absorption": 0,
+    "margin": 0.06,
+    "motif": "semicircle",
+    "palette": "cotton",
+    "paper-strength": 0,
+    "paper-texture": "none",
+    "pigment-granulation": 0,
+    "render-profile": "production",
+    "render-quality": "fine-2x",
+    "rows": 48,
+    "tile-color-1": "auto",
+    "tile-color-2": "auto",
+    "tile-color-3": "auto",
+    "tile-color-4": "auto",
+    "tile-gap": 0
+  }
+}

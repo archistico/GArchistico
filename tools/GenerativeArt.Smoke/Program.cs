@@ -13,6 +13,11 @@ using GenerativeArt.Application.Recipes;
 using GenerativeArt.Rendering.Skia;
 using GenerativeArt.Studio;
 using SkiaSharp;
+if (args.Length == 2 && args[0] == "four-k-studio")
+{
+    FourKStudioSmoke.Run(Path.GetFullPath(args[1]));
+    return;
+}
 if (args.Length != 2 || args[0] is not ("picker" or "render" or "detail" or "studio" or "evolution" or "evolution-studio" or "compare" or "depth" or "depth-studio" or "depth-compare" or "depth-compat" or "sdf" or "sdf-studio" or "sdf-compare" or "sdf-aa" or "voronoi" or "voronoi-studio" or "voronoi-compare" or "voronoi-compat"))
 {
     Console.Error.WriteLine("Uso: GenerativeArt.Smoke picker|render|detail|studio|evolution|evolution-studio|compare|depth|depth-studio|depth-compare|depth-compat|sdf|sdf-studio|sdf-compare|sdf-aa|voronoi|voronoi-studio|voronoi-compare|voronoi-compat <cartella solution>");

@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType></PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/GenerativeArt.Rendering.Skia/GenerativeArt.Rendering.Skia.csproj" />
+  </ItemGroup>
+</Project>

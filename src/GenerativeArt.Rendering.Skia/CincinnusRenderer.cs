@@ -21,12 +21,16 @@ internal static class CincinnusRenderer
     {
         ArgumentNullException.ThrowIfNull(recipe);
         int width = recipe.Size.Width, height = recipe.Size.Height;
-        if (width is < MinimumSide or > MaximumSide ||
-            height is < MinimumSide or > MaximumSide || recipe.Size.PixelCount > MaximumPixels)
+        int maximumSide = RenderWorkPolicy.Production(recipe) ? 4096 : MaximumSide;
+        long maximumPixels = RenderWorkPolicy.Limit(recipe, MaximumPixels,
+            GenerativeArt.Application.Rendering.ProductionRenderProfile.MaximumLogicalPixels);
+        if (width < MinimumSide || width > maximumSide ||
+            height < MinimumSide || height > maximumSide || recipe.Size.PixelCount > maximumPixels)
             throw new ArgumentOutOfRangeException(nameof(recipe),
                 "Cincinnus sperimentale: ogni lato deve essere 256..2048 px e il canvas non deve superare 2.097.152 pixel.");
         if (recipe.Parameters.TryGetValue("render-quality", out string? quality) && quality == "fine-2x" &&
-            recipe.Size.PixelCount > 524_288)
+            recipe.Size.PixelCount > RenderWorkPolicy.Limit(recipe, 524_288,
+                GenerativeArt.Application.Rendering.ProductionRenderProfile.MaximumLogicalPixels))
             throw new ArgumentOutOfRangeException(nameof(recipe),
                 "Cincinnus fine-2x: massimo 524.288 pixel logici, in attesa dei benchmark memoria.");
     }
@@ -58,9 +62,9 @@ internal static class CincinnusRenderer
                 MaximumHalfWidth = 120f * scale,
                 HalfWidthFactor = Number(recipe, "adaptive-width"),
                 MaximumStrokeLength = 1600f * scale,
-                MaximumSpinePoints = 350_000,
+                MaximumSpinePoints = (int)RenderWorkPolicy.Limit(recipe, 350_000, 8_000_000),
                 MaximumCoverageCells = 150_000,
-                MaximumTotalStrokes = 1_400
+                MaximumTotalStrokes = (int)RenderWorkPolicy.Limit(recipe, 1400, 20_000)
             };
             CincinnusAdaptiveLayout layout = CincinnusAdaptivePlacer.Place(field, width, height, seed, placement, ct);
             strokes = layout.StrokesInPaintOrder;
@@ -76,9 +80,9 @@ internal static class CincinnusRenderer
                 MinimumLength = Math.Max(30f, 300f * scale),
                 MaximumLength = Math.Max(800f, 9000f * scale),
                 Margin = 3.75f * separation,
-                MaximumLines = 2048,
-                MaximumPoints = 250_000,
-                MaximumPendingSeeds = 500_000,
+                MaximumLines = (int)RenderWorkPolicy.Limit(recipe, 2048, 20_000),
+                MaximumPoints = (int)RenderWorkPolicy.Limit(recipe, 250_000, 8_000_000),
+                MaximumPendingSeeds = (int)RenderWorkPolicy.Limit(recipe, 500_000, 2_000_000),
                 MaximumCoverCells = 150_000
             };
             CincinnusSimpleLayout lines = CincinnusSimplePlacer.Place(field, width, height, seed, placement, ct);
@@ -89,7 +93,9 @@ internal static class CincinnusRenderer
                 SubsequentMinimumLength = Math.Max(60f, 600f * scale),
                 MaximumStrokeLength = Math.Max(125f, 1600f * scale),
                 MinimumOverlap = Math.Max(15f, 150f * scale),
-                MaximumOverlap = Math.Max(30f, 350f * scale)
+                MaximumOverlap = Math.Max(30f, 350f * scale),
+                MaximumStrokes = (int)RenderWorkPolicy.Limit(recipe, 4096, 50_000),
+                MaximumSpinePoints = (int)RenderWorkPolicy.Limit(recipe, 400_000, 8_000_000)
             };
             CincinnusStrokePlan plan = CincinnusStrokePlanner.Build(lines, seed, options, ct);
             strokes = plan.Strokes;

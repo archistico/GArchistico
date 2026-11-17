@@ -18,9 +18,9 @@ internal static class FlowTextureRenderer
         int scale = RasterQualityPolicy.Scale(recipe);
         if (recipe.ArtworkId == "lic-flow")
             LineIntegralConvolution.ValidateBudget(recipe.Size.Width * scale,
-                recipe.Size.Height * scale, Int(recipe, "length"));
+                recipe.Size.Height * scale, Int(recipe, "length"), RenderWorkPolicy.Production(recipe));
         else if (recipe.Size.PixelCount * scale * scale * Int(recipe, "octaves")
-                 * (1 + 2L * Int(recipe, "warp-layers")) > MaximumNoiseSamples)
+                 * (1 + 2L * Int(recipe, "warp-layers")) > RenderWorkPolicy.Limit(recipe, MaximumNoiseSamples, 2_000_000_000))
             throw new ArgumentOutOfRangeException(nameof(recipe),
                 "Domain Warp: massimo 400 milioni di campioni noise. Ridurre ottave, livelli o risoluzione.");
     }
@@ -50,7 +50,7 @@ internal static class FlowTextureRenderer
         double offsetX = Number(recipe, "offset-x"), offsetY = Number(recipe, "offset-y");
         double contrast = Number(recipe, "contrast"), gamma = Number(recipe, "gamma");
         bool transform = rotation != 0 || stretchX != 1 || stretchY != 1 || offsetX != 0 || offsetY != 0;
-        for (int y = 0; y < pixels.Height; y++)
+        GenerativeArt.Core.Rendering.RasterRows.For(0, pixels.Height, RenderWorkPolicy.Production(recipe), ct, y =>
         {
             ct.ThrowIfCancellationRequested();
             Span<uint> row = pixels.GetWritablePackedArgbRow(y);
@@ -75,7 +75,7 @@ internal static class FlowTextureRenderer
                 if (gamma != 1) t = Math.Pow(Math.Clamp(t, 0, 1), gamma);
                 row[x] = Gradient(palette, t).PackedArgb;
             }
-        }
+        });
     }
 
     private static void RenderLic(PixelBuffer pixels, int scale, ArtworkRecipe recipe,
@@ -92,24 +92,24 @@ internal static class FlowTextureRenderer
             grid.Sample((x + .5f) / scale - .5f, (y + .5f) / scale - .5f));
         double textureScale = Number(recipe, "texture-scale");
         var texture = new float[checked(pixels.Width * pixels.Height)];
-        for (int y = 0; y < pixels.Height; y++)
+        GenerativeArt.Core.Rendering.RasterRows.For(0, pixels.Height, RenderWorkPolicy.Production(recipe), ct, y =>
         {
             ct.ThrowIfCancellationRequested();
             for (int x = 0; x < pixels.Width; x++)
                 texture[y * pixels.Width + x] = TextureAt(
                     ((x + .5) / scale - .5) / textureScale,
                     ((y + .5) / scale - .5) / textureScale, recipe.Seed);
-        }
+        });
         float[] values = LineIntegralConvolution.Apply(pixels.Width, pixels.Height,
-            texture, field, Int(recipe, "length"), scale, ct);
+            texture, field, Int(recipe, "length"), scale, ct, RenderWorkPolicy.Production(recipe));
         double contrast = Number(recipe, "contrast");
-        for (int y = 0; y < pixels.Height; y++)
+        GenerativeArt.Core.Rendering.RasterRows.For(0, pixels.Height, RenderWorkPolicy.Production(recipe), ct, y =>
         {
             ct.ThrowIfCancellationRequested();
             Span<uint> row = pixels.GetWritablePackedArgbRow(y);
             for (int x = 0; x < pixels.Width; x++)
                 row[x] = Gradient(palette, .5 + contrast * (values[y * pixels.Width + x] - .5)).PackedArgb;
-        }
+        });
     }
 
     // Rumore bianco su reticolo, interpolato per mantenere la scala logica in fine-2x.

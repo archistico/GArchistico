@@ -1,0 +1,22 @@
+{
+    "indexedLoopCheck":  {
+                             "identicalPng":  true,
+                             "sha256":  "5d85236e9547af4d91b315d7ea948ed8ad8fed1319fcc147d9115f5621ad1877",
+                             "beforeSeconds":  389.2703831,
+                             "afterSeconds":  381.6637591,
+                             "scope":  "same old seed order; separate from subsequent coverage correction"
+                         },
+    "balancedPoisson":  {
+                            "identicalPng":  true,
+                            "sha256":  "c69fc4f1347db25cae320e4ac364d16e562d7a751052ad2695a3c86099f5b3d1",
+                            "recipe":  "poisson-cotton-pigments-1920.json"
+                        },
+    "productionHashAcrossProcesses":  {
+                                          "identicalPng":  true,
+                                          "sha256":  "cf5d90aededd8b7be358a66acf2b4e571266026a0d4124bc0ed6f7211e2bf860",
+                                          "seconds":  28.5641484,
+                                          "repeatSeconds":  28.2481726,
+                                          "previousHashRunCancelledAfterMoreThanSeconds":  1020,
+                                          "scope":  "new global seed order and mixed spatial hash, maximum UHD fine-2x"
+                                      }
+}

@@ -12,9 +12,12 @@ internal static class DepthLayerPolicy
         int scale = RasterQualityPolicy.Scale(recipe);
         long pixels = recipe.Size.PixelCount * scale * scale;
         double sigma = maximumSigma * Math.Min(recipe.Size.Width, recipe.Size.Height) / 1000d * scale;
-        if (pixels > 8_388_608 || pixels * (double)passes * (1 + sigma / 12) > 800_000_000)
+        long maximumPixels = RenderWorkPolicy.Limit(recipe, 8_388_608,
+            GenerativeArt.Application.Rendering.ProductionRenderProfile.MaximumNativePixels);
+        long work = RenderWorkPolicy.Limit(recipe, 800_000_000, 256_000_000_000);
+        if (pixels > maximumPixels || pixels * (double)passes * (1 + sigma / 12) > work)
             throw new ArgumentOutOfRangeException(nameof(recipe),
-                "Budget livelli filtrati superato: massimo 8.388.608 pixel nativi e 800 milioni di unità raster. Ridurre risoluzione, piani o sfocatura.");
+                $"Budget livelli filtrati superato: massimo {maximumPixels:N0} pixel nativi e {work:N0} unità raster. Ridurre risoluzione, piani o sfocatura.");
     }
 
     internal static double Defocus(double depth, double focus, double range) =>

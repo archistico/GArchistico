@@ -114,4 +114,19 @@ public sealed partial class StudioWindow
         _seed.Text, _width.Text, _height.Text, _parameters, _invalidNumericInputs,
         _frames.Text, _fps.Text);
 
+    private void PrepareFourK()
+    {
+        try
+        {
+            ArtworkRecipe prepared = ProductionRenderProfile.PrepareFourK(BuildRecipe(), _catalog);
+            new ArtworkRenderEngine(_catalog).Validate(prepared, prepared.Animation is null ? null : 0);
+            SelectArtwork(_catalog.Get(prepared.ArtworkId), prepared);
+            _status.Text = "4K · supersampling 2× · complessità massima. Render in corso…";
+        }
+        catch (Exception ex) when (ex is ArgumentException or InvalidOperationException or FormatException or OverflowException)
+        {
+            _status.Text = $"Preparazione 4K: {ex.Message}";
+        }
+    }
+
 }

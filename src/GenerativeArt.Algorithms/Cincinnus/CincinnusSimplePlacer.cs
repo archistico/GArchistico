@@ -76,7 +76,7 @@ public static class CincinnusSimplePlacer
                 || (double)options.MaximumLength / options.StepSize > 40_000)
                 throw new ArgumentOutOfRangeException(nameof(options.MaximumLength));
             if (options.MaximumLines is < 1 or > 50_000) throw new ArgumentOutOfRangeException(nameof(options.MaximumLines));
-            if (options.MaximumPoints is < 2 or > 2_000_000) throw new ArgumentOutOfRangeException(nameof(options.MaximumPoints));
+            if (options.MaximumPoints is < 2 or > 8_000_000) throw new ArgumentOutOfRangeException(nameof(options.MaximumPoints));
             if (options.MaximumPendingSeeds is < 1 or > 2_000_000)
                 throw new ArgumentOutOfRangeException(nameof(options.MaximumPendingSeeds));
             if (options.MaximumCoverCells is < 1 or > 2_000_000)

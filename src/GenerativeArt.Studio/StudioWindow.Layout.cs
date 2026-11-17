@@ -128,6 +128,14 @@ public sealed partial class StudioWindow
         Grid.SetColumn(heightGroup, 1);
         sizes.Children.Add(heightGroup);
         right.Children.Add(sizes);
+        var production = ActionButton("4K · qualità massima", () =>
+        {
+            PrepareFourK();
+            return Task.CompletedTask;
+        });
+        production.Name = "PrepareFourK";
+        ToolTip.SetTip(production, "3840×2160 (o verticale), supersampling 2× e massimo dettaglio. Mantiene seed e colori; il render può richiedere alcuni minuti.");
+        right.Children.Add(production);
         right.Children.Add(SectionLabel("ANTEPRIMA  /  PIXEL REALI"));
         right.Children.Add(new TextBlock
         {

@@ -20,7 +20,7 @@ internal static class SdfPigmentRenderer
         int layers = Int(r, "layers"), scale = RasterQualityPolicy.Scale(r);
         // Include due righe esterne e due colonne per le derivate a schermo.
         long samples = (r.Size.Width * (long)scale + 2) * (r.Size.Height * (long)scale + 2);
-        if (samples * layers * Int(r, "blobs") > 260_000_000)
+        if (samples * layers * Int(r, "blobs") > RenderWorkPolicy.Limit(r, 260_000_000, 9_000_000_000))
             throw new ArgumentOutOfRangeException(nameof(r), "Budget SDF organiche: massimo 260 milioni di valutazioni di macchie. Ridurre piani, macchie o risoluzione.");
         DepthLayerPolicy.Validate(r, layers, Number(r, "depth-blur") + Number(r, "shadow-softness"));
     }
@@ -36,9 +36,6 @@ internal static class SdfPigmentRenderer
         int layers = Int(r, "layers");
         // Un buffer raster riutilizzato; solo tre righe di campioni, mai un campo float a pieno canvas.
         var pixels = new PixelBuffer(new CanvasSize(width, height));
-        var above = new PigmentSdfSample[width + 2];
-        var current = new PigmentSdfSample[width + 2];
-        var below = new PigmentSdfSample[width + 2];
         float rotation = (float)(Number(r, "rotation") * Math.PI / 180);
         float cos = MathF.Cos(rotation), sin = MathF.Sin(rotation);
         var stretch = new Vector2((float)Number(r, "stretch-x"), (float)Number(r, "stretch-y"));
@@ -84,9 +81,16 @@ internal static class SdfPigmentRenderer
                     row[i] = field.Sample(start + stepX * i);
                 }
             }
-            SampleRow(above, -1); SampleRow(current, 0);
-            for (int y = 0; y < height; y++)
+            int bands = RenderWorkPolicy.Production(r) ? Math.Min(height, Math.Min(16, Environment.ProcessorCount)) : 1;
+            GenerativeArt.Core.Rendering.RasterRows.For(0, bands, RenderWorkPolicy.Production(r), ct, band =>
             {
+                var above = new PigmentSdfSample[width + 2];
+                var current = new PigmentSdfSample[width + 2];
+                var below = new PigmentSdfSample[width + 2];
+                int first = band * height / bands, end = (band + 1) * height / bands;
+                SampleRow(above, first - 1); SampleRow(current, first);
+                for (int y = first; y < end; y++)
+                {
                 ct.ThrowIfCancellationRequested();
                 SampleRow(below, y + 1);
                 Span<uint> output = pixels.GetWritablePackedArgbRow(y);
@@ -126,7 +130,8 @@ internal static class SdfPigmentRenderer
                     output[x] = palette.Encode(rgb, alpha * coverage * opacity);
                 }
                 (above, current, below) = (current, below, above);
-            }
+                }
+            });
             double distance = Number(r, "shadow-distance") * logicalUnit;
             var effects = new LayerEffects(Number(r, "depth-blur") * logicalUnit * Math.Pow(1 - t, 1.4),
                 Number(r, "shadow-opacity"), -light.X * distance, -light.Y * distance,

@@ -64,7 +64,7 @@ public sealed class CatalogTests
         string[] expectedPlasma = ["frequency", "octaves", .. LegacyArtworkControls.ForArtwork("plasma-noise").Select(p => p.Id), "palette",
             "gradient-color-1", "gradient-color-2", "gradient-color-3", "gradient-color-4", "render-quality",
             "grain-amount", "grain-size", "dither-mode", "dither-levels",
-            "paper-texture", "paper-strength", "pigment-granulation", "ink-absorption"];
+            "paper-texture", "paper-strength", "pigment-granulation", "ink-absorption", "render-profile"];
         Assert.Equal(expectedPlasma,
             catalog.Get("plasma-noise").Parameters.Select(p => p.Id).ToArray());
     }

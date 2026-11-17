@@ -13,4 +13,6 @@ public sealed record EvenStreamlineOptions
     public int MaxLines { get; init; } = 400;
     public int MaxCandidates { get; init; } = 20_000;
     public bool DistributeSeedBudget { get; init; } = true;
+    public bool Production { get; init; }
+    public int MaximumIndexedSamples { get; init; } = 2_000_000;
 }

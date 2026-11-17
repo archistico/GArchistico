@@ -58,7 +58,7 @@ public sealed record CincinnusAdaptiveOptions
             throw new ArgumentOutOfRangeException(nameof(MaximumCoverageCells));
         if (MaximumTotalStrokes is < 1 or > 25_000)
             throw new ArgumentOutOfRangeException(nameof(MaximumTotalStrokes));
-        if (MaximumSpinePoints is < 40 or > 2_000_000)
+        if (MaximumSpinePoints is < 40 or > 8_000_000)
             throw new ArgumentOutOfRangeException(nameof(MaximumSpinePoints));
         // Validare la griglia prima di allocare array (incluse dimensioni non divisibili per la cella).
         long nx = (long)Math.Floor((double)width / CoverageCell) + 1;

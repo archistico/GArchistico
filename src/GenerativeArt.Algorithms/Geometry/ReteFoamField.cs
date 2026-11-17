@@ -45,9 +45,9 @@ public sealed class ReteFoamField
 
     public static ReteFoamField Create(ulong seed, int width, int height, int count,
         double big, double small, double tierRatio, double variation, double density,
-        double fusion, double froth, double drain, double sink, CancellationToken ct = default)
+        double fusion, double froth, double drain, double sink, CancellationToken ct = default, bool production = false)
     {
-        if (width < 1 || height < 1 || (long)width * height > 4_194_304L || count is < 2 or > 850 ||
+        if (width < 1 || height < 1 || (long)width * height > (production ? 8_847_360L : 4_194_304L) || count is < 2 or > 850 ||
             !double.IsFinite(big) || !double.IsFinite(small) || big <= small || small <= 0 || big > .4 ||
             !double.IsFinite(tierRatio) || tierRatio is < .3 or >= 1 ||
             !double.IsFinite(variation) || variation is < 0 or > 1 ||

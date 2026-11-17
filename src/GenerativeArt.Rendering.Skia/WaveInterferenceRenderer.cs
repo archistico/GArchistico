@@ -17,7 +17,7 @@ internal static class WaveInterferenceRenderer
     {
         long scale = RasterQualityPolicy.Scale(recipe);
         int sources = Int(recipe, "sources");
-        if (recipe.Size.PixelCount * scale * scale * sources > MaximumWaveSamples)
+        if (recipe.Size.PixelCount * scale * scale * sources > RenderWorkPolicy.Limit(recipe, MaximumWaveSamples, 450_000_000))
             throw new ArgumentOutOfRangeException(nameof(recipe),
                 "Interferenze: massimo 150 milioni di contributi d'onda. Ridurre sorgenti, risoluzione o campionamento 2x.");
     }
@@ -35,7 +35,7 @@ internal static class WaveInterferenceRenderer
         Color32[] colors = Palette(recipe);
         double contrast = Number(recipe, "contrast"), gamma = Number(recipe, "gamma");
         double minSide = Math.Min(output.Width, output.Height);
-        for (int y = 0; y < native.Height; y++)
+        GenerativeArt.Core.Rendering.RasterRows.For(0, native.Height, RenderWorkPolicy.Production(recipe), ct, y =>
         {
             ct.ThrowIfCancellationRequested();
             Span<uint> row = pixels.GetWritablePackedArgbRow(y);
@@ -48,7 +48,7 @@ internal static class WaveInterferenceRenderer
                 value = Math.Pow(value, gamma);
                 row[x] = Gradient(colors, value).PackedArgb;
             }
-        }
+        });
         ct.ThrowIfCancellationRequested();
         surface.DrawPixels(pixels, nativeResolution: true);
     }

@@ -43,10 +43,10 @@ internal static class LegacyArtworkEvolution
             "looping-flow" => (long)Math.Max(54, Int(recipe, "lines")) * (Int(recipe, "steps") + 1),
             _ => 0
         };
-        if (cost > (recipe.ArtworkId == "spaced-streamlines" ? 8_000_000 : 4_000_000))
+        if (cost > RenderWorkPolicy.Limit(recipe, recipe.ArtworkId == "spaced-streamlines" ? 8_000_000 : 4_000_000, 17_000_000))
             throw new ArgumentOutOfRangeException(nameof(recipe), "Troppe tracce o campioni: ridurre densità o precisione.");
         if (recipe.ArtworkId == "looping-flow" && recipe.Animation is { } animation
-            && cost * animation.FrameCount > 20_000_000)
+            && cost * animation.FrameCount > RenderWorkPolicy.Limit(recipe, 20_000_000, 250_000_000))
             throw new ArgumentOutOfRangeException(nameof(recipe), "Loop: massimo 20 milioni di vertici stimati nella sequenza.");
     }
 
@@ -55,7 +55,7 @@ internal static class LegacyArtworkEvolution
         if (!ArtworkInk.IsAuto(recipe, "background-color"))
         { surface.Clear(ArtworkInk.Resolve(recipe, "background-color", Color32.Transparent)); return; }
         var pixels = new PixelBuffer(recipe.Size);
-        for (int y = 0; y < pixels.Height; y++)
+        GenerativeArt.Core.Rendering.RasterRows.For(0, pixels.Height, RenderWorkPolicy.Production(recipe), ct, y =>
         {
             ct.ThrowIfCancellationRequested();
             Span<uint> row = pixels.GetWritablePackedArgbRow(y);
@@ -64,7 +64,7 @@ internal static class LegacyArtworkEvolution
                     (byte)(21 + 47L * y / Math.Max(1, pixels.Height - 1)), 57).PackedArgb
                     : Color32.Opaque((byte)(12 + 17L * x / Math.Max(1, pixels.Width - 1)),
                     (byte)(16 + 16L * y / Math.Max(1, pixels.Height - 1)), 37).PackedArgb;
-        }
+        });
         surface.DrawPixels(pixels);
     }
 
@@ -166,7 +166,7 @@ internal static class LegacyArtworkEvolution
         double stretchX = Number(recipe, "stretch-x"), stretchY = Number(recipe, "stretch-y");
         double contour = Number(recipe, "contour-strength");
         string pattern = recipe.Parameters["pattern"];
-        for (int y = 0; y < pixels.Height; y++)
+        GenerativeArt.Core.Rendering.RasterRows.For(0, pixels.Height, RenderWorkPolicy.Production(recipe), ct, y =>
         {
             ct.ThrowIfCancellationRequested();
             Span<uint> row = pixels.GetWritablePackedArgbRow(y);
@@ -196,7 +196,7 @@ internal static class LegacyArtworkEvolution
                 }
                 row[x] = color.PackedArgb;
             }
-        }
+        });
         surface.DrawPixels(pixels, nativeResolution: true);
     }
 }

@@ -36,7 +36,7 @@ public sealed record CincinnusStrokeOptions
             throw new ArgumentOutOfRangeException(nameof(DryExponent));
         if (MaximumStrokes is < 1 or > 50_000)
             throw new ArgumentOutOfRangeException(nameof(MaximumStrokes));
-        if (MaximumSpinePoints is < 16 or > 2_000_000)
+        if (MaximumSpinePoints is < 16 or > 8_000_000)
             throw new ArgumentOutOfRangeException(nameof(MaximumSpinePoints));
     }
 }

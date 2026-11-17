@@ -26,13 +26,13 @@ internal static class GartFlowRenderer
                 ArtworkPaint.Number(recipe, "band-width");
             double droplet = ArtworkPaint.Number(recipe, "droplet-size");
             int strips = Math.Clamp((int)Math.Ceiling(width / (droplet * 2)), 4, 24);
-            if ((long)bands * steps * (strips + 1) > 220_000L)
+            if ((long)bands * steps * (strips + 1) > RenderWorkPolicy.Limit(recipe, 220_000, 2_000_000))
                 throw new ArgumentOutOfRangeException(nameof(recipe),
                     "Fascia: il budget massimo è di 220.000 moduli di retinatura.");
         }
         else if (recipe.ArtworkId == "eclectic-trails")
         {
-            if ((long)ArtworkPaint.Int(recipe, "trails") * steps > 140_000L)
+            if ((long)ArtworkPaint.Int(recipe, "trails") * steps > RenderWorkPolicy.Limit(recipe, 140_000, 400_000))
                 throw new ArgumentOutOfRangeException(nameof(recipe),
                     "Eclectic: il budget massimo è di 140.000 integrazioni.");
         }
