@@ -1,3 +1,8 @@
+## Script operativi — pulizia e avvio
+
+- `clean.ps1`: elimina ricorsivamente i bin/obj del progetto, con anteprima `-WhatIf`, controlli dei percorsi e conservazione delle cache NuGet.
+- `run.ps1`: avvia lo Studio con ripristino/build Release automatici; supporta Debug e `-NoBuild`, ripristina directory/ambiente e propaga gli errori.
+- Verificati su fixture PowerShell 5.1; [rapporto](validation/CLEAN_RUN_CHECKS.md). README, manifest e archivio completo aggiornati; codice applicativo e ricette invariati.
 ## README — galleria dei 30 algoritmi
 
 - Griglia a tre colonne con miniature 480×270 ricavate dai render 4K, etichette e collegamenti alle ricette JSON; Voronoi mostra la variante stratificata.

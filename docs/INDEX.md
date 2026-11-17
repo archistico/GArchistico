@@ -1,3 +1,5 @@
+> **Script operativi:** [pulizia e avvio dal README](../README.md#esecuzione), [verifiche](validation/CLEAN_RUN_CHECKS.md).
+
 > **Galleria:** [miniature dei 30 generatori e relative ricette](../README.md#galleria-degli-algoritmi).
 
 > **STATO CORRENTE M4E.5-P4K-R1 — 17/11/2026:** priorità richiesta dall'utente: **4K per tutti i generatori e le ricette, con massima complessità e supersampling 2×; 8K generale successivamente**. Disponibili pulsante Studio **4K · qualità massima**, CLI `prepare-4k`, profilo opzionale `production` e 34 nuovi esempi: catalogo **30 generatori / 30 preset / 216 ricette**. **1.371 test Windows passati**, build Release zero avvisi/errori; azione Studio verificata sui 30 generatori e 30 file preset invariati, inclusi i 17 personali. [Guida e limiti](M4E5_4K_PRODUZIONE.md), [prove e misure](validation/P4K_R1_REPORT.md). Consegna completa `GenerativeArt_M4E5_P4K_R1_COMPLETO.zip`. Restano distinti QA artistico dell'utente, desktop/DPI, altri OS, Fase B/D e Crinis R10 in pausa. README solo descrizione/installazione/esecuzione con screenshot. **I blocchi delle versioni precedenti sotto sono archivio storico.**

@@ -36,11 +36,21 @@ dotnet build .\GenerativeArt.sln -c Release --no-restore
 
 ## Esecuzione
 
-Avvia lo Studio:
+Avvia lo Studio con lo script, che ripristina le dipendenze e compila in Release:
 
 ```powershell
-dotnet run --project .\src\GenerativeArt.Studio -c Release --no-build
+.\run.ps1
 ```
+
+Per avviare una compilazione esistente usa `.\run.ps1 -NoBuild`; per la configurazione Debug usa `.\run.ps1 -Configuration Debug`.
+
+Per eliminare tutte le cartelle `bin` e `obj` del progetto:
+
+```powershell
+.\clean.ps1
+```
+
+Puoi vedere quali cartelle verranno eliminate con `.\clean.ps1 -WhatIf`. Le cache NuGet vengono conservate. Gli script funzionano anche se richiamati da un'altra cartella; dopo la pulizia, `.\run.ps1` ricompila lo Studio.
 
 Scegli un generatore, modifica i parametri e osserva l'anteprima. **Apri ricetta** carica uno degli esempi in [examples/recipes](examples/recipes); **Salva ricetta** conserva le impostazioni ed **Esporta PNG** genera l'immagine.
 
