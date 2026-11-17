@@ -1,0 +1,1131 @@
+dotnet --version
+10.0.201
+dotnet clean GenerativeArt.sln -c Release
+Compilazione avviata 17/11/2026 20:34:39.
+     1>Progetto "E:\sviluppo\2026 gart\GenerativeArt\GenerativeArt.sln" sul nodo 1 (destinazioni: Clean).
+     1>ValidateSolutionConfiguration:
+         Compilazione della configurazione di soluzione "Release|Any CPU" in corso.
+     1>Compilazione di "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\GenerativeArt.Studio.csproj" (2) dal progetto "E:\sviluppo\2026 gart\GenerativeArt\GenerativeArt.sln" (1) sul nodo 1 (destinazioni: Clean).
+     2>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\GenerativeArt.Studio.exe" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\GenerativeArt.Studio.deps.json" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\GenerativeArt.Studio.runtimeconfig.json" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\GenerativeArt.Studio.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\GenerativeArt.Studio.pdb" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\Avalonia.Base.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\Avalonia.Controls.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\Avalonia.DesignerSupport.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\Avalonia.Dialogs.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\Avalonia.Markup.Xaml.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\Avalonia.Markup.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\Avalonia.Metal.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\Avalonia.MicroCom.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\Avalonia.OpenGL.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\Avalonia.Vulkan.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\Avalonia.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\Avalonia.Desktop.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\Avalonia.FreeDesktop.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\Avalonia.FreeDesktop.AtSpi.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\Avalonia.HarfBuzz.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\Avalonia.Native.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\Avalonia.Remote.Protocol.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\Avalonia.Skia.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\Avalonia.Themes.Fluent.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\Avalonia.Win32.Automation.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\Avalonia.Win32.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\Avalonia.X11.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\HarfBuzzSharp.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\MicroCom.Runtime.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\SkiaSharp.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\Tmds.DBus.Protocol.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\win-arm64\native\av_libglesv2.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\win-x64\native\av_libglesv2.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\win-x86\native\av_libglesv2.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\osx\native\libAvaloniaNative.dylib" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\linux-arm\native\libHarfBuzzSharp.so" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\linux-arm64\native\libHarfBuzzSharp.so" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\linux-loongarch64\native\libHarfBuzzSharp.so" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\linux-musl-arm\native\libHarfBuzzSharp.so" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\linux-musl-arm64\native\libHarfBuzzSharp.so" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\linux-musl-loongarch64\native\libHarfBuzzSharp.so" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\linux-musl-riscv64\native\libHarfBuzzSharp.so" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\linux-musl-x64\native\libHarfBuzzSharp.so" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\linux-riscv64\native\libHarfBuzzSharp.so" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\linux-x64\native\libHarfBuzzSharp.so" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\linux-x86\native\libHarfBuzzSharp.so" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\osx\native\libHarfBuzzSharp.dylib" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\win-arm64\native\libHarfBuzzSharp.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\win-arm64\native\libHarfBuzzSharp.pdb" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\win-x64\native\libHarfBuzzSharp.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\win-x64\native\libHarfBuzzSharp.pdb" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\win-x86\native\libHarfBuzzSharp.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\win-x86\native\libHarfBuzzSharp.pdb" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\linux-arm\native\libSkiaSharp.so" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\linux-arm64\native\libSkiaSharp.so" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\linux-bionic-arm64\native\libSkiaSharp.so" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\linux-bionic-x64\native\libSkiaSharp.so" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\linux-loongarch64\native\libSkiaSharp.so" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\linux-musl-arm\native\libSkiaSharp.so" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\linux-musl-arm64\native\libSkiaSharp.so" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\linux-musl-loongarch64\native\libSkiaSharp.so" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\linux-musl-riscv64\native\libSkiaSharp.so" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\linux-musl-x64\native\libSkiaSharp.so" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\linux-riscv64\native\libSkiaSharp.so" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\linux-x64\native\libSkiaSharp.so" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\linux-x86\native\libSkiaSharp.so" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\osx\native\libSkiaSharp.dylib" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\win-arm64\native\libSkiaSharp.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\win-arm64\native\libSkiaSharp.pdb" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\win-x64\native\libSkiaSharp.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\win-x64\native\libSkiaSharp.pdb" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\win-x86\native\libSkiaSharp.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\runtimes\win-x86\native\libSkiaSharp.pdb" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\GenerativeArt.Algorithms.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\GenerativeArt.Application.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\GenerativeArt.Core.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\GenerativeArt.Rendering.Skia.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\GenerativeArt.Application.pdb" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\GenerativeArt.Rendering.Skia.pdb" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\GenerativeArt.Algorithms.pdb" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\GenerativeArt.Core.pdb" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\obj\Release\net10.0\GenerativeArt.Studio.csproj.AssemblyReference.cache" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\obj\Release\net10.0\Avalonia\Resources.Inputs.cache" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\obj\Release\net10.0\GenerativeArt.Studio.GeneratedMSBuildEditorConfig.editorconfig" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\obj\Release\net10.0\GenerativeArt.Studio.AssemblyInfoInputs.cache" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\obj\Release\net10.0\GenerativeArt.Studio.AssemblyInfo.cs" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\obj\Release\net10.0\GenerativeArt.Studio.csproj.CoreCompileInputs.cache" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\obj\Release\net10.0\GenerativeArt.Studio.sourcelink.json" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\obj\Release\net10.0\Generati.C8F3F3E6.Up2Date" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\obj\Release\net10.0\GenerativeArt.Studio.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\obj\Release\net10.0\refint\GenerativeArt.Studio.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\obj\Release\net10.0\GenerativeArt.Studio.pdb" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\obj\Release\net10.0\GenerativeArt.Studio.genruntimeconfig.cache" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\obj\Release\net10.0\ref\GenerativeArt.Studio.dll" in corso.
+     1>Compilazione di "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Rendering.Skia.Tests\GenerativeArt.Rendering.Skia.Tests.csproj" (3) dal progetto "E:\sviluppo\2026 gart\GenerativeArt\GenerativeArt.sln" (1) sul nodo 8 (destinazioni: Clean).
+     3>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Rendering.Skia.Tests\bin\Release\net10.0\.msCoverageSourceRootsMapping_GenerativeArt.Rendering.Skia.Tests" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Rendering.Skia.Tests\bin\Release\net10.0\CoverletSourceRootsMapping_GenerativeArt.Rendering.Skia.Tests" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Rendering.Skia.Tests\obj\Release\net10.0\GenerativeArt.Rendering.Skia.Tests.csproj.AssemblyReference.cache" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Rendering.Skia.Tests\obj\Release\net10.0\GenerativeArt.Rendering.Skia.Tests.GeneratedMSBuildEditorConfig.editorconfig" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Rendering.Skia.Tests\obj\Release\net10.0\GenerativeArt.Rendering.Skia.Tests.AssemblyInfoInputs.cache" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Rendering.Skia.Tests\obj\Release\net10.0\GenerativeArt.Rendering.Skia.Tests.AssemblyInfo.cs" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Rendering.Skia.Tests\obj\Release\net10.0\GenerativeArt.Rendering.Skia.Tests.csproj.CoreCompileInputs.cache" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Rendering.Skia.Tests\obj\Release\net10.0\GenerativeArt.Rendering.Skia.Tests.sourcelink.json" in corso.
+     1>Compilazione di "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Rendering.Skia\GenerativeArt.Rendering.Skia.csproj" (5) dal progetto "E:\sviluppo\2026 gart\GenerativeArt\GenerativeArt.sln" (1) sul nodo 7 (destinazioni: Clean).
+     5>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Rendering.Skia\bin\Release\net10.0\GenerativeArt.Rendering.Skia.deps.json" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Rendering.Skia\bin\Release\net10.0\GenerativeArt.Rendering.Skia.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Rendering.Skia\bin\Release\net10.0\GenerativeArt.Rendering.Skia.pdb" in corso.
+     1>Compilazione di "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Algorithms\GenerativeArt.Algorithms.csproj" (4) dal progetto "E:\sviluppo\2026 gart\GenerativeArt\GenerativeArt.sln" (1) sul nodo 2 (destinazioni: Clean).
+     4>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Algorithms\bin\Release\net10.0\GenerativeArt.Algorithms.deps.json" in corso.
+     5>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Rendering.Skia\bin\Release\net10.0\GenerativeArt.Algorithms.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Rendering.Skia\bin\Release\net10.0\GenerativeArt.Application.dll" in corso.
+     4>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Algorithms\bin\Release\net10.0\GenerativeArt.Algorithms.dll" in corso.
+     5>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Rendering.Skia\bin\Release\net10.0\GenerativeArt.Core.dll" in corso.
+     4>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Algorithms\bin\Release\net10.0\GenerativeArt.Algorithms.pdb" in corso.
+     5>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Rendering.Skia\bin\Release\net10.0\GenerativeArt.Core.pdb" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Rendering.Skia\bin\Release\net10.0\GenerativeArt.Application.pdb" in corso.
+     4>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Algorithms\bin\Release\net10.0\GenerativeArt.Core.dll" in corso.
+     5>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Rendering.Skia\bin\Release\net10.0\GenerativeArt.Algorithms.pdb" in corso.
+     4>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Algorithms\bin\Release\net10.0\GenerativeArt.Core.pdb" in corso.
+     1>Compilazione di "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\GenerativeArt.Core.Tests.csproj" (8) dal progetto "E:\sviluppo\2026 gart\GenerativeArt\GenerativeArt.sln" (1) sul nodo 3 (destinazioni: Clean).
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\.msCoverageSourceRootsMapping_GenerativeArt.Core.Tests" in corso.
+     5>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Rendering.Skia\obj\Release\net10.0\GenerativeArt.Rendering.Skia.csproj.AssemblyReference.cache" in corso.
+     4>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Algorithms\obj\Release\net10.0\GenerativeArt.Algorithms.csproj.AssemblyReference.cache" in corso.
+     5>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Rendering.Skia\obj\Release\net10.0\GenerativeArt.Rendering.Skia.GeneratedMSBuildEditorConfig.editorconfig" in corso.
+     4>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Algorithms\obj\Release\net10.0\GenerativeArt.Algorithms.GeneratedMSBuildEditorConfig.editorconfig" in corso.
+     1>Compilazione di "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\GenerativeArt.Application.Tests.csproj" (7) dal progetto "E:\sviluppo\2026 gart\GenerativeArt\GenerativeArt.sln" (1) sul nodo 4 (destinazioni: Clean).
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\.msCoverageSourceRootsMapping_GenerativeArt.Application.Tests" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\CoverletSourceRootsMapping_GenerativeArt.Core.Tests" in corso.
+     5>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Rendering.Skia\obj\Release\net10.0\GenerativeArt.Rendering.Skia.AssemblyInfoInputs.cache" in corso.
+     4>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Algorithms\obj\Release\net10.0\GenerativeArt.Algorithms.AssemblyInfoInputs.cache" in corso.
+     5>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Rendering.Skia\obj\Release\net10.0\GenerativeArt.Rendering.Skia.AssemblyInfo.cs" in corso.
+     4>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Algorithms\obj\Release\net10.0\GenerativeArt.Algorithms.AssemblyInfo.cs" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\CoverletSourceRootsMapping_GenerativeArt.Application.Tests" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\testhost.dll" in corso.
+     4>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Algorithms\obj\Release\net10.0\GenerativeArt.Algorithms.csproj.CoreCompileInputs.cache" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\xunit.abstractions.dll" in corso.
+     5>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Rendering.Skia\obj\Release\net10.0\GenerativeArt.Rendering.Skia.csproj.CoreCompileInputs.cache" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\testhost.dll" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\testhost.exe" in corso.
+     5>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Rendering.Skia\obj\Release\net10.0\GenerativeArt.Rendering.Skia.sourcelink.json" in corso.
+     4>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Algorithms\obj\Release\net10.0\GenerativeArt.Algorithms.sourcelink.json" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\xunit.abstractions.dll" in corso.
+     5>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Rendering.Skia\obj\Release\net10.0\Generati.49868778.Up2Date" in corso.
+     4>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Algorithms\obj\Release\net10.0\Generati.965767BC.Up2Date" in corso.
+     5>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Rendering.Skia\obj\Release\net10.0\GenerativeArt.Rendering.Skia.dll" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\xunit.runner.visualstudio.testadapter.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\testhost.exe" in corso.
+     4>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Algorithms\obj\Release\net10.0\GenerativeArt.Algorithms.dll" in corso.
+     5>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Rendering.Skia\obj\Release\net10.0\refint\GenerativeArt.Rendering.Skia.dll" in corso.
+     4>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Algorithms\obj\Release\net10.0\refint\GenerativeArt.Algorithms.dll" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\GenerativeArt.Core.Tests.deps.json" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\ExperimentalRecipes\domain-warp-silk-topaz-1920.json" in corso.
+     5>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Rendering.Skia\obj\Release\net10.0\GenerativeArt.Rendering.Skia.pdb" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\GenerativeArt.Core.Tests.runtimeconfig.json" in corso.
+     4>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Algorithms\obj\Release\net10.0\GenerativeArt.Algorithms.pdb" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\ExperimentalRecipes\engraving-verdigris-1920.json" in corso.
+     5>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Rendering.Skia\obj\Release\net10.0\ref\GenerativeArt.Rendering.Skia.dll" in corso.
+     4>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Algorithms\obj\Release\net10.0\ref\GenerativeArt.Algorithms.dll" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\GenerativeArt.Core.Tests.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\ExperimentalRecipes\flow-brush-silk-rain-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\GenerativeArt.Core.Tests.pdb" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\ExperimentalRecipes\guilloche-moiré-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\Microsoft.VisualStudio.CodeCoverage.Shim.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\ExperimentalRecipes\lic-curl-bronze-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\Microsoft.TestPlatform.CoreUtilities.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\ExperimentalRecipes\paper-cut-porcelain-wave-1920.json" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\ExperimentalRecipes\sdf-chromatic-fog-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\Microsoft.TestPlatform.PlatformAbstractions.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\ExperimentalRecipes\sdf-geode-glass-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\Microsoft.TestPlatform.CommunicationUtilities.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\ExperimentalRecipes\strata-aurora-ridge-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\Microsoft.TestPlatform.CrossPlatEngine.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\ExperimentalRecipes\voronoi-ceramic-moon-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\Microsoft.TestPlatform.Utilities.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\WaveInterferenceRecipes\wave-chromatic-scatter-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\Microsoft.VisualStudio.TestPlatform.Common.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\Newtonsoft.Json.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\WaveInterferenceRecipes\wave-copper-caustics-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\xunit.assert.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\xunit.core.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\WaveInterferenceRecipes\wave-nocturne-ribbons-1920.json" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\WaveInterferenceRecipes\wave-paper-moire-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\xunit.execution.dotnet.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\cs\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\WaveInterferenceRecipes\wave-tidal-rosettes-1920.json" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\EightKRecipes\guilloche-security-8k.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\cs\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\EightKRecipes\poisson-cobalt-8k.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\de\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\EightKRecipes\streamlines-aurora-8k.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\de\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\EightKRecipes\voronoi-glass-8k.json" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\NaturePatternRecipes\phyllotaxis-luminous-galaxy-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\es\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\NaturePatternRecipes\phyllotaxis-organic-corolla-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\es\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\NaturePatternRecipes\phyllotaxis-rose-petals-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\fr\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\NaturePatternRecipes\phyllotaxis-sunflower-gold-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\fr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\NaturePatternRecipes\reaction-diffusion-copper-coral-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\it\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\NaturePatternRecipes\reaction-diffusion-isolines-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\it\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\NaturePatternRecipes\reaction-diffusion-lichen-cells-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\ja\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\NaturePatternRecipes\reaction-diffusion-tidal-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\ja\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\EightKFinishRecipes\guilloche-security-print-8k.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\ko\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+     1>Compilazione di "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Application\GenerativeArt.Application.csproj" (9) dal progetto "E:\sviluppo\2026 gart\GenerativeArt\GenerativeArt.sln" (1) sul nodo 10 (destinazioni: Clean).
+     9>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Application\bin\Release\net10.0\GenerativeArt.Application.deps.json" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\EightKFinishRecipes\streamlines-aurora-ink-8k.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\ko\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\EightKFinishRecipes\voronoi-cotton-pigment-8k.json" in corso.
+     9>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Application\bin\Release\net10.0\GenerativeArt.Application.dll" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\pl\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG1Recipes\alien-letters-mineral-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\pl\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+     9>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Application\bin\Release\net10.0\GenerativeArt.Application.pdb" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG1Recipes\alien-letters-minimal-1920.json" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG1Recipes\alien-letters-neon-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\pt-BR\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+     9>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Application\bin\Release\net10.0\GenerativeArt.Core.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG1Recipes\cotton-circles-lagoon-1920.json" in corso.
+     9>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Application\bin\Release\net10.0\GenerativeArt.Core.pdb" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\pt-BR\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG1Recipes\cotton-circles-paper-1920.json" in corso.
+     9>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Application\obj\Release\net10.0\GenerativeArt.Application.csproj.AssemblyReference.cache" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\ru\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG1Recipes\cotton-circles-terracotta-1920.json" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG1Recipes\rigor-letterpress-1920.json" in corso.
+     1>Compilazione di "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\GenerativeArt.Algorithms.Tests.csproj" (10) dal progetto "E:\sviluppo\2026 gart\GenerativeArt\GenerativeArt.sln" (1) sul nodo 6 (destinazioni: Clean).
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\.msCoverageSourceRootsMapping_GenerativeArt.Algorithms.Tests" in corso.
+     9>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Application\obj\Release\net10.0\GenerativeArt.Application.GeneratedMSBuildEditorConfig.editorconfig" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\ru\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG1Recipes\rigor-midnight-1920.json" in corso.
+     9>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Application\obj\Release\net10.0\GenerativeArt.Application.AssemblyInfoInputs.cache" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG1Recipes\rigor-pattern-1920.json" in corso.
+     9>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Application\obj\Release\net10.0\GenerativeArt.Application.AssemblyInfo.cs" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\tr\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\CoverletSourceRootsMapping_GenerativeArt.Algorithms.Tests" in corso.
+     9>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Application\obj\Release\net10.0\GenerativeArt.Application.csproj.CoreCompileInputs.cache" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG2Recipes\crinis-copper-woven-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\tr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+     9>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Application\obj\Release\net10.0\GenerativeArt.Application.sourcelink.json" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\testhost.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG2Recipes\crinis-forest-relief-1920.json" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\xunit.abstractions.dll" in corso.
+     9>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Application\obj\Release\net10.0\Generati.C9E9CA3A.Up2Date" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\zh-Hans\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG2Recipes\crinis-indigo-twists-1920.json" in corso.
+     9>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Application\obj\Release\net10.0\GenerativeArt.Application.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\testhost.exe" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\zh-Hans\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\xunit.runner.visualstudio.testadapter.dll" in corso.
+     9>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Application\obj\Release\net10.0\refint\GenerativeArt.Application.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG2Recipes\crinis-silk-fibres-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\zh-Hant\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+     9>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Application\obj\Release\net10.0\GenerativeArt.Application.pdb" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\GenerativeArt.Algorithms.Tests.deps.json" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG2Recipes\flamebrush-blue-whorls-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+     9>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Application\obj\Release\net10.0\ref\GenerativeArt.Application.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\GenerativeArt.Algorithms.Tests.runtimeconfig.json" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG2Recipes\flamebrush-ember-coils-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\cs\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\GenerativeArt.Algorithms.Tests.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG2Recipes\flamebrush-mint-orbits-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\cs\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\GenerativeArt.Algorithms.Tests.pdb" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG2Recipes\flamebrush-orchid-cloud-1920.json" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\Microsoft.VisualStudio.CodeCoverage.Shim.dll" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\cs\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\Microsoft.TestPlatform.CoreUtilities.dll" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\de\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG3Recipes\eclectic-chalk-weave-1920.json" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\Microsoft.TestPlatform.PlatformAbstractions.dll" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\de\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG3Recipes\eclectic-neon-rivers-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\de\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\Microsoft.TestPlatform.CommunicationUtilities.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG3Recipes\eclectic-night-current-1920.json" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\Microsoft.TestPlatform.CrossPlatEngine.dll" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\es\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\Microsoft.TestPlatform.Utilities.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG3Recipes\eclectic-terra-threads-1920.json" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\Microsoft.VisualStudio.TestPlatform.Common.dll" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\es\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\Newtonsoft.Json.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG3Recipes\fascia-copper-fog-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\es\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\xunit.assert.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG3Recipes\fascia-ink-spray-1920.json" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\xunit.core.dll" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\fr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG3Recipes\fascia-lagoon-tides-1920.json" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\xunit.execution.dotnet.dll" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\fr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG3Recipes\fascia-midnight-ribbons-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\fr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\cs\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\CrinisR2Recipes\crinis-ethereal-weave-1920.json" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\CrinisR2Recipes\crinis-linen-drift-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\it\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\cs\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\it\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\CrinisR2Recipes\crinis-moon-thread-1920.json" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\de\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\it\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\CrinisR2Recipes\crinis-velvet-depth-1920.json" in corso.
+     1>Compilazione di "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\GenerativeArt.Cli.csproj" (6) dal progetto "E:\sviluppo\2026 gart\GenerativeArt\GenerativeArt.sln" (1) sul nodo 5 (destinazioni: Clean).
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\GenerativeArt.Cli.exe" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\de\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\ja\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\CrinisMicroRecipes\crinis-botanical-flax-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\ja\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\es\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\GenerativeArt.Cli.deps.json" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\CrinisMicroRecipes\crinis-cincinnus-crimson-2000.json" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\es\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\ja\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\GenerativeArt.Cli.runtimeconfig.json" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\CrinisMicroRecipes\crinis-cincinnus-magenta-2000.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\ko\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\fr\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\GenerativeArt.Cli.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\CrinisMicroRecipes\crinis-copper-velvet-1920.json" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\GenerativeArt.Cli.pdb" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\ko\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\fr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\CrinisMicroRecipes\crinis-tissue-night-1920.json" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\SkiaSharp.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\CrinisMicroRecipes\crinis-ultralight-silk-1920.json" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\runtimes\linux-arm\native\libSkiaSharp.so" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\it\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\ko\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\runtimes\linux-arm64\native\libSkiaSharp.so" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\pl\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\it\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\CrinisR5Recipes\crinis-cincinnus-deep-crimson-2000.json" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\runtimes\linux-bionic-arm64\native\libSkiaSharp.so" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\pl\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\ja\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\CrinisR5Recipes\crinis-user-reference-fine-weave.json" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\runtimes\linux-bionic-x64\native\libSkiaSharp.so" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\pl\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\ja\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\CrinisR5Recipes\crinis-user-reference-original.json" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\runtimes\linux-loongarch64\native\libSkiaSharp.so" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\ko\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\CrinisR7Recipes\crinis-indigo-bold-volume-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\pt-BR\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\runtimes\linux-musl-arm\native\libSkiaSharp.so" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\CrinisR7Recipes\crinis-user-dense-indigo-original.json" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\ko\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\pt-BR\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\runtimes\linux-musl-arm64\native\libSkiaSharp.so" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\pl\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\runtimes\linux-musl-loongarch64\native\libSkiaSharp.so" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\CrinisR8Recipes\crinis-indigo-contact-shadow-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\pt-BR\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\pl\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\CrinisR8Recipes\crinis-user-dense-indigo-overlap-reference.json" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\runtimes\linux-musl-riscv64\native\libSkiaSharp.so" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\ru\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\CrinisR9Recipes\crinis-copper-rimlight-1920.json" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\runtimes\linux-musl-x64\native\libSkiaSharp.so" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\pt-BR\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\ru\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\runtimes\linux-riscv64\native\libSkiaSharp.so" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\CrinisR9Recipes\crinis-indigo-expanded-1920.json" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\runtimes\linux-x64\native\libSkiaSharp.so" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\pt-BR\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\CrinisR9Recipes\crinis-indigo-sculpted-volume-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\ru\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\runtimes\linux-x86\native\libSkiaSharp.so" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\CrinisR10Recipes\crinis-indigo-r10-tridimensionale-1920.json" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\ru\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\runtimes\osx\native\libSkiaSharp.dylib" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\tr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\CrinisR10Recipes\crinis-r9-originale-utente.json" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\runtimes\win-arm64\native\libSkiaSharp.dll" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\tr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\ru\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\CrinisR10Recipes\crinis-rame-r10-luce-e-fibre-1920.json" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\runtimes\win-arm64\native\libSkiaSharp.pdb" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\tr\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\tr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG4Recipes\ocellus-corallo-liquido-1920.json" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\runtimes\win-x64\native\libSkiaSharp.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\tr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG4Recipes\ocellus-incisione-grigia-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\zh-Hans\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\runtimes\win-x64\native\libSkiaSharp.pdb" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\zh-Hans\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG4Recipes\ocellus-muschio-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\zh-Hans\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG4Recipes\ocellus-solare-1920.json" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\runtimes\win-x86\native\libSkiaSharp.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\zh-Hans\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\zh-Hans\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG4Recipes\rete-bianchi-neri-1920.json" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\runtimes\win-x86\native\libSkiaSharp.pdb" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\zh-Hant\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG4Recipes\rete-glaciale-1920.json" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\GenerativeArt.Algorithms.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG4Recipes\rete-notturna-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\GenerativeArt.Application.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG4Recipes\rete-seppia-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\cs\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\GenerativeArt.Core.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG4R2Recipes\ocellus-corallo-rilievo-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\GenerativeArt.Core.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG4R2Recipes\ocellus-grafite-bordi-1920.json" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\cs\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\GenerativeArt.Rendering.Skia.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG4R2Recipes\ocellus-solare-interstizi-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\GenerativeArt.Core.pdb" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\cs\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\GenerativeArt.Application.pdb" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG4R2Recipes\rete-glaciale-nodi-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\obj\Release\net10.0\GenerativeArt.Core.Tests.csproj.AssemblyReference.cache" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG4R2Recipes\rete-notturna-pellicole-1920.json" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\GenerativeArt.Core.pdb" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\de\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\obj\Release\net10.0\GenerativeArt.Core.Tests.GeneratedMSBuildEditorConfig.editorconfig" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\GenerativeArt.Algorithms.pdb" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GartG4R2Recipes\rete-seppia-membrane-1920.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\obj\Release\net10.0\GenerativeArt.Core.Tests.AssemblyInfoInputs.cache" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\de\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\GenerativeArt.Rendering.Skia.pdb" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\CincinnusRecipes\cincinnus-adaptive-ocean-768.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\obj\Release\net10.0\GenerativeArt.Core.Tests.AssemblyInfo.cs" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\de\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\obj\Release\net10.0\GenerativeArt.Cli.csproj.AssemblyReference.cache" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\CincinnusRecipes\cincinnus-simple-crimson-768.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\obj\Release\net10.0\GenerativeArt.Core.Tests.csproj.CoreCompileInputs.cache" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\es\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\CincinnusRecipes\cincinnus-simple-moss-768.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\obj\Release\net10.0\GenerativeArt.Core.Tests.sourcelink.json" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\obj\Release\net10.0\GenerativeArt.Cli.GeneratedMSBuildEditorConfig.editorconfig" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\es\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\obj\Release\net10.0\GenerativeArt.Cli.AssemblyInfoInputs.cache" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\xunit.runner.visualstudio.testadapter.dll" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\obj\Release\net10.0\Generati.02AB10C2.Up2Date" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\es\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\obj\Release\net10.0\GenerativeArt.Cli.AssemblyInfo.cs" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\obj\Release\net10.0\GenerativeArt.Core.Tests.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GenerativeArt.Application.Tests.deps.json" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\obj\Release\net10.0\GenerativeArt.Cli.csproj.CoreCompileInputs.cache" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\fr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\obj\Release\net10.0\refint\GenerativeArt.Core.Tests.dll" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\obj\Release\net10.0\GenerativeArt.Cli.sourcelink.json" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GenerativeArt.Application.Tests.runtimeconfig.json" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\obj\Release\net10.0\GenerativeArt.Core.Tests.pdb" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\fr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\obj\Release\net10.0\Generati.3F5DE70C.Up2Date" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GenerativeArt.Application.Tests.dll" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\obj\Release\net10.0\GenerativeArt.Cli.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\fr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\obj\Release\net10.0\GenerativeArt.Core.Tests.genruntimeconfig.cache" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GenerativeArt.Application.Tests.pdb" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\obj\Release\net10.0\refint\GenerativeArt.Cli.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\it\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\Microsoft.VisualStudio.CodeCoverage.Shim.dll" in corso.
+     8>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\obj\Release\net10.0\ref\GenerativeArt.Core.Tests.dll" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\obj\Release\net10.0\GenerativeArt.Cli.pdb" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\it\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\Microsoft.TestPlatform.CoreUtilities.dll" in corso.
+     6>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\obj\Release\net10.0\GenerativeArt.Cli.genruntimeconfig.cache" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\obj\Release\net10.0\ref\GenerativeArt.Cli.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\it\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\Microsoft.TestPlatform.PlatformAbstractions.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\ja\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\ja\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\Microsoft.TestPlatform.CommunicationUtilities.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\ja\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\Microsoft.TestPlatform.CrossPlatEngine.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\Microsoft.TestPlatform.Utilities.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\ko\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\Microsoft.VisualStudio.TestPlatform.Common.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\ko\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\Newtonsoft.Json.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\ko\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\xunit.assert.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\pl\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\xunit.core.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\pl\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\xunit.execution.dotnet.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\pl\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\cs\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\pt-BR\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\cs\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\pt-BR\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\de\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\pt-BR\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\de\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\ru\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\es\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\ru\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\es\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\ru\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\fr\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\tr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\tr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\fr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\tr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\it\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\zh-Hans\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\it\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\zh-Hans\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\ja\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\zh-Hans\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\ja\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\ko\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\ko\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\GenerativeArt.Algorithms.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\pl\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\GenerativeArt.Core.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\pl\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\GenerativeArt.Algorithms.pdb" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\GenerativeArt.Core.pdb" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\pt-BR\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\pt-BR\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\obj\Release\net10.0\GenerativeArt.Algorithms.Tests.csproj.AssemblyReference.cache" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\obj\Release\net10.0\GenerativeArt.Algorithms.Tests.GeneratedMSBuildEditorConfig.editorconfig" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\ru\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\obj\Release\net10.0\GenerativeArt.Algorithms.Tests.AssemblyInfoInputs.cache" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\obj\Release\net10.0\GenerativeArt.Algorithms.Tests.AssemblyInfo.cs" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\ru\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+     1>Compilazione di "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Core\GenerativeArt.Core.csproj" (11) dal progetto "E:\sviluppo\2026 gart\GenerativeArt\GenerativeArt.sln" (1) sul nodo 9 (destinazioni: Clean).
+    11>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Core\bin\Release\net10.0\GenerativeArt.Core.deps.json" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\obj\Release\net10.0\GenerativeArt.Algorithms.Tests.csproj.CoreCompileInputs.cache" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\tr\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\obj\Release\net10.0\GenerativeArt.Algorithms.Tests.sourcelink.json" in corso.
+    11>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Core\bin\Release\net10.0\GenerativeArt.Core.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\tr\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\obj\Release\net10.0\Generati.B0B8D91B.Up2Date" in corso.
+    11>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Core\bin\Release\net10.0\GenerativeArt.Core.pdb" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\zh-Hans\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\obj\Release\net10.0\GenerativeArt.Algorithms.Tests.dll" in corso.
+    11>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Core\obj\Release\net10.0\GenerativeArt.Core.GeneratedMSBuildEditorConfig.editorconfig" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\zh-Hans\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\obj\Release\net10.0\refint\GenerativeArt.Algorithms.Tests.dll" in corso.
+    11>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Core\obj\Release\net10.0\GenerativeArt.Core.AssemblyInfoInputs.cache" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\zh-Hant\Microsoft.TestPlatform.CoreUtilities.resources.dll" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\obj\Release\net10.0\GenerativeArt.Algorithms.Tests.pdb" in corso.
+    11>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Core\obj\Release\net10.0\GenerativeArt.Core.AssemblyInfo.cs" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\obj\Release\net10.0\GenerativeArt.Algorithms.Tests.genruntimeconfig.cache" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll" in corso.
+    11>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Core\obj\Release\net10.0\GenerativeArt.Core.csproj.CoreCompileInputs.cache" in corso.
+    10>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\obj\Release\net10.0\ref\GenerativeArt.Algorithms.Tests.dll" in corso.
+    11>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Core\obj\Release\net10.0\GenerativeArt.Core.sourcelink.json" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\cs\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+    11>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Core\obj\Release\net10.0\GenerativeArt.Core.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\cs\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+    11>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Core\obj\Release\net10.0\refint\GenerativeArt.Core.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\cs\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+    11>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Core\obj\Release\net10.0\GenerativeArt.Core.pdb" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\de\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+    11>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Core\obj\Release\net10.0\ref\GenerativeArt.Core.dll" in corso.
+     7>CoreClean:
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\de\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\de\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\es\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\es\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\es\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\fr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\fr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\fr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\it\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\it\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\it\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\ja\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\ja\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\ja\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\ko\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\ko\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\ko\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\pl\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\pl\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\pl\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\pt-BR\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\pt-BR\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\pt-BR\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\ru\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\ru\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\ru\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\tr\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\tr\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\tr\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\zh-Hans\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\zh-Hans\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\zh-Hans\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GenerativeArt.Application.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GenerativeArt.Core.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GenerativeArt.Application.pdb" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GenerativeArt.Core.pdb" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\obj\Release\net10.0\GenerativeArt.Application.Tests.csproj.AssemblyReference.cache" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\obj\Release\net10.0\GenerativeArt.Application.Tests.GeneratedMSBuildEditorConfig.editorconfig" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\obj\Release\net10.0\GenerativeArt.Application.Tests.AssemblyInfoInputs.cache" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\obj\Release\net10.0\GenerativeArt.Application.Tests.AssemblyInfo.cs" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\obj\Release\net10.0\GenerativeArt.Application.Tests.csproj.CoreCompileInputs.cache" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\obj\Release\net10.0\GenerativeArt.Application.Tests.sourcelink.json" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\obj\Release\net10.0\Generati.24C6D843.Up2Date" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\obj\Release\net10.0\GenerativeArt.Application.Tests.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\obj\Release\net10.0\refint\GenerativeArt.Application.Tests.dll" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\obj\Release\net10.0\GenerativeArt.Application.Tests.pdb" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\obj\Release\net10.0\GenerativeArt.Application.Tests.genruntimeconfig.cache" in corso.
+         Eliminazione del file "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\obj\Release\net10.0\ref\GenerativeArt.Application.Tests.dll" in corso.
+    11>Compilazione progetto "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Core\GenerativeArt.Core.csproj" (destinazioni: Clean) completata.
+     9>Compilazione progetto "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Application\GenerativeArt.Application.csproj" (destinazioni: Clean) completata.
+     4>Compilazione progetto "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Algorithms\GenerativeArt.Algorithms.csproj" (destinazioni: Clean) completata.
+     5>Compilazione progetto "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Rendering.Skia\GenerativeArt.Rendering.Skia.csproj" (destinazioni: Clean) completata.
+     2>Compilazione progetto "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\GenerativeArt.Studio.csproj" (destinazioni: Clean) completata.
+     6>Compilazione progetto "E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\GenerativeArt.Cli.csproj" (destinazioni: Clean) completata.
+     8>Compilazione progetto "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\GenerativeArt.Core.Tests.csproj" (destinazioni: Clean) completata.
+     7>Compilazione progetto "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\GenerativeArt.Application.Tests.csproj" (destinazioni: Clean) completata.
+    10>Compilazione progetto "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\GenerativeArt.Algorithms.Tests.csproj" (destinazioni: Clean) completata.
+     3>Compilazione progetto "E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Rendering.Skia.Tests\GenerativeArt.Rendering.Skia.Tests.csproj" (destinazioni: Clean) completata.
+     1>Compilazione progetto "E:\sviluppo\2026 gart\GenerativeArt\GenerativeArt.sln" (destinazioni: Clean) completata.
+
+Compilazione completata.
+    Avvisi: 0
+    Errori: 0
+
+Tempo trascorso 00:00:00.84
+dotnet restore GenerativeArt.sln
+  Individuazione dei progetti da ripristinare...
+  E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Algorithms\GenerativeArt.Algorithms.csproj ripristinato (in 113 ms).
+  E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Core\GenerativeArt.Core.csproj ripristinato (in 113 ms).
+  E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Application\GenerativeArt.Application.csproj ripristinato (in 113 ms).
+  E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Rendering.Skia\GenerativeArt.Rendering.Skia.csproj ripristinato (in 132 ms).
+  E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\GenerativeArt.Cli.csproj ripristinato (in 132 ms).
+  E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\GenerativeArt.Core.Tests.csproj ripristinato (in 169 ms).
+  E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\GenerativeArt.Application.Tests.csproj ripristinato (in 169 ms).
+  E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\GenerativeArt.Algorithms.Tests.csproj ripristinato (in 169 ms).
+  E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Rendering.Skia.Tests\GenerativeArt.Rendering.Skia.Tests.csproj ripristinato (in 170 ms).
+  E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\GenerativeArt.Studio.csproj ripristinato (in 196 ms).
+dotnet build GenerativeArt.sln --no-restore -c Release
+  GenerativeArt.Core -> E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Core\bin\Release\net10.0\GenerativeArt.Core.dll
+  GenerativeArt.Application -> E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Application\bin\Release\net10.0\GenerativeArt.Application.dll
+  GenerativeArt.Algorithms -> E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Algorithms\bin\Release\net10.0\GenerativeArt.Algorithms.dll
+  GenerativeArt.Core.Tests -> E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Core.Tests\bin\Release\net10.0\GenerativeArt.Core.Tests.dll
+  GenerativeArt.Application.Tests -> E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Application.Tests\bin\Release\net10.0\GenerativeArt.Application.Tests.dll
+  GenerativeArt.Algorithms.Tests -> E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Algorithms.Tests\bin\Release\net10.0\GenerativeArt.Algorithms.Tests.dll
+  GenerativeArt.Rendering.Skia -> E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Rendering.Skia\bin\Release\net10.0\GenerativeArt.Rendering.Skia.dll
+  GenerativeArt.Cli -> E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Cli\bin\Release\net10.0\GenerativeArt.Cli.dll
+E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Rendering.Skia.Tests\CincinnusBristlePainterTests.cs(57,9): error xUnit2012: Do not use Assert.True() to check if a value exists in a collection. Use Assert.Contains instead. (https://xunit.net/xunit.analyzers/rules/xUnit2012) [E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Rendering.Skia.Tests\GenerativeArt.Rendering.Skia.Tests.csproj]
+  GenerativeArt.Studio -> E:\sviluppo\2026 gart\GenerativeArt\src\GenerativeArt.Studio\bin\Release\net10.0\GenerativeArt.Studio.dll
+
+Compilazione NON RIUSCITA.
+
+E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Rendering.Skia.Tests\CincinnusBristlePainterTests.cs(57,9): error xUnit2012: Do not use Assert.True() to check if a value exists in a collection. Use Assert.Contains instead. (https://xunit.net/xunit.analyzers/rules/xUnit2012) [E:\sviluppo\2026 gart\GenerativeArt\tests\GenerativeArt.Rendering.Skia.Tests\GenerativeArt.Rendering.Skia.Tests.csproj]
+    Avvisi: 0
+    Errori: 1
+
+Tempo trascorso 00:00:09.50
+powershell.exe : E:\sviluppo\2026 gart\GenerativeArt\tools\validate.ps1 : Comando dotnet fallito (exit code 1).
+In riga:6 car:1
++ & powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\tools\val ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (E:\sviluppo\202... (exit code 1).:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+In E:\sviluppo\2026 gart\GenerativeArt\tools\validate.ps1:33 car:5
++     Write-Error $_
++     ~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorException
+    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,validate.ps1
+ 

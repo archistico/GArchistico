@@ -1,0 +1,33 @@
+{
+  "formatVersion": 1,
+  "artworkId": "wave-interference",
+  "algorithmVersion": 1,
+  "seed": "1618033988",
+  "width": 1920,
+  "height": 1080,
+  "parameters": {
+    "sources": 6,
+    "layout": "ring",
+    "spread": 0.65,
+    "frequency": 34,
+    "falloff": 0,
+    "mode": "ribbons",
+    "distortion": 0.06,
+    "contrast": 2.8,
+    "gamma": 1.3,
+    "palette": "copper",
+    "gradient-color-1": "auto",
+    "gradient-color-2": "auto",
+    "gradient-color-3": "auto",
+    "gradient-color-4": "auto",
+    "render-quality": "standard",
+    "grain-amount": 0,
+    "grain-size": 1,
+    "dither-mode": "bayer8",
+    "dither-levels": 12,
+    "paper-texture": "rough",
+    "paper-strength": 0.1,
+    "pigment-granulation": 0.08,
+    "ink-absorption": 0
+  }
+}

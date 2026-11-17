@@ -1,0 +1,25 @@
+{
+  "formatVersion": 1,
+  "artworkId": "rigor-grid",
+  "algorithmVersion": 1,
+  "seed": "222",
+  "width": 1920,
+  "height": 1080,
+  "parameters": {
+    "columns": 13,
+    "rows": 9,
+    "period": 3,
+    "accent-rate": 0.25,
+    "letters": "igor",
+    "letter-tilt": 12,
+    "reach": 3.3,
+    "neighbor-tilt": 6.5,
+    "push": 0.11,
+    "tile-scale": 0.84,
+    "palette": "night",
+    "background-color": "auto",
+    "ink-color": "auto",
+    "accent-color": "auto",
+    "render-quality": "standard"
+  }
+}

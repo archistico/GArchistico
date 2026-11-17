@@ -41,3 +41,20 @@ La licenza per il nuovo framework GenerativeArt andrà scelta formalmente prima 
 ### Fonte Go esaminata direttamente in M3B
 
 Analizzato lo ZIP completo `jdxyw-generativeart-master.zip` (commit dell'archivio `94bc7231d62ec996d4777c6cd4429c88e3b87b7e`). Licenza originale MIT: `licenses/JDXYW_MIT.txt`. Implementazioni nuove come la griglia bilineare, il campo curl e il tracing spaziale sono realizzate in C# con API del nostro framework, basate su concetti algoritmici generali: **nessun file `.go` incluso**. Per un futuro porting fedele di specifici sorgenti mantenere tutti gli avvisi di copyright e licenza pertinenti.
+
+## M4E.3-G1-R1 — Grammatiche modulari ispirate a Gȧrt
+
+I generatori `alien-letters`, `cotton-circles` e `rigor-grid` sono reimplementazioni C# parametrizzate delle idee presenti in tre opere Kotlin del progetto Gȧrt di Igor Spasić: `AlienLetter.kt` (V3), `CottonCircles.kt`, `Rigor.kt`. Non sono copie del sorgente e non riproducono bit-identici output o casualità Kotlin. Per attribuzione e termini BSD-2-Clause dell'opera di riferimento vedere `../licenses/GART_BSD2.txt`. Nessun runtime Kotlin è incorporato.
+
+## G3-R3 — Confronto Crinis/Cincinnus
+
+Le tecniche di copertura delle fibre e di stratificazione sono state studiate nelle opere Gȧrt `Cincinnus.kt` e `bristles.kt`. La modalità micro è una nuova implementazione originale C#; i sorgenti Kotlin non sono distribuiti. Licenza di riferimento BSD-2-Clause: `../licenses/GART_BSD2.txt`.
+
+## M4E.3-G4-R1 — Ocellus e Rete
+
+Analizzati direttamente `arts/bubbles/src/ocellus/Ocellus.kt` e `arts/cell/src/rete/Rete.kt`
+nel pacchetto Gȧrt fornito dall'utente (Igor Spasić, BSD-2-Clause, testo in
+`licenses/GART_BSD2.txt`). `OcellusField`, `ReteFoamField` e il renderer sono
+reimplementazioni indipendenti in C# delle idee geometriche descritte dalle due
+opere; non includono il sorgente Kotlin né dipendenze del progetto originale e
+non promettono equivalenza numerica/visiva ai risultati di Gȧrt.

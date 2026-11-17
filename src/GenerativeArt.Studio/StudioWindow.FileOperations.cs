@@ -43,9 +43,8 @@ public sealed partial class StudioWindow
     {
         try
         {
-            await using var stream = new FileStream(path, FileMode.Open, FileAccess.Read,
-                FileShare.Read, bufferSize: 4096, useAsync: true);
-            await LoadRecipeStreamAsync(stream);
+            ArtworkRecipe loaded = await _recipeDocuments.LoadFileAsync(path);
+            SelectArtwork(_catalog.Get(loaded.ArtworkId), loaded);
             await RecordRecentAsync(path);
             SetStatus("Ricetta caricata: " + Path.GetFileName(path));
         }
@@ -54,17 +53,7 @@ public sealed partial class StudioWindow
 
     private async Task LoadRecipeStreamAsync(Stream stream)
     {
-        using var buffer = new MemoryStream();
-        byte[] chunk = new byte[4096];
-        int count;
-        while ((count = await stream.ReadAsync(chunk)) > 0)
-        {
-            if (buffer.Length + count > ArtworkRecipeJson.MaximumUtf8Bytes)
-                throw new InvalidDataException("Ricetta oltre 64 KiB.");
-            buffer.Write(chunk, 0, count);
-        }
-        ArtworkRecipe loaded = ArtworkRecipeJson.Deserialize(buffer.ToArray(), _catalog);
-        _renderer.Validate(loaded, loaded.Animation is null ? null : 0);
+        ArtworkRecipe loaded = await _recipeDocuments.LoadAsync(stream);
         SelectArtwork(_catalog.Get(loaded.ArtworkId), loaded);
     }
 
@@ -73,7 +62,6 @@ public sealed partial class StudioWindow
         try
         {
             ArtworkRecipe recipe = BuildRecipe();
-            byte[] payload = ArtworkRecipeJson.Serialize(recipe, _catalog);
             IStorageFile? file = await StorageProvider.SaveFilePickerAsync(new FilePickerSaveOptions
             {
                 Title = "Salva ricetta", SuggestedFileName = recipe.ArtworkId + ".json",
@@ -81,7 +69,14 @@ public sealed partial class StudioWindow
                 FileTypeChoices = [new FilePickerFileType("Ricette JSON") { Patterns = ["*.json"] }]
             });
             if (file is null) return;
-            await WritePickedFileAsync(file, payload);
+            if (file.Path.IsFile)
+                await _recipeDocuments.SaveFileAsync(file.Path.LocalPath, recipe);
+            else
+            {
+                // I provider virtuali non garantiscono la pubblicazione atomica.
+                await using Stream output = await file.OpenWriteAsync();
+                await _recipeDocuments.SaveStreamAsync(output, recipe);
+            }
             if (file.Path.IsFile)
                 await RecordRecentAsync(file.Path.LocalPath);
             SetStatus("Ricetta salvata: " + file.Name);
@@ -161,22 +156,6 @@ public sealed partial class StudioWindow
                 _previewDeferred = false;
                 SchedulePreview();
             }
-        }
-    }
-
-    private static async Task WritePickedFileAsync(IStorageFile selected, byte[] data)
-    {
-        // Il file picker è l'unica autorizzazione a sovrascrivere; sul file system
-        // l'output viene pubblicato con rename atomico invece di troncare prima.
-        if (selected.Path.IsFile)
-        {
-            await AtomicOutputFiles.WriteAsync(selected.Path.LocalPath, data, overwrite: true);
-        }
-        else
-        {
-            // Provider virtuali: non garantiscono rename atomico.
-            await using Stream stream = await selected.OpenWriteAsync();
-            await stream.WriteAsync(data);
         }
     }
 

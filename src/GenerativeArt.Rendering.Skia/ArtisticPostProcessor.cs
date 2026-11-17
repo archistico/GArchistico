@@ -43,34 +43,44 @@ public static class ArtisticPostProcessor
             MaterialPostProcessor.Apply(pixels, options, seed, cancellationToken);
         if (options.GrainAmount == 0 && options.DitherMode == "none") return;
 
-        bool grain = options.GrainAmount > 0;
-        int matrixSide = options.DitherMode switch { "bayer4" => 4, "bayer8" => 8, _ => 0 };
         for (int y = 0; y < pixels.Height; y++)
         {
             cancellationToken.ThrowIfCancellationRequested();
-            Span<uint> row = pixels.GetWritablePackedArgbRow(y);
-            for (int x = 0; x < row.Length; x++)
+            ApplyGrainAndDitherRow(pixels.GetWritablePackedArgbRow(y), options, seed, y);
+        }
+    }
+
+    /// <summary>
+    /// Kernel cromatico condiviso da PixelBuffer e dal percorso 8K per righe.
+    /// Y è sempre una coordinata assoluta dell'immagine, non della banda.
+    /// </summary>
+    internal static void ApplyGrainAndDitherRow(Span<uint> row, ArtisticFinishOptions options,
+        ulong seed, int y)
+    {
+        if (options.GrainAmount == 0 && options.DitherMode == "none") return;
+        bool grain = options.GrainAmount > 0;
+        int matrixSide = options.DitherMode switch { "bayer4" => 4, "bayer8" => 8, _ => 0 };
+        for (int x = 0; x < row.Length; x++)
+        {
+            Color32 color = Color32.FromArgb(row[x]);
+            // Nessun colore nascosto viene generato nei pixel completamente trasparenti.
+            if (color.A == 0) continue;
+            int delta = grain ? GrainOffset(seed, x / options.GrainSize,
+                y / options.GrainSize, options.GrainAmount) : 0;
+            int r = Math.Clamp(color.R + delta, 0, 255);
+            int g = Math.Clamp(color.G + delta, 0, 255);
+            int b = Math.Clamp(color.B + delta, 0, 255);
+            if (matrixSide != 0)
             {
-                Color32 color = Color32.FromArgb(row[x]);
-                // Nessun colore nascosto viene generato nei pixel completamente trasparenti.
-                if (color.A == 0) continue;
-                int delta = grain ? GrainOffset(seed, x / options.GrainSize,
-                    y / options.GrainSize, options.GrainAmount) : 0;
-                int r = Math.Clamp(color.R + delta, 0, 255);
-                int g = Math.Clamp(color.G + delta, 0, 255);
-                int b = Math.Clamp(color.B + delta, 0, 255);
-                if (matrixSide != 0)
-                {
-                    ReadOnlySpan<byte> matrix = matrixSide == 4 ? Bayer4 : Bayer8;
-                    int rank = matrix[(y % matrixSide) * matrixSide + x % matrixSide];
-                    // Soglia ordinata [0,1): bilanciata nel tempo e nello spazio.
-                    double threshold = (rank + 0.5) / (matrixSide * matrixSide);
-                    r = Quantize(r, options.DitherLevels, threshold);
-                    g = Quantize(g, options.DitherLevels, threshold);
-                    b = Quantize(b, options.DitherLevels, threshold);
-                }
-                row[x] = new Color32(color.A, (byte)r, (byte)g, (byte)b).PackedArgb;
+                ReadOnlySpan<byte> matrix = matrixSide == 4 ? Bayer4 : Bayer8;
+                int rank = matrix[(y % matrixSide) * matrixSide + x % matrixSide];
+                // Soglia ordinata [0,1): bilanciata nel tempo e nello spazio.
+                double threshold = (rank + 0.5) / (matrixSide * matrixSide);
+                r = Quantize(r, options.DitherLevels, threshold);
+                g = Quantize(g, options.DitherLevels, threshold);
+                b = Quantize(b, options.DitherLevels, threshold);
             }
+            row[x] = new Color32(color.A, (byte)r, (byte)g, (byte)b).PackedArgb;
         }
     }
 

@@ -1,0 +1,31 @@
+{
+  "formatVersion": 1,
+  "artworkId": "cincinnus-bristles",
+  "algorithmVersion": 1,
+  "seed": "3",
+  "width": 768,
+  "height": 768,
+  "parameters": {
+    "mode": "simple",
+    "vortices": 5,
+    "separation": 110,
+    "half-width-factor": 1.25,
+    "main-strokes": 60,
+    "placement-attempts": 1000,
+    "patch-attempts": 300,
+    "coverage-cell": 20,
+    "adaptive-width": 0.4,
+    "bristle-pitch": 4.6,
+    "hair-width-ratio": 0.65,
+    "body-shade": 0.38,
+    "wide-shadow": 60,
+    "tight-shadow": 10,
+    "wide-opacity": 0.75,
+    "tight-opacity": 0.82,
+    "depth-tone": 0.25,
+    "vertical-tone": 0.8,
+    "require-complete": false,
+    "ink-dots": 4000,
+    "palette": "crimson"
+  }
+}

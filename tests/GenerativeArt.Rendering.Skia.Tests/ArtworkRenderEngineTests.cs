@@ -222,8 +222,13 @@ public sealed class ArtworkRenderEngineTests
     public void NewGeometryRenderersAcceptPosterSizeAndRejectInvalidRecipes(string artworkId)
     {
         Engine.Validate(Recipe(artworkId, width: 4000, height: 4000));
-        Assert.Throws<ArgumentOutOfRangeException>(() =>
-            Engine.Validate(Recipe(artworkId, width: 4097, height: 4000)));
+        // R2: Voronoi e Poisson disegnano direttamente su Skia e ora ammettono
+        // canvas maggiori del vecchio limite 4K; SDF usa buffer per pixel.
+        if (RasterCanvasBudgetPolicy.SupportsEightK(artworkId))
+            Engine.Validate(Recipe(artworkId, width: 4097, height: 4000));
+        else
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
+                Engine.Validate(Recipe(artworkId, width: 4097, height: 4000)));
         ArtworkRecipe small = Recipe(artworkId, width: 160, height: 120);
         byte[] json = ArtworkRecipeJson.Serialize(small, Catalog);
         Assert.Equal(Render(small), Render(ArtworkRecipeJson.Deserialize(json, Catalog)));

@@ -25,6 +25,7 @@ public sealed class SkiaRasterSurface : IDisposable
         ArgumentNullException.ThrowIfNull(size);
         if (rasterScale is not (1 or 2))
             throw new ArgumentOutOfRangeException(nameof(rasterScale), "Scale raster ammesse: 1 e 2.");
+        RasterCanvasBudgetPolicy.ValidateEightKDimensions(size);
         if (rasterScale == 2 && size.PixelCount * 4L > RasterQualityPolicy.MaximumFineRasterPixels)
             throw new ArgumentOutOfRangeException(nameof(size), "Il canvas 2x supera il budget raster.");
         Size = size;
@@ -34,6 +35,14 @@ public sealed class SkiaRasterSurface : IDisposable
             ?? throw new InvalidOperationException("Creazione della superficie raster Skia fallita.");
         _surface.Canvas.Clear(SKColors.Transparent);
         if (rasterScale == 2) _surface.Canvas.Scale(2f);
+    }
+
+    internal void PaintCincinnus(IReadOnlyList<GenerativeArt.Algorithms.Cincinnus.CincinnusBrushStroke> strokes,
+        long seed, CincinnusPaintOptions options, CancellationToken cancellationToken)
+    {
+        ThrowIfDisposed();
+        CincinnusBristlePainter.Paint(_surface.Canvas, strokes, Size.Width, Size.Height,
+            seed, options, cancellationToken);
     }
 
     public void Clear(Color32 color)
@@ -218,6 +227,89 @@ public sealed class SkiaRasterSurface : IDisposable
         _surface.Canvas.DrawPath(path, edgePaint);
     }
 
+    /// <summary>Faccia illuminata e smussi convessi; alpha applicato una volta alle regioni disgiunte.</summary>
+    public void DrawBeveledConvexPolygon(IReadOnlyList<Vector2> vertices, Color32 fill, Color32 outline,
+        float outlineWidth, float bevelWidth, double relief, double lightAngle)
+    {
+        ThrowIfDisposed();
+        ArgumentNullException.ThrowIfNull(vertices);
+        if (vertices.Count < 3) throw new ArgumentException("Poligono incompleto.", nameof(vertices));
+        EnsureFinitePositive(outlineWidth, nameof(outlineWidth));
+        if (!float.IsFinite(bevelWidth) || bevelWidth < 0 || !double.IsFinite(relief) || relief is < 0 or > 1 ||
+            !double.IsFinite(lightAngle)) throw new ArgumentOutOfRangeException(nameof(relief));
+        Vector2 center = Vector2.Zero;
+        double area = 0;
+        for (int i = 0; i < vertices.Count; i++)
+        {
+            Vector2 a = vertices[i], b = vertices[(i + 1) % vertices.Count];
+            EnsureFinite(a.X, nameof(vertices)); EnsureFinite(a.Y, nameof(vertices));
+            center += a;
+            area += (double)a.X * b.Y - (double)b.X * a.Y;
+        }
+        if (Math.Abs(area) < 1e-8) throw new ArgumentException("Poligono degenere.", nameof(vertices));
+        if (relief == 0) { DrawPolygon(vertices, fill, outline, outlineWidth); return; }
+        center /= vertices.Count;
+        var light = new Vector2((float)Math.Cos(lightAngle), (float)Math.Sin(lightAngle));
+        float radius = float.MaxValue, span = 1;
+        for (int i = 0; i < vertices.Count; i++)
+        {
+            Vector2 a = vertices[i], b = vertices[(i + 1) % vertices.Count], edge = b - a;
+            float length = edge.Length();
+            if (length > 1e-6f)
+                radius = Math.Min(radius, Math.Abs(edge.X * (center.Y - a.Y) - edge.Y * (center.X - a.X)) / length);
+            span = Math.Max(span, Math.Abs(Vector2.Dot(a - center, light)));
+        }
+        float inset = Math.Min(bevelWidth, radius * .38f);
+        float scale = radius > 1e-6f ? 1 - inset / radius : 1;
+        Vector2[] inner = vertices.Select(p => center + (p - center) * scale).ToArray();
+        static SKPath Path(IReadOnlyList<Vector2> points)
+        {
+            using var builder = new SKPathBuilder();
+            builder.MoveTo(points[0].X, points[0].Y);
+            for (int i = 1; i < points.Count; i++) builder.LineTo(points[i].X, points[i].Y);
+            builder.Close();
+            return builder.Detach();
+        }
+        Color32 Lit(double amount) => ArtworkPaint.Mix(fill,
+            amount >= 0 ? new Color32(fill.A, 255, 255, 255) : new Color32(fill.A, 0, 0, 0), Math.Abs(amount));
+        using var outerPath = Path(vertices);
+        using var facePath = Path(inset > 0 ? inner : vertices);
+        using var shader = SKShader.CreateLinearGradient(
+            new SKPoint(center.X + light.X * span, center.Y + light.Y * span),
+            new SKPoint(center.X - light.X * span, center.Y - light.Y * span),
+            [ToSkColor(Lit(.2 * relief)), ToSkColor(Lit(-.24 * relief))], [0f, 1f], SKShaderTileMode.Clamp);
+        using var face = new SKPaint { Shader = shader, IsAntialias = inset <= 0 };
+        int saved = _surface.Canvas.Save();
+        try
+        {
+            if (inset > 0) _surface.Canvas.ClipPath(outerPath, SKClipOperation.Intersect, true);
+            // Niente antialias sui bordi interni condivisi: evita doppio alpha o fughe scure.
+            _surface.Canvas.DrawPath(facePath, face);
+            if (inset > 0)
+                for (int i = 0; i < vertices.Count; i++)
+                {
+                    int j = (i + 1) % vertices.Count;
+                    Vector2 edge = vertices[j] - vertices[i];
+                    float length = edge.Length();
+                    if (length <= 1e-6f) continue;
+                    Vector2 outward = new(edge.Y, -edge.X);
+                    if (area < 0) outward = -outward;
+                    double facing = Vector2.Dot(outward / length, light);
+                    using var strip = Path([vertices[i], vertices[j], inner[j], inner[i]]);
+                    using var paint = new SKPaint
+                    { Color = ToSkColor(Lit(facing * relief * (facing >= 0 ? .48 : .62))), IsAntialias = false };
+                    _surface.Canvas.DrawPath(strip, paint);
+                }
+        }
+        finally { _surface.Canvas.RestoreToCount(saved); }
+        if (outline.A > 0)
+        {
+            using var edgePaint = new SKPaint { Color = ToSkColor(outline), IsAntialias = true,
+                Style = SKPaintStyle.Stroke, StrokeWidth = outlineWidth, StrokeJoin = SKStrokeJoin.Round };
+            _surface.Canvas.DrawPath(outerPath, edgePaint);
+        }
+    }
+
     /// <summary>Copia i pixel managed nella superficie nativa con compositing SrcOver.</summary>
     public void DrawPixels(PixelBuffer pixels, float x = 0, float y = 0, bool nativeResolution = false)
     {
@@ -284,7 +376,14 @@ public sealed class SkiaRasterSurface : IDisposable
             Encode(image, destination);
             return;
         }
-        // Conversione solo se richiesta: la via legacy rimane byte-identica.
+        // Il percorso storico rimane byte-identico fino a 4096² pixel.
+        // Oltre tale budget si applicano le stesse funzioni sulle righe, evitando
+        // una copia completa aggiuntiva in Core.PixelBuffer.
+        if ((long)image.Width * image.Height > ArtisticFinishOptions.LegacyFullFrameFinishPixels)
+        {
+            ArtisticScanlineFinisher.WritePng(image, destination, finishing, seed, cancellationToken);
+            return;
+        }
         using SKBitmap bitmap = SKBitmap.FromImage(image)
             ?? throw new InvalidOperationException("Impossibile leggere lo snapshot per la finitura.");
         PixelBuffer pixels = SkiaPixelAdapter.ToPixelBuffer(bitmap);

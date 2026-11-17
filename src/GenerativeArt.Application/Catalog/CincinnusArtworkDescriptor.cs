@@ -1,0 +1,41 @@
+namespace GenerativeArt.Application.Catalog;
+
+/// <summary>C5: Cincinnus sperimentale, con geometria Simple o Adaptive e palette a otto colori.</summary>
+public static partial class BuiltInArtworkCatalog
+{
+    private static ArtworkDescriptor CincinnusDescriptor() => new("cincinnus-bristles", 1,
+        "Cincinnus · pennellate fluenti", "Pennelli / Fibre",
+        "Campo di vortici esterni, pennellate a setole e copertura Simple o Adaptive. Versione sperimentale C5.",
+        ArtworkCapabilities.Raster,
+        [ArtworkParameterSpec.Choice("mode", "Distribuzione", "simple", ["simple", "adaptive"], "Composizione"),
+         ArtworkParameterSpec.Integer("vortices", "Vortici esterni", 5, 1, 12, "Campo"),
+         ArtworkParameterSpec.Number("separation", "Distanza linee a 2000 px", 110, 30, 280, "Simple"),
+         ArtworkParameterSpec.Number("half-width-factor", "Semilarghezza su distanza", 1.25, .2, 3, "Simple"),
+         ArtworkParameterSpec.Integer("main-strokes", "Pennellate principali", 60, 1, 200, "Adaptive"),
+         ArtworkParameterSpec.Integer("placement-attempts", "Tentativi distribuzione", 1000, 30, 5000, "Adaptive"),
+         ArtworkParameterSpec.Integer("patch-attempts", "Tentativi correzione", 300, 0, 2000, "Adaptive"),
+         ArtworkParameterSpec.Number("coverage-cell", "Passo griglia a 2000 px", 20, 8, 64, "Adaptive"),
+         ArtworkParameterSpec.Number("adaptive-width", "Larghezza relativa", .4, .1, .95, "Adaptive"),
+         ArtworkParameterSpec.Number("bristle-pitch", "Distanza setole a 2000 px", 4.6, 1, 20, "Pennello"),
+         ArtworkParameterSpec.Number("hair-width-ratio", "Spessore delle fibre", .65, .15, 2, "Pennello"),
+         ArtworkParameterSpec.Number("body-shade", "Oscuramento del corpo", .38, 0, 1, "Pennello"),
+         ArtworkParameterSpec.Number("wide-shadow", "Ombra ampia a 2000 px", 60, 0, 160, "Profondità"),
+         ArtworkParameterSpec.Number("tight-shadow", "Ombra vicina a 2000 px", 10, 0, 60, "Profondità"),
+         ArtworkParameterSpec.Number("wide-opacity", "Opacità ombra ampia", .75, 0, 1, "Profondità"),
+         ArtworkParameterSpec.Number("tight-opacity", "Opacità ombra vicina", .82, 0, 1, "Profondità"),
+         ArtworkParameterSpec.Number("depth-tone", "Variazione cromatica per profondità", .25, 0, 2, "Profondità"),
+         ArtworkParameterSpec.Number("vertical-tone", "Variazione cromatica verticale", .8, 0, 2, "Colori"),
+         ArtworkParameterSpec.Boolean("require-complete", "Arresta se la copertura è incompleta", false, "Qualità"),
+         ArtworkParameterSpec.Integer("ink-dots", "Granelli a 2000×2000", 4000, 0, 20000, "Dettagli"),
+         ArtworkParameterSpec.Choice("palette", "Palette", "crimson", ["crimson", "ocean", "moss"], "Colori"),
+         ArtworkParameterSpec.ColorOverride("background-color", "Sfondo"),
+         ArtworkParameterSpec.ColorOverride("pigment-1", "Pigmento 1 · più scuro"),
+         ArtworkParameterSpec.ColorOverride("pigment-2", "Pigmento 2"),
+         ArtworkParameterSpec.ColorOverride("pigment-3", "Pigmento 3"),
+         ArtworkParameterSpec.ColorOverride("pigment-4", "Pigmento 4"),
+         ArtworkParameterSpec.ColorOverride("pigment-5", "Pigmento 5"),
+         ArtworkParameterSpec.ColorOverride("pigment-6", "Pigmento 6"),
+         ArtworkParameterSpec.ColorOverride("pigment-7", "Pigmento 7"),
+         ArtworkParameterSpec.ColorOverride("pigment-8", "Pigmento 8 · più chiaro"),
+         .. RasterFinishing()]);
+}

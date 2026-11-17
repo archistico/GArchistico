@@ -1,0 +1,53 @@
+namespace GenerativeArt.Application.Catalog;
+
+/// <summary>G3: nastri a retinatura locale e tracce di flusso a crescita con collisioni.</summary>
+public static partial class BuiltInArtworkCatalog
+{
+    private static ArtworkDescriptor FasciaDescriptor() => new("fascia-ribbons", 1,
+        "Fascia · nastri d'inchiostro", "Flussi / Nastri",
+        "Nastri larghi lungo vortici e deriva, con interruzioni e transizioni retinate tra pigmenti.",
+        ArtworkCapabilities.Raster,
+        [ArtworkParameterSpec.Integer("bands", "Nastri", 23, 3, 70, "Composizione"),
+         ArtworkParameterSpec.Integer("steps", "Passi per nastro", 230, 30, 700, "Tracce"),
+         ArtworkParameterSpec.Number("step-size", "Passo integrazione (px)", 8, 1, 18, "Tracce"),
+         ArtworkParameterSpec.Number("band-width", "Larghezza sul lato corto", .052, .005, .16, "Tratto"),
+         ArtworkParameterSpec.Number("taper", "Rastremazione", .42, 0, 1, "Tratto"),
+         ArtworkParameterSpec.Integer("whirls", "Vortici", 4, 0, 8, "Campo"),
+         ArtworkParameterSpec.Number("frequency", "Frequenza ondulazione", .004, .0005, .03, "Campo"),
+         ArtworkParameterSpec.Number("drift", "Deriva", .65, .15, 2, "Campo"),
+         ArtworkParameterSpec.Number("waviness", "Ondulazione", 1, 0, 3, "Campo"),
+         ArtworkParameterSpec.Number("fade", "Dissolvenza retinata", .67, 0, 1, "Inchiostro"),
+         ArtworkParameterSpec.Number("droplet-size", "Dimensione gocce (px)", 2.5, .5, 8, "Inchiostro"),
+         ArtworkParameterSpec.Number("drop-density", "Densità retinatura", .55, .05, 1, "Inchiostro"),
+         ArtworkParameterSpec.Choice("palette", "Palette", "ink", ["ink", "copper", "lagoon"], "Colori"),
+         ArtworkParameterSpec.ColorOverride("background-color", "Carta"),
+         ArtworkParameterSpec.ColorOverride("ink-color-1", "Pigmento 1"),
+         ArtworkParameterSpec.ColorOverride("ink-color-2", "Pigmento 2"),
+         ArtworkParameterSpec.ColorOverride("ink-color-3", "Pigmento 3"),
+         ArtworkParameterSpec.ColorOverride("ink-color-4", "Pigmento 4"),
+         .. RasterFinishing()]);
+
+    private static ArtworkDescriptor EclecticDescriptor() => new("eclectic-trails", 1,
+        "Eclectic · tracce in collisione", "Flussi / Tracce",
+        "Crescita deterministica di tracce spesse lungo un campo, fermate dalle collisioni spaziali.",
+        ArtworkCapabilities.Raster,
+        [ArtworkParameterSpec.Integer("trails", "Tentativi di traccia", 160, 10, 500, "Composizione"),
+         ArtworkParameterSpec.Integer("steps", "Passi massimi", 250, 20, 800, "Composizione"),
+         ArtworkParameterSpec.Number("step-size", "Passo crescita (px)", 5.5, 1, 16, "Campo"),
+         ArtworkParameterSpec.Number("frequency", "Frequenza campo", .004, .0004, .025, "Campo"),
+         ArtworkParameterSpec.Number("waviness", "Ondulazione", 1.45, .05, 4, "Campo"),
+         ArtworkParameterSpec.Number("drift", "Deriva", .85, .1, 2, "Campo"),
+         ArtworkParameterSpec.Integer("whirls", "Vortici", 2, 0, 8, "Campo"),
+         ArtworkParameterSpec.Number("separation", "Distanza tra tracce (px)", 17, 2, 70, "Collisioni"),
+         ArtworkParameterSpec.Number("min-length", "Lunghezza minima (px)", 60, 5, 300, "Collisioni"),
+         ArtworkParameterSpec.Number("stroke-width", "Spessore tratto (px)", 8, .5, 38, "Tratto"),
+         ArtworkParameterSpec.Number("width-variation", "Variazione spessore", .45, 0, 1, "Tratto"),
+         ArtworkParameterSpec.Number("opacity", "Opacità", .85, .1, 1, "Tratto"),
+         ArtworkParameterSpec.Choice("palette", "Palette", "chalk", ["chalk", "neon", "earth"], "Colori"),
+         ArtworkParameterSpec.ColorOverride("background-color", "Sfondo"),
+         ArtworkParameterSpec.ColorOverride("trail-color-1", "Traccia 1"),
+         ArtworkParameterSpec.ColorOverride("trail-color-2", "Traccia 2"),
+         ArtworkParameterSpec.ColorOverride("trail-color-3", "Traccia 3"),
+         ArtworkParameterSpec.ColorOverride("trail-color-4", "Traccia 4"),
+         .. RasterFinishing()]);
+}

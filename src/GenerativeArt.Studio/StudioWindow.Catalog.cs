@@ -32,14 +32,16 @@ public sealed partial class StudioWindow
                   artwork.Id.Contains(query, StringComparison.OrdinalIgnoreCase) ||
                   artwork.Category.Contains(query, StringComparison.OrdinalIgnoreCase))) continue;
             var heading = new TextBlock { Text = (_preferences.IsFavorite(artwork.Id) ? "★ " : "") + artwork.Title,
-                FontSize = 14, FontWeight = FontWeight.SemiBold };
+                FontSize = 14, FontWeight = FontWeight.SemiBold,
+                TextTrimming = TextTrimming.CharacterEllipsis, TextWrapping = TextWrapping.NoWrap };
             var detail = new TextBlock { Text = artwork.Category +
                 (artwork.SupportsSeamlessLoop ? "  ·  LOOP" : "  ·  STATIC"), FontSize = 11,
-                Foreground = Ink("#A8BDCE") };
-            var labels = new StackPanel { Spacing = 3 };
+                Foreground = Ink("#A8BDCE"), TextTrimming = TextTrimming.CharacterEllipsis };
+            var labels = new StackPanel { Spacing = 3, HorizontalAlignment = HorizontalAlignment.Stretch };
             labels.Children.Add(heading);
             labels.Children.Add(detail);
-            var card = new Button { Content = labels, HorizontalContentAlignment = HorizontalAlignment.Left,
+            var card = new Button { Content = labels, HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalContentAlignment = HorizontalAlignment.Stretch,
                 Padding = new Thickness(12), CornerRadius = new CornerRadius(8),
                 Background = artwork.Id == _selected?.Id ? Ink("#2A6B69") : Ink("#223040") };
             card.Click += (_, _) => SelectArtwork(artwork);
@@ -62,15 +64,20 @@ public sealed partial class StudioWindow
         foreach (string path in _preferences.RecentRecipePaths)
         {
             string captured = path;
-            var entry = new Grid { ColumnDefinitions = ColumnDefinitions.Parse("*,Auto"), ColumnSpacing = 4 };
-            var open = new Button { Content = Path.GetFileName(path),
-                HorizontalContentAlignment = HorizontalAlignment.Left, Padding = new Thickness(7, 5),
+            var entry = new Grid { ColumnDefinitions = ColumnDefinitions.Parse("*"),
+                HorizontalAlignment = HorizontalAlignment.Stretch };
+            var filename = new TextBlock { Text = Path.GetFileName(path),
+                TextTrimming = TextTrimming.CharacterEllipsis, TextWrapping = TextWrapping.NoWrap,
+                Margin = new Thickness(0, 0, 28, 0) };
+            var open = new Button { Content = filename, HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalContentAlignment = HorizontalAlignment.Stretch, Padding = new Thickness(9, 7),
                 Background = Ink("#223040") };
             ToolTip.SetTip(open, captured);
             open.Click += async (_, _) => await OpenRecipeFromPathAsync(captured);
             entry.Children.Add(open);
             var forget = new Button { Content = "×", Padding = new Thickness(7, 5),
-                Background = Ink("#283E50") };
+                HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Center,
+                Margin = new Thickness(0, 0, 4, 0), Background = Ink("#283E50") };
             ToolTip.SetTip(forget, "Rimuovi dall'elenco, senza eliminare il file");
             forget.Click += async (_, _) =>
             {
@@ -78,7 +85,7 @@ public sealed partial class StudioWindow
                 PopulateRecentRecipes();
                 await PersistPreferencesAsync();
             };
-            Grid.SetColumn(forget, 1);
+            // Il pulsante Apri occupa tutta la larghezza; Rimuovi e sovrapposto a destra.
             entry.Children.Add(forget);
             _recentItems.Children.Add(entry);
         }

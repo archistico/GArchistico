@@ -1,59 +1,45 @@
-# GenerativeArt
+# GenerativeArt Studio
 
-![GenerativeArt Studio con anteprima e controlli delle macchie SDF](docs/images/generativeart-studio.png)
+![GenerativeArt Studio con il mosaico Voronoi stratificato](docs/images/generativeart-studio.png)
 
-GenerativeArt è un'applicazione desktop e un framework **C# / .NET 10** per creare arte generativa. Lo Studio offre un'interfaccia visuale; la CLI permette di generare le immagini da terminale usando lo stesso motore.
+GenerativeArt è un'applicazione desktop **C#/.NET 10** per creare arte generativa con **Avalonia** e **SkiaSharp**. Lo Studio e la CLI condividono lo stesso motore. Le ricette JSON conservano seed, dimensioni, algoritmo e parametri per riprodurre le opere.
 
-I generatori comprendono curve parametriche e Guilloché, flussi e streamlines, pennelli organici, paesaggi a strati, tunnel di carta ritagliata, composizioni bokeh, campi di rumore e Domain Warp, texture LIC, incisioni a tratteggio, isolinee, mosaici Voronoi, macchie SDF con fusione cromatica e distribuzioni Poisson.
+Il catalogo comprende **30 generatori**, 30 preset incorporati e 182 ricette di esempio: flussi, pennelli, macchie SDF, paesaggi, incisioni, mosaici, pattern e campi di rumore. Cincinnus offre pennellate a setole con distribuzione Simple/Adaptive, tre palette e otto pigmenti modificabili singolarmente. Il mosaico Voronoi può sovrapporre più piani, con tessere mancanti, smussi illuminati, ombre e fondo sfocato. Colori e trasparenza, dettagli, ombre e finiture cartacee sono regolabili dall'editor.
 
-È possibile regolare geometria, densità, colori, trasparenza e finiture come carta, pigmenti, grana e dithering. Le composizioni di profondità offrono ombre morbide, piani sovrapposti e fuoco selettivo. Le ricette JSON conservano seed e parametri per riprodurre le opere. L'anteprima supporta zoom e spostamento, mentre l'esportazione produce PNG alla risoluzione scelta; i generatori animati dispongono anche di riproduzione e sequenze di fotogrammi.
+L'anteprima statica usa la risoluzione finale; **Adatta** e **100%** controllano la visualizzazione. Il progetto supporta ricette animate e sequenze di fotogrammi per i generatori compatibili. La risoluzione massima dipende dal generatore: 8K UHD è disponibile per Guilloché, Voronoi piatto, Streamlines distanziate e Stippling Poisson. Il Voronoi stratificato ammette fino a 8.388.608 pixel nativi, incluso il supersampling; Cincinnus ammette lati da 256 a 2048 px e un massimo di 2.097.152 pixel.
 
-## Installazione
+## Installazione su Windows
 
-Le istruzioni seguenti sono per Windows. Sono necessari:
-
-- SDK **.NET 10**, compatibile con il file `global.json`.
-- Una connessione a NuGet per il primo ripristino delle dipendenze.
-
-Scarica ed estrai il progetto, quindi apri PowerShell nella cartella che contiene `GenerativeArt.sln` ed esegui:
+Servono **.NET SDK 10**, compatibile con `global.json`, e una connessione NuGet per il primo ripristino. Estrai il progetto e apri PowerShell nella cartella che contiene `GenerativeArt.sln`:
 
 ```powershell
 dotnet restore .\GenerativeArt.sln
 dotnet build .\GenerativeArt.sln -c Release --no-restore
 ```
 
-Per verificare l'installazione puoi eseguire i test:
-
-```powershell
-dotnet test .\GenerativeArt.sln -c Release --no-build
-```
-
 ## Esecuzione
 
-### Studio desktop
+Avvia lo Studio:
 
 ```powershell
 dotnet run --project .\src\GenerativeArt.Studio -c Release --no-build
 ```
 
-Scegli un generatore nel catalogo: per i nuovi lavori lo Studio carica automaticamente la ricetta iniziale del generatore dai 17 preset integrati, inclusi colori e seed. Puoi poi modificare i parametri e osservare l'anteprima. Usa **Apri ricetta** per caricare uno degli esempi in [`examples/recipes`](examples/recipes), **Salva ricetta** per conservare le impostazioni ed **Esporta PNG** per salvare l'immagine.
+Scegli un generatore, modifica i parametri e osserva l'anteprima. **Apri ricetta** carica uno degli esempi in [examples/recipes](examples/recipes); **Salva ricetta** conserva le impostazioni ed **Esporta PNG** genera l'immagine.
 
-L'anteprima viene calcolata alla **stessa risoluzione dell'output**: non esiste più un raster di calcolo ridotto separato. **Adatta** mostra l'intera opera nel riquadro, mentre **100%** permette di esaminare i dettagli alla scala originale; zoom e spostamento modificano soltanto la visualizzazione.
+Per il Voronoi con profondità scegli **Composizione del mosaico → layered**, oppure apri una ricetta in [examples/recipes/voronoi-depth-v1](examples/recipes/voronoi-depth-v1).
 
-### CLI
-
-Elenca i generatori disponibili:
-
-```powershell
-dotnet run --project .\src\GenerativeArt.Cli -c Release --no-build -- list
-```
-
-Genera un PNG da una ricetta:
+La CLI permette di elencare i generatori e renderizzare una ricetta:
 
 ```powershell
 New-Item -ItemType Directory -Path .\output -Force | Out-Null
 
-dotnet run --project .\src\GenerativeArt.Cli -c Release --no-build -- render-recipe .\examples\recipes\domain-warp-ocean-marble-1920.json .\output\domain-warp.png
+dotnet run --project .\src\GenerativeArt.Cli -c Release --no-build -- list
+dotnet run --project .\src\GenerativeArt.Cli -c Release --no-build -- describe cincinnus-bristles
+
+dotnet run --project .\src\GenerativeArt.Cli -c Release --no-build -- render-recipe .\examples\recipes\cincinnus-c5\cincinnus-simple-crimson-768.json .\output\cincinnus-simple.png
+dotnet run --project .\src\GenerativeArt.Cli -c Release --no-build -- render-recipe .\examples\recipes\cincinnus-c5\cincinnus-adaptive-ocean-768.json .\output\cincinnus-adaptive.png
+dotnet run --project .\src\GenerativeArt.Cli -c Release --no-build -- render-recipe .\examples\recipes\voronoi-depth-v1\voronoi-depth-glass-windows-1920.json .\output\voronoi-profondo.png
 ```
 
-La CLI richiede un nome di destinazione nuovo e non sovrascrive i file esistenti. Le altre ricette pronte si trovano in [`examples/recipes`](examples/recipes). Le relative immagini di anteprima verranno ripristinate nella fase di consolidamento.
+La destinazione deve essere nuova: la CLI non sovrascrive file esistenti.

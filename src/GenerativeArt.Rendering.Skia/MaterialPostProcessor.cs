@@ -41,56 +41,7 @@ public static class MaterialPostProcessor
             cancellationToken.ThrowIfCancellationRequested();
             Span<uint> target = pixels.GetWritablePackedArgbRow(y);
             ReadOnlySpan<uint> original = absorb ? current!.AsSpan() : target;
-            for (int x = 0; x < target.Length; x++)
-            {
-                Color32 color = Color32.FromArgb(original[x]);
-                if (color.A == 0) continue;
-
-                // Il pattern viene valutato anche senza carta esplicita, se
-                // serve modulare l'assorbimento; l'alpha non viene mai scritto.
-                double paper = options.PaperTexture switch
-                {
-                    "cotton" => Cotton(seed, x, y),
-                    "rough" => Rough(seed, x, y),
-                    _ => 0d
-                };
-                double red = color.R, green = color.G, blue = color.B;
-                if (absorb)
-                {
-                    Color32 dark = DarkestNeighbor(x, original, previous, next, color);
-                    double contrast = Luminance(color) - Luminance(dark);
-                    if (contrast > 16)
-                    {
-                        double weight = options.InkAbsorption *
-                            Math.Clamp((contrast - 16) / 120d, 0, 1) *
-                            (0.78 - 0.22 * paper);
-                        red += (dark.R - red) * weight;
-                        green += (dark.G - green) * weight;
-                        blue += (dark.B - blue) * weight;
-                    }
-                }
-
-                if (options.PaperTexture != "none" && options.PaperStrength > 0)
-                {
-                    // La trama modifica il valore, non la geometria né alpha.
-                    double shift = options.PaperStrength * 48d * paper;
-                    red += shift; green += shift; blue += shift;
-                }
-
-                if (options.PigmentGranulation > 0)
-                {
-                    double pigment = 0.64 * SmoothNoise(seed ^ PigmentSeed, x, y, 9, 9)
-                        + 0.36 * SmoothNoise(seed ^ FiberSeed, x, y, 2, 3);
-                    // Il pigmento si aggrega soprattutto nelle campiture scure;
-                    // nelle zone chiare il deposito è più leggero.
-                    double darkness = 1d - Luminance(color) / 255d;
-                    double shift = options.PigmentGranulation * 76d * pigment *
-                        (0.28 + 0.72 * darkness);
-                    red += shift; green += shift; blue += shift;
-                }
-
-                target[x] = new Color32(color.A, Channel(red), Channel(green), Channel(blue)).PackedArgb;
-            }
+            ApplyMaterialRow(target, original, previous, next, options, seed, y);
 
             if (absorb)
             {
@@ -104,6 +55,66 @@ public static class MaterialPostProcessor
                         : pixels.GetPackedArgbRow(y + 2).ToArray()
                     : null;
             }
+        }
+    }
+
+    /// <summary>
+    /// Applica carta/pigmento/inchiostro alla riga Y assoluta. I vicini, quando
+    /// richiesti, provengono tutti dal raster originale, mai da una riga modificata.
+    /// </summary>
+    internal static void ApplyMaterialRow(Span<uint> target, ReadOnlySpan<uint> original,
+        uint[]? previous, uint[]? next, ArtisticFinishOptions options, ulong seed, int y)
+    {
+        bool absorb = options.InkAbsorption > 0;
+        for (int x = 0; x < target.Length; x++)
+        {
+            Color32 color = Color32.FromArgb(original[x]);
+            if (color.A == 0) continue;
+
+            // Il pattern viene valutato anche senza carta esplicita, se
+            // serve modulare l'assorbimento; l'alpha non viene mai scritto.
+            double paper = options.PaperTexture switch
+            {
+                "cotton" => Cotton(seed, x, y),
+                "rough" => Rough(seed, x, y),
+                _ => 0d
+            };
+            double red = color.R, green = color.G, blue = color.B;
+            if (absorb)
+            {
+                Color32 dark = DarkestNeighbor(x, original, previous, next, color);
+                double contrast = Luminance(color) - Luminance(dark);
+                if (contrast > 16)
+                {
+                    double weight = options.InkAbsorption *
+                        Math.Clamp((contrast - 16) / 120d, 0, 1) *
+                        (0.78 - 0.22 * paper);
+                    red += (dark.R - red) * weight;
+                    green += (dark.G - green) * weight;
+                    blue += (dark.B - blue) * weight;
+                }
+            }
+
+            if (options.PaperTexture != "none" && options.PaperStrength > 0)
+            {
+                // La trama modifica il valore, non la geometria né alpha.
+                double shift = options.PaperStrength * 48d * paper;
+                red += shift; green += shift; blue += shift;
+            }
+
+            if (options.PigmentGranulation > 0)
+            {
+                double pigment = 0.64 * SmoothNoise(seed ^ PigmentSeed, x, y, 9, 9)
+                    + 0.36 * SmoothNoise(seed ^ FiberSeed, x, y, 2, 3);
+                // Il pigmento si aggrega soprattutto nelle campiture scure;
+                // nelle zone chiare il deposito è più leggero.
+                double darkness = 1d - Luminance(color) / 255d;
+                double shift = options.PigmentGranulation * 76d * pigment *
+                    (0.28 + 0.72 * darkness);
+                red += shift; green += shift; blue += shift;
+            }
+
+            target[x] = new Color32(color.A, Channel(red), Channel(green), Channel(blue)).PackedArgb;
         }
     }
 

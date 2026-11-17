@@ -1,0 +1,23 @@
+{
+  "formatVersion": 1,
+  "artworkId": "cotton-circles",
+  "algorithmVersion": 1,
+  "seed": "844",
+  "width": 1920,
+  "height": 1080,
+  "parameters": {
+    "columns": 16,
+    "rows": 9,
+    "margin": 0.06,
+    "tile-gap": 0.06,
+    "arc-scale": 1.18,
+    "motif": "quarter",
+    "palette": "terra",
+    "background-color": "auto",
+    "tile-color-1": "auto",
+    "tile-color-2": "auto",
+    "tile-color-3": "auto",
+    "tile-color-4": "auto",
+    "render-quality": "standard"
+  }
+}

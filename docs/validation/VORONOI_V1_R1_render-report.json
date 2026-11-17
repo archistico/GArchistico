@@ -1,0 +1,59 @@
+{
+  "validatedRecipes": 182,
+  "renders": [
+    {
+      "recipe": "voronoi-depth-copper-cavities-1920",
+      "width": 1920,
+      "height": 1080,
+      "quality": "standard",
+      "seconds": 0.8949932,
+      "bytes": 1351469,
+      "processPeakWorkingSetBytes": 108761088
+    },
+    {
+      "recipe": "voronoi-depth-glass-windows-1920",
+      "width": 1920,
+      "height": 1080,
+      "quality": "fine-2x",
+      "seconds": 1.0825177,
+      "bytes": 1158772,
+      "processPeakWorkingSetBytes": 257433600
+    },
+    {
+      "recipe": "voronoi-depth-ivory-ruins-1920",
+      "width": 1920,
+      "height": 1080,
+      "quality": "standard",
+      "seconds": 0.9907142,
+      "bytes": 2415149,
+      "processPeakWorkingSetBytes": 257433600
+    },
+    {
+      "recipe": "voronoi-depth-lagoon-fragments-1920",
+      "width": 1920,
+      "height": 1080,
+      "quality": "standard",
+      "seconds": 0.473179,
+      "bytes": 1219514,
+      "processPeakWorkingSetBytes": 257433600
+    },
+    {
+      "recipe": "voronoi-depth-night-wells-1920",
+      "width": 1920,
+      "height": 1080,
+      "quality": "fine-2x",
+      "seconds": 1.5771616,
+      "bytes": 968885,
+      "processPeakWorkingSetBytes": 322109440
+    },
+    {
+      "recipe": "voronoi-depth-transparent-1920",
+      "width": 1920,
+      "height": 1080,
+      "quality": "standard",
+      "seconds": 0.5176672,
+      "bytes": 1623867,
+      "processPeakWorkingSetBytes": 322109440
+    }
+  ]
+}

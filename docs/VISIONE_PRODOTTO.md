@@ -1,3 +1,5 @@
+> **Nota di precedenza (17/11/2026):** questo documento rappresenta la visione P2 originaria. Le sue sezioni su «anteprima a risoluzione ridotta» e «baseline M3C.2» sono **storiche e superate**: l'anteprima statica corrente è **nativa alle dimensioni finali** e la baseline validata è **G4-R2**. Per scelte vincolanti e stato attuale leggere [decisioni consolidate](DECISIONI_CONSOLIDATE_CHAT_2026-11-17.md) e [stato](CURRENT_STATE.md).
+
 # GenerativeArt Studio — Visione di prodotto
 
 **Versione:** P2, 16 novembre 2026  

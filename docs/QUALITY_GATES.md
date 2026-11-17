@@ -1,4 +1,55 @@
+> **STATO CORRENTE M4E.4-V1-R1 — 17/11/2026:** Mosaico Voronoi ampliato con modalità `layered`, tessere mancanti, mosaici posteriori indipendenti, smussi/luce, ombre gaussiane, distanza e sfocatura. **Build Release zero avvisi/errori e 1.260/1.260 test Windows** (Codex, SDK 10.0.201: Core 115, Algorithms 254, Application 220, Rendering.Skia 671). 30 generatori, 30 preset incorporati e **182 ricette**, sei nuove Full HD, due fine-2x. PNG storici Voronoi identici in quattro casi; tutti i 30 file preset, inclusi i 17 personali, invariati. Editor/CLI e anteprima nativa verificati; 8K conservato per flat, non per il percorso filtrato. [Guida, confronto e verifiche](M4E4_V1_VORONOI_PROFONDO.md). Le note C5 e precedenti sotto sono storiche; restano aperti giudizio artistico dell'utente, desktop/DPI, altri OS e stress. Crinis/Cincinnus e G4 non modificati da questo incremento.
+
+> **VALIDAZIONE WINDOWS C5-R1 — 17/11/2026:** corretti tre problemi riprodotti: xUnit2012 nel test del pittore, conteggio dei pigmenti che includeva pigment-granulation e campioni Auto Cincinnus mancanti. **Build Release zero avvisi/errori e 1.225/1.225 test superati da Codex, SDK 10.0.201** (Core 115, Algorithms 249, Application 219, Rendering.Skia 642); gate rapido 21 test già inclusi nel totale. Tool CincinnusPreview compilato; 176 ricette validate, tre PNG CLI 768×768 decodificati e Studio headless verificato su sei combinazioni palette/modalità. Catalogo/preset/esempi 30/30/176. [Rapporto e log](CINCINNUS_C5_R1_VALIDAZIONE_WINDOWS_2026-11-17.md). Qualità artistica Cincinnus/G4, desktop/DPI e stress ai limiti ancora aperti; Crinis R10 in pausa. **Le note di validazione C5/C4/C3 precedenti sotto sono storiche.**
+
+**Gate Cincinnus C2 (17/11/2026):** il gate Windows della C1 è passato per conferma utente; la C2 (Simple geometrico) è da verificare con `clear && dotnet clean && .\tools\validate.ps1`, poi eventuale filtro xUnit. Nessun nuovo rendering/approvazione artistica deriva dai 12 test predisposti. [QA statico C2](validation/CINCINNUS_C2_STATIC_QA.md).
+
+> **Gate C1 — APERTO:** kernel geometrico e nuovi test Cincinnus presenti; controllo statico e integrità archivio da documentare in [`validation/CINCINNUS_C1_STATIC_QA.md`](validation/CINCINNUS_C1_STATIC_QA.md). Mancano build Release e suite xUnit C1 su Windows; la G4-R2 è l'ultima baseline con esito utente positivo. Non è previsto QA PNG Cincinnus finché non esiste un renderer.
+
+# Quality gate operativo — M4E.3-G4-R2 (17/11/2026)
+
+**Esito build e suite Windows: SUPERATI**, confermati dall'utente sulla G4-R2; numero dei test non comunicato. Questo chiude **il gate di compilazione/test della revisione**, non i controlli estetici o la release completa. La consegna H1 tocca solo documenti.
+
+**Ancora aperti:** (1) confronto PNG A/B sei ricette Ocellus/Rete con seed/dimensioni uguali; (2) smoke GUI preview nativa/export e visibilità a 100%; (3) ispezione artefatti/alpha e budget per grandi render; (4) QA Linux/macOS e desktop/DPI; (5) recupero anteprime storiche e packaging release. Gli altri gate sottostanti sono **storici** e le loro note «aperto» sono relative all'epoca. Vedere [Stato corrente](CURRENT_STATE.md), [Roadmap](ROADMAP.md).
+
+---
+
+## Gate M4E.3-G4-R2 — Ocellus/Rete (17/11/2026)
+
+**Baseline confermata dall'utente:** G4-R1.2 compilazione e suite completa superate su Windows. **Nuovo lavoro R2**: 8 controlli opzionali per microcavità/rilievo Ocellus e nodi/membrane Rete, 6 ricette di confronto, aggiornamento Studio senza alterare il default del catalogo per i vecchi JSON.
+
+1. **Statico:** tutti i 173 JSON sintatticamente validi e archivio integro; nessun vecchio esempio o preset personale perso.
+2. **Automazione da chiudere su Windows:** `clear && dotnet clean && .\tools\validate.ps1`, con zero errori di build e zero test falliti. Test specifici: `GartG4GeometryTests`, `GartG4CatalogTests`, `GartG4RenderingTests`, `StudioParameterApplicabilityTests`.
+3. **Compatibilità:** vecchie ricette senza chiavi R2 = resa pixel-identica ai controlli opzionali esplicitamente neutri; JSON v1 accetta gli otto nuovi campi (versione algoritmo resta 1).
+4. **Resa artistica da giudicare a vista:** confrontare le 6 coppie R1/R2 a pari seed/dimensioni, in Studio con *Adatta* e *100%*. Verificare microcavità nei punti di giunzione di Ocellus e luce delle pellicole dentro le celle di Rete; assenza di aloni artificiali.
+5. **Limiti:** mantenere budget per risoluzione e lavoro Ocellus/Rete, cancellazione senza file parziali, export esatto = anteprima; attenzione alle composizioni 4K e alle combinazioni intense di `pore-strength`/`rim-light`.
+
+**R2 non è ancora validata su Windows**. La scheda completa è [`M4E3_G4_R2_RILIEVO_MICROFORI_PELLICOLE.md`](M4E3_G4_R2_RILIEVO_MICROFORI_PELLICOLE.md).
+
+---
+
+## Quality gate Crinis R10 — aperto (17/11/2026)
+
+**Baseline R9:** build/test Windows confermati dall'utente, resa tridimensionale tra fasci giudicata buona. **Obiettivo R10:** volume dentro lo stesso fascio, fibre principali più visibili. Il criterio artistico non si esaurisce nel successo della suite automatica.
+
+- Descrittore R10 e JSON v1: 4 nuovi parametri opzionali con valore neutro 0; 27 generatori, 159 esempi, preset Studio nuovi lavori con valori artistici espliciti.
+- Microfibre: 3 sottostrati ordine retro/medio/fronte, seed deterministico; filamenti principali più grandi della microtrama, variazione luce-ombra transversale e ombre di contatto senza sagoma piena con `body-opacity=0`.
+- Prove xUnit Application/Rendering: catalogo e UI, JSON precedenti, byte PNG storici, seed, dimensioni, parametri che cambiano i pixel, cancellazione/budget, preview=export.
+- **Gate manuale obbligatorio**: originale R9 vs variante indaco R10 1920×1080, stesso seed/palette, visualizzazione Fit e 100%; percepibile forma interna con microtrama, senza perdita di profondità fra fasci. Solo dopo si può dichiarare R10 artisticamente validata.
+- Esecuzione richiesta da PowerShell 7 su Windows: `clear && dotnet clean && .\tools\validate.ps1`.
+
+---
+
 # Quality gates e criteri di accettazione
+
+## Quality gate M4E.2-R3 — Pattern botanici e UI
+
+- Catalogo a 20 generatori, 108 ricette JSON, 20 preset embedded (17 originali immutati). Import/roundtrip v1 di tutti gli otto nuovi esempi.
+- Unit test di Fillotassi e Gray–Scott: seed, determinismo, concentrazioni finite/limitate, limiti di lavoro e cancellazione.
+- Render Skia alle dimensioni richieste; variazioni di stile/parametri/colori e `fine-2x` producono i PNG attesi, senza toccare quelli dei vecchi generatori.
+- Studio manuale: schede catalogo e pulsanti recenti a larghezza uniforme, ellissi per nomi lunghi, `×` su recenti senza apertura accidentale, ricerca, preferiti, tema e resize. Preview alla risoluzione output ed export coincidenti.
+- Limite standard 4K per i due nuovi, 8K soltanto sui quattro renderer abilitati nella R2.
+
 
 ## Gate M4D.4-R1 — Orbite SDF (verificato Windows headless)
 

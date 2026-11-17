@@ -1,0 +1,30 @@
+{
+  "catalog": 30,
+  "validatedRecipes": 176,
+  "renders": [
+    {
+      "recipe": "cincinnus-adaptive-ocean-768.json",
+      "mode": "adaptive",
+      "width": 768,
+      "height": 768,
+      "bytes": 1546050,
+      "sha256": "869f23e3339330f7fbe58daa645c131ffb3f1200035a1e43e68b1cb876b4ffb4"
+    },
+    {
+      "recipe": "cincinnus-simple-crimson-768.json",
+      "mode": "simple",
+      "width": 768,
+      "height": 768,
+      "bytes": 1524990,
+      "sha256": "c4ef3467b532fc409f125da1bb25f90e51090b2c14bf2e05a14ad1a272c682b7"
+    },
+    {
+      "recipe": "cincinnus-simple-moss-768.json",
+      "mode": "simple",
+      "width": 768,
+      "height": 768,
+      "bytes": 1533199,
+      "sha256": "21453528793cfce226408f819afbf9e29e90acac2f083c696b15691d441fb911"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+namespace GenerativeArt.Application.Catalog;
+
+/// <summary>Nuove famiglie A3: fillotassi geometrica e simulazione Gray–Scott.</summary>
+public static partial class BuiltInArtworkCatalog
+{
+    private static ArtworkDescriptor PhyllotaxisDescriptor() => new("phyllotaxis", 1,
+        "Fillotassi · spirali botaniche", "Geometria / Natura",
+        "Distribuzioni secondo l'angolo aureo: semi, anelli e petali, con rosette e galassie controllabili.",
+        ArtworkCapabilities.Raster,
+        [ArtworkParameterSpec.Integer("seeds", "Numero semi", 2400, 100, 16000, "Composizione"),
+         ArtworkParameterSpec.Number("angle", "Angolo di divergenza (gradi)", 137.507764, 95, 180, "Geometria"),
+         ArtworkParameterSpec.Number("jitter", "Irregolarità dei semi", .18, 0, 1, "Geometria"),
+         ArtworkParameterSpec.Integer("arms", "Lobi / bracci", 7, 1, 24, "Geometria"),
+         ArtworkParameterSpec.Choice("shape", "Distribuzione", "sunflower", ["sunflower", "rosette", "galaxy"], "Geometria"),
+         ArtworkParameterSpec.Number("spread", "Espansione", 1, .2, 1.7, "Inquadratura"),
+         ArtworkParameterSpec.Number("center-x", "Centro orizzontale", .5, 0, 1, "Inquadratura"),
+         ArtworkParameterSpec.Number("center-y", "Centro verticale", .5, 0, 1, "Inquadratura"),
+         ArtworkParameterSpec.Choice("point-style", "Forma del seme", "dot", ["dot", "ring", "petal"], "Tratto"),
+         ArtworkParameterSpec.Number("point-size", "Dimensione seme / 1000 px", 3.1, .3, 12, "Tratto"),
+         ArtworkParameterSpec.Number("size-variation", "Variazione dimensione", .4, 0, 1, "Tratto"),
+         ArtworkParameterSpec.Number("opacity", "Opacità", .85, .05, 1, "Tratto"),
+         ArtworkParameterSpec.Choice("palette", "Palette", "botanic", ["botanic", "petals", "luminous"], "Colori"),
+         ArtworkParameterSpec.ColorOverride("background-color", "Sfondo"),
+         ArtworkParameterSpec.ColorOverride("seed-color-1", "Semi · ombra"),
+         ArtworkParameterSpec.ColorOverride("seed-color-2", "Semi · mezzotono"),
+         ArtworkParameterSpec.ColorOverride("seed-color-3", "Semi · luce"),
+         .. RasterFinishing()]);
+
+    private static ArtworkDescriptor ReactionDiffusionDescriptor() => new("reaction-diffusion", 1,
+        "Reazione–diffusione · Gray–Scott", "Campi / Natura",
+        "Crescita di pigmenti con due specie chimiche, reazione–diffusione e trame corallo, isole o curve di livello.",
+        ArtworkCapabilities.Raster,
+        [ArtworkParameterSpec.Integer("cell-size", "Dimensione cella di simulazione", 6, 3, 16, "Simulazione"),
+         ArtworkParameterSpec.Integer("iterations", "Iterazioni", 520, 50, 1200, "Simulazione"),
+         ArtworkParameterSpec.Integer("inoculations", "Centri di inoculo", 22, 1, 128, "Simulazione"),
+         ArtworkParameterSpec.Integer("inoculation-radius", "Raggio inoculi (celle)", 5, 1, 24, "Simulazione"),
+         ArtworkParameterSpec.Number("feed", "Alimentazione U", .035, .005, .1, "Reazioni"),
+         ArtworkParameterSpec.Number("kill", "Consumo V", .061, .02, .09, "Reazioni"),
+         ArtworkParameterSpec.Number("diffusion-u", "Diffusione U", .16, .05, .25, "Reazioni"),
+         ArtworkParameterSpec.Number("diffusion-v", "Diffusione V", .08, .02, .15, "Reazioni"),
+         ArtworkParameterSpec.Choice("style", "Rappresentazione", "pigment", ["pigment", "contours", "islands"], "Composizione"),
+         ArtworkParameterSpec.Number("exposure", "Esposizione chimica", 2.7, 1, 6, "Toni"),
+         ArtworkParameterSpec.Number("bands", "Bande isocromatiche", 12, 2, 32, "Toni"),
+         ArtworkParameterSpec.Number("contrast", "Contrasto", 1.15, .5, 3.5, "Toni"),
+         ArtworkParameterSpec.Choice("palette", "Palette", "tidal", ["tidal", "copper", "lichen"], "Colori"),
+         ArtworkParameterSpec.ColorOverride("gradient-color-1", "Pigmento · ombra"),
+         ArtworkParameterSpec.ColorOverride("gradient-color-2", "Pigmento · mezzotono"),
+         ArtworkParameterSpec.ColorOverride("gradient-color-3", "Pigmento · luce"),
+         ArtworkParameterSpec.ColorOverride("gradient-color-4", "Pigmento · apice"),
+         .. RasterFinishing()]);
+}

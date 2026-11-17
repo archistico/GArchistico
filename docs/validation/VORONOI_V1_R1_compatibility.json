@@ -1,0 +1,274 @@
+{
+  "renders": [
+    {
+      "name": "legacy-0.json",
+      "identical": true,
+      "originalRecipe": {
+        "formatVersion": 1,
+        "artworkId": "voronoi-mosaic",
+        "algorithmVersion": 1,
+        "seed": "42",
+        "width": 160,
+        "height": 120,
+        "parameters": {
+          "accent-color": "auto",
+          "background-color": "auto",
+          "dither-levels": 8,
+          "dither-mode": "none",
+          "edge-color": "auto",
+          "grain-amount": 0,
+          "grain-size": 1,
+          "gutter": 2.6,
+          "ink-absorption": 0,
+          "jitter": 0.7,
+          "palette": "glass",
+          "paper-strength": 0,
+          "paper-texture": "none",
+          "pigment-granulation": 0,
+          "relaxations": 1,
+          "render-quality": "standard",
+          "sites": 96,
+          "tile-color-1": "auto",
+          "tile-color-2": "auto",
+          "tile-color-3": "auto",
+          "tile-color-4": "auto",
+          "tile-color-5": "auto"
+        }
+      },
+      "sha256": "f999c2884a3f86813641361527401bb62492d4d9550961f94f17a47e69d3d0f7"
+    },
+    {
+      "name": "legacy-1.json",
+      "identical": true,
+      "originalRecipe": {
+        "formatVersion": 1,
+        "artworkId": "voronoi-mosaic",
+        "algorithmVersion": 1,
+        "seed": "42",
+        "width": 160,
+        "height": 120,
+        "parameters": {
+          "accent-color": "auto",
+          "background-color": "auto",
+          "dither-levels": 8,
+          "dither-mode": "none",
+          "edge-color": "auto",
+          "grain-amount": 0,
+          "grain-size": 1,
+          "gutter": 2.6,
+          "ink-absorption": 0,
+          "jitter": 0.7,
+          "palette": "glass",
+          "paper-strength": 0,
+          "paper-texture": "none",
+          "pigment-granulation": 0,
+          "relaxations": 1,
+          "render-quality": "fine-2x",
+          "sites": 96,
+          "tile-color-1": "auto",
+          "tile-color-2": "auto",
+          "tile-color-3": "auto",
+          "tile-color-4": "auto",
+          "tile-color-5": "auto"
+        }
+      },
+      "sha256": "f76715088a8d544ed939c129d26523b5ad8a5d3ed98107988fc5f02fd601a35b"
+    },
+    {
+      "name": "legacy-2.json",
+      "identical": true,
+      "originalRecipe": {
+        "formatVersion": 1,
+        "artworkId": "voronoi-mosaic",
+        "algorithmVersion": 1,
+        "seed": "41",
+        "width": 160,
+        "height": 120,
+        "parameters": {
+          "accent-color": "auto",
+          "background-color": "#00000000",
+          "dither-levels": 8,
+          "dither-mode": "none",
+          "edge-color": "auto",
+          "grain-amount": 0,
+          "grain-size": 1,
+          "gutter": 2.6,
+          "ink-absorption": 0,
+          "jitter": 0.7,
+          "palette": "copper",
+          "paper-strength": 0,
+          "paper-texture": "none",
+          "pigment-granulation": 0,
+          "relaxations": 1,
+          "render-quality": "standard",
+          "sites": 96,
+          "tile-color-1": "auto",
+          "tile-color-2": "auto",
+          "tile-color-3": "auto",
+          "tile-color-4": "auto",
+          "tile-color-5": "auto"
+        }
+      },
+      "sha256": "7d3025a925d7358eb6858af87ca93a01d96248af39b820b39483f9eb458ef752"
+    },
+    {
+      "name": "legacy-3.json",
+      "identical": true,
+      "originalRecipe": {
+        "formatVersion": 1,
+        "artworkId": "voronoi-mosaic",
+        "algorithmVersion": 1,
+        "seed": "42",
+        "width": 1920,
+        "height": 1080,
+        "parameters": {
+          "accent-color": "auto",
+          "background-color": "auto",
+          "dither-levels": 8,
+          "dither-mode": "none",
+          "edge-color": "auto",
+          "grain-amount": 0.0274,
+          "grain-size": 1,
+          "gutter": 1.189,
+          "ink-absorption": 0.0508,
+          "jitter": 0.8909,
+          "palette": "glass",
+          "paper-strength": 0.0584,
+          "paper-texture": "cotton",
+          "pigment-granulation": 0.0832,
+          "relaxations": 2,
+          "render-quality": "fine-2x",
+          "sites": 81,
+          "tile-color-1": "auto",
+          "tile-color-2": "auto",
+          "tile-color-3": "auto",
+          "tile-color-4": "auto",
+          "tile-color-5": "auto"
+        }
+      },
+      "sha256": "43578bdcf584633fa63390671708b24159c0322d77a6d9de2bf5b13d840c81fb"
+    }
+  ],
+  "presets": [
+    {
+      "file": "alien-letters.json",
+      "sha256": "c44a3bbd4d74e7d33232f33c7f7ebffebe1e22293d1644b89e9cd2c06d6e5f4b"
+    },
+    {
+      "file": "bokeh-depth.json",
+      "sha256": "e02da2b665cd845f82ea8a0fc7146c25239d425cd1c8550bdc74cfb0a8304092"
+    },
+    {
+      "file": "cincinnus-bristles.json",
+      "sha256": "7246b33c26633c90455ac7bbe63a0bd11df32e6f6d474a548055138a02422db1"
+    },
+    {
+      "file": "cotton-circles.json",
+      "sha256": "34ccfa4d2a7c064e990e7d336b3f0d4fe30db77803e005c0109d80583a41d333"
+    },
+    {
+      "file": "crinis-bristles.json",
+      "sha256": "6121af0c1e32bba5fcc9093490ae9d2464628e06d426da208ede8a1762d2c6cf"
+    },
+    {
+      "file": "domain-warp.json",
+      "sha256": "50f7dc30f9f5993dec0848cf9f4854699e6b04b10e272bec21be4ae4afc6e916"
+    },
+    {
+      "file": "eclectic-trails.json",
+      "sha256": "98485fd2c4add91d1e1105c30493ed5ae084af929ff0fab679085202a831efdc"
+    },
+    {
+      "file": "fascia-ribbons.json",
+      "sha256": "e67f21f9280f6050544f7722080c134e5832ab547a01ead769ee4b7f4666305c"
+    },
+    {
+      "file": "flow-brush.json",
+      "sha256": "e35713cfa57fe0ca0abb1a50fdcc9e84b99781f8d037f81505ee862c4a05b92c"
+    },
+    {
+      "file": "guilloche.json",
+      "sha256": "d41acf2c9c101f99657f186f8f93949e982fe9763650b91253181f61eede3fa8"
+    },
+    {
+      "file": "lic-flow.json",
+      "sha256": "a2b07814448b622b2c1e0400bd49943e89833c8a3b7d3ede200211e50220cdec"
+    },
+    {
+      "file": "looping-flow.json",
+      "sha256": "27de645505b67007fc75de3ae1090684ad210f85edb222dbd136b560e4a16d6c"
+    },
+    {
+      "file": "noise-flow.json",
+      "sha256": "7787f64ce9728dd7d309a58d5af1f45c0830822b9c601b984d6154f5085869ce"
+    },
+    {
+      "file": "ocellus-eyespots.json",
+      "sha256": "cf58a156e04ae298592f09368f1582622cc0765709e752c707d74b31b0b89772"
+    },
+    {
+      "file": "paper-cut.json",
+      "sha256": "b86c4d82cf4b2b6d0356f71bc76f601ce9f19168dab6d6677c17a53bbee18033"
+    },
+    {
+      "file": "parametric-curves.json",
+      "sha256": "26f232cb351ba7e8778bc8f0690c593914d0a3948ca3372a337a042b7957b729"
+    },
+    {
+      "file": "phyllotaxis.json",
+      "sha256": "101feebf3539ba13634e8e3604dc017e6fd41d5fc8a75ac296a7dfaaf91e21e6"
+    },
+    {
+      "file": "plasma-noise.json",
+      "sha256": "49ad85816b6f9e14e00dc6565f04d316b9ebca79e4f003bbbb6e2f77513a2ce1"
+    },
+    {
+      "file": "poisson-stippling.json",
+      "sha256": "355f8f18292caee4127fdbe43de53a91e8f1bdd768ac324c5cb66f68c8193a3b"
+    },
+    {
+      "file": "reaction-diffusion.json",
+      "sha256": "539b2a5999f5e84ea3f07a73fa817e36e798367297703c17bbcd1adb5f30d049"
+    },
+    {
+      "file": "rete-foam.json",
+      "sha256": "117598e8964518da33390c30e22a00178a74284aa21250c5036a3292660d5052"
+    },
+    {
+      "file": "rigor-grid.json",
+      "sha256": "4f2bc67135dcd5d352cb38c6cbf974b38d22f7d4ecea45547c62792570d7d435"
+    },
+    {
+      "file": "sdf-orbits.json",
+      "sha256": "fd512453f8242038696a461e9eba5b4266691abd16a1afff67cd1cc79b2e9a79"
+    },
+    {
+      "file": "spaced-streamlines.json",
+      "sha256": "cbdb89524f06cf167528bb56634b49d28f697983e6872a956e45615b620c5326"
+    },
+    {
+      "file": "spiral-flamebrush.json",
+      "sha256": "fa5884dbb3e7b6747d63ec1285348ea9b5a385dfa7da88e2cc8b5a588128c66e"
+    },
+    {
+      "file": "strata-landscape.json",
+      "sha256": "ab7b498960a7b78cabdb053a264bb312f070b33e6e961ad1fd9b02fe99ee0bb7"
+    },
+    {
+      "file": "tonal-engraving.json",
+      "sha256": "836dc330743472a650b3cffafdad3d8c323f81a1bf4b7eaafb88391ab5068d69"
+    },
+    {
+      "file": "topographic-contours.json",
+      "sha256": "91760d73223fe395fe62ff4a43612fb3ad787bd43a80f97141779ec5b6a92fc6"
+    },
+    {
+      "file": "voronoi-mosaic.json",
+      "sha256": "af892c1cf283261e82433d9d9121100433c7e48a57c5e59af8c8276e82e5b09d"
+    },
+    {
+      "file": "wave-interference.json",
+      "sha256": "8942fa195feeb0d8863974a9f0557d71c4ca70bdef6bb9c12fbe0aa48f8c5671"
+    }
+  ]
+}

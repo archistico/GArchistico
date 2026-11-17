@@ -42,8 +42,7 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
         }
 
         CanvasSize size = recipe.Size;
-        if (size.Width > 4096 || size.Height > 4096 || size.PixelCount > 16_777_216)
-            throw new ArgumentOutOfRangeException(nameof(recipe), "Budget statico: massimo 4096x4096 e 16.777.216 pixel.");
+        RasterCanvasBudgetPolicy.Validate(recipe);
         RasterQualityPolicy.Validate(recipe);
         ArtisticFinishOptions finishing = ArtisticFinishOptions.FromRecipe(recipe);
         if (finishing.IsEnabled && size.PixelCount > ArtisticFinishOptions.MaximumFinishPixels)
@@ -67,6 +66,32 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
             case "lic-flow":
                 FlowTextureRenderer.ValidateBudget(recipe);
                 break;
+            case "wave-interference":
+                WaveInterferenceRenderer.ValidateBudget(recipe);
+                break;
+            case "reaction-diffusion":
+                ReactionDiffusionRenderer.ValidateBudget(recipe);
+                break;
+            case "ocellus-eyespots":
+            case "rete-foam":
+                GartCellularRenderer.ValidateBudget(recipe);
+                break;
+            case "cincinnus-bristles":
+                CincinnusRenderer.ValidateBudget(recipe);
+                break;
+            case "crinis-bristles":
+            case "spiral-flamebrush":
+                GartBrushRenderer.ValidateBudget(recipe);
+                break;
+            case "fascia-ribbons":
+            case "eclectic-trails":
+                GartFlowRenderer.ValidateBudget(recipe);
+                break;
+            case "phyllotaxis":
+            case "alien-letters":
+            case "cotton-circles":
+            case "rigor-grid":
+                break;
             case "parametric-curves":
             case "noise-flow":
             case "spaced-streamlines":
@@ -87,7 +112,7 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
             case "plasma-noise":
                 LegacyArtworkEvolution.Validate(recipe);
                 // Il campo plasma crea un PixelBuffer addizionale, ma rimane
-                // nel budget generale di 16 Mpixel già verificato sopra.
+                // nel budget specifico 4K verificato sopra.
                 break;
             case "looping-flow":
                 LegacyArtworkEvolution.Validate(recipe);
@@ -124,6 +149,19 @@ public sealed class ArtworkRenderEngine : IArtworkRasterRenderer
             case "tonal-engraving": LineworkRenderer.Render(surface, recipe, cancellationToken); break;
             case "domain-warp":
             case "lic-flow": FlowTextureRenderer.Render(surface, recipe, cancellationToken); break;
+            case "wave-interference": WaveInterferenceRenderer.Render(surface, recipe, cancellationToken); break;
+            case "phyllotaxis": PhyllotaxisRenderer.Render(surface, recipe, cancellationToken); break;
+            case "alien-letters":
+            case "cotton-circles":
+            case "rigor-grid": GartModularRenderer.Render(surface, recipe, cancellationToken); break;
+            case "reaction-diffusion": ReactionDiffusionRenderer.Render(surface, recipe, cancellationToken); break;
+            case "ocellus-eyespots":
+            case "rete-foam": GartCellularRenderer.Render(surface, recipe, cancellationToken); break;
+            case "cincinnus-bristles": CincinnusRenderer.Render(surface, recipe, cancellationToken); break;
+            case "crinis-bristles":
+            case "spiral-flamebrush": GartBrushRenderer.Render(surface, recipe, cancellationToken); break;
+            case "fascia-ribbons":
+            case "eclectic-trails": GartFlowRenderer.Render(surface, recipe, cancellationToken); break;
             case "parametric-curves": RenderParametric(surface, recipe, cancellationToken); break;
             case "noise-flow": RenderNoiseFlow(surface, recipe, cancellationToken); break;
             case "spaced-streamlines": RenderSpacedFlow(surface, recipe, cancellationToken); break;

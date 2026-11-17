@@ -1,0 +1,33 @@
+{
+  "formatVersion": 1,
+  "artworkId": "rete-foam",
+  "algorithmVersion": 1,
+  "seed": "330032",
+  "width": 1920,
+  "height": 1080,
+  "parameters": {
+    "bubbles": 200,
+    "big-radius": 0.18,
+    "small-radius": 0.004,
+    "tier-ratio": 0.68,
+    "radius-variation": 0.3,
+    "density": 5,
+    "fusion": 0.08,
+    "froth": 0.3,
+    "drain": 1.15,
+    "sink": 0.03,
+    "wall": 3.5,
+    "knot": 0.8,
+    "film": 0.6,
+    "layers": 3,
+    "rear-blur": 2.2,
+    "rear-opacity": 0.35,
+    "fade": 0.55,
+    "zoom": 1.1,
+    "palette": "ice",
+    "junction-strength": 0.95,
+    "junction-radius": 8,
+    "node-glow": 0.82,
+    "membrane-opacity": 0.43
+  }
+}

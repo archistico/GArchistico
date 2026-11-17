@@ -1,3 +1,5 @@
+> **Nota di precedenza (17/11/2026):** documento originario con proposte e baseline storica. La versione compilata/testata corrente è G4-R2, con sei progetti di produzione e quattro di test. [Stato corrente](CURRENT_STATE.md) e [decisioni consolidate](DECISIONI_CONSOLIDATE_CHAT_2026-11-17.md) prevalgono sulle ipotesi superate.
+
 # Architettura corrente — GenerativeArt M4C.2-R1
 
 **16 novembre 2026.** Questo documento descrive i **riferimenti reali tra i progetti `.csproj`**. La baseline **M4A.4-R1 è compilata e testata su Windows** (utente); M4A.4-R2/R3, M4C.1-R1 e M4C.2-R1 hanno gate Windows aperto. Le vecchie proposte P2 sono storiche.

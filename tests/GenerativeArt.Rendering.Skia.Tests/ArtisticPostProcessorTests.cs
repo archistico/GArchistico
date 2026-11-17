@@ -200,6 +200,7 @@ public sealed class ArtisticPostProcessorTests
         Engine.Validate(poster);
         // Un 4000x4000 completo è validato senza imporre una costosa
         // codifica PNG durante il test; la verifica raster resta sui 96x64.
-        Assert.Equal(16_777_216L, ArtisticFinishOptions.MaximumFinishPixels);
+        Assert.Equal(16_777_216L, ArtisticFinishOptions.LegacyFullFrameFinishPixels);
+        Assert.Equal(33_177_600L, ArtisticFinishOptions.MaximumFinishPixels);
     }
 }

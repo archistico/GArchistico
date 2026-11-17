@@ -27,9 +27,10 @@ public sealed partial class StudioWindow : Window
     private readonly ArtworkRegistry _catalog = BuiltInArtworkCatalog.Create();
     private readonly IArtworkRasterRenderer _renderer;
     private readonly StudioRenderCoordinator _renderCoordinator;
+    private readonly StudioRecipeDocuments _recipeDocuments;
     private readonly DispatcherTimer _playTimer = new();
-    private readonly StackPanel _catalogItems = new() { Spacing = 7 };
-    private readonly StackPanel _recentItems = new() { Spacing = 6 };
+    private readonly StackPanel _catalogItems = new() { Spacing = 7, HorizontalAlignment = HorizontalAlignment.Stretch };
+    private readonly StackPanel _recentItems = new() { Spacing = 6, HorizontalAlignment = HorizontalAlignment.Stretch };
     private readonly StackPanel _parameterItems = new() { Spacing = 12 };
     private readonly TextBox _search = new() { PlaceholderText = "Cerca opera o categoria..." };
     private readonly CheckBox _favoritesOnly = new() { Content = "Solo preferiti" };
@@ -68,6 +69,8 @@ public sealed partial class StudioWindow : Window
     private readonly StackPanel _animationPanel = new() { Spacing = 10 };
     private readonly Dictionary<string, string> _parameters = new(StringComparer.Ordinal);
     private readonly Dictionary<string, Action> _swatchRefresh = new(StringComparer.Ordinal);
+    private readonly Dictionary<string, (Control Editor, TextBlock Note)> _applicabilityEditors = new(StringComparer.Ordinal);
+    private readonly Dictionary<string, Action> _resetEditorOnDisable = new(StringComparer.Ordinal);
     private readonly Dictionary<string, SolidColorBrush> _inkBrushes = new(StringComparer.Ordinal);
     private readonly StudioPreferencesFile _preferencesFile = new(StudioPreferencesFile.DefaultPath);
     private readonly SemaphoreSlim _preferencesGate = new(1, 1);
@@ -110,6 +113,7 @@ public sealed partial class StudioWindow : Window
         }
         _renderer = new ArtworkRenderEngine(_catalog);
         _renderCoordinator = new StudioRenderCoordinator(_renderer);
+        _recipeDocuments = new StudioRecipeDocuments(_catalog, _renderer);
         _export = ActionButton("Esporta PNG", ExportPngAsync);
         _cancelExport = ActionButton("Annulla export", () =>
         {
@@ -117,7 +121,7 @@ public sealed partial class StudioWindow : Window
             return Task.CompletedTask;
         });
         _cancelExport.IsEnabled = false;
-        Title = "GenerativeArt Studio · M4E.1-R2";
+        Title = "GenerativeArt Studio · M4E.1-R5";
         Width = 1510;
         Height = 850;
         MinWidth = 1120;

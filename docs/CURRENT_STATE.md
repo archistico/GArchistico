@@ -1,99 +1,67 @@
-# Stato corrente — GenerativeArt Studio M4E.1-R3 (fix test dipendente dal campo)
+> **STATO CORRENTE M4E.4-V1-R1 — 17/11/2026:** Mosaico Voronoi ampliato con modalità `layered`, tessere mancanti, mosaici posteriori indipendenti, smussi/luce, ombre gaussiane, distanza e sfocatura. **Build Release zero avvisi/errori e 1.260/1.260 test Windows** (Codex, SDK 10.0.201: Core 115, Algorithms 254, Application 220, Rendering.Skia 671). 30 generatori, 30 preset incorporati e **182 ricette**, sei nuove Full HD, due fine-2x. PNG storici Voronoi identici in quattro casi; tutti i 30 file preset, inclusi i 17 personali, invariati. Editor/CLI e anteprima nativa verificati; 8K conservato per flat, non per il percorso filtrato. [Guida, confronto e verifiche](M4E4_V1_VORONOI_PROFONDO.md). Le note C5 e precedenti sotto sono storiche; restano aperti giudizio artistico dell'utente, desktop/DPI, altri OS e stress. Crinis/Cincinnus e G4 non modificati da questo incremento.
 
-**17 novembre 2026.** Ricevuta conferma Windows della versione **M4E.1-R2: compilazione riuscita, 879/880 test superati**, con una sola regressione `EveryArtisticControlChangesTheRaster` per `spaced-streamlines/frequency`. Il test partiva dal preset dell'utente con `field=vortex`, che non usa la frequenza. In R3 il test imposta `field=curl` prima di verificarne l'effetto; nuova regressione esplicita conferma che il vortice è indipendente dalla frequenza. **Codice di produzione, preset e 81 ricette invariati.** Test R3 ancora da confermare.
+> **VALIDAZIONE WINDOWS C5-R1 — 17/11/2026:** corretti tre problemi riprodotti: xUnit2012 nel test del pittore, conteggio dei pigmenti che includeva pigment-granulation e campioni Auto Cincinnus mancanti. **Build Release zero avvisi/errori e 1.225/1.225 test superati da Codex, SDK 10.0.201** (Core 115, Algorithms 249, Application 219, Rendering.Skia 642); gate rapido 21 test già inclusi nel totale. Tool CincinnusPreview compilato; 176 ricette validate, tre PNG CLI 768×768 decodificati e Studio headless verificato su sei combinazioni palette/modalità. Catalogo/preset/esempi 30/30/176. [Rapporto e log](CINCINNUS_C5_R1_VALIDAZIONE_WINDOWS_2026-11-17.md). Qualità artistica Cincinnus/G4, desktop/DPI e stress ai limiti ancora aperti; Crinis R10 in pausa. **Le note di validazione C5/C4/C3 precedenti sotto sono storiche.**
 
-Prosegue Fase A: A0 archivio e anteprime storiche mancanti; A1 isolamento controller e UX dei parametri applicabili; A2 preview nativa implementata con QA GUI/DPI ancora aperto; A3 nuove ricette/algoritmi; A4 output 8K con budget e quality gate; A5 stabilizzazione. Poi Fase B compositore e Fase D workflow dell'artista, mentre le animazioni evolute restano rinviate. Dettagli in `M4E1_R3_FIX_TEST_STREAMLINES.md`.
+> **STATO OPERATIVO C5 — 17/11/2026:** Cincinnus integrato *sperimentalmente* come 30° generatore nel catalogo/Studio/CLI, 30 preset embedded e 176 esempi JSON (173 storici + 3 C5). Supporta Simple/Adaptive, otto pigmenti modificabili singolarmente, tre palette, parametri/ombre e budget 2048 px / 2.097.152 pixel. **C1 e C2 test/build Windows confermati; C3, C4 e C5 non ancora compilati/testati dall'utente**, nessun giudizio estetico PNG. Leggere [scheda C5](CINCINNUS_C5_STUDIO_CLI_JSON_2026-11-17.md) e [QA](validation/CINCINNUS_C5_STATIC_QA.md). Le intestazioni C4/C3 seguenti sono storiche.
 
----
+> **STATO OPERATIVO C4 — 17/11/2026:** partendo da C3 è stato aggiunto il posizionamento **Cincinnus Adaptive**, con griglia di copertura, main/filler, ritaglio uncini, seconda griglia post-ritaglio e patch, nuova modalità PNG nel tool autonomo e test dedicati. **C1 e C2 build/test confermate Windows; C3 e C4 NON ancora confermate Windows, né valutate artisticamente.** Nessuna nuova registrazione Studio/CLI, invariati catalogo 29/29/173 e Crinis/G4. Leggere [C4](CINCINNUS_C4_ADAPTIVE_2026-11-17.md), [QA statico](validation/CINCINNUS_C4_STATIC_QA.md). Le note anteriori sono storiche.
 
-# Stato precedente — GenerativeArt Studio M4E.1-R2 (A1 incrementale + A2 anteprima reale)
+> **STATO OPERATIVO C3 — 17/11/2026:** C1 e C2 **compilate e testate con successo su Windows per conferma dell'utente** (conteggio non disponibile). C3 ora implementa il pianificatore delle pennellate, il rendering Skia autonomo e una CLI di prova che salva PNG senza registrare un nuovo artwork. **C3 da compilare/testare e valutare visivamente**; non è approvata artisticamente. [Scheda C3](CINCINNUS_C3_PENNELLO_VOLUMETRICO_2026-11-17.md), [QA statico](validation/CINCINNUS_C3_STATIC_QA.md). Catalogo 29/29/173, Crinis R10 e G4-R2 invariati. I blocchi C2/C1 sotto sono storico.
 
-**17 novembre 2026.** La finestra Studio usa adesso il **raster nativo con le dimensioni della ricetta finale**, senza preview ridotta né campi di dimensionamento raster. `Adatta`, `100%`, rotella e riquadro configurabile operano solo sulla vista. `StudioRenderCoordinator` (Application, senza Avalonia) serializza preview ed export, gestisce i token e l'output PNG atomico; nuovi test unitari e rendering Skia confrontano i percorsi. Nessun algoritmo o JSON modificato: **17 generatori, 81 ricette di esempio, 17 preset embedded** conservati.
+> **STATO OPERATIVO C2 — 17/11/2026.** Baseline Windows **C1 confermata compilata/testata dall’utente** (conteggio test non comunicato). La nuova **C2 è implementata ma non ancora compilata/testata su Windows**: 3 sorgenti C# aggiunti al progetto Algorithms, 1 file xUnit aggiunto, distribuzione Simple con griglia spaziale e cutoff, ordinamento bidirezionale, clearance/taper e gestione limiti. Vedi [scheda C2](CINCINNUS_C2_STREAMLINES_SIMPLE_2026-11-17.md) e [QA statico](validation/CINCINNUS_C2_STATIC_QA.md). **Nessun rendering Cincinnus**; catalogo 29, preset 29, ricette 173; Crinis R10 e G4-R2 invariati. Le vecchie formule «C1 ancora da testare» sotto sono *storiche*.
 
-**Stato:** implementazione R2 pronta per validazione Windows, non ancora confermata. Ultima baseline Windows documentata **M4D.4-R1, 859/859 test**. A1 richiede ancora controller indipendenti e QA dispatcher; A2 richiede smoke GUI/DPI e verifica pixel; A0 immagini storiche mancanti, A3 nuovi algoritmi/ricette e A4 8K rimangono aperti. Output statico limitato per ora a 4096×4096 e al budget del renderer; qualità fine-2x ha limite più stretto. **Fase B compositore**, poi **Fase D workflow artista** (seed, varianti, confronto A/B, galleria, contact sheet, preset e SVG selettivo); animazioni evolute rinviate. Dettagli in `M4E1_R2_PREVIEW_NATIVA_COORDINATORE.md`.
+> **AGGIORNAMENTO OPERATIVO C1 — 17/11/2026.** Codice corrente: **M4E.3-Cincinnus-C1**, evoluzione additiva di G4-R2-H3. Nuovi file `src/GenerativeArt.Algorithms/Cincinnus/*` e `tests/GenerativeArt.Algorithms.Tests/CincinnusGeometryTests.cs`: vortici fuori tela maximin, somma campo, tracing RK4 con limiti/cancellazione, ritorni e curvature. **Non è ancora un renderer**; 29 generatori/29 preset/173 ricette, 17 personali, UI e Crinis R10 immutati. **C1: build e test .NET NON eseguiti nell'ambiente di preparazione (SDK assente), in attesa del gate Windows.** L'ultima baseline con build/test superati confermati dall'utente resta **G4-R2**. Leggere [C1](CINCINNUS_C1_KERNEL_GEOMETRICO_2026-11-17.md). Il testo successivo documenta la baseline precedente e va interpretato storicamente.
 
----
+# Stato attuale — GenerativeArt Studio (17 novembre 2026)
 
-# Stato corrente — GenerativeArt Studio M4E.1-R1 (A1 iniziale + roadmap D)
+**Nota H3 — studio Cincinnus:** il 17/11/2026 sono stati analizzati i due sorgenti originali di Cincinnus e le dipendenze di Gȧrt. Documento operativo: [STUDIO_CINCINNUS_GART_2026-11-17.md](STUDIO_CINCINNUS_GART_2026-11-17.md). Cincinnus **non è presente nel catalogo**: restano **29 generatori / 29 embedded / 173 ricette**; Crinis R10 resta in pausa. H3 non modifica codice o test G4-R2. Non è disponibile nel pacchetto originale una PNG autenticata di Cincinnus, perciò non attribuire alcuna approvazione estetica.
 
-**17 novembre 2026.** La versione precedente M4D.4-R2 integra 17 JSON originali come preset Studio. Questa revisione avvia **A1**, ripartendo `StudioWindow.cs` da 1.103 a 189 linee più sette partial per responsabilità; `StudioRecipeFormParser` in Application isola la costruzione/validazione del modello dai controlli Avalonia e aggiunge test xUnit dedicati. GUI, renderer, JSON, seed, export e preview hanno intenzionalmente lo stesso comportamento della R2. **A1 è solo parziale**, il passo successivo sono controller indipendenti e verifiche lifecycle/headless.
 
-**Fase D — Workflow dell'artista** approvata e inserita dopo il compositore Fase B: varianti/seed, confronto A/B, galleria, contact sheet, preset, SVG selettivo in seguito. **Animazioni rinviate**.
+**Aggiornamento H2 (solo documentazione, 17/11/2026):** ricevuto e ispezionato anche lo ZIP sorgente Gȧrt; verificata la galleria immagini sul repository ufficiale. La [mappa delle 28 opere e dei sorgenti](GART_RIFERIMENTI_ORIGINALI_2026-11-17.md) supporta il confronto estetico G4-QA e la scelta successiva G4-R3/G5. **La baseline C# e i risultati Windows rimangono invariati.**
 
-**Baseline Windows confermata:** M4D.4-R1, 859/859 test. R2 e M4E.1-R1 da confermare su Windows; non attribuire alla R1 nuove conferme. Nessuna implementazione A2 (anteprima a risoluzione finale), A3 (nuovi algoritmi), A4 (8K), Fase B o D. Rimane aperta l'incompletezza delle 52 immagini del vecchio pacchetto di origine. Documenti guida: `ROADMAP.md`, `M4E0_PIANO_A_B_DEFAULTS.md`, `M4E1_A1_WORKFLOW_D.md`, `HANDOFF.md`.
+**Versione codice:** `M4E.3-G4-R2` · **Consegna documentale:** `G4-R2-H1` (stesso codice).
 
----
+## Stato della validazione
 
-# Stato corrente — GenerativeArt Studio M4D.4-R2 (roadmap + default da allegati)
+| Ambito | Stato verificabile | Fonte/limite |
+|---|---|---|
+| Build Release della G4-R2 su Windows | **Passata, confermata dall'utente** | Messaggio utente del 17/11/2026: «compila e test ok» |
+| Suite .NET/xUnit G4-R2 su Windows | **Passata, confermata dall'utente** | Conteggio non comunicato; non inventarlo |
+| Verifica statica dell'archivio R2 | **Passata** | 173 JSON di esempio validi; 596 file nel manifest originale senza mismatch |
+| Smoke artistico delle sei ricette G4-R2 | **Da documentare** | Nessun A/B Full HD Ocellus/Rete confermato |
+| Identità preview nativa/export G4-R2 | **Coperta da test; smoke GUI specifico da documentare** | Non confondere test automatizzati con ispezione manuale |
+| Linux/macOS, stress 8K, memoria GPU/CPU | **Non attestato su questa baseline** | Richiedono prove specifiche |
+| Handoff G4-R2-H1 | **Solo documentazione** | Sorgenti, test, ricette e preset identici alla G4-R2 validata |
 
-**17 novembre 2026.** Da `GenerativeArt.zip` M4D.4-R1 sono stati integrati **17 JSON allegati come preset embedded per i nuovi lavori Studio**, compresi il seed speciale di Domain Warp, colori, dimensioni e animazione di Flow Loop. `StudioRecipeDefaults.RecipeFor` sostituisce la vecchia tabella parziale di override; selezione Studio e test correlati aggiornati. **Non sono stati ancora sviluppati** il refactoring di `StudioWindow.cs`, l'anteprima nativa obbligatoria, l'8K o il compositore: sono **in roadmap Fase A/B**. Le animazioni vengono dopo.
+## Inventario
 
-**Baseline Windows verificata:** M4D.4-R1, **859/859 test**. **R2:** codice e documentazione aggiornati, test Windows non ancora ricevuti. Lo ZIP M4D.4-R1 di partenza era privo di **52 immagini** elencate nel manifesto: la loro ricostruzione resta attività A0; il nuovo manifesto registra soltanto i file realmente inclusi, senza dichiarare recuperate le anteprime.
+- **29** artwork/generatori registrati e **29** preset in `src/GenerativeArt.Application/Defaults/`.
+- **173** ricette in `examples/recipes/`; gli otto studi G4-R1 e i sei G4-R2 restano disponibili.
+- **17** preset incorporati provenienti dai JSON originari dell'utente, con seed/parametri/animazione propri. I 2 preset nuovi Ocellus/Rete sono stati modificati di proposito tra G4-R1.2 e G4-R2; i restanti 27 embedded invariati nella verifica R2.
+- Sei progetti applicativi (`Core`, `Algorithms`, `Application`, `Rendering.Skia`, `Cli`, `Studio`); quattro progetti di test, soluzione `GenerativeArt.sln`.
 
-**Ordine successivo:** A0 integrità distribuzione; A1 refactoring StudioWindow; A2 preview 1:1; A3 nuovi algoritmi/ricette; A4 8K; A5 QA; **B compositore universale**. Dettagli: [`M4E0_PIANO_A_B_DEFAULTS.md`](M4E0_PIANO_A_B_DEFAULTS.md), [`ROADMAP.md`](ROADMAP.md).
+## Risultati tecnici ora presenti
 
----
+- Architettura C#/.NET 10: motore e geometrie testabili senza UI; rendering Skia condiviso tra CLI e Studio; UI Avalonia.
+- Studio: avvio massimizzato, selezione/catalogo e pulsanti a larghezza uniforme, parametri e colori individuali, palette, campi condizionali, pan/zoom, anteprima statica calcolata a dimensioni finali, import/export JSON, PNG, preferenze e temi; `StudioWindow` ripartita in partial, ma refactoring A1 **non concluso**.
+- Ricette JSON v1 con validazione rigorosa, versioni algoritmi e seed espliciti, compatibilità dei parametri opzionali, export con pubblicazione atomica e cancellazione.
+- Qualità: standard e `fine-2x` nei budget ammessi; grana/dithering, materia carta e pigmenti, alpha; 8K UHD solo per i quattro renderer geometrici abilitati, non 8K universale.
+- Crinis R10: sottostrati interni, filamenti evidenziati, illuminazione trasversale e ombre interne; **qualità artistica non convalidata come definitiva** e sviluppo sospeso per decisione successiva.
+- G4-R2: `ocellus-eyespots` con fori euristici/luce di bordo e `rete-foam` con giunzioni, bagliore nodi e pellicola interna; otto controlli opzionali R2, vecchi JSON neutri.
 
-# Stato corrente — GenerativeArt Studio M4D.4-R1
+## Attività aperte e ordine
 
-**Data:** 16 novembre 2026. **M4D.4-R1 — Orbite SDF riprogettato:** macchie organiche, fusione di quattro pigmenti, venature, rilievo, piani e antialiasing locale. **17 generatori, 81 ricette, build Release senza avvisi/errori e 859/859 test Windows** (Codex, SDK 10.0.201). Otto nuovi PNG Full HD, due fine-2x; controlli Studio, JSON, export CLI e 15 PNG precedenti identici verificati. Confronto AA contro riferimento 4×: errore alpha ridotto del 71,3% nel caso registrato. Guida [`M4D4_SDF_MACCHIE_FUSIONI.md`](M4D4_SDF_MACCHIE_FUSIONI.md), evidenze `docs/validation/M4D4_R1_*`. Desktop/DPI reali, altri OS, nuovi poster 4K ed editor livelli/maschere/blend restano aperti. Restore da cache NuGet locale, audit online e telemetria build disattivati.
+1. **G4-QA visivo**: confronti A/B delle sei ricette Full HD con i riferimenti G4-R1, stessi seed/dimensioni, vista `Adatta`/`100%`, alpha e export; registrare se le microcavità e le membrane sono artisticamente soddisfacenti.
+2. **A0 packaging**: le **anteprime storiche `examples/previews/` non sono nel pacchetto**; recuperarle o rigenerarle con prove/attribuzioni (non inventare screenshot) e fare audit completo delle risorse.
+3. **A1/A4/A5**: completare estrazione controller/lifecycle UI, stress controllato 4K/8K, benchmark risorse e gate cross-platform quando disponibili.
+4. **A3**: scegliere il prossimo lavoro artistico, fra G4-R3 (topologia cavità Ocellus, curvatura/tensione pellicole Rete) oppure G5 (Nimbus, Pebble/Pebble2, Accretion, Glst/Glst2) **senza dichiarare una scelta non ancora fatta**.
+5. **Fase B**, poi **Fase D**; animazioni avanzate rinviate. Le capacità di animazione già implementate non vanno rimosse.
 
-## Stato incrementale
+## Avvertenze per la nuova chat
 
-| Revisione | Stato funzionale | Stato Windows |
-| --- | --- | --- |
-| M0–M4A.4-R1 | Framework, Studio, nove generatori e controlli creativi iniziali | Confermato dall'utente |
-| M4A.4-R2 | Ruoli colore, selettore HSV/RGB/alpha | Gate aperto |
-| M4A.4-R3 | Supersampling 2× e PNG alpha-safe | Gate aperto |
-| M4C.1-R1 | Grana seeded e dithering Bayer su nove generatori | Gate aperto |
-| M4C.2-R1 | Carta cotone/ruvida, pigmenti granulari, assorbimento locale | **Build fallita su Windows: CS8506, CS8131** in `StudioColorValue.cs` |
-| **M4C.2-R2** | Fix switch HSV e avvio Studio massimizzato, sei test aggiunti | **Build OK, 506/507 test superati** (conferma utente) |
-| **M4C.2-R3** | Correzione test JSON, finiture e Plasma 5 MP, raster/riquadro anteprima configurabili, Adatta/100% | **Build OK, 513/514 test (utente); test budget materia obsoleto** |
-| **M4C.2-R4** | Test materia allineati ai budget standard/fine-2x | **Build Release OK, 521/521 test (Codex Windows)** |
-| **M4B.1-R1** | Domain Warp, LIC Flow, sette ricette, streamlines dense, picker con footer fisso | **Build Release OK, 558/558 test; sette PNG Full HD e smoke picker headless (Codex Windows)** |
-| **M4D.1-R1** | Guilloché/incisione, dettaglio Domain Warp, slider fini, otto ricette | **Build Release OK, 626/626 test; otto PNG Full HD, smoke Studio headless e compatibilità PNG (Codex Windows)** |
-| **M4D.2-R1** | Pennelli/paesaggi e cinque generatori iniziali ampliati, quattordici ricette | **Build Release OK, 733/733 test; Full HD, 12 frame CLI, Studio e compatibilità PNG verificati (Codex Windows)** |
-| **M4D.3-R1** | Carta ritagliata/bokeh, livelli filtrati riutilizzabili, paesaggi con profondità e dieci ricette | **Build Release OK, 801/801 test; dieci PNG Full HD, Studio e 15 hash PNG precedenti verificati (Codex Windows)** |
-| **M4D.4-R1** | Orbite SDF: macchie/fusioni, stili pigment/glass, antialiasing locale e otto ricette | **Build Release OK, 859/859 test; Full HD/fine-2x, Studio, CLI, copertura AA e hash PNG precedenti verificati** |
+- Non ripartire da G4-R1.2, G3-R10 o da blocchi storici di `ROADMAP.md`: **la baseline è G4-R2**.
+- Non riaprire come bug attivi `Math.Hypot`/CS0117, `ink`/CS0136 o i test storici: le rispettive correzioni sono già presenti e la G4-R2 compila e passa i test Windows.
+- Non affermare che G4-R2 ha già superato una prova estetica, una verifica Linux/macOS o una generazione reale 8K.
+- Alla prossima modifica di codice: ZIP **integrale** e aggiornamento di README, CHANGELOG, ROADMAP, CURRENT_STATE, HANDOFF, NUOVA_CHAT, registro decisioni e verifiche.
 
-## M4C.2-R3 — richieste emerse nella validazione Windows
-
-1. `RecipeTests.MissingParametersAreRejected` manipolava testo JSON lasciando una trailing comma: ora il test rimuove realmente `scale` via `System.Text.Json.Nodes.JsonNode` e verifica il rifiuto semantico `ArgumentException`.
-2. Budget finiture elevato da 4.194.304 a 16.777.216 pixel finali, con controllo prima del rendering. Rimosso il limite separato di Plasma 4.194.304; 2500×2000 (5.000.000 pixel) ora ammesso in `standard`, anche con carta/grana. `fine-2x` resta limitato a 16.777.216 sottopixel. Non sono aboliti i budget degli altri algoritmi o delle animazioni.
-3. Studio: dimensione raster massima e dimensione riquadro in campi distinti, separati da larghezza/altezza output. `Adatta` usa lo zoom effettivo per mostrare tutti i bordi e `100%` usa scala 1:1; auto-fit al nuovo rendering e al resize. Barra di stato segnala dimensioni anteprima e output.
-4. Regressioni aggiunte: JSON valido senza parametro richiesto, validazione Plasma 5 MP con finitura, fitting di varie proporzioni, preview raster 1:1 e preview limitata. Documentazione specifica: `M4C2_R3_PREVIEW_E_BUDGET.md`.
-
-## M4C.2-R2 — bugfix e comportamento finestra
-
-- Segnalazione utente dalla build della R1: `StudioColorValue.cs(54,44)` CS8506 e CS8131, entrambe causate dall'inferenza del tipo comune delle tuple nello `switch` HSV.
-- Sostituiti gli zero `int` con `0d` in tutti e sei i rami; rimangono inalterate conversione numerica, formato HEX e alpha.
-- In `StudioWindow` avvio `WindowState.Maximized` (finestra massimizzata, non borderless/kiosk). Sei nuovi casi di test HSV con tonalità intermedie.
-- La build R2 è stata confermata; la suite R2 ha fallito 1/507 casi, corretto nel codice R3.
-
-## M4C.2-R1 realizzata
-
-1. Nuovo gruppo **MATERIA**: `paper-texture`, `paper-strength`, `pigment-granulation`, `ink-absorption` su tutti e nove i generatori, con default spenti e JSON v1 compatibile.
-2. Motore `MaterialPostProcessor`: rumore interpolato a più scale/anisotropie, depositi cromatici guidati dalla luminanza, semplice assorbimento del colore scuro sui bordi; seed e coordinate fisse anche nei loop.
-3. Preservazione alpha; assorbimento usa massimo tre righe originali, nessuna copia dell'intera immagine oltre al buffer di finitura già introdotto in M4C.1.
-4. Integrazione nel post-processing comune dopo il campionamento 2× e prima di grana/Bayer; il ramo senza finitura resta invariato. Il limite storico 4.194.304 pixel delle finiture è stato ampliato a 16.777.216 nella R3.
-5. Nuova suite `MaterialPostProcessorTests`, aggiornamento `CatalogTests`, cinque ricette Full HD, specifica `M4C2_MATERIA_CARTA_PIGMENTI.md` e documentazione operativa.
-
-Le texture sono un'approssimazione raster procedurale, **non** un simulatore fisico di fluidi/pigmenti. Non ci sono nuovi pacchetti, linguaggi runtime o versioni di schema.
-
-## Azione successiva
-
-**Proseguire lo sviluppo**: nuovi algoritmi/ricette con dettaglio e profondità; estendere compositing a editor livelli/maschere/blend M4C.3, noise ciclico M4B.2 e animazioni fluide. SDF moderno ora disponibile in M4D.4; vecchie ricette SDF restano classic per compatibilità. Restano QA desktop/DPI, poster, altri OS e animazioni lunghe.
-
-## Comandi Windows — PowerShell 7
-
-Nella radice `GenerativeArt`:
-
-```powershell
-clear && dotnet clean && .\tools\validate.ps1
-```
-
-```powershell
-dotnet run --project .\src\GenerativeArt.Studio\GenerativeArt.Studio.csproj -c Release
-```
-
-Per esempi, controlli dettagliati e aspettative vedere [`M4C2_MATERIA_CARTA_PIGMENTI.md`](M4C2_MATERIA_CARTA_PIGMENTI.md), [`TESTING.md`](TESTING.md) e [`QUALITY_GATES.md`](QUALITY_GATES.md).
+Vedi [decisioni consolidate](DECISIONI_CONSOLIDATE_CHAT_2026-11-17.md), [audit H1](AUDIT_HANDOFF_G4_R2.md), [handoff](HANDOFF.md).

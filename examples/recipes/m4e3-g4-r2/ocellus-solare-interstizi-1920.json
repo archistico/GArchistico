@@ -1,0 +1,25 @@
+{
+  "formatVersion": 1,
+  "artworkId": "ocellus-eyespots",
+  "algorithmVersion": 1,
+  "seed": "420020",
+  "width": 1920,
+  "height": 1080,
+  "parameters": {
+    "eyes": 9,
+    "min-depth": 4,
+    "depth-bias": 1.8,
+    "core-radius": 0.10,
+    "room": 0.018,
+    "margin": 0.10,
+    "band": 0.012,
+    "growth": 3.7,
+    "fuse": 0.65,
+    "pool": 2.2,
+    "palette": "sunset",
+    "pore-strength": 1,
+    "pore-radius": 17,
+    "rim-light": 0.48,
+    "rim-width": 3
+  }
+}

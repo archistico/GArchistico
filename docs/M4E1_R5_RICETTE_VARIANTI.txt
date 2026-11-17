@@ -1,0 +1,10 @@
+sdf-chromatic-fog-1920.json: sdf-orbits, seed=19072026, parametri differenti: marbling, shadow-softness, grain-amount
+sdf-geode-glass-1920.json: sdf-orbits, seed=27182818, parametri differenti: palette, depth-blur, marbling, relief
+flow-brush-silk-rain-1920.json: flow-brush, seed=31415926, parametri differenti: bristles, taper, roughness, steps, grain-amount
+domain-warp-silk-topaz-1920.json: domain-warp, seed=2026111701, parametri differenti: warp-amount, frequency, bands, palette
+paper-cut-porcelain-wave-1920.json: paper-cut, seed=2026111702, parametri differenti: layers, roughness, ripple, shadow-opacity
+strata-aurora-ridge-1920.json: strata-landscape, seed=2026111703, parametri differenti: layers, warp, height, atmosphere
+engraving-verdigris-1920.json: tonal-engraving, seed=2026111704, parametri differenti: field, frequency, cross-angle, hatch-layers, spacing, bend, angle
+guilloche-moiré-1920.json: guilloche, seed=2026111705, parametri differenti: curve, layers, fixed-teeth, moving-teeth, scale, inner-scale, twist, opacity
+voronoi-ceramic-moon-1920.json: voronoi-mosaic, seed=2026111706, parametri differenti: gutter, palette
+lic-curl-bronze-1920.json: lic-flow, seed=2026111707, parametri differenti: field, frequency, length, contrast, palette, texture-scale

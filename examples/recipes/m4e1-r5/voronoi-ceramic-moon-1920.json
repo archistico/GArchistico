@@ -1,0 +1,20 @@
+{
+  "formatVersion": 1,
+  "artworkId": "voronoi-mosaic",
+  "algorithmVersion": 1,
+  "seed": "2026111706",
+  "width": 1920,
+  "height": 1080,
+  "parameters": {
+    "sites": 196,
+    "relaxations": 2,
+    "jitter": 0.9,
+    "gutter": 1.2,
+    "palette": "glass",
+    "paper-texture": "rough",
+    "paper-strength": 0.23,
+    "pigment-granulation": 0.23,
+    "ink-absorption": 0.2,
+    "render-quality": "standard"
+  }
+}

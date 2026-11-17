@@ -12,7 +12,7 @@ public sealed class StudioBundledDefaultsTests
     [Fact]
     public void EachBuiltInGeneratorHasAnEmbeddedAndValidInitialRecipe()
     {
-        Assert.Equal(17, Catalog.All.Count);
+        Assert.Equal(30, Catalog.All.Count);
         foreach (ArtworkDescriptor descriptor in Catalog.All)
         {
             ArtworkRecipe recipe = StudioRecipeDefaults.RecipeFor(descriptor.Id);

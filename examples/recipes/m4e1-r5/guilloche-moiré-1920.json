@@ -1,0 +1,29 @@
+{
+  "formatVersion": 1,
+  "artworkId": "guilloche",
+  "algorithmVersion": 1,
+  "seed": "2026111705",
+  "width": 1920,
+  "height": 1080,
+  "parameters": {
+    "curve": "outside",
+    "fixed-teeth": 37,
+    "moving-teeth": 11,
+    "pen-radius": 0.58,
+    "waves": 11,
+    "wave-amount": 0.03,
+    "samples": 18000,
+    "layers": 32,
+    "inner-scale": 0.2,
+    "layer-bias": 1.6,
+    "twist": 110,
+    "scale": 1.05,
+    "rotation": 0,
+    "center-x": 0.5,
+    "center-y": 0.5,
+    "line-width": 0.38,
+    "opacity": 0.66,
+    "palette": "midnight",
+    "render-quality": "standard"
+  }
+}

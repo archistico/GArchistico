@@ -6,7 +6,7 @@
 
 Stesso seed **42**, output **1920×1080**; nel loop è mostrato il frame 0. A sinistra i parametri storici, a destra quelli dei nuovi lavori dello Studio. La riduzione usa la media d'area 4×4 con alpha premoltiplicato per conservare i tratti fini.
 
-![Confronto dei cinque generatori iniziali con i nuovi preset dello Studio](../examples/previews/evolution-before-after.png)
+*Riferimento visivo storico: confronto dei cinque generatori iniziali con i nuovi preset. Il PNG `examples/previews/evolution-before-after.png` non è incluso nell’archivio corrente; recupero aperto nel gate A0.*
 
 Parametri esatti in [`validation/M4D2_R1_comparison-parameters.json`](validation/M4D2_R1_comparison-parameters.json). Il comando `compare` del tool riproduce il confronto.
 

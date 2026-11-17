@@ -42,8 +42,8 @@ internal static class ArtworkRecipeCli
         }
         ArtworkRegistry registry = BuiltInArtworkCatalog.Create();
         ArtworkDescriptor descriptor = registry.Get(args[1]);
-        int width = args.Length >= 4 ? ReadInt(args[3], 1, 4096, "larghezza") : 512;
-        int height = args.Length >= 5 ? ReadInt(args[4], 1, 4096, "altezza") : 512;
+        int width = args.Length >= 4 ? ReadInt(args[3], 1, 8192, "larghezza") : 512;
+        int height = args.Length >= 5 ? ReadInt(args[4], 1, 8192, "altezza") : 512;
         ulong seed = args.Length >= 6 ? ReadSeed(args[5]) : 42UL;
         if (!descriptor.SupportsAnimation && args.Length >= 7)
             throw new ArgumentException("Non è possibile specificare frame/FPS per un'opera statica.");

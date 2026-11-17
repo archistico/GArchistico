@@ -1,3 +1,5 @@
+> **Nota di precedenza (17/11/2026):** piano decisionale iniziale, conservato come riferimento. Gli stati e conteggi in apertura di questo documento si riferiscono a M4D.4/M4E1, **non** alla G4-R2 attuale (29 generatori, 173 ricette, build/test Windows confermati). [Roadmap operativa](ROADMAP.md), [decisioni consolidate](DECISIONI_CONSOLIDATE_CHAT_2026-11-17.md).
+
 # Piano concordato — Fasi A/B/D e ricette iniziali (aggiornato M4E.1-R1)
 
 **Data:** 17 novembre 2026. **Base:** M4D.4-R1, 17 generatori, 81 ricette di esempio e risultato Windows registrato 859/859. Le modifiche di M4D.4-R2 ai default e alla documentazione non hanno ancora una nuova validazione Windows registrata.

@@ -49,7 +49,8 @@ public sealed partial class StudioWindow
         Grid.SetColumn(headerTools, 1);
         header.Children.Add(headerTools);
 
-        var left = new StackPanel { Spacing = 14, Margin = new Thickness(16) };
+        var left = new StackPanel { Spacing = 14, Margin = new Thickness(16),
+            HorizontalAlignment = HorizontalAlignment.Stretch };
         left.Children.Add(SectionLabel($"CATALOGO  /  {_catalog.All.Count:D2} OPERE"));
         left.Children.Add(_search);
         left.Children.Add(_favoritesOnly);

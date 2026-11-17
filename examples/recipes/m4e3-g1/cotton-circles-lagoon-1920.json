@@ -1,0 +1,24 @@
+{
+  "formatVersion": 1,
+  "artworkId": "cotton-circles",
+  "algorithmVersion": 1,
+  "seed": "619",
+  "width": 1920,
+  "height": 1080,
+  "parameters": {
+    "columns": 24,
+    "rows": 14,
+    "margin": 0.06,
+    "tile-gap": 0.035,
+    "arc-scale": 0.9,
+    "motif": "mixed",
+    "palette": "lagoon",
+    "background-color": "auto",
+    "tile-color-1": "auto",
+    "tile-color-2": "auto",
+    "tile-color-3": "auto",
+    "tile-color-4": "auto",
+    "render-quality": "standard",
+    "grain-amount": 0.015
+  }
+}

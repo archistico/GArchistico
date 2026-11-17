@@ -6,8 +6,7 @@
 
 Stessa ricetta, seed, geometria e output **1920×1080** nelle due colonne. A sinistra sono disattivati solo `depth-blur`, ombre proiettate, glow e rim-light quando presenti; a destra i valori della ricetta. Nel bokeh restano attivi i gradienti di illuminazione dei dischi in entrambe le colonne. Le anteprime sono medie d'area 4×4 in alpha premoltiplicato.
 
-![Profondità spenta e attiva su carta, bokeh e paesaggio](../examples/previews/depth-comparison.png)
-
+*Riferimento visivo storico: Profondità spenta e attiva su carta, bokeh e paesaggio — il PNG originale non è incluso nell’archivio corrente; recupero aperto nel gate A0.*
 Parametri esatti in [`validation/M4D3_R1_comparison-parameters.json`](validation/M4D3_R1_comparison-parameters.json). I confronti non cambiano seed o densità per accentuare il risultato.
 
 ## Carta ritagliata · tunnel
@@ -80,7 +79,7 @@ Tutti i file sono 1920×1080. Aprirli nello Studio oppure usare `render-recipe` 
 | [strata-glacier-atmosphere-1920](../examples/recipes/strata-glacier-atmosphere-1920.json) | 32 rilievi glaciali, lontananza sfocata e ombre morbide | standard |
 | [strata-desert-soft-light-1920](../examples/recipes/strata-desert-soft-light-1920.json) | 28 dune calde, bordi luminosi e cotone | standard |
 
-Anteprime omonime in [`examples/previews`](../examples/previews).
+Le anteprime storiche `examples/previews/` **non sono presenti** nel pacchetto G4-R2. Non trattarle come file disponibili; il ripristino resta nel gate A0.
 
 ## Budget e verifiche
 

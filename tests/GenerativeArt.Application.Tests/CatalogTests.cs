@@ -16,23 +16,36 @@ public sealed class CatalogTests
         // non soltanto il numero dei generatori disponibili.
         string[] expectedIds =
         [
+            "alien-letters",
             "bokeh-depth",
+            "cincinnus-bristles",
+            "cotton-circles",
+            "crinis-bristles",
             "domain-warp",
+            "eclectic-trails",
+            "fascia-ribbons",
             "flow-brush",
             "guilloche",
             "lic-flow",
             "looping-flow",
             "noise-flow",
+            "ocellus-eyespots",
             "paper-cut",
             "parametric-curves",
+            "phyllotaxis",
             "plasma-noise",
             "poisson-stippling",
+            "reaction-diffusion",
+            "rete-foam",
+            "rigor-grid",
             "sdf-orbits",
             "spaced-streamlines",
+            "spiral-flamebrush",
             "strata-landscape",
             "tonal-engraving",
             "topographic-contours",
-            "voronoi-mosaic"
+            "voronoi-mosaic",
+            "wave-interference"
         ];
         Assert.Equal(expectedIds, catalog.All.Select(d => d.Id).ToArray());
         Assert.True(catalog.Get("looping-flow").SupportsAnimation);
@@ -60,7 +73,7 @@ public sealed class CatalogTests
     public void AllArtworksExposeOptionalFinishingControlsWithNeutralDefaults()
     {
         ArtworkRegistry catalog = BuiltInArtworkCatalog.Create();
-        Assert.Equal(17, catalog.All.Count);
+        Assert.Equal(30, catalog.All.Count);
         foreach (ArtworkDescriptor art in catalog.All)
         {
             Assert.Equal(new[] { "grain-amount", "grain-size", "dither-mode", "dither-levels" },

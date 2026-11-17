@@ -15,8 +15,17 @@ try {
         }
     }
     Run-DotNet -Arguments @('--version')
+    # La pulizia senza -c rimuove normalmente Debug: per evitare mix di DLL
+    # precedenti e sorgenti R3, pulire la STESSA configurazione che compiliamo.
+    Run-DotNet -Arguments @('clean', 'GenerativeArt.sln', '-c', 'Release')
     Run-DotNet -Arguments @('restore', 'GenerativeArt.sln')
     Run-DotNet -Arguments @('build', 'GenerativeArt.sln', '--no-restore', '-c', 'Release')
+    # Gate rapido: prima della suite completa, il catalogo effettivamente
+    # compilato deve avere i controlli Crinis, i preset G4 e il catalogo Cincinnus C5.
+    Run-DotNet -Arguments @('test', 'tests/GenerativeArt.Application.Tests/GenerativeArt.Application.Tests.csproj',
+        '--no-build', '--no-restore', '-c', 'Release',
+        '--filter', 'FullyQualifiedName~CrinisMicroCatalogTests|FullyQualifiedName~CrinisReleaseCatalogContractTests|FullyQualifiedName~GartG4CatalogTests|FullyQualifiedName~CincinnusC5CatalogTests',
+        '--logger', 'console;verbosity=minimal')
     Run-DotNet -Arguments @('test', 'GenerativeArt.sln', '--no-build', '-c', 'Release', '--logger', 'console;verbosity=normal')
     Write-Host 'Build e test .NET completati con successo.' -ForegroundColor Green
 }

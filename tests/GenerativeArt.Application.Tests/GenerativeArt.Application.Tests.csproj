@@ -9,4 +9,24 @@
   <ItemGroup>
     <ProjectReference Include="../../src/GenerativeArt.Application/GenerativeArt.Application.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="../../examples/recipes/m4e1-r5/*.json" Link="ExperimentalRecipes/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../examples/recipes/m4e2-r1/*.json" Link="WaveInterferenceRecipes/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../examples/recipes/m4e2-r2/*.json" Link="EightKRecipes/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../examples/recipes/m4e2-r3/*.json" Link="NaturePatternRecipes/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../examples/recipes/m4e2-r4/*.json" Link="EightKFinishRecipes/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../examples/recipes/m4e3-g1/*.json" Link="GartG1Recipes/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../examples/recipes/m4e3-g2/*.json" Link="GartG2Recipes/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../examples/recipes/m4e3-g3/*.json" Link="GartG3Recipes/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../examples/recipes/m4e3-g3-r2/*.json" Link="CrinisR2Recipes/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../examples/recipes/m4e3-g3-r3/*.json" Link="CrinisMicroRecipes/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../examples/recipes/m4e3-g3-r5/*.json" Link="CrinisR5Recipes/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../examples/recipes/m4e3-g3-r7/*.json" Link="CrinisR7Recipes/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../examples/recipes/m4e3-g3-r8/*.json" Link="CrinisR8Recipes/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../examples/recipes/m4e3-g3-r9/*.json" Link="CrinisR9Recipes/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../examples/recipes/m4e3-g3-r10/*.json" Link="CrinisR10Recipes/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../examples/recipes/m4e3-g4/*.json" Link="GartG4Recipes/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../examples/recipes/m4e3-g4-r2/*.json" Link="GartG4R2Recipes/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="../../examples/recipes/cincinnus-c5/*.json" Link="CincinnusRecipes/%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
 </Project>

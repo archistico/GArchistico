@@ -5,7 +5,8 @@ using GenerativeArt.Application.Recipes;
 namespace GenerativeArt.Application.Rendering;
 
 /// <summary>
-/// Ricette iniziali dello Studio. Le 17 risorse JSON sono parte dell'assembly:
+/// Ricette iniziali dello Studio. I 17 preset personali restano invariati;
+/// i generatori nuovi hanno preset aggiuntivi incorporati. Tutte le risorse:
 /// non dipendono dalla cartella corrente, dall'installazione o da file esterni.
 /// I default del catalogo e la deserializzazione delle ricette storiche restano invariati.
 /// </summary>

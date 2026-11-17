@@ -1,4 +1,172 @@
+> **STATO CORRENTE M4E.4-V1-R1 — 17/11/2026:** Mosaico Voronoi ampliato con modalità `layered`, tessere mancanti, mosaici posteriori indipendenti, smussi/luce, ombre gaussiane, distanza e sfocatura. **Build Release zero avvisi/errori e 1.260/1.260 test Windows** (Codex, SDK 10.0.201: Core 115, Algorithms 254, Application 220, Rendering.Skia 671). 30 generatori, 30 preset incorporati e **182 ricette**, sei nuove Full HD, due fine-2x. PNG storici Voronoi identici in quattro casi; tutti i 30 file preset, inclusi i 17 personali, invariati. Editor/CLI e anteprima nativa verificati; 8K conservato per flat, non per il percorso filtrato. [Guida, confronto e verifiche](M4E4_V1_VORONOI_PROFONDO.md). Le note C5 e precedenti sotto sono storiche; restano aperti giudizio artistico dell'utente, desktop/DPI, altri OS e stress. Crinis/Cincinnus e G4 non modificati da questo incremento.
+
+> **VALIDAZIONE WINDOWS C5-R1 — 17/11/2026:** corretti tre problemi riprodotti: xUnit2012 nel test del pittore, conteggio dei pigmenti che includeva pigment-granulation e campioni Auto Cincinnus mancanti. **Build Release zero avvisi/errori e 1.225/1.225 test superati da Codex, SDK 10.0.201** (Core 115, Algorithms 249, Application 219, Rendering.Skia 642); gate rapido 21 test già inclusi nel totale. Tool CincinnusPreview compilato; 176 ricette validate, tre PNG CLI 768×768 decodificati e Studio headless verificato su sei combinazioni palette/modalità. Catalogo/preset/esempi 30/30/176. [Rapporto e log](CINCINNUS_C5_R1_VALIDAZIONE_WINDOWS_2026-11-17.md). Qualità artistica Cincinnus/G4, desktop/DPI e stress ai limiti ancora aperti; Crinis R10 in pausa. **Le note di validazione C5/C4/C3 precedenti sotto sono storiche.**
+
+**Cincinnus C2 — test nuovi (17/11/2026):** aggiunto `CincinnusSimplePlacementTests.cs` (12 casi); la C1 è confermata compilata/testata dall’utente su Windows. C2 richiede gate Release completo e, facoltativamente, filtro `FullyQualifiedName~CincinnusSimplePlacementTests`. Il test statico dell’archivio non sostituisce `dotnet test`. Consultare [QA C2](validation/CINCINNUS_C2_STATIC_QA.md).
+
+> **Nuovo test pack Cincinnus C1:** `tests/GenerativeArt.Algorithms.Tests/CincinnusGeometryTests.cs`. Copre campo generato/esplicito, determinismo, RK4, raggi di curvatura, chiusura, limiti e cancellazione. Per eseguire: `dotnet test .\tests\GenerativeArt.Algorithms.Tests\GenerativeArt.Algorithms.Tests.csproj -c Release --filter FullyQualifiedName~CincinnusGeometryTests`. **Test scritti ma non ancora eseguiti sulla C1 in questa consegna**: SDK .NET non disponibile; eseguire il gate Windows completo prima di dichiarare la C1 validata. Ultima baseline confermata G4-R2.
+
+# Verifica corrente — G4-R2 (17/11/2026)
+
+**Conferma dell'utente:** la G4-R2 **compila e supera i test Windows**. Non è stato comunicato il numero di test; non riportare un conteggio inventato. Le verifiche statiche pre-conferma in `validation/M4E3_G4_R2_STATIC_VALIDATION.md` sono storiche, mentre la revisione H1 cambia esclusivamente la documentazione e non richiede una nuova build per stabilire l'identità dei sorgenti.
+
+Da PowerShell 7 nella root, per ogni futura modifica al codice:
+
+```powershell
+clear && dotnet clean && .\tools\validate.ps1
+```
+
+**Ancora da documentare:** confronti visivi R1/R2 Full HD su Ocellus/Rete, verifica 100% della tessitura/membrana, smoke reale CLI/GUI di questi nuovi percorsi, benchmark 4K/8K e piattaforme non Windows. I test automatici non equivalgono a giudizio estetico. [Piano QA](ROADMAP.md), [audit](AUDIT_HANDOFF_G4_R2.md).
+
+---
+
+## 17/11/2026 — M4E.3-G4-R2: Ocellus interstizi e rilievo; Rete nodi e pellicole
+
+**Baseline certificata dall'utente:** G4-R1.2 compila e tutti i test passano su Windows. Il blocco G4-R2 prosegue da quella versione, mantenendo integralmente Crinis R10 e gli hotfix R1.1/R1.2.
+
+**R2 implementata nei sorgenti:** Ocellus aggiunge `pore-strength`/`pore-radius` e `rim-light`/`rim-width`; Rete aggiunge `junction-strength`/`junction-radius`, `node-glow` e `membrane-opacity`. I nuovi controlli sono opzionali e neutri per vecchie ricette JSON v1; i **preset iniziali Studio** dei due generatori sono invece espressamente aggiornati per mostrare gli effetti.
+
+**Catalogo:** 29 generatori, 29 preset incorporati, 173 ricette JSON (6 nuove in `examples/recipes/m4e3-g4-r2/`); 17 preset personali e tutti gli altri generatori invariati. Nuovi test Algorithms/Application/Rendering, note e comparazioni nella [scheda G4-R2](M4E3_G4_R2_RILIEVO_MICROFORI_PELLICOLE.md).
+
+**Gate aperto:** la R2 richiede ancora build Release e test .NET su Windows (`clear && dotnet clean && .\tools\validate.ps1`) e verifica visiva A/B. Dopo il gate decidere se proseguire G4-R3 o passare a G5. Compositore B, workflow artista D, animazioni evolute più avanti.
+
+---
+
+## Gate M4E.3-G4-R1.2 — CS0136 renderer Rete (17/11/2026)
+
+**Ultimo log Windows:** Algorithms.Tests e Application.Tests hanno compilato; Rendering.Skia si è fermato su CS0136 nella doppia definizione locale `ink`. R1.2 introduce `wallCoverage` e `wallArgb` con formule identiche; conserva il fix numerico R1.1. Non sono ancora disponibili risultati validi dell'intera suite per G4-R1.2.
+
+```powershell
+clear && dotnet clean && .\tools\validate.ps1
+```
+
+**Risultato atteso:** compilazione Release dell'intera solution senza CS0117/CS0136 e tutti i test verdi. I test G4 esistenti (`GartG4RenderingTests`) verificano Rete con palette, pareti e coperture variabili, determinismo, serializzazione, finiture e cancellazione. Dopo il gate eseguire smoke visivo Ocellus/Rete nativi ed export.
+
+---
+
+## Gate M4E.3-G4-R1.1 — correzione CS0117 (17/11/2026)
+
+**Esito G4-R1 Windows:** build fallita su 4 chiamate `Math.Hypot` nei due kernel G4, prima della validazione globale.
+
+**Fix R1.1:** funzione stabile `GeometryDistance.Hypotenuse` e sostituzione dei 6 usi in produzione; il test brute-force usa `Math.Sqrt` per non dipendere dalla funzione verificata. Nuova classe `GeometryDistanceTests` per precisione, underflow/overflow e input non finiti.
+
+**Verifiche attese su Windows PowerShell 7:**
+
+```powershell
+clear && dotnet clean && .\tools\validate.ps1
+```
+
+Risultato richiesto: build di Algorithms, Rendering.Skia e dell'intera solution senza CS0117, tutti i test verdi. In caso di altri errori riportare il primo. La suite R1.1 **non è ancora stata eseguita su Windows**.
+
+---
+
+**Stato QA 17/11/2026 — M4E.3-G4-R1:** nuova suite `GartG4GeometryTests`, `GartG4CatalogTests`, `GartG4RenderingTests` e 2 nuovi casi `StudioExactPreviewRenderingTests`. Test e build Windows G4 ancora da verificare. Eseguire `clear && dotnet clean && .\tools\validate.ps1` da PowerShell 7 nella root; consultare [scheda G4](M4E3_G4_OCELLUS_RETE.md) per smoke di CLI/Studio.
+
+---
+
+## M4E.3-G3-R10 — test aggiunti, verifica Windows aperta (17/11/2026)
+
+L'utente conferma R9 build/test riusciti. R10 aggiunge test per 4 controlli opzionali Crinis, JSON precedenti, differenza di calibro, PNG storici, disegno a tre strati, seed, PNG leggibile e cancellazione. Ricette in `CrinisR10Recipes` copiate nell'output del progetto Application.Tests.
+
+```powershell
+clear && dotnet clean && .\tools\validate.ps1
+```
+
+Da confrontare anche due PNG indaco di uguale seed `7775761298886397793`: `examples/recipes/m4e3-g3-r10/crinis-r9-originale-utente.json` e `crinis-indigo-r10-tridimensionale-1920.json`. **R10 non ancora eseguita nella suite Windows**; verifiche statiche/JSON non equivalgono ai test .NET. Scheda: [R10](M4E3_G3_R10_CRINIS_PROFONDITA_INTERNA.md).
+
+---
+
+## G3-R3 — nuovi test Crinis
+
+- `CrinisMicroRenderingTests`: invisibilità del fondo e delle ombre poligonali a opacità zero (`classic` e `micro`), modifiche dei controlli, seed e determinismo, budget preventivi, JSON, annullamento, preview/export identici.
+- `CrinisMicroCatalogTests`: preset Studio aggiornato, vecchie ricette con nuovi parametri mancanti e validazione stretta di tutti i quattro JSON G3-R2 e dei sei JSON G3-R3.
+- Da controllare su Windows dopo compilazione: due rendering 2000×2000 `crinis-cincinnus-*.json`, tempi, qualità e assenza di fondi opachi. Ultima G3-R2 compilata/testata secondo feedback utente; non attribuire l'esito alla R3.
+
+# M4E.3-G3-R1 — Fascia/Eclectic + correzione catalogo (17/11/2026)
+
+- Ricevuto esito G2-R2: **1040/1041 test**; unica regressione `CatalogTests.CatalogHasStableSortedIdsAndLoopCapability` dovuta a un ordine alfabetico atteso invertito (`crinis` / `cotton`). Corretta **solo la lista di attesa**, in entrambe le coppie invertite (`cotton`/`crinis`, `spaced`/`spiral`); non l'ordinamento del prodotto.
+- A3-G3: due generatori `fascia-ribbons` e `eclectic-trails` (campi vettoriali, nastri retinati, crescita con collisioni), otto nuove ricette, due preset embedded. Totale **27 algoritmi / 136 ricette**. Tutti i preset e le ricette precedenti preservati.
+- Test nuovi per geometria, serializzazione, cambi di parametri, seed, preview/export, fine-2x, finiture, limiti e cancellazione. Guida `M4E3_G3_FASCIA_ECLECTIC.md`.
+- **G3-R1 da validare su Windows**. Fase successiva G4 Ocellus/Rete; A1 e A4/A5 restano aperte; B/D dopo e animazioni rinviate.
+
+---
+
+# Validazione — M4E.3-G2-R2 (17/11/2026)
+
+**Esito Windows G2-R1:** build interrotta dal diagnostico dell’analizzatore `xUnit2020` nel test `GartBrushCatalogTests.EightGartBrushStudiesRemainValidJsonV1` (riga 42). I progetti di produzione compilati nel log non dimostrano che l’intera suite sia stata eseguita.
+
+**Fix G2-R2:** sostituzione `Assert.True(false, ... )` → `Assert.Fail(...)`, senza variazioni alla logica della prova. Controllata staticamente l’assenza dello stesso antipattern nei sorgenti C#. **Non dichiarare test R2 passati finché non viene eseguito il gate Windows.**
+
+```powershell
+clear && dotnet clean && .\tools\validate.ps1
+```
+
+Risultato atteso: nessun `xUnit2020`; completamento di compilazione e test. In caso di fallimento, conservare il primo errore e il riepilogo.
+
+---
+
+# Stato test — M4E.3-G1-R1 (17/11/2026)
+
+L'utente ha confermato la **compilazione e il superamento dei test della M4E.2-R5**. Nella presente M4E.3-G1-R1 sono stati aggiunti tre generatori e test dedicati, **non ancora eseguiti su Windows**.
+
+Avviare da PowerShell 7, dalla cartella `GenerativeArt` che contiene la solution:
+
+```powershell
+clear && dotnet clean && .\tools\validate.ps1
+```
+
+Per lo smoke di un nuovo PNG:
+
+```powershell
+dotnet run --project .\src\GenerativeArt.Cli\GenerativeArt.Cli.csproj -c Release -- render-recipe .\examples\recipes\m4e3-g1\rigor-letterpress-1920.json .\rigor-letterpress.png
+```
+
+Regressioni aggiunte: `ModularTileGrammarTests`, `GartModularRenderingTests`, `GartG1RecipeFixturesTests` / `GartG1NineExamplesTests`. Prestare attenzione a output, colori Auto e finiture, ricette e cancellazione. Non eseguire la ricetta 8K con i nuovi generatori: non sono ancora abilitati.
+
+---
+
+## M4E.2-R5 — Validazione dopo errore di compilazione CS0618
+
+R4 falliva sul metodo deprecato `SKCanvas.DrawImage` in `ArtisticScanlineFinisher.cs`. R5 applica il metodo con `SKRect` e `SKSamplingOptions(SKFilterMode.Nearest)` e aggiunge il test `ScanlinePngCopiesSourcePixelsWithoutResampling` in `ArtisticScanlineFinisherTests.cs`. Il test verifica tutti i pixel della copia nativa prima/dopo PNG. La build e la suite della R5 sono da eseguire su Windows, senza attribuirle esiti già confermati.
+
+```powershell
+clear && dotnet clean && .\tools\validate.ps1
+```
+
+---
+
+## M4E.2-R4 — Test nuovi da confermare su Windows
+
+Unit test equivalenza delle finiture su bitmap opache, alpha preservation/cancel, validazione 8K e fixture JSON nuove. Smoke manuale 8K con `examples/recipes/m4e2-r4/voronoi-cotton-pigment-8k.json`. Baseline R1 confermata, R2/R3/R4 ancora aperte. Comando: `clear && dotnet clean && .\tools\validate.ps1`.
+
 # Test, build e smoke test — GenerativeArt
+
+## M4E.2-R3 — Fase A3, due nuovi generatori (da validare su Windows)
+
+La R3 introduce le suite `PatternGeometryTests`, `NaturePatternRendererTests` e `NaturePatternCatalogTests` (20 generatori, 108 ricette). I test coprono seed, colori, finiture, campionamento 2×, limiti di iterazione, cancellazione e JSON. Lo Studio ha anche la modifica dei pulsanti di navigazione a larghezza uniforme, da verificare manualmente in una finestra ridimensionata con ricette recenti e filtri attivi. Comando PowerShell 7 dalla radice: `clear && dotnet clean && .\tools\validate.ps1`. **Nessuna esecuzione Windows è stata confermata per R3; ultima baseline confermata dall’utente M4E.1-R3.** Guida: `M4E2_R3_NATURA_E_NAVIGAZIONE.md`.
+
+
+## M4E.2-R2 — Budget 8K geometrico (17/11/2026)
+
+Aggiunti `RasterCanvasBudget8KTests` e `EightKRecipeFixturesTests`: preflight 7680×4320 su quattro generatori, rifiuto dei renderer con buffer completi, del formato quadrato oltre area, di supersampling/finiture a 8K; validazione JSON v1 di quattro nuovi studi e roundtrip. La suite non alloca raster 8K. **Smoke 8K reale opzionale** e confronto Preview/Export descritti in [`M4E2_R2_8K_GEOMETRICI.md`](M4E2_R2_8K_GEOMETRICI.md). Baseline Windows confermata R3; R2 non ancora validata.
+
+**Ultimo riscontro utente (17 novembre 2026):** M4E.1-R3 compila e supera i test Windows; anteprime visualizzate correttamente, output PNG uguale all’anteprima nella prova eseguita. **M4E.1-R4 e R5**: validazione Windows ancora da eseguire.
+
+## M4E.1-R5 — Servizio documenti e dieci ricette sperimentali
+
+**Ultima baseline confermata dall'utente: R3, compilazione e test passati, preview/export identici.** R4 e R5 non ancora validate su Windows.
+
+Aggiunti sette test `StudioRecipeDocumentsTests` (import limitato anche con stream non seekable, JSON invalido, validazione prima dell'uso, cancellazione, stream, scrittura atomica) e un test delle dieci ricette `ExperimentalRecipeFixturesTests`. Le nuove ricette vengono copiate nell'output test tramite MSBuild, senza usare percorsi assoluti.
+
+**PowerShell 7 dalla radice solution:**
+
+```powershell
+clear && dotnet clean && .\tools\validate.ps1
+```
+
+Smoke suggerito: import/export JSON da Studio, apertura di una ricetta in `examples/recipes/m4e1-r5/`, preview/export nativa, stato condizionale dei controlli R4. Test e verifica grafica devono essere confermati sulla piattaforma di riferimento.
+
+---
 
 ## M4E.1-R3 — Correzione puntuale test streamlines (17/11/2026)
 

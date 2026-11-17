@@ -12,9 +12,11 @@ public readonly record struct ArtisticFinishOptions(
     string PaperTexture = "none", double PaperStrength = 0,
     double PigmentGranulation = 0, double InkAbsorption = 0)
 {
-    // Allineato al budget raster generale: il post-processing è opzionale
-    // e usa buffer temporanei, ma 2500x2000 e poster 4096x4096 sono validi.
-    public const long MaximumFinishPixels = 16_777_216;
+    // Fino a 4K rimane il percorso storico PixelBuffer; oltre 4K i quattro
+    // renderer geometrici 8K usano il nuovo postprocess a righe (O(larghezza)).
+    // Il limite del generatore viene controllato prima dell'allocazione Skia.
+    public const long LegacyFullFrameFinishPixels = 16_777_216;
+    public const long MaximumFinishPixels = RasterCanvasBudgetPolicy.EightKMaximumPixels;
 
     public bool HasMaterial => (PaperTexture != "none" && PaperStrength > 0)
         || PigmentGranulation > 0 || InkAbsorption > 0;

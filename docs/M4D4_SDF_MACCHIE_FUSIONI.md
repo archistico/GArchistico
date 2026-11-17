@@ -6,8 +6,7 @@
 
 Seed **42**, output **1920×1080** in tutte le colonne. A sinistra i default del catalogo storico; al centro i nuovi default Studio; a destra una variante glass con palette iris e riflessi più forti. I tre stili hanno parametri/palette propri, conservati nel [report](validation/M4D4_R1_comparison-parameters.json). Le anteprime usano la media d'area 4×4 in alpha premoltiplicato.
 
-![Orbite SDF classico e nuovi stili pigmento e vetro](../examples/previews/sdf-comparison.png)
-
+*Riferimento visivo storico: Orbite SDF classico e nuovi stili pigmento e vetro — il PNG originale non è incluso nell’archivio corrente; recupero aperto nel gate A0.*
 ## Uso nello Studio
 
 Selezionare **Orbite SDF · macchie e fusioni**: un nuovo lavoro parte in stile **pigment**, palette sorbet, due piani e quattordici macchie per piano. Il controllo **Stile SDF** appare nel primo gruppo. Le ricette precedenti senza `style` si aprono in **classic** e conservano la vecchia resa; per trasformarle scegliere pigment/glass oppure aprire uno dei nuovi preset.
@@ -59,8 +58,7 @@ Ogni piano contiene un campo distinto ma stabile per seed, con scala crescente d
 
 Il nuovo percorso calcola la copertura graduata del bordo usando il **footprint locale** della distanza, stimato con differenze centrali X/Y su tre righe di campioni. La larghezza si adatta a scala, allungamento, deformazione e risoluzione. Le fasce interne usano l'integrale locale di un tratto su un pixel box: un tratto subpixel mantiene un'intensità proporzionale allo spessore, anziché lampeggiare fra assente e pieno. Questo antialiasing è attivo anche in **standard**; fine-2x aggiunge il supersampling e la riduzione premoltiplicata già disponibili.
 
-![Confronto della copertura del bordo con un riferimento quattro volte più risoluto](../examples/previews/sdf-antialiasing.png)
-
+*Riferimento visivo storico: Confronto della copertura del bordo con un riferimento quattro volte più risoluto — il PNG originale non è incluso nell’archivio corrente; recupero aperto nel gate A0.*
 Stessa geometria deformata, seed 42, immagine 128×96, dettaglio 16×. Nel [caso registrato](validation/M4D4_R1_antialiasing-report.json), su 381 pixel di bordo l'errore medio assoluto dell'alpha rispetto al riferimento renderizzato 4× e mediato è **14,35/255**, contro **49,93/255** per la soglia netta: riduzione **71,3%**. È una misura su questo caso, non una garanzia per qualsiasi impostazione. Anche un caso senza deformazione è coperto dalla suite. Il classico conserva il vecchio campionamento per riprodurre i PNG precedenti.
 
 ## Otto ricette Full HD
@@ -76,7 +74,7 @@ Stessa geometria deformata, seed 42, immagine 128×96, dettaglio 16×. Nel [caso
 | [sdf-lagoon-ink-wash-1920](../examples/recipes/sdf-lagoon-ink-wash-1920.json) | Un piano, rilievo tenue, cotone, pigmento e assorbimento | standard |
 | [sdf-nocturne-glass-fine-1920](../examples/recipes/sdf-nocturne-glass-fine-1920.json) | Trasparenze notturne, riflessi forti e ombre più distanti | fine-2x |
 
-Anteprime omonime in [`examples/previews`](../examples/previews). Le ricette sono 81 in totale.
+Le anteprime storiche `examples/previews/` **non sono presenti** nel pacchetto G4-R2. Non trattarle come file disponibili; il ripristino resta nel gate A0. Le ricette sono 81 in totale.
 
 ## Compatibilità e limiti
 

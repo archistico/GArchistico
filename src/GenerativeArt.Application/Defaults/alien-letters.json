@@ -1,0 +1,25 @@
+{
+  "formatVersion": 1,
+  "artworkId": "alien-letters",
+  "algorithmVersion": 1,
+  "seed": "42",
+  "width": 1920,
+  "height": 1080,
+  "parameters": {
+    "columns": 5,
+    "rows": 3,
+    "subdivisions": 5,
+    "grid-gap": 0.34,
+    "glyph-density": 0.72,
+    "join-probability": 0.38,
+    "roundness": 0.06,
+    "glyph-scale": 0.88,
+    "palette": "retro",
+    "background-color": "auto",
+    "tile-color-1": "auto",
+    "tile-color-2": "auto",
+    "tile-color-3": "auto",
+    "tile-color-4": "auto",
+    "render-quality": "standard"
+  }
+}

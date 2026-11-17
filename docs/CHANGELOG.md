@@ -1,4 +1,320 @@
+## 17 novembre 2026 — M4E.4-V1-R1: Voronoi con mosaici in profondità
+
+- Nuova modalità layered del Mosaico Voronoi: 2–8 piani indipendenti, selezione esatta e progressiva di tessere mancanti random/clustered, fondo più denso e scarto fra piani.
+- Smussi e facce illuminate, ombre gaussiane fra piani, oscuramento/atmosfera/blur con la distanza. Palette posteriore e colori ombra/velatura, alpha conservata.
+- 22 controlli opzionali JSON; Studio con 27 editor numerici e 10 colori, controlli condizionali. Modalità flat, resa precedente e tutti i file dei 30 preset incorporati (17 personali) invariati.
+- Sei nuove ricette Full HD, due fine-2x, 182 esempi totali; catalogo a 30. Confronto piatto/piani/profondità, anteprime e screenshot reale Studio con rendering nativo.
+- Build Release senza avvisi/errori, **1.260/1.260 test Windows**, 182 ricette valide, sei PNG decodificati, Studio/CLI e quattro hash PNG precedenti verificati. Guard geometrici/raster prima dell'output; 8K flat preservato, percorso filtrato con cap dedicati.
+- [Guida ed evidenze](M4E4_V1_VORONOI_PROFONDO.md); ZIP integrale. Nessuna nuova dipendenza di produzione, nessuna modifica a Crinis/Cincinnus/G4.
+
+## 17 novembre 2026 — Cincinnus C5-R1: correzioni e validazione Windows
+
+- Corretto errore di compilazione xUnit2012 nel controllo dei pixel del pennello, mantenendo l'asserzione equivalente con Assert.Contains.
+- Corretto il test degli otto pigmenti: verifica degli ID colore esatti, escludendo il parametro numerico pigment-granulation.
+- Collegati i nove campioni Auto di Cincinnus alle palette del renderer e al campionamento dello sfondo già usato dal pittore. Aggiunte quattro regressioni per le tre palette e i ruoli inesistenti/non cromatici.
+- Clean/restore/build Release senza avvisi/errori, **1.225/1.225 test Windows**; gate rapido 21 test incluso nel totale, tool autonomo compilato, 176 ricette validate, tre PNG CLI 768×768 e sei combinazioni Studio headless.
+- Nessuna modifica ai preset, ai parametri JSON, ai budget, alla geometria o alle formule pittoriche; aggiornati documenti, manifest e ZIP integrale. README riportato a descrizione/installazione/esecuzione con screenshot.
+- [Rapporto ed evidenze](CINCINNUS_C5_R1_VALIDAZIONE_WINDOWS_2026-11-17.md). Approvazione estetica, desktop/DPI e stress restano aperti.
+
+> **STATO OPERATIVO C5 — 17/11/2026:** Cincinnus integrato *sperimentalmente* come 30° generatore nel catalogo/Studio/CLI, 30 preset embedded e 176 esempi JSON (173 storici + 3 C5). Supporta Simple/Adaptive, otto pigmenti modificabili singolarmente, tre palette, parametri/ombre e budget 2048 px / 2.097.152 pixel. **C1 e C2 test/build Windows confermati; C3, C4 e C5 non ancora compilati/testati dall'utente**, nessun giudizio estetico PNG. Leggere [scheda C5](CINCINNUS_C5_STUDIO_CLI_JSON_2026-11-17.md) e [QA](validation/CINCINNUS_C5_STATIC_QA.md). Le intestazioni C4/C3 seguenti sono storiche.
+
+## 17/11/2026 — M4E.3-Cincinnus-C5 — integrazione catalogo e rendering condiviso (sperimentale)
+
+- Inserito `cincinnus-bristles` come **30° generatore** e preset embedded, con modalità Simple e Adaptive e parametri artistici tipizzati.
+- Collegate `CincinnusFlowField`, `SimplePlacer`, `AdaptivePlacer`, `StrokePlanner` e `CincinnusBristlePainter` al renderer standard condiviso da Studio e CLI.
+- Palette Crimson originale e due varianti Ocean/Moss, tutti gli otto pigmenti singolarmente sovrascrivibili, controllo sfondo e due livelli d'ombra.
+- Validazione dei budget (256..2048 pixel per lato, max 2.097.152 pixel; fine-2x limitato), conservazione dei controlli inattivi nella ricetta e modalità `require-complete` per fallire su copertura incompleta.
+- Aggiunto 1 preset e 3 esempi; totale **30 generatori / 30 preset embedded / 176 esempi JSON**. **29 vecchi preset, 173 vecchi esempi e i renderer Crinis/G4 non cambiano**.
+- Creati test Application `CincinnusC5CatalogTests` e rendering `CincinnusC5RenderingTests`, aggiornati gli assert del catalogo storico e il gate rapido `validate.ps1`.
+- Controlli statici: sintassi dei 206 JSON, confronto dei file storici, catalogo/schema e manifest (vedi rapporto C5). **Build e test C3+C4+C5 non eseguiti**: SDK .NET assente. Nessun PNG ancora giudicato valido artisticamente.
+
+[Specifiche, comandi e gate](CINCINNUS_C5_STUDIO_CLI_JSON_2026-11-17.md) | [QA statico](validation/CINCINNUS_C5_STATIC_QA.md).
+
+---
+
+## 17/11/2026 — M4E.3-Cincinnus-C4 — algoritmo Adaptive main/filler/patch
+
+- Nuovi sorgenti Algorithms: `CincinnusAdaptiveOptions`, `CincinnusCoverageGrid`, `CincinnusAdaptiveLayout`, `CincinnusAdaptivePlacer` (sottostream RNG e RK4 C1, seconda copertura post-trim e patch).
+- Nuovi 7 test in `CincinnusAdaptivePlacementTests.cs`; **predisposti, non ancora eseguiti**.
+- Preview C# aggiornata: argomento facoltativo `simple|adaptive` per PNG comparabili senza registrare Cincinnus nel catalogo.
+- Nessuna modifica a Crinis, Ocellus/Rete, 29 preset embedded, 173 ricette e altri sorgenti storici; invariato il catalogo 29 generatori.
+- **Conferme Windows:** C1 e C2; **da verificare Windows:** C3 e C4. Nessun giudizio estetico ancora disponibile.
+- [Dettagli](CINCINNUS_C4_ADAPTIVE_2026-11-17.md) / [QA statico](validation/CINCINNUS_C4_STATIC_QA.md).
+
+---
+
+## 17/11/2026 — M4E.3-Cincinnus-C3 — pennellate volumetriche e PNG di prova
+
+- **Gate Windows C2:** l'utente conferma che **compilazione e test C2 passano**; C1 già confermata positiva. Conteggio test non disponibile.
+- **Algorithms:** aggiunti `CincinnusStrokeOptions`, `CincinnusBrushStroke`/`CincinnusStrokePlan`, `CincinnusStrokePlanner`: segmenti sovrapposti, ordini di posa per curvatura, spine a normale e larghezza variabile, profili di testata, essiccazione e limiti espliciti.
+- **C2:** esteso il contratto `CincinnusStreamline.Separation` come sola property di lettura; posizionamento e test C2 invariati.
+- **Rendering.Skia:** aggiunti `CincinnusPaintOptions` e `CincinnusBristlePainter`, con otto colori crimson personalizzabili, corpo/ombre, fibre, load, gap asciutti e luce trasversale. Modulo autonomo che accetta `SKCanvas`; nessuna modifica a Crinis/Ocellus/Rete.
+- **Tool C#:** `tools/GenerativeArt.CincinnusPreview` produce PNG di prova 256–2048 px senza registrare Cincinnus nel catalogo. Va compilato separatamente dalla solution.
+- **Test:** nuovi `CincinnusStrokePlannerTests` e `CincinnusBristlePainterTests`; C3 non ancora eseguita in .NET, verifiche statiche/documentali e zip SHA-256 distinte dal gate Windows.
+- **Invarianti:** catalogo 29 generatori, 29 preset embedded e 173 ricette invariati; Crinis R10 e G4-R2 preservati. Punti aperti: resa artistica, OKLab, Adaptive C4, Studio/CLI C5.
+- **Documenti:** [C3](CINCINNUS_C3_PENNELLO_VOLUMETRICO_2026-11-17.md), [QA statico](validation/CINCINNUS_C3_STATIC_QA.md), roadmap e handoff aggiornati.
+
+---
+
+## 17/11/2026 — M4E.3-Cincinnus-C2 — posizionamento Simple delle streamline
+
+- **Conferma Windows C1:** l’utente comunica «Compila e test ok» per il kernel geometrico C1 già consegnato; numero dei test non disponibile.
+- **Algorithms:** nuovi `CincinnusSimpleOptions`, `CincinnusSimpleLayout`/`CincinnusStreamline` e `CincinnusSimplePlacer`, basati sulla distribuzione di `flow2/Streamlines.kt` di Gȧrt: bidirezionale RK4, griglia spaziale, dSep/dTest, esclusione dei ritorni non locali, semi laterali, griglia fallback, scarto/rollback di linee corte, clearance e taper. Limiti a punti, linee e semi con flag di distribuzione parziale.
+- **Test:** aggiunta `CincinnusSimplePlacementTests` per determinismo, campi costanti/circolari, canvas rettangolari, rollback, limiti, collezioni immutabili, cancellazione e validazione parametri.
+- **Invarianti:** nessuna modifica ai sorgenti precedenti C1, ai renderer Crinis/Ocellus/Rete, al catalogo (29), ai preset (29) o alle ricette (173). Nessun rendering Cincinnus nel prodotto.
+- **QA:** controllo statico e manifest del pacchetto; **C2 non ancora compilata/testata con dotnet in questo ambiente**. Scheda [C2](CINCINNUS_C2_STREAMLINES_SIMPLE_2026-11-17.md), [QA statico C2](validation/CINCINNUS_C2_STATIC_QA.md). Prossimo: C3.
+
+---
+
+## 17/11/2026 — M4E.3-Cincinnus-C1: prima implementazione geometrica C#
+
+- **Richiesta utente:** realizzare il primo kernel geometrico C# per l'opera **Cincinnus** studiata nel dossier H3, senza alterare Crinis o G4.
+- **Algorithms:** aggiunto `CincinnusFlowField` (vortici tangenziali esterni al canvas selezionati per massima minima distanza, campo composito conforme alla legge Gȧrt, seed SplitMix64 riproducibile); `CincinnusTraceOptions` (passo/lunghezza/margine), `CincinnusPathGeometry` (RK4 avanti e indietro tramite FlowTracer, chiusura loop, raggi di curvatura e budget/cancellazione).
+- **Test:** nuovo file `CincinnusGeometryTests.cs` per condizioni geometriche e numeriche, compatibilità con `VectorFields.Vortex`, clipping, determinismo, input invalidi, cancellazione. Nessun cambio ai test preesistenti.
+- **Compatibilità:** nessun renderer, preset, ricetta JSON, modificatore UI o CLI aggiunto; 29 generatori, 29 preset, 173 ricette invariati. Crinis R10 e Ocellus/Rete G4-R2 byte-identici alla H3. Sorgenti originali Kotlin non redistribuiti.
+- **QA:** controlli statici/manifest/archivio completati; **build e test C1 non eseguiti** (SDK .NET assente nell'ambiente di preparazione). Baseline G4-R2 confermata dall'utente nel passaggio precedente. [Scheda completa](CINCINNUS_C1_KERNEL_GEOMETRICO_2026-11-17.md).
+- **Prossimo:** verificare gate Windows, poi C2 posizionatore `Simple` e diagnostic geometrico; C3–C5 seguono la roadmap, senza anticipare un giudizio artistico.
+
+---
+
+## 17/11/2026 — G4-R2-H2: ricezione e analisi delle fonti Gȧrt originali
+
+**17/11/2026 — H3 (solo documentazione):** studio sorgente Cincinnus Gȧrt (`Cincinnus.kt` e `CincinnusSimple.kt`, `Bristles`, `VectorField`, `Streamlines`), confronto con Crinis R10 C# e proposta di porting incrementale C1–C5. Creato [STUDIO_CINCINNUS_GART_2026-11-17.md](STUDIO_CINCINNUS_GART_2026-11-17.md); aggiornati riferimenti in README/CURRENT_STATE/ROADMAP/HANDOFF/INDEX/NUOVA_CHAT/decisioni. **Sorgenti C#, suite test, preset, 173 JSON e configurazioni immutati**; non è stato eseguito un nuovo test .NET. Baseline Windows validata M4E.3-G4-R2.
+
+
+- Analizzati lo ZIP originale `gart-main-pulito(2).zip` e la galleria ufficiale `https://github.com/igr/gart`; catalogati i link a 28 opere selezionate, verificati i sei riferimenti visuali Ocellus/Rete/Nimbus/Pebble2/Accretion/Crinis e i loro sorgenti Kotlin.
+- Aggiunto [`GART_RIFERIMENTI_ORIGINALI_2026-11-17.md`](GART_RIFERIMENTI_ORIGINALI_2026-11-17.md): provenienza, gallery index, differenze algoritmiche e criteri A/B con la nostra G4-R2.
+- **Nessun sorgente C#, test, preset, ricetta o configurazione modificato**. Baseline Windows resta **M4E.3-G4-R2**, già validata dall'utente; H2 è solo documentazione. Il giudizio estetico G4-R2 resta aperto.
+- Manifest SHA-256 rigenerato per tutti i file del pacchetto; Gȧrt originale e immagini non redistribuiti nello ZIP.
+
+---
+
+## 17/11/2026 — G4-R2-H1: consolidamento documentale e passaggio nuova chat
+
+- **Conferma utente:** la **G4-R2 compila e supera tutti i test su Windows**. Il conteggio preciso non è stato comunicato. Rimane aperto il confronto visivo di Ocellus/Rete.
+- Nessun sorgente di produzione, test, ricetta, preset o configurazione modificato. La baseline **codice resta G4-R2**, H1 indica soltanto documentazione/handoff.
+- Rifatti README, INDEX, CURRENT_STATE, HANDOFF e NUOVA_CHAT, con vecchi testi conservati come file storici nello stesso `docs/`.
+- Creati `DECISIONI_CONSOLIDATE_CHAT_2026-11-17.md` e `AUDIT_HANDOFF_G4_R2.md`: richieste confermate, roadmap aggiornata, QA e capacità reali, rimozione di riferimenti documentali non presenti.
+- Aggiornati ROADMAP, QUALITY_GATES, TESTING, guide G4 e registri; ricalcolato manifest SHA-256 e pacchetto completo.
+
+---
+
+## 17/11/2026 — M4E.3-G4-R2: Ocellus interstizi e rilievo; Rete nodi e pellicole
+
+**Baseline certificata dall'utente:** G4-R1.2 compila e tutti i test passano su Windows. Il blocco G4-R2 prosegue da quella versione, mantenendo integralmente Crinis R10 e gli hotfix R1.1/R1.2.
+
+**R2 implementata nei sorgenti:** Ocellus aggiunge `pore-strength`/`pore-radius` e `rim-light`/`rim-width`; Rete aggiunge `junction-strength`/`junction-radius`, `node-glow` e `membrane-opacity`. I nuovi controlli sono opzionali e neutri per vecchie ricette JSON v1; i **preset iniziali Studio** dei due generatori sono invece espressamente aggiornati per mostrare gli effetti.
+
+**Catalogo:** 29 generatori, 29 preset incorporati, 173 ricette JSON (6 nuove in `examples/recipes/m4e3-g4-r2/`); 17 preset personali e tutti gli altri generatori invariati. Nuovi test Algorithms/Application/Rendering, note e comparazioni nella [scheda G4-R2](M4E3_G4_R2_RILIEVO_MICROFORI_PELLICOLE.md).
+
+**Gate aperto:** la R2 richiede ancora build Release e test .NET su Windows (`clear && dotnet clean && .\tools\validate.ps1`) e verifica visiva A/B. Dopo il gate decidere se proseguire G4-R3 o passare a G5. Compositore B, workflow artista D, animazioni evolute più avanti.
+
+---
+
+## 2026-11-17 — M4E.3-G4-R1.2 — Hotfix compilazione CS0136 in Rete
+
+- **Segnalazione Windows R1.1:** build `GenerativeArt.Rendering.Skia` fallita con CS0136 in `GartCellularRenderer.cs` (riga 152): `double ink` nel ciclo interno e `uint ink` nella destrutturazione palette dello stesso metodo. Per le regole degli ambiti locali C# non possono condividere lo stesso identificatore.
+- **Correzione:** rinominati rispettivamente `wallCoverage` e `wallArgb`, aggiornandone tutti gli utilizzi. **Operazione di solo refactoring**: nessuna formula, colore, composizione, budget, preset, ricetta o schema JSON modificati. Il fix CS0117 di R1.1 rimane incluso integralmente.
+- **QA:** il log utente segnala compilazione riuscita di `GenerativeArt.Algorithms.Tests` e `GenerativeArt.Application.Tests`; il resto della build/suite è ancora bloccato fino alla verifica Windows di R1.2. Test rendering Rete già presenti per determinismo, palette, copertura artistica, JSON ed export.
+- **Gate:** `clear && dotnet clean && .\tools\validate.ps1` in PowerShell 7. Obiettivo: build completa e tutte le suite xUnit superate, poi confronto artistico Full HD prima di G4-R2. Numeri invariati: **29 generatori, 29 preset incorporati, 167 ricette JSON**.
+
+---
+
+## 2026-11-17 — M4E.3-G4-R1.1 — Hotfix CS0117 distanza euclidea (.NET 10)
+
+- **Segnalazione Windows G4-R1:** build fallita con quattro CS0117 in `OcellusField` e `ReteFoamField`: `System.Math.Hypot` non è disponibile in .NET 10. La build si è interrotta prima delle suite dipendenti.
+- **Fix completo:** introdotto `GeometryDistance.Hypotenuse(dx,dy)`, numericamente stabile (scaling prima di `Sqrt`), e sostituiti **tutti e 6** gli usi in produzione (4 Algorithms, 2 Rendering.Skia). L'unico uso nel test di geometria è stato sostituito con un calcolo `Sqrt(dx²+dy²)` indipendente, per mantenere valido il confronto con l'oracolo brute-force.
+- **Regression tests:** nuovo `GeometryDistanceTests` (triangoli pitagorici, simmetria, numeri estremi, valori non finiti). Nessun cambiamento a cataloghi, preset, ricette, default, schema JSON, renderer artistici o limiti di memoria.
+- **Stato:** tutti i riferimenti `Math.Hypot` nel codice C# sono stati eliminati; validazione statica/archivio eseguita, **build e test Release G4-R1.1 ancora da confermare su Windows**. Il totale resta **29 generatori, 167 ricette JSON**.
+
+---
+
+## 2026-11-17 — M4E.3-G4-R1: due generatori cellulari Ocellus/Rete
+
+- Implementati `ocellus-eyespots` (13 livelli ad anelli con smooth-min) e `rete-foam` (impacchettamento e campi di distanza delle superfici, drenaggio, film e piani sfocati), ispirati ai sorgenti Gȧrt originali, reimplementati in C#.
+- Aggiunte 2 famiglie di parametri e 9 palette complessive (5 Ocellus, 4 Rete), ruoli colore Auto, 2 preset incorporati FullHD e **8 nuove ricette** (`examples/recipes/m4e3-g4`). Catalogo da 27 a **29 generatori**, esempi da 159 a **167**.
+- Aggiunti test di geometria, catalogo, rendering, regressioni di ordinamento, preview nativa identica all’export; limitazioni computazionali verificate prima di renderizzare. Documentazione, roadmap, handoff, indice e manifest aggiornati.
+- Crinis R10 conservata integralmente; cambio priorità chiesto dall’utente. G4-R1 ancora da compilare/testare su Windows; il superamento della suite non è stato attestato in questa consegna.
+
+---
+
+## 2026-11-17 — M4E.3-G3-R10 — Crinis profondità interna dei fasci
+
+- **Baseline confermata dall'utente:** R9 compila, test superati; profondità tra fasci apprezzata, ma fibre piccole e fascia troppo piatta al suo interno.
+- Nuovi controlli opzionali `intra-bundle-depth`, `featured-fibers`, `cross-section-light`, `internal-occlusion`, neutrali su JSON preesistenti. Studio li attiva per nuove opere e propone `hair-width=3.2`.
+- Renderer: tre passaggi di disegno front/mid/back con semi indipendenti dall'ordine, maggiore corpo di una minoranza di filamenti, profilo di luce trasversale e ombre di contatto interne; `body-opacity=0` ancora senza sagoma opaca.
+- QA: nuovi test Application e Rendering per catalogo, applicabilità, pixel storici, seme, dimensioni, calibro, occlusione interna e cancellazione.
+- Esempi: originale utente R9 byte-identico + due nuove varianti R10; **159 ricette**, **27 generatori**. Aggiornati README, roadmap, guida tecnica, stato, handoff, nuova chat, indice e manifesto.
+- **Stato R10:** verifiche statiche/JSON completate; compilazione e test .NET da eseguire su Windows prima di considerarla validata.
+
+---
+
+## 2026-11-17 — M4E.3-G3-R9 — Crinis volume del fascio e illuminazione collettiva
+
+- **Priorità:** proseguimento di Crinis, non avvio G4. Obiettivo: dimensione plastica della pennellata senza trasformarla in superficie piena.
+- **Tre controlli micro opzionali e indipendenti:** `bundle-compression` (-0.35/0.70), `bundle-volume` (0/1) e `bundle-lighting` (0/1); nel catalogo il default è neutro (0), nel preset di nuovi lavori Studio sono rispettivamente 0.28 / 0.68 / 0.82.
+- **Preset nuovo lavoro più materico:** `hair-width` Studio portato da 0.67 a 1.65 (il valore catalogo/JSON storico resta 1).
+- **Geometria:** addensamento/espansione trasversale monotoni; modulazione comune della sezione lungo il percorso; diametro dei filamenti limitato dal passo locale, per conservare la tessitura.
+- **Colore e rilievo:** il lighting dei gruppi coordina luce/ombra del lato e della cresta attraverso le fibre; rimangono le ombre di contatto locali di R8 e `body-opacity=0` senza sagoma.
+- **Ottimizzazione:** la modulazione viene calcolata una volta per campione di curva e riusata da tutti i filamenti del fascio.
+- **Bugfix retrospettivo:** `hair-width` massimo 8 (era 5); riallinea catalogo e ricette R7/R8 già esistenti con valori oltre 5.
+- **QA:** test per monotonicità della geometria, profilo del volume, determinismo, pixel diversi, compatibilità di ricette v1, condizioni Studio; registrate tre nuove ricette R9. Totale **156 ricette**, **27 generatori**; documentazione, indice, roadmap e handoff aggiornati.
+- **Verifica:** nessuna esecuzione .NET nel container (SDK non presente); richiesta validazione Windows con `clear && dotnet clean && .\tools\validate.ps1`.
+
+---
+
+## 2026-11-17 — M4E.3-G3-R8 — Crinis occlusione locale e ombre di contatto
+
+- **Riscontro utente R7:** continuare su Crinis; mantenere sempre aggiornata la documentazione.
+- `CrinisMicroRenderer`: introdotta una **ombra di contatto multi-pass** per i singoli filamenti (outer/mid/core) in modo da far leggere meglio i fasci in primo piano sopra quelli dietro, senza reintrodurre la sagoma piena del fascio quando `body-opacity=0`.
+- Rafforzata la lettura dei piani: i livelli arretrati ora possono risultare leggermente piu' soffici e meno opachi (`rear-softness` / focus), cosi' davanti e dietro si separano meglio.
+- QA/catalogo: i test Application includono ora anche le cartelle esempio `m4e3-g3-r7` e `m4e3-g3-r8`.
+- Aggiunte 2 nuove ricette in `examples/recipes/m4e3-g3-r8/` per studiare sovrapposizione e ombra di contatto. Totale **153 esempi JSON**.
+
+---
+
+## 2026-11-17 — M4E.3-G3-R7 — Crinis volume filamenti e rilievo cilindrico
+
+- **Riscontro utente R6:** compilazione e test OK; feedback visivo: profondità migliorata, ma fibre ancora troppo sottili e piatte.
+- `CrinisMicroRenderer`: aumentata la massa percepita del filamento con volume radiale lungo la corsa, rigonfiamento locale a bassa frequenza, spessori nominali piu' presenti e minima sezione non eccessivamente capillare.
+- Aggiunto un secondo pass di modellazione sul singolo filo: corpo centrale, bordo in ombra e bordo in luce, per suggerire una sezione piu' cilindrica e meno piatta. Depositi/glint adeguati allo spessore medio del run.
+- Nuovi test Rendering: `hair-width` entra nel gate dei controlli micro e viene verificato anche in una ricetta densa reale ad alta densita'.
+- Aggiunte 2 ricette di studio in `examples/recipes/m4e3-g3-r7/` (ricetta utente importata + variante bold). Totale **151 esempi JSON**. Guida operativa Windows invariata: `clear && dotnet clean && .\tools\validate.ps1`.
+
+---
+
+## 2026-11-17 — M4E.3-G3-R5 — Crinis fibre separate e fix gruppo Finitura
+
+- Report Windows R4: `CatalogTests.AllArtworksExposeOptionalFinishingControlsWithNeutralDefaults` fallisce per `ink-flecks` erroneamente in gruppo `Finitura`. Spostato in `Microfibre`, senza alterare i quattro controlli di finitura condivisi.
+- Microfibre: nuovo diametro di filo limitato morbido dal passo reale per evitare l'aggregazione in nastri opachi ad alta densità; nuovo parametro `fiber-coverage` (default 0.8).
+- Pigmento: nuovo `pigment-contrast` (default 0.6), con tonalità variabili fra fili e depositi discontinui lungo la fibra.
+- Conservato senza variazioni il JSON fornito dall'utente, aggiunto confronto A/B Full HD e una ricetta cremisi 2000×2000 (149 esempi totali).
+- Nuovi test sul catalogo, sui due controlli, su distribuzione dei diametri e su ricette storiche. Windows R5 da verificare. Guida: `M4E3_G3_R5_CRINIS_FIBRE_SEPARATE.md`.
+
+---
+
+## 2026-11-17 — M4E.3-G3-R4 — Fix 32 test Crinis / build Release coerente
+
+- **Riscontro Windows R3:** build `Release` riuscita; **1056/1088** test superati, 32 falliti. Gli errori condividono un unico sintomo: `detail-style` (e altri controlli R3) assenti dal catalogo Application caricato dai test. Il file `GartBrushArtworkDescriptors.cs` presente nello ZIP R3 dichiara gia' tutti i parametri; i risultati sono compatibili con un assembly Application Release precedente rimasto in uso. Non e' stato possibile dimostrare la causa dalla sola traccia.
+- **Fix di validazione:** `tools/validate.ps1` pulisce ora esplicitamente `Release` (`dotnet clean GenerativeArt.sln -c Release`) prima di restore/build/test, prevenendo la mescolanza Debug/Release dovuta al comando `dotnet clean` senza `-c`.
+- **Gate precoce:** nuova classe `CrinisReleaseCatalogContractTests` verifica che il catalogo realmente compilato contenga tutti i 10 controlli aggiunti, che siano opzionali per i vecchi JSON e che il preset Studio sia in modalita' micro senza base. Il test mirato precede la suite completa.
+- **Resilienza:** il renderer Crinis tratta l'assenza di `detail-style` in una ricetta storica come `classic` anziche' indicizzare senza controllo e produrre `KeyNotFoundException`. Il formato JSON v1 e la validazione rigorosa degli ID sconosciuti restano invariati.
+- **Installazione:** estrarre lo ZIP in una cartella nuova e vuota, oppure eliminare le cartelle `bin`/`obj` dall'albero precedente. Non mescolare i sorgenti con output compilati delle revisioni precedenti.
+- **Nessun cambiamento voluto ai PNG quando il catalogo R3 e' coerente**. 27 generatori, 27 preset, 146 ricette; 17 preset personali e le 6 ricette Cincinnus originali della R3 invariati. Test Windows R4 ancora da confermare.
+
+---
+
+## 2026-11-17 — M4E.3-G3-R3 — Crinis microfibre ispirato a Cincinnus
+
+- Corretto il difetto visivo: `body-opacity=0` nasconde **anche le due ombre poligonali** che rimanevano sotto alle fibre nella G3-R2. Nessuna ombra di fascia quando il corpo è invisibile.
+- Introdotto un renderer `detail-style=micro` indipendente dal classico: fibre molto più dense, microtrame, rastremazione e rilievo locali, copertura della superficie, più centri di curvatura e granelli di inchiostro.
+- Aggiunta palette `crimson`; ampliati gli intervalli creativi e il budget controllato a 12M campioni della modalità micro. Preset Studio Crinis aggiornato, 17 preset personali e altri 26 generatori preservati.
+- Aggiunte **6 ricette** (2 quadrate 2000×2000), da 140 a **146 esempi**. Corretti i 4 JSON R2 rimuovendo il campo `description` incompatibile con il parser v1.
+- Nuovi test Rendering/Application, documentazione [M4E3_G3_R3_CRINIS_MICROFIBRE.md](M4E3_G3_R3_CRINIS_MICROFIBRE.md). Ultima baseline Windows verificata dall’utente: G3-R2; G3-R3 da verificare.
+
+---
+
+## M4E.3-G3-R2 — Crinis poetico e tessile
+- Aggiunti i parametri `body-opacity`, `fiber-relief` e `fiber-fray` al generatore `crinis-bristles`.
+- La base del fascio può essere resa invisibile; le fibre hanno ora maggiore rilievo con ombre/luci dedicate.
+- Nuova resa tessile con bordi più soffici e sfrangiati.
+- Aggiornato il preset incorporato e le quattro ricette Crinis esistenti; aggiunte quattro nuove ricette di studio.
+
+# M4E.3-G3-R1 — Fascia/Eclectic + correzione catalogo (17/11/2026)
+
+- Ricevuto esito G2-R2: **1040/1041 test**; unica regressione `CatalogTests.CatalogHasStableSortedIdsAndLoopCapability` dovuta a un ordine alfabetico atteso invertito (`crinis` / `cotton`). Corretta **solo la lista di attesa**, in entrambe le coppie invertite (`cotton`/`crinis`, `spaced`/`spiral`); non l'ordinamento del prodotto.
+- A3-G3: due generatori `fascia-ribbons` e `eclectic-trails` (campi vettoriali, nastri retinati, crescita con collisioni), otto nuove ricette, due preset embedded. Totale **27 algoritmi / 136 ricette**. Tutti i preset e le ricette precedenti preservati.
+- Test nuovi per geometria, serializzazione, cambi di parametri, seed, preview/export, fine-2x, finiture, limiti e cancellazione. Guida `M4E3_G3_FASCIA_ECLECTIC.md`.
+- **G3-R1 da validare su Windows**. Fase successiva G4 Ocellus/Rete; A1 e A4/A5 restano aperte; B/D dopo e animazioni rinviate.
+
+---
+
+# M4E.3-G2-R2 — 17/11/2026 — Fix xUnit2020
+
+- Il gate Windows della G2-R1 si arrestava in compilazione in `tests/GenerativeArt.Application.Tests/GartBrushCatalogTests.cs:42`: l’analizzatore xUnit2020 vieta `Assert.True(false, message)` e richiede `Assert.Fail(message)`.
+- Sostituita soltanto quella istruzione nel test `EightGartBrushStudiesRemainValidJsonV1`. Controllata l’assenza di ulteriori `Assert.True(false, ...)` / `Assert.False(true, ...)` nei sorgenti C#.
+- Nessuna modifica ai progetti di produzione, ai 25 generatori, ai 25 preset e alle 128 ricette. G2-R2 attende nuova compilazione ed esecuzione della suite completa su Windows; l’ultima baseline confermata integralmente rimane M4E.2-R5.
+
+---
+
+# M4E.3-G2-R1 — 17/11/2026
+
+**A3-G2 implementata:** nuovi generatori `crinis-bristles` (curve portanti, setole, ombre, secchezza) e `spiral-flamebrush` (orbite e timbri puntinati spiraliformi), 8 nuove ricette Full HD. Totale 25 generatori e 128 JSON. Kernel Algorithms separato da Skia; 2 preset nuovi e tutte le risorse precedenti conservate. Budget preventivi 3M campioni setole / 120k particelle. Test Algorithms/Application/Rendering.Skia aggiunti. Guida [`M4E3_G2_PENNELLI_CRINIS_FLAMEBRUSH.md`](M4E3_G2_PENNELLI_CRINIS_FLAMEBRUSH.md). Baseline Windows confermata M4E.2-R5; G1/G2 non ancora validate.
+
+---
+
+## 2026-11-17 — M4E.3-G1-R1 — Geometrie modulari (Alien Letters, Cotton Circles, Rigor)
+
+- Primo incremento del piano A3-G1 ricavato dallo studio diretto dei sorgenti Gȧrt. Tre generatori C# parametrici, con ricette v1 e seed riproducibili; nessuna dipendenza runtime da Kotlin.
+- Creati `ModularTileGrammar` (Algorithms), `ModularArtworkDescriptors` (Application), `GartModularRenderer` (Skia), campioni di palette Auto e tre preset incorporati.
+- Nove nuovi studi Full HD in `examples/recipes/m4e3-g1/`, da 111 a 120; catalogo da 20 a 23. I 17 preset personali originali e i 111 esempi precedenti conservano i loro byte.
+- Test Algorithms, Application, Rendering.Skia per griglie, determinismo, variazione parametri, JSON, PNG, fine-2x, finiture e cancellazione; test inventario e file fixture aggiornati.
+- M4E.2-R5: **compilazione e test confermati dall'utente**. M4E.3-G1-R1: test Windows **non ancora eseguiti**. Guida [`M4E3_G1_GEOMETRIE_MODULARI.md`](M4E3_G1_GEOMETRIE_MODULARI.md).
+
+## 2026-11-17 — Studio comparativo Gȧrt su baseline M4E.2-R5 (sola documentazione)
+
+- Confermata dall’utente build + test M4E.2-R5 superati.
+- Analizzato direttamente l’archivio Gȧrt: struttura `arts`, utility `gart`, sorgenti favorite e gap rispetto ai 20 generatori C#.
+- Aggiunto `docs/STUDIO_GART_PORTING_M4E2.md`: matrice tecnica, priorità Crinis/Fascia/Ocellus/Rete/Accretion, sottoroadmap A3-G1…G6, requisiti test, budget 8K, licenza BSD-2-Clause.
+- Aggiornate roadmap, stato, handoff e indice. **Zero modifiche ai sorgenti, ai preset, alle ricette e ai test.**
+
+---
+
+## 2026-11-17 — M4E.2-R5 — Fix CS0618 SkiaSharp
+
+- Correzione puntuale in `ArtisticScanlineFinisher.cs`: `DrawImage` usa ora `SKRect` e `SKSamplingOptions(SKFilterMode.Nearest)` invece dell'overload deprecato.
+- Nuovo test PNG per verificare la copia pixel-per-pixel senza ricampionamento; nessun algoritmo, preset o ricetta modificato.
+- **R4: build Windows fallita con CS0618** secondo il log utente. **R5: compilazione e test ancora da confermare**. Baseline verificata: M4E.2-R1.
+- Guida: [`M4E2_R5_FIX_DRAWIMAGE_SKIA.md`](M4E2_R5_FIX_DRAWIMAGE_SKIA.md).
+
+## 2026-11-17 — M4E.2-R4 — Post-processing 8K a righe
+
+- A4: 8K UHD standard + grana/Bayer/carta/pigmento/assorbimento nei quattro generatori geometrici già abilitati in R2. Finiture applicate sulle righe; evita un PixelBuffer completo aggiuntivo oltre 16.777.216 pixel.
+- Fattorizzati kernel per riga da `MaterialPostProcessor` e `ArtisticPostProcessor`; il percorso fino a 4K mantiene la codifica storica.
+- +3 ricette 8K nuove, 111 totali. Nessuna modifica ai preset personali né alle 108 ricette precedenti. Test di equivalenza, alpha, budget 8K, parsing e cancellazione aggiunti.
+- Baseline confermata dall'utente: M4E.2-R1 (build e test OK). **R2/R3/R4 da verificare su Windows**; nuovo rendering 8K reale non ancora eseguito.
+
 # Registro modifiche — GenerativeArt Studio
+
+## 2026-11-17 — M4E.2-R3 — Fillotassi, reazione–diffusione e pulsanti uniformi
+
+- **Fase A3:** 19° e 20° generatore: fillotassi geometrica con distribuzioni a spirale e reazione–diffusione Gray–Scott con campionamento bilineare. Entrambi con parametri completi, colori indipendenti, seed, qualità e finiture; renderer Skia/CLI/Studio condiviso.
+- **Otto** nuove ricette Full HD in `examples/recipes/m4e2-r3/`, da 100 a **108**; aggiunti due preset embedded, senza cambiare i 17 originali dell’utente e i precedenti 100 JSON.
+- **Studio:** pulsanti del catalogo e apertura delle ricette recenti estesi uniformemente alla larghezza del menu, titoli con ellissi, azione `×` separata.
+- **Budget:** reazione–diffusione al massimo 350.000 celle e 75M aggiornamenti; i nuovi renderer restano al profilo standard ≤4K, non ampliamento 8K.
+- Nuovi test nelle tre suite; documentazione e manifesto aggiornati. **Da validare su Windows**; baseline confermata M4E.1-R3. [Guida](M4E2_R3_NATURA_E_NAVIGAZIONE.md).
+
+
+## 2026-11-17 — M4E.2-R2 — Primo budget 8K UHD sui generatori geometrici
+
+- Nuova `RasterCanvasBudgetPolicy`: supporto statico 7680×4320/4320×7680, massimo 8192 per lato e 33.177.600 pixel, limitato ai generatori `guilloche`, `spaced-streamlines`, `voronoi-mosaic`, `poisson-stippling`. Nessuna superficie 8K per i renderer che necessitano di buffer raster aggiuntivi.
+- Supersampling e finiture mantengono limiti separati (16.777.216 sottopixel/pixel): nessuna promessa di `fine-2x` o carta/grana a 8K. Mantenuti i limiti delle animazioni.
+- CLI `recipe-new` accetta lati fino a 8192 (validazione completa rimandata alla generazione); preview Studio continua a usare i pixel finali.
+- Quattro esempi 8K, 100 ricette totali, 18 generatori, 17 preset utente non toccati. Nuovi test validazione 8K e fixture JSON. Guida `M4E2_R2_8K_GEOMETRICI.md`.
+- Revisione non ancora validata Windows. Baseline utente M4E.1-R3; R4, R5 e M4E.2-R1 ancora da confermare.
+
+## 2026-11-17 — M4E.2-R1 — Nuovo generatore Interferenze d'onda / Moiré
+
+- **Fase A3**: aggiunto un nuovo generatore indipendente `wave-interference` (Algorithms + Rendering.Skia), basato su 2–12 sorgenti radiali, seed, disposizione, frequenza, deformazione Simplex, attenuazione, tre modalità e tre palette.
+- Il catalogo passa a **18 generatori**; quattro ruoli colore Auto/HEX, finiture e qualità `fine-2x` sono riutilizzati senza cambiare il JSON v1. Nuovo preset incorporato separato; **17 preset personali e 91 ricette precedenti invariati**.
+- **Cinque** studi Full HD in `examples/recipes/m4e2-r1/`: rosette, caustiche rame, nastri, scatter cromatico e Moiré su carta; totale **96 ricette**.
+- Budget lavoro esplicito: fino a 150 milioni di contributi radiali (pixel nativi × sorgenti), prima dell'allocazione; resta il limite raster generale a 4096×4096, non ancora 8K.
+- Test Algorithms per i campi, Rendering.Skia per PNG/seed/parametri/fine2x/cancellazione/budget, Application per i JSON e il nuovo preset. Documentazione [`M4E2_R1_INTERFERENZE_ONDA.md`](M4E2_R1_INTERFERENZE_ONDA.md).
+- **Stato:** modifiche implementate, test Windows da confermare. Baseline utente **M4E.1-R3**; R4, R5 e questa revisione ancora senza feedback Windows.
+
+## 2026-11-17 — M4E.1-R5 — Documenti ricetta e dieci studi creativi
+
+- Avviata la separazione delle operazioni di import/salvataggio JSON da Avalonia con `StudioRecipeDocuments` (Application); import bounded 64 KiB, validazione prima dell'aggiornamento della UI, stream del chiamante non chiusi, file locali atomici; provider virtuali non atomici.
+- `StudioWindow.FileOperations.cs` usa il servizio, non replica più buffering e serializzazione. UI e motore di rendering invariati.
+- Dieci nuove ricette Full HD indipendenti, derivate da parametri già supportati; da 81 a 91 esempi, nessuna modifica ai 17 preset incorporati.
+- Aggiunti 7 test del servizio e un test fixture per le dieci varianti. **Baseline Windows M4E.1-R3 validata**; R4 e R5 da testare. Guida `docs/M4E1_R5_DOCUMENTI_RICETTE_STUDI.md`.
+
+## 2026-11-17 — M4E.1-R4 — UI parametri condizionali e refactoring
+
+- **R3 validata dall'utente**: build e test passati, anteprime corrette, output identico all'anteprima. La regressione `spaced-streamlines/frequency` è risolta.
+- Nuova policy `StudioParameterApplicability` in Application, testabile senza Avalonia: disabilitazione informativa di valori inapplicabili per vortex/curvature, grana, Bayer, carta, maschera. Non modifica JSON o output.
+- Estratti in `StudioWindow.ParameterControls.cs` gli editor tipizzati; `StudioWindow.RecipeEditor.cs` gestisce selezione e ricetta; aggiornamento UI e reset di input temporaneamente invalidi in `StudioWindow.ParameterApplicability.cs`.
+- Nuovi test per combinazioni condizionali, ripristino dell'applicabilità, serializzazione e preset immutati. Rendering, 17 preset e 81 ricette non modificati. **R4 da validare su Windows**. Guida: `M4E1_R4_PARAMETRI_CONDIZIONALI.md`.
 
 ## 2026-11-17 — M4E.1-R3 — Regressione frequency/vortex nei test Streamlines
 

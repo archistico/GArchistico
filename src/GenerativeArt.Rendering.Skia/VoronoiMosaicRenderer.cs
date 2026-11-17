@@ -26,10 +26,17 @@ internal static class VoronoiMosaicRenderer
         int relaxations = Int(recipe, "relaxations");
         if (sites is < 1 or > 196 || relaxations is < 0 or > 3)
             throw new ArgumentOutOfRangeException(nameof(recipe), "Budget Voronoi superato.");
+        if (recipe.Parameters["depth-style"] == "layered")
+            LayeredVoronoiRenderer.ValidateBudget(recipe);
     }
 
     internal static void Render(SkiaRasterSurface surface, ArtworkRecipe recipe, CancellationToken ct)
     {
+        if (recipe.Parameters["depth-style"] == "layered")
+        {
+            LayeredVoronoiRenderer.Render(surface, recipe, ct);
+            return;
+        }
         CanvasSize size = recipe.Size;
         int siteCount = Int(recipe, "sites");
         float jitter = (float)Number(recipe, "jitter");

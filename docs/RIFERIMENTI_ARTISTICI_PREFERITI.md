@@ -1,5 +1,7 @@
 # Riferimenti artistici selezionati dall’utente — P2.1
 
+**Aggiornamento H2, 17/11/2026:** ora sono disponibili lo ZIP sorgente originale `gart-main-pulito(2).zip` e la [galleria GitHub Gȧrt](https://github.com/igr/gart). I percorsi precisi a 28 immagini preferite e le note di verifica sono nel [documento sulle fonti originali](GART_RIFERIMENTI_ORIGINALI_2026-11-17.md). Le immagini non sono incluse nel pacchetto Gȧrt allegato.
+
 **Data:** 16 novembre 2026. **Natura:** documento di progettazione; non aggiunge nuovi generatori C#.
 
 ## Interpretazione delle preferenze

@@ -1,0 +1,63 @@
+namespace GenerativeArt.Application.Catalog;
+
+/// <summary>Famiglia A3-G1: grammatiche modulari ispirate allo studio dei sorgenti Gȧrt.</summary>
+public static partial class BuiltInArtworkCatalog
+{
+    private static ArtworkDescriptor AlienLettersDescriptor() => new("alien-letters", 1,
+        "Alien Letters · glifi modulari", "Geometria / Moduli",
+        "Alfabeto astratto di moduli pieni, assenze e barre con giunzioni probabilistiche.",
+        ArtworkCapabilities.Raster,
+        [ArtworkParameterSpec.Integer("columns", "Colonne glifi", 4, 2, 12, "Griglia"),
+         ArtworkParameterSpec.Integer("rows", "Righe glifi", 4, 2, 12, "Griglia"),
+         ArtworkParameterSpec.Integer("subdivisions", "Sottogriglia glifo", 5, 2, 10, "Griglia"),
+         ArtworkParameterSpec.Number("grid-gap", "Spazio tra i glifi", .34, .04, .8, "Griglia"),
+         ArtworkParameterSpec.Number("glyph-density", "Riempimento", .72, .05, 1, "Moduli"),
+         ArtworkParameterSpec.Number("join-probability", "Barre estese", .35, 0, 1, "Moduli"),
+         ArtworkParameterSpec.Number("roundness", "Arrotondamento", .06, 0, .45, "Moduli"),
+         ArtworkParameterSpec.Number("glyph-scale", "Scala complessiva", .88, .3, 1.25, "Inquadratura"),
+         ArtworkParameterSpec.Choice("palette", "Palette", "retro", ["retro", "neon", "mineral"], "Colori"),
+         ArtworkParameterSpec.ColorOverride("background-color", "Sfondo"),
+         ArtworkParameterSpec.ColorOverride("tile-color-1", "Modulo 1"),
+         ArtworkParameterSpec.ColorOverride("tile-color-2", "Modulo 2"),
+         ArtworkParameterSpec.ColorOverride("tile-color-3", "Modulo 3"),
+         ArtworkParameterSpec.ColorOverride("tile-color-4", "Modulo 4"),
+         .. RasterFinishing()]);
+
+    private static ArtworkDescriptor CottonCirclesDescriptor() => new("cotton-circles", 1,
+        "Cotton Circles · tasselli semicircolari", "Geometria / Moduli",
+        "Tessitura di quadrati colorati e semicerchi ruotati, con orientamenti e accenti riproducibili.",
+        ArtworkCapabilities.Raster,
+        [ArtworkParameterSpec.Integer("columns", "Colonne", 10, 2, 48, "Griglia"),
+         ArtworkParameterSpec.Integer("rows", "Righe", 10, 2, 48, "Griglia"),
+         ArtworkParameterSpec.Number("margin", "Margine esterno", .06, 0, .24, "Griglia"),
+         ArtworkParameterSpec.Number("tile-gap", "Fuga tra tasselli", 0, 0, .4, "Griglia"),
+         ArtworkParameterSpec.Number("arc-scale", "Dimensione archi", 1, .25, 1.4, "Moduli"),
+         ArtworkParameterSpec.Choice("motif", "Famiglia archi", "semicircle", ["semicircle", "quarter", "mixed"], "Moduli"),
+         ArtworkParameterSpec.Choice("palette", "Palette", "cotton", ["cotton", "terra", "lagoon"], "Colori"),
+         ArtworkParameterSpec.ColorOverride("background-color", "Sfondo"),
+         ArtworkParameterSpec.ColorOverride("tile-color-1", "Tassello 1"),
+         ArtworkParameterSpec.ColorOverride("tile-color-2", "Tassello 2"),
+         ArtworkParameterSpec.ColorOverride("tile-color-3", "Tassello 3"),
+         ArtworkParameterSpec.ColorOverride("tile-color-4", "Tassello 4"),
+         .. RasterFinishing()]);
+
+    private static ArtworkDescriptor RigorGridDescriptor() => new("rigor-grid", 1,
+        "Rigor · griglia tipografica", "Geometria / Moduli",
+        "Blocchi geometrici periodici e segni tipografici che inclinano i tasselli vicini.",
+        ArtworkCapabilities.Raster,
+        [ArtworkParameterSpec.Integer("columns", "Colonne", 8, 4, 16, "Griglia"),
+         ArtworkParameterSpec.Integer("rows", "Righe", 10, 4, 18, "Griglia"),
+         ArtworkParameterSpec.Integer("period", "Periodo verticale", 3, 1, 8, "Griglia"),
+         ArtworkParameterSpec.Number("accent-rate", "Frequenza colore accento", .12, 0, 1, "Moduli"),
+         ArtworkParameterSpec.Choice("letters", "Lettere", "igor", ["igor", "none"], "Tipografia"),
+         ArtworkParameterSpec.Number("letter-tilt", "Inclinazione lettere (gradi)", 6, 0, 20, "Tipografia"),
+         ArtworkParameterSpec.Number("reach", "Raggio distorsione (celle)", 2.2, .2, 6, "Tipografia"),
+         ArtworkParameterSpec.Number("neighbor-tilt", "Torsione vicini (gradi)", 6.5, 0, 25, "Tipografia"),
+         ArtworkParameterSpec.Number("push", "Spostamento vicini (celle)", .11, 0, .4, "Tipografia"),
+         ArtworkParameterSpec.Number("tile-scale", "Dimensione tasselli", .84, .3, 1.1, "Moduli"),
+         ArtworkParameterSpec.Choice("palette", "Palette", "paper", ["paper", "night", "porcelain"], "Colori"),
+         ArtworkParameterSpec.ColorOverride("background-color", "Carta"),
+         ArtworkParameterSpec.ColorOverride("ink-color", "Inchiostro"),
+         ArtworkParameterSpec.ColorOverride("accent-color", "Accento"),
+         .. RasterFinishing()]);
+}

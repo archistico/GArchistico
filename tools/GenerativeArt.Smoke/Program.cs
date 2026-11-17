@@ -13,13 +13,18 @@ using GenerativeArt.Application.Recipes;
 using GenerativeArt.Rendering.Skia;
 using GenerativeArt.Studio;
 using SkiaSharp;
-if (args.Length != 2 || args[0] is not ("picker" or "render" or "detail" or "studio" or "evolution" or "evolution-studio" or "compare" or "depth" or "depth-studio" or "depth-compare" or "depth-compat" or "sdf" or "sdf-studio" or "sdf-compare" or "sdf-aa"))
+if (args.Length != 2 || args[0] is not ("picker" or "render" or "detail" or "studio" or "evolution" or "evolution-studio" or "compare" or "depth" or "depth-studio" or "depth-compare" or "depth-compat" or "sdf" or "sdf-studio" or "sdf-compare" or "sdf-aa" or "voronoi" or "voronoi-studio" or "voronoi-compare" or "voronoi-compat"))
 {
-    Console.Error.WriteLine("Uso: GenerativeArt.Smoke picker|render|detail|studio|evolution|evolution-studio|compare|depth|depth-studio|depth-compare|depth-compat|sdf|sdf-studio|sdf-compare|sdf-aa <cartella solution>");
+    Console.Error.WriteLine("Uso: GenerativeArt.Smoke picker|render|detail|studio|evolution|evolution-studio|compare|depth|depth-studio|depth-compare|depth-compat|sdf|sdf-studio|sdf-compare|sdf-aa|voronoi|voronoi-studio|voronoi-compare|voronoi-compat <cartella solution>");
     Environment.ExitCode = 2;
     return;
 }
 string root = Path.GetFullPath(args[1]);
+if (args[0].StartsWith("voronoi", StringComparison.Ordinal))
+{
+    VoronoiDepthSmoke.Run(args[0], root);
+    return;
+}
 string output = Path.Combine(root, "artifacts", args[0].StartsWith("sdf", StringComparison.Ordinal) ? "m4d4-smoke"
     : args[0].StartsWith("depth", StringComparison.Ordinal) ? "m4d3-smoke"
     : args[0] is "evolution" or "evolution-studio" or "compare" ? "m4d2-smoke"
