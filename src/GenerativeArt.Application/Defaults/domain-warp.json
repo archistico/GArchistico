@@ -1,0 +1,30 @@
+{
+  "formatVersion": 1,
+  "artworkId": "domain-warp",
+  "algorithmVersion": 1,
+  "seed": "6582940917790807322",
+  "width": 1920,
+  "height": 1080,
+  "parameters": {
+    "bands": 12.394594594594574,
+    "dither-levels": 8,
+    "dither-mode": "none",
+    "frequency": 0.0015702702702703006,
+    "gradient-color-1": "auto",
+    "gradient-color-2": "auto",
+    "gradient-color-3": "auto",
+    "gradient-color-4": "auto",
+    "grain-amount": 0.022702702702702696,
+    "grain-size": 1,
+    "ink-absorption": 0.11567567567567592,
+    "octaves": 5,
+    "palette": "ocean",
+    "paper-strength": 0.05297297297297272,
+    "paper-texture": "rough",
+    "pattern": "clouds",
+    "pigment-granulation": 0.08540540540540516,
+    "render-quality": "standard",
+    "warp-amount": 1.3837837837837788,
+    "warp-layers": 2
+  }
+}

@@ -1,3 +1,39 @@
+# Stato corrente — GenerativeArt Studio M4E.1-R3 (fix test dipendente dal campo)
+
+**17 novembre 2026.** Ricevuta conferma Windows della versione **M4E.1-R2: compilazione riuscita, 879/880 test superati**, con una sola regressione `EveryArtisticControlChangesTheRaster` per `spaced-streamlines/frequency`. Il test partiva dal preset dell'utente con `field=vortex`, che non usa la frequenza. In R3 il test imposta `field=curl` prima di verificarne l'effetto; nuova regressione esplicita conferma che il vortice è indipendente dalla frequenza. **Codice di produzione, preset e 81 ricette invariati.** Test R3 ancora da confermare.
+
+Prosegue Fase A: A0 archivio e anteprime storiche mancanti; A1 isolamento controller e UX dei parametri applicabili; A2 preview nativa implementata con QA GUI/DPI ancora aperto; A3 nuove ricette/algoritmi; A4 output 8K con budget e quality gate; A5 stabilizzazione. Poi Fase B compositore e Fase D workflow dell'artista, mentre le animazioni evolute restano rinviate. Dettagli in `M4E1_R3_FIX_TEST_STREAMLINES.md`.
+
+---
+
+# Stato precedente — GenerativeArt Studio M4E.1-R2 (A1 incrementale + A2 anteprima reale)
+
+**17 novembre 2026.** La finestra Studio usa adesso il **raster nativo con le dimensioni della ricetta finale**, senza preview ridotta né campi di dimensionamento raster. `Adatta`, `100%`, rotella e riquadro configurabile operano solo sulla vista. `StudioRenderCoordinator` (Application, senza Avalonia) serializza preview ed export, gestisce i token e l'output PNG atomico; nuovi test unitari e rendering Skia confrontano i percorsi. Nessun algoritmo o JSON modificato: **17 generatori, 81 ricette di esempio, 17 preset embedded** conservati.
+
+**Stato:** implementazione R2 pronta per validazione Windows, non ancora confermata. Ultima baseline Windows documentata **M4D.4-R1, 859/859 test**. A1 richiede ancora controller indipendenti e QA dispatcher; A2 richiede smoke GUI/DPI e verifica pixel; A0 immagini storiche mancanti, A3 nuovi algoritmi/ricette e A4 8K rimangono aperti. Output statico limitato per ora a 4096×4096 e al budget del renderer; qualità fine-2x ha limite più stretto. **Fase B compositore**, poi **Fase D workflow artista** (seed, varianti, confronto A/B, galleria, contact sheet, preset e SVG selettivo); animazioni evolute rinviate. Dettagli in `M4E1_R2_PREVIEW_NATIVA_COORDINATORE.md`.
+
+---
+
+# Stato corrente — GenerativeArt Studio M4E.1-R1 (A1 iniziale + roadmap D)
+
+**17 novembre 2026.** La versione precedente M4D.4-R2 integra 17 JSON originali come preset Studio. Questa revisione avvia **A1**, ripartendo `StudioWindow.cs` da 1.103 a 189 linee più sette partial per responsabilità; `StudioRecipeFormParser` in Application isola la costruzione/validazione del modello dai controlli Avalonia e aggiunge test xUnit dedicati. GUI, renderer, JSON, seed, export e preview hanno intenzionalmente lo stesso comportamento della R2. **A1 è solo parziale**, il passo successivo sono controller indipendenti e verifiche lifecycle/headless.
+
+**Fase D — Workflow dell'artista** approvata e inserita dopo il compositore Fase B: varianti/seed, confronto A/B, galleria, contact sheet, preset, SVG selettivo in seguito. **Animazioni rinviate**.
+
+**Baseline Windows confermata:** M4D.4-R1, 859/859 test. R2 e M4E.1-R1 da confermare su Windows; non attribuire alla R1 nuove conferme. Nessuna implementazione A2 (anteprima a risoluzione finale), A3 (nuovi algoritmi), A4 (8K), Fase B o D. Rimane aperta l'incompletezza delle 52 immagini del vecchio pacchetto di origine. Documenti guida: `ROADMAP.md`, `M4E0_PIANO_A_B_DEFAULTS.md`, `M4E1_A1_WORKFLOW_D.md`, `HANDOFF.md`.
+
+---
+
+# Stato corrente — GenerativeArt Studio M4D.4-R2 (roadmap + default da allegati)
+
+**17 novembre 2026.** Da `GenerativeArt.zip` M4D.4-R1 sono stati integrati **17 JSON allegati come preset embedded per i nuovi lavori Studio**, compresi il seed speciale di Domain Warp, colori, dimensioni e animazione di Flow Loop. `StudioRecipeDefaults.RecipeFor` sostituisce la vecchia tabella parziale di override; selezione Studio e test correlati aggiornati. **Non sono stati ancora sviluppati** il refactoring di `StudioWindow.cs`, l'anteprima nativa obbligatoria, l'8K o il compositore: sono **in roadmap Fase A/B**. Le animazioni vengono dopo.
+
+**Baseline Windows verificata:** M4D.4-R1, **859/859 test**. **R2:** codice e documentazione aggiornati, test Windows non ancora ricevuti. Lo ZIP M4D.4-R1 di partenza era privo di **52 immagini** elencate nel manifesto: la loro ricostruzione resta attività A0; il nuovo manifesto registra soltanto i file realmente inclusi, senza dichiarare recuperate le anteprime.
+
+**Ordine successivo:** A0 integrità distribuzione; A1 refactoring StudioWindow; A2 preview 1:1; A3 nuovi algoritmi/ricette; A4 8K; A5 QA; **B compositore universale**. Dettagli: [`M4E0_PIANO_A_B_DEFAULTS.md`](M4E0_PIANO_A_B_DEFAULTS.md), [`ROADMAP.md`](ROADMAP.md).
+
+---
+
 # Stato corrente — GenerativeArt Studio M4D.4-R1
 
 **Data:** 16 novembre 2026. **M4D.4-R1 — Orbite SDF riprogettato:** macchie organiche, fusione di quattro pigmenti, venature, rilievo, piani e antialiasing locale. **17 generatori, 81 ricette, build Release senza avvisi/errori e 859/859 test Windows** (Codex, SDK 10.0.201). Otto nuovi PNG Full HD, due fine-2x; controlli Studio, JSON, export CLI e 15 PNG precedenti identici verificati. Confronto AA contro riferimento 4×: errore alpha ridotto del 71,3% nel caso registrato. Guida [`M4D4_SDF_MACCHIE_FUSIONI.md`](M4D4_SDF_MACCHIE_FUSIONI.md), evidenze `docs/validation/M4D4_R1_*`. Desktop/DPI reali, altri OS, nuovi poster 4K ed editor livelli/maschere/blend restano aperti. Restore da cache NuGet locale, audit online e telemetria build disattivati.

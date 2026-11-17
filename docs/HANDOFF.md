@@ -1,3 +1,57 @@
+# Handoff rapido — M4E.1-R3 (17 novembre 2026)
+
+**Base di ripresa:** ZIP completo **M4E.1-R3**, non R2. Leggere `CURRENT_STATE.md`, `ROADMAP.md`, `M4E1_R3_FIX_TEST_STREAMLINES.md` e `M4E1_R2_PREVIEW_NATIVA_COORDINATORE.md`.
+
+- **Esito Windows R2 fornito dall'utente:** build riuscita, **879/880 test**, solo `spaced-streamlines/frequency` fallito in `ArtworkEvolutionTests.cs:145`.
+- **Root cause:** i 17 preset Studio contengono `spaced-streamlines` con `field=vortex`, campo matematico indipendente da `frequency`; il test `EveryArtisticControlChangesTheRaster` ereditava quel preset. Con `field=curl` la frequenza controlla realmente il campo. Corretto il test per questa combinazione, aggiunta regressione che fissa la semantica di `vortex`.
+- **Impatto:** nessun cambiamento di codice runtime, GUI, seed, preset, ricette o PNG. **R3 test Windows da eseguire**; il risultato 879/880 si riferisce esclusivamente alla R2. Nessuna dichiarazione di successo anticipata.
+- **Prossimo:** riprendere Fase A1 controller/headless e UX condizionale dei parametri inapplicabili, A2 QA native preview, A3 nuovi algoritmi/ricette e A4 8K, quindi B compositore e D workflow. Animazioni avanzate rinviate.
+- **PowerShell 7 dalla radice solution:** `clear && dotnet clean && .\tools\validate.ps1`.
+
+---
+
+# Handoff precedente — M4E.1-R2 (17 novembre 2026)
+
+**Aprire prima** `CURRENT_STATE.md`, `ROADMAP.md`, `M4E1_R2_PREVIEW_NATIVA_COORDINATORE.md` e `M4E0_PIANO_A_B_DEFAULTS.md`.
+
+- Base: **M4E.1-R1** (refactoring iniziale `StudioWindow`, 17 JSON embedded dei generatori, Fase D in roadmap). **R2** introduce `StudioRenderCoordinator` nel progetto Application, condiviso tra preview ed export, con gate unico e test headless.
+- **Anteprima R2**: sempre alle dimensioni finali. Rimossi i campi «Raster max» e il pulsante «Raster = output»; `Adatta`, `100%`, pan e zoom agiscono sulla vista. Se budget insufficiente, errore esplicito; nessun fallback raster. Renderer 8K **non** ancora implementato.
+- **Prossimo sviluppo**: A1 completare controller indipendenti e smoke lifecycle/headless; A2 verificare GUI, DPI, pixel/alpha reali e cancellazione; **A0** resta aperta per 52 immagini storiche assenti; poi **A3** nuovi algoritmi e ricette, **A4** 8K e qualità, **A5** QA.
+- **Fasi future**: B compositore universale, D varianti/seed, A/B, galleria, contact sheet, preset, SVG selettivo; animazioni evolute rinviate.
+- **Verifiche allora disponibili:** M4D.4-R1: 859/859; successivamente l'utente ha eseguito R2 su Windows, ottenendo 879/880 (dettagli nella sezione R3 sopra).
+- **Vincoli**: C#/.NET 10, Avalonia/Skia, minimo PowerShell, niente Python/Go/Kotlin/Java nel progetto; ZIP completo, preset e ricette originali invariati, README conciso, JSON v1 riproducibile.
+- **PowerShell 7, dalla radice**: `clear && dotnet clean && .\tools\validate.ps1`; avvio con `dotnet run --project .\src\GenerativeArt.Studio\GenerativeArt.Studio.csproj -c Release`.
+
+---
+
+# Handoff rapido — M4E.1-R1 (17 novembre 2026)
+
+**Aprire prima** `CURRENT_STATE.md`, `ROADMAP.md`, `M4E0_PIANO_A_B_DEFAULTS.md` e `M4E1_A1_WORKFLOW_D.md`.
+
+- Base della consegna: M4D.4-R2 con 17 JSON embedded; nuovo refactoring **A1 primo passo**: `StudioWindow.cs` 189 righe, 7 partial per ambito, `StudioRecipeFormParser` in Application e test xUnit. Nessuna variazione artistica/UI deliberata.
+- Baseline Windows storica: **M4D.4-R1 859/859**; R2 e M4E.1-R1 non ancora validate. Non dichiarare i nuovi test superati senza esecuzione.
+- Prossimo sviluppo **A1-R2**: isolare controller preview/export con contratto di threading, cancellazione e test headless; poi **A2** preview realmente 1:1 output, **A3** nuove ricette/algoritmi, **A4** 8K, **A5** QA. **A0** 52 immagini storiche mancanti rimane aperto.
+- Dopo A: **Fase B** compositore, poi **Fase D** workflow dell'artista (variazioni, seed explorer, A/B, galleria, contact sheet, preset, SVG selettivo). Animazioni in seguito.
+- Vincoli: C#/.NET 10 + Avalonia/Skia, solo minimo PowerShell, ZIP completo ogni consegna, no Python/Go/Kotlin/Java nel progetto, JSON v1/seed/GUI invariati, README pulito, test Windows in italiano.
+- Comandi: `clear && dotnet clean && .\tools\validate.ps1`; `dotnet run --project .\src\GenerativeArt.Studio\GenerativeArt.Studio.csproj -c Release`.
+
+---
+
+# Handoff — GenerativeArt Studio M4D.4-R2 (17/11/2026)
+
+**Partire dal progetto completo M4D.4-R2, non dalle precedenti versioni R1.** È stata accettata la roadmap in due blocchi: **Fase A** (distribuzione, modularizzazione `StudioWindow`, anteprima nativa identica all'output, nuovi algoritmi/ricette, output 8K/qualità e benchmark) **prima** della **Fase B M4C.3** (compositore universale con livelli, maschere e blend). **Animazioni rinviate**.
+
+**Fatto in R2:** incorporati come risorse dell'assembly i 17 file JSON forniti dall'utente (`src/GenerativeArt.Application/Defaults/`); l'inizializzazione dei nuovi lavori Studio usa seed, dimensioni, eventuale animazione e tutti i parametri/colori degli allegati, non solo i precedenti 7 override. Le ricette importate conservano i loro valori e il catalogo non cambia. Test aggiornati per i nuovi preset. Verifica Windows **ancora da eseguire**; baseline M4D.4-R1 con 859/859 test. Nessuna modifica ai renderer: il prodotto non è ancora 8K e l'anteprima non è ancora obbligatoriamente nativa.
+
+**Problema preesistente in A0:** le 52 immagini di anteprima referenziate nel vecchio manifesto erano assenti nell'archivio ricevuto. R2 include tutti i sorgenti ricevuti e un manifesto nuovo coerente, ma non ricrea queste immagini. Recuperarle o rigenerarle con il motore a milestone A0.
+
+**Prossima attività di codice:** A1 modularizzazione minima senza modificare UI, quindi A2 preview fedele; la roadmap approvata è in `docs/M4E0_PIANO_A_B_DEFAULTS.md` e `docs/ROADMAP.md`. A ogni consegna riportare stato e prossimo passo, ZIP completo e comandi Windows in italiano. Solo C#/.NET 10 + Avalonia/SkiaSharp + PowerShell minimo; nessun Python/Go/Kotlin/Java nel progetto.
+
+**Validazione Windows (PowerShell 7, radice solution):** `clear && dotnet clean && .\tools\validate.ps1`.
+**Avvio:** `dotnet run --project .\src\GenerativeArt.Studio\GenerativeArt.Studio.csproj -c Release`.
+
+---
+
 # Handoff — GenerativeArt Studio M4D.4-R1 (16/11/2026)
 
 ## Base di partenza, stato e preferenze

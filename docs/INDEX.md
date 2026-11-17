@@ -2,7 +2,9 @@
 
 Questa pagina separa le **fonti operative** (da aggiornare a ogni incremento), i **contratti tecnici** e il materiale di **studio/storico**. Non usare piani o stato contenuti nei documenti tecnici più vecchi per sovrascrivere `ROADMAP.md` e `CURRENT_STATE.md`.
 
-**Stato corrente:** **M4D.4-R1 — Orbite SDF riprogettato:** macchie organiche, fusione di quattro pigmenti, venature, rilievo, piani e antialiasing locale. **17 generatori, 81 ricette, build Release senza avvisi/errori e 859/859 test Windows** (Codex, SDK 10.0.201). Otto nuovi PNG Full HD, due fine-2x; controlli Studio, JSON, export CLI e 15 PNG precedenti identici verificati. Confronto AA contro riferimento 4×: errore alpha ridotto del 71,3% nel caso registrato. Guida [`M4D4_SDF_MACCHIE_FUSIONI.md`](M4D4_SDF_MACCHIE_FUSIONI.md), evidenze `docs/validation/M4D4_R1_*`. Desktop/DPI reali, altri OS, nuovi poster 4K ed editor livelli/maschere/blend restano aperti. Restore da cache NuGet locale, audit online e telemetria build disattivati.
+**Stato Windows precedente:** **M4D.4-R1 — Orbite SDF riprogettato:** macchie organiche, fusione di quattro pigmenti, venature, rilievo, piani e antialiasing locale. **17 generatori, 81 ricette, build Release senza avvisi/errori e 859/859 test Windows** (Codex, SDK 10.0.201). Otto nuovi PNG Full HD, due fine-2x; controlli Studio, JSON, export CLI e 15 PNG precedenti identici verificati. Confronto AA contro riferimento 4×: errore alpha ridotto del 71,3% nel caso registrato. Guida [`M4D4_SDF_MACCHIE_FUSIONI.md`](M4D4_SDF_MACCHIE_FUSIONI.md), evidenze `docs/validation/M4D4_R1_*`. Desktop/DPI reali, altri OS, nuovi poster 4K ed editor livelli/maschere/blend restano aperti. Restore da cache NuGet locale, audit online e telemetria build disattivati.
+
+**Revisione di lavoro M4E.1-R3:** build R2 riuscita, **879/880 test** per il controllo `spaced-streamlines/frequency` testato con preset `vortex` che non usa la frequenza. Test corretto in R3, nuova regressione esplicita, verifica R3 da eseguire. Preview Studio nativa e coordinatore render/export di R2 conservati; refactoring A1 ancora da completare. Piano in `M4E0_PIANO_A_B_DEFAULTS.md` e `M4E1_A1_WORKFLOW_D.md`.
 
 ## Fonti operative — leggere in ordine
 
@@ -16,6 +18,10 @@ Questa pagina separa le **fonti operative** (da aggiornare a ogni incremento), i
 | [`TESTING.md`](TESTING.md) | Comandi e stato della validazione |
 | [`QUALITY_GATES.md`](QUALITY_GATES.md) | Condizioni di accettazione di ogni fase |
 | [`CHANGELOG.md`](CHANGELOG.md) | Cronologia delle consegne |
+| [`M4E0_PIANO_A_B_DEFAULTS.md`](M4E0_PIANO_A_B_DEFAULTS.md) | **Piano attuale A/B/D e preset embedded dei 17 file allegati; animazioni rinviate** |
+| [`M4E1_R2_PREVIEW_NATIVA_COORDINATORE.md`](M4E1_R2_PREVIEW_NATIVA_COORDINATORE.md) | **Anteprima nativa A2, coordinatore rendering A1, regressioni e limiti** |
+| [`M4E1_R3_FIX_TEST_STREAMLINES.md`](M4E1_R3_FIX_TEST_STREAMLINES.md) | **Regressione frequency/vortex**: causa, fix localizzato ai test, compatibilità e verifica Windows |
+| [`M4E1_A1_WORKFLOW_D.md`](M4E1_A1_WORKFLOW_D.md) | **Refactoring iniziale Studio + roadmap Fase D dell’artista, stato e gate** |
 | [`M4D4_SDF_MACCHIE_FUSIONI.md`](M4D4_SDF_MACCHIE_FUSIONI.md) | Orbite SDF riprogettato, pigmenti/vetro, AA locale, otto ricette e confronti |
 | [`M4D3_PROFONDITA.md`](M4D3_PROFONDITA.md) | Carta/bokeh, paesaggi migliorati, ombre/blur per piano, dieci ricette, budget e verifiche |
 | [`M4D2_PITTURA_EVOLUZIONE.md`](M4D2_PITTURA_EVOLUZIONE.md) | Pennelli/paesaggi, primi generatori ampliati, 14 ricette, confronto prima/dopo e verifiche |

@@ -13,8 +13,8 @@ public sealed class StudioCreativeControlsTests
     [InlineData("parametric-curves", "style", "woven")]
     [InlineData("noise-flow", "field", "curl")]
     [InlineData("plasma-noise", "pattern", "marble")]
-    [InlineData("spaced-streamlines", "max-lines", "3000")]
-    [InlineData("looping-flow", "lines", "220")]
+    [InlineData("spaced-streamlines", "max-lines", "4028")]
+    [InlineData("looping-flow", "lines", "514")]
     [InlineData("strata-landscape", "depth-blur", "6")]
     [InlineData("sdf-orbits", "style", "pigment")]
     public void FreshStudioWorksUseArtisticDefaultsWithoutChangingCatalogDefaults(string id, string key, string value)

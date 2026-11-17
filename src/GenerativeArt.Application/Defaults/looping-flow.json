@@ -1,0 +1,36 @@
+{
+  "formatVersion": 1,
+  "artworkId": "looping-flow",
+  "algorithmVersion": 1,
+  "seed": "42",
+  "width": 1920,
+  "height": 1080,
+  "parameters": {
+    "background-color": "auto",
+    "dither-levels": 8,
+    "dither-mode": "none",
+    "frequency": 0.00669,
+    "grain-amount": 0.0085,
+    "grain-size": 1,
+    "ink-absorption": 0,
+    "ink-color-1": "auto",
+    "ink-color-2": "auto",
+    "ink-color-3": "auto",
+    "ink-color-4": "auto",
+    "line-width": 2.385,
+    "lines": 514,
+    "loop-radius": 2.206,
+    "opacity": 0.7245,
+    "palette": "aurora",
+    "paper-strength": 0,
+    "paper-texture": "none",
+    "pigment-granulation": 0,
+    "render-quality": "standard",
+    "step-size": 2.5,
+    "steps": 164
+  },
+  "animation": {
+    "frameCount": 16,
+    "framesPerSecond": 18
+  }
+}

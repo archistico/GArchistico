@@ -10,6 +10,20 @@ namespace GenerativeArt.Application.Rendering;
 /// </summary>
 public static class StudioPreviewPolicy
 {
+    /// <summary>
+    /// Anteprima fedele: nessuna modifica a dimensioni, parametri, seed o frame.
+    /// L'eventuale zoom e l'adattamento al riquadro sono responsabilità della vista.
+    /// Restituisce proprio la ricetta originale, così export e anteprima condividono i pixel.
+    /// La validazione dei budget del renderer resta obbligatoria prima del render.
+    /// </summary>
+    public static ArtworkRecipe CreateExactPreview(ArtworkRecipe original, ArtworkRegistry registry)
+    {
+        ArgumentNullException.ThrowIfNull(original);
+        ArgumentNullException.ThrowIfNull(registry);
+        original.ValidateAgainst(registry);
+        return original;
+    }
+
     public static ArtworkRecipe CreatePreview(ArtworkRecipe original, ArtworkRegistry registry,
         int maximumWidth = 800, int maximumHeight = 600, long maximumPixels = 480_000)
     {

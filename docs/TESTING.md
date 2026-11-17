@@ -1,5 +1,19 @@
 # Test, build e smoke test — GenerativeArt
 
+## M4E.1-R3 — Correzione puntuale test streamlines (17/11/2026)
+
+**Risultato ricevuto per M4E.1-R2:** build OK, **879/880 test**. Unico fallimento `ArtworkEvolutionTests.EveryArtisticControlChangesTheRaster` per `spaced-streamlines/frequency`: il preset utente seleziona `vortex`, un campo che non usa quel parametro.
+
+**R3:** test aggiornato per usare `field=curl` nella verifica di `frequency`; nuova prova che `vortex` non cambia con la frequenza. Nessuna modifica al renderer. La suite R3 è **da validare**; il numero 879/880 non è un risultato R3. Istruzioni e spiegazione: [`M4E1_R3_FIX_TEST_STREAMLINES.md`](M4E1_R3_FIX_TEST_STREAMLINES.md).
+
+Verifica PowerShell 7 (radice solution):
+
+```powershell
+clear && dotnet clean && .\tools\validate.ps1
+```
+
+---
+
 ## M4D.4-R1 — SDF organico e antialiasing verificati
 
 **Codex Windows, SDK 10.0.201: tools/validate.ps1 completato, build Release zero avvisi/errori e 859/859 test** (Core 115, Algorithms 175, Application 135, Rendering.Skia 434). Tutte le 81 ricette validate; otto nuovi PNG Full HD, due fine-2x. Studio: 36 slider SDF, palette/ruoli colore e scelte, nuovi default e ripristino JSON. CLI fine-2x identica al runtime headless; quindici PNG precedenti identici.

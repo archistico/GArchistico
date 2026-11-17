@@ -1,9 +1,13 @@
+using System.Collections.ObjectModel;
+using GenerativeArt.Application.Catalog;
+using GenerativeArt.Application.Recipes;
+
 namespace GenerativeArt.Application.Rendering;
 
 /// <summary>
-/// La ricetta è Full HD per impostazione iniziale, ma la preview conserva
-/// un budget ridotto. Le animazioni usano 16 frame per rispettare il tetto
-/// cumulativo di 40 milioni di pixel a 1920×1080.
+/// Ricette iniziali dello Studio. Le 17 risorse JSON sono parte dell'assembly:
+/// non dipendono dalla cartella corrente, dall'installazione o da file esterni.
+/// I default del catalogo e la deserializzazione delle ricette storiche restano invariati.
 /// </summary>
 public static class StudioRecipeDefaults
 {
@@ -12,48 +16,39 @@ public static class StudioRecipeDefaults
     public const int FrameCount = 16;
     public const int FramesPerSecond = 18;
 
-    /// <summary>Impostazioni per nuovi lavori dello Studio; le ricette importate conservano i loro valori.</summary>
-    public static IReadOnlyDictionary<string, string> ParametersFor(string artworkId) => artworkId switch
+    private const string ResourcePrefix = "GenerativeArt.Application.Defaults.";
+    private static readonly Lazy<IReadOnlyDictionary<string, ArtworkRecipe>> InitialRecipes =
+        new(LoadInitialRecipes);
+
+    /// <summary>Ricetta completa iniziale (seed, dimensioni, parametri, eventuale animazione).</summary>
+    public static ArtworkRecipe RecipeFor(string artworkId)
     {
-        "sdf-orbits" => new Dictionary<string, string>
+        ArgumentException.ThrowIfNullOrWhiteSpace(artworkId);
+        return InitialRecipes.Value.TryGetValue(artworkId, out ArtworkRecipe? recipe)
+            ? recipe
+            : throw new KeyNotFoundException($"Nessuna ricetta iniziale per '{artworkId}'.");
+    }
+
+    /// <summary>Compatibilità con la CLI smoke e i test già presenti.</summary>
+    public static IReadOnlyDictionary<string, string> ParametersFor(string artworkId) =>
+        RecipeFor(artworkId).Parameters;
+
+    private static IReadOnlyDictionary<string, ArtworkRecipe> LoadInitialRecipes()
+    {
+        ArtworkRegistry catalog = BuiltInArtworkCatalog.Create();
+        var recipes = new Dictionary<string, ArtworkRecipe>(StringComparer.Ordinal);
+        foreach (ArtworkDescriptor descriptor in catalog.All)
         {
-            ["style"] = "pigment", ["palette"] = "sorbet", ["smoothness"] = "0.065",
-            ["blobs"] = "14", ["layers"] = "2", ["blob-radius"] = "0.135", ["spread"] = "1.1",
-            ["color-mix"] = "1", ["color-mode"] = "linear", ["marbling"] = "0.45", ["relief"] = "0.55",
-            ["contour-opacity"] = "0.04", ["outline"] = "0.04"
-        },
-        "strata-landscape" => new Dictionary<string, string>
-        {
-            ["depth-blur"] = "6", ["soft-shadow"] = "0.22", ["soft-shadow-softness"] = "5",
-            ["soft-shadow-distance"] = "8", ["shadow"] = "0", ["rim-light"] = "0.18"
-        },
-        "parametric-curves" => new Dictionary<string, string>
-        {
-            ["style"] = "woven", ["layers"] = "28", ["samples"] = "4800", ["frequency-x"] = "7",
-            ["frequency-y"] = "5", ["phase"] = "1.1", ["twist"] = "45", ["layer-scale"] = "0.55",
-            ["line-width"] = "0.9", ["orbit-width"] = "0", ["background-color"] = "#10192B",
-            ["curve-color"] = "#B07DCACB", ["orbit-color"] = "#D0E8C88E"
-        },
-        "noise-flow" => new Dictionary<string, string>
-        {
-            ["field"] = "curl", ["frequency"] = "0.003", ["start-layout"] = "grid", ["lines"] = "1200",
-            ["steps"] = "420", ["step-size"] = "2.6", ["opacity"] = "0.65", ["line-width"] = "0.9"
-        },
-        "spaced-streamlines" => new Dictionary<string, string>
-        {
-            ["max-lines"] = "3000", ["separation"] = "6.5", ["line-width"] = "0.8",
-            ["frequency"] = "0.0035", ["max-steps"] = "300"
-        },
-        "plasma-noise" => new Dictionary<string, string>
-        {
-            ["pattern"] = "marble", ["frequency"] = "0.0028", ["octaves"] = "5", ["persistence"] = "0.48",
-            ["bands"] = "6", ["contrast"] = "1.3", ["gamma"] = "0.9", ["contour-strength"] = "0.12"
-        },
-        "looping-flow" => new Dictionary<string, string>
-        {
-            ["lines"] = "220", ["steps"] = "240", ["frequency"] = "0.004", ["step-size"] = "2.5",
-            ["line-width"] = "1.0", ["opacity"] = "0.65"
-        },
-        _ => new Dictionary<string, string>()
-    };
+            string name = ResourcePrefix + descriptor.Id + ".json";
+            using Stream stream = typeof(StudioRecipeDefaults).Assembly.GetManifestResourceStream(name)
+                ?? throw new InvalidOperationException($"Risorsa di default mancante: '{name}'.");
+            using var content = new MemoryStream();
+            stream.CopyTo(content);
+            ArtworkRecipe recipe = ArtworkRecipeJson.Deserialize(content.ToArray(), catalog);
+            if (!string.Equals(recipe.ArtworkId, descriptor.Id, StringComparison.Ordinal))
+                throw new InvalidOperationException($"Il file '{name}' contiene l'opera '{recipe.ArtworkId}'.");
+            recipes.Add(descriptor.Id, recipe);
+        }
+        return new ReadOnlyDictionary<string, ArtworkRecipe>(recipes);
+    }
 }

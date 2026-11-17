@@ -10,6 +10,33 @@ public sealed class StudioPreviewPolicyTests
 {
     private readonly ArtworkRegistry _catalog = BuiltInArtworkCatalog.Create();
 
+    [Theory]
+    [InlineData(1920, 1080)]
+    [InlineData(2500, 2000)]
+    [InlineData(4096, 4096)]
+    public void ExactPreviewKeepsFinalRasterSeedAndParameters(int width, int height)
+    {
+        ArtworkRecipe recipe = ArtworkRecipe.Create(_catalog.Get("plasma-noise"),
+            new CanvasSize(width, height), 987654321UL,
+            new Dictionary<string, string> { ["grain-amount"] = "0.08" });
+        ArtworkRecipe preview = StudioPreviewPolicy.CreateExactPreview(recipe, _catalog);
+        Assert.Same(recipe, preview);
+        Assert.Equal(width, preview.Size.Width);
+        Assert.Equal(height, preview.Size.Height);
+        Assert.Equal(987654321UL, preview.Seed);
+        Assert.Equal("0.08", preview.Parameters["grain-amount"]);
+    }
+
+    [Fact]
+    public void ExactPreviewPreservesAnimatedFrameInformation()
+    {
+        ArtworkRecipe original = ArtworkRecipe.Create(_catalog.Get("looping-flow"),
+            new CanvasSize(1280, 720), 42UL, animation: new RecipeAnimation(16, 18));
+        ArtworkRecipe preview = StudioPreviewPolicy.CreateExactPreview(original, _catalog);
+        Assert.Same(original, preview);
+        Assert.Same(original.Animation, preview.Animation);
+    }
+
     [Fact]
     public void UserCanRequestFullSizeFiveMegapixelPreviewWithoutChangingExportRecipe()
     {

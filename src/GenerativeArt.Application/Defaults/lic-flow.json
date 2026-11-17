@@ -1,0 +1,29 @@
+{
+  "formatVersion": 1,
+  "artworkId": "lic-flow",
+  "algorithmVersion": 1,
+  "seed": "42",
+  "width": 1920,
+  "height": 1080,
+  "parameters": {
+    "contrast": 2.142,
+    "dither-levels": 8,
+    "dither-mode": "none",
+    "field": "curl",
+    "frequency": 0.00901,
+    "gradient-color-1": "auto",
+    "gradient-color-2": "auto",
+    "gradient-color-3": "auto",
+    "gradient-color-4": "auto",
+    "grain-amount": 0.0255,
+    "grain-size": 1,
+    "ink-absorption": 0,
+    "length": 4,
+    "palette": "ember",
+    "paper-strength": 0,
+    "paper-texture": "none",
+    "pigment-granulation": 0,
+    "render-quality": "standard",
+    "texture-scale": 1.08
+  }
+}

@@ -36,9 +36,9 @@ dotnet test .\GenerativeArt.sln -c Release --no-build
 dotnet run --project .\src\GenerativeArt.Studio -c Release --no-build
 ```
 
-Scegli un generatore nel catalogo, modifica i parametri e osserva l'anteprima. Usa **Apri ricetta** per caricare uno degli esempi in [`examples/recipes`](examples/recipes), **Salva ricetta** per conservare le impostazioni ed **Esporta PNG** per salvare l'immagine.
+Scegli un generatore nel catalogo: per i nuovi lavori lo Studio carica automaticamente la ricetta iniziale del generatore dai 17 preset integrati, inclusi colori e seed. Puoi poi modificare i parametri e osservare l'anteprima. Usa **Apri ricetta** per caricare uno degli esempi in [`examples/recipes`](examples/recipes), **Salva ricetta** per conservare le impostazioni ed **Esporta PNG** per salvare l'immagine.
 
-Le dimensioni dell'output sono indipendenti da quelle dell'anteprima. **Adatta** mostra l'intera opera, **100%** permette di esaminare i pixel e **Raster = output** richiede l'anteprima alla risoluzione di esportazione.
+L'anteprima viene calcolata alla **stessa risoluzione dell'output**: non esiste più un raster di calcolo ridotto separato. **Adatta** mostra l'intera opera nel riquadro, mentre **100%** permette di esaminare i dettagli alla scala originale; zoom e spostamento modificano soltanto la visualizzazione.
 
 ### CLI
 
@@ -56,4 +56,4 @@ New-Item -ItemType Directory -Path .\output -Force | Out-Null
 dotnet run --project .\src\GenerativeArt.Cli -c Release --no-build -- render-recipe .\examples\recipes\domain-warp-ocean-marble-1920.json .\output\domain-warp.png
 ```
 
-La CLI richiede un nome di destinazione nuovo e non sovrascrive i file esistenti. Le altre ricette pronte si trovano in [`examples/recipes`](examples/recipes), con anteprime in [`examples/previews`](examples/previews).
+La CLI richiede un nome di destinazione nuovo e non sovrascrive i file esistenti. Le altre ricette pronte si trovano in [`examples/recipes`](examples/recipes). Le relative immagini di anteprima verranno ripristinate nella fase di consolidamento.

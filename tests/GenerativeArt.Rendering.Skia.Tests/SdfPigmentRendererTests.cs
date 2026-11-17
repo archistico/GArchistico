@@ -53,7 +53,7 @@ public sealed class SdfPigmentRendererTests
     [InlineData("warp-amount", "0.16")]
     [InlineData("warp-frequency", "8")]
     [InlineData("color-mix", "0")]
-    [InlineData("color-mode", "pigment")]
+    [InlineData("color-mode", "linear")]
     [InlineData("marbling", "0")]
     [InlineData("marble-frequency", "24")]
     [InlineData("opacity", "0.4")]
@@ -154,7 +154,8 @@ public sealed class SdfPigmentRendererTests
     [Fact]
     public void FullHdFreshStudioCompositionAllowsFineQuality()
     {
-        var p=new Dictionary<string,string>(StudioRecipeDefaults.ParametersFor("sdf-orbits")){["render-quality"]="fine-2x"};
+        var p=new Dictionary<string,string>(StudioRecipeDefaults.ParametersFor("sdf-orbits"))
+        { ["render-quality"]="fine-2x", ["blobs"]="14" };
         Engine.Validate(ArtworkRecipe.Create(Catalog.Get("sdf-orbits"),new CanvasSize(1920,1080),42,p));
     }
 }

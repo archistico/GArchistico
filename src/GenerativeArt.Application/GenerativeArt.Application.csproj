@@ -3,4 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="../GenerativeArt.Core/GenerativeArt.Core.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Defaults/*.json" LogicalName="GenerativeArt.Application.Defaults.%(Filename)%(Extension)" />
+  </ItemGroup>
 </Project>

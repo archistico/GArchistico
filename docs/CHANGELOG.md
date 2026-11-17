@@ -1,5 +1,38 @@
 # Registro modifiche — GenerativeArt Studio
 
+## 2026-11-17 — M4E.1-R3 — Regressione frequency/vortex nei test Streamlines
+
+- **Riscontro Windows M4E.1-R2:** compilazione riuscita; **879/880 test superati**. Unico fallimento: `ArtworkEvolutionTests.EveryArtisticControlChangesTheRaster(id: "spaced-streamlines", key: "frequency", value: "0.012")`.
+- Causa: dopo l'integrazione dei 17 preset dell'utente, `spaced-streamlines` parte con `field=vortex`. Il campo vortice geometrico non usa `frequency`; il test, ereditando i preset Studio, pretendeva erroneamente un cambiamento del PNG. Il renderer non ignorava `frequency` nel campo `curl`.
+- Corretto il test di efficacia del parametro configurando **`field=curl` per questa sola combinazione**. Aggiunto `SpacedStreamlinesVortexIsIndependentOfFrequency` per fissare esplicitamente la semantica del vortice.
+- Nessuna modifica al motore, ai 17 preset embedded, alle 81 ricette, alla GUI, al formato JSON o agli hash PNG attesi. Da valutare in Fase A1 lo stato disabilitato/informativo del controllo `frequency` quando il campo selezionato non lo utilizza.
+- **R3:** archivio preparato, test Windows da eseguire; non attribuire a R3 il risultato 879/880 della R2. Guida `docs/M4E1_R3_FIX_TEST_STREAMLINES.md`.
+
+## 2026-11-17 — M4E.1-R2 — Anteprima a risoluzione reale e coordinatore render
+
+- Rimosso dallo Studio il doppio raster dell'anteprima: preview sempre con `width`×`height` dell'output, seed, frame, qualità, parametri e pipeline invariati; `Adatta` e `100%` sono solo operazioni visive.
+- Rimossi i controlli «Raster max» e «Raster = output»; mantenute le dimensioni del riquadro in DIP, il pan e lo zoom; stato esplicita i pixel realmente calcolati. Nessuna riduzione silenziosa davanti a limiti del renderer.
+- Introdotto `StudioRenderCoordinator` nell'Application: unica serializzazione preview/export, cancellazione in attesa, `Task.Run` per il rendering sincrono, output locale atomico su stream senza PNG completo in RAM. A1 ancora parziale: controller e lifecycle UI da isolare.
+- Nuovi test: full-res 1920×1080, 2500×2000, 4096×4096 con ricetta invariata, code rendering serializzate, cancellazione, sicurezza del file, PNG Skia identico tra anteprima ed export. Non modificati renderer, catalogo, ricette o 17 JSON embedded.
+- Gate Windows di questa revisione **aperto**; ultima baseline documentata M4D.4-R1 con 859/859 test. Guida `docs/M4E1_R2_PREVIEW_NATIVA_COORDINATORE.md`.
+
+## 2026-11-17 — M4E.1-R1 — Avvio refactoring Studio e Fase D
+
+- Primo incremento **A1**: `StudioWindow.cs` da 1.103 a 189 righe; sette partial con layout/tema, catalogo/preferenze, editor, preview, playback, file/export e stato, senza cambiare la struttura UI.
+- Creato `StudioRecipeFormParser` in Application; `BuildRecipe` delega al parser senza Avalonia. Aggiunte regressioni per seed (anche Domain Warp), dimensioni, animazione e valori invalidi.
+- **Fase D** inserita dopo B: varianti/seed explorer, confronto A/B, galleria locale, contact sheet, preset riutilizzabili, SVG selettivo più avanti; animazioni rinviate. A1 non ancora chiusa; controller autonomi e test headless restano da fare.
+- Nessun cambiamento voluto a renderer, preset embedded, formato JSON v1 o limiti raster. Baseline Windows confermata invariata (M4D.4-R1, 859/859); R2/R1 da verificare.
+
+
+## 2026-11-17 — M4D.4-R2 — Roadmap A/B e 17 default da allegati
+
+- Confermate le priorità: refactoring `StudioWindow.cs`, anteprima raster calcolata alla dimensione finale con fit solo visivo, nuovi generatori/ricette, aumento qualità e risoluzione fino a 8K; **poi** compositore universale, animazioni rinviate.
+- Copiati **17 JSON forniti dall'utente** nel progetto come risorse embedded, consumate da `StudioRecipeDefaults.RecipeFor`: parametri/colori/seed/dimensioni/animazione completi per nuovi lavori Studio. Il seed Domain Warp non è più forzato a 42; Flow Loop conserva i propri 16 frame/18 fps. Le ricette importate e i default di catalogo restano invariati.
+- Aggiornati `StudioWindow.SelectArtwork`, test dei preset e test che confrontavano i vecchi valori parziali. Nessuna modifica all'algoritmo, al renderer o al formato JSON v1.
+- Aggiornati ROADMAP, HANDOFF, CURRENT_STATE, INDEX e guida Fase A/B. Segnalate le 52 preview mancanti nell'archivio iniziale come intervento A0. Manifesto SHA-256 rigenerato per i file effettivamente distribuiti.
+- **Stato:** R2 da validare su Windows; ultima baseline confermata M4D.4-R1, 859/859 test. Funzioni 8K, preview nativa obbligatoria, refactoring e compositore **non ancora implementati**.
+
+
 ## 2026-11-16 — M4D.4-R1 — Orbite SDF: macchie e fusioni
 
 - Nuovo campo `PigmentSdfField` e renderer SDF organico: ellissi deformate, unione morbida, fusione cromatica di quattro pigmenti, venature, rilievo/riflessi e piani con ombre/blur.

@@ -77,7 +77,7 @@ public sealed class ArtworkEvolutionTests
     [InlineData("noise-flow", "step-size", "4")]
     [InlineData("noise-flow", "line-width", "2")]
     [InlineData("noise-flow", "opacity", "0.8")]
-    [InlineData("spaced-streamlines", "field", "vortex")]
+    [InlineData("spaced-streamlines", "field", "curl")]
     [InlineData("spaced-streamlines", "frequency", "0.012")]
     [InlineData("spaced-streamlines", "max-steps", "140")]
     [InlineData("spaced-streamlines", "integration-step", "0.5")]
@@ -113,7 +113,7 @@ public sealed class ArtworkEvolutionTests
     [InlineData("flow-brush", "roughness", "0.9")]
     [InlineData("flow-brush", "opacity", "0.9")]
     [InlineData("flow-brush", "shadow", "0")]
-    [InlineData("flow-brush", "palette", "ember")]
+    [InlineData("flow-brush", "palette", "lagoon")]
     [InlineData("strata-landscape", "layers", "14")]
     [InlineData("strata-landscape", "horizon", "0.4")]
     [InlineData("strata-landscape", "height", "0.3")]
@@ -140,9 +140,31 @@ public sealed class ArtworkEvolutionTests
         // i nuovi lavori Studio selezionano invece le ombre gaussiane.
         var values = id == "strata-landscape" && key is "shadow" or "shadow-width"
             ? new Dictionary<string,string> { ["soft-shadow"] = "0", ["shadow"] = "0.16" } : new();
+        // Il preset Studio delle streamlines usa "vortex", un campo geometrico
+        // indipendente dalla frequenza. Per verificare il controllo frequency
+        // scegliamo un campo che effettivamente lo utilizza, senza alterare
+        // i 17 preset embedded né il renderer delle ricette esistenti.
+        if (id == "spaced-streamlines" && key == "frequency")
+            values["field"] = "curl";
         byte[] before = Render(Recipe(id, values));
         values[key] = value;
         Assert.False(before.AsSpan().SequenceEqual(Render(Recipe(id, values))));
+    }
+
+    [Fact]
+    public void SpacedStreamlinesVortexIsIndependentOfFrequency()
+    {
+        // La scelta del campo e il ruolo dei controlli non devono dipendere
+        // inavvertitamente da modifiche alle ricette Studio predefinite.
+        byte[] before = Render(Recipe("spaced-streamlines", new()
+        {
+            ["field"] = "vortex", ["frequency"] = "0.0035"
+        }));
+        byte[] after = Render(Recipe("spaced-streamlines", new()
+        {
+            ["field"] = "vortex", ["frequency"] = "0.012"
+        }));
+        Assert.Equal(before, after);
     }
 
     [Fact]

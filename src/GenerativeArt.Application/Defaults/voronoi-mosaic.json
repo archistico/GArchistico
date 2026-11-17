@@ -1,0 +1,32 @@
+{
+  "formatVersion": 1,
+  "artworkId": "voronoi-mosaic",
+  "algorithmVersion": 1,
+  "seed": "42",
+  "width": 1920,
+  "height": 1080,
+  "parameters": {
+    "accent-color": "auto",
+    "background-color": "auto",
+    "dither-levels": 8,
+    "dither-mode": "none",
+    "edge-color": "auto",
+    "grain-amount": 0.0274,
+    "grain-size": 1,
+    "gutter": 1.189,
+    "ink-absorption": 0.0508,
+    "jitter": 0.8909,
+    "palette": "glass",
+    "paper-strength": 0.0584,
+    "paper-texture": "cotton",
+    "pigment-granulation": 0.0832,
+    "relaxations": 2,
+    "render-quality": "fine-2x",
+    "sites": 81,
+    "tile-color-1": "auto",
+    "tile-color-2": "auto",
+    "tile-color-3": "auto",
+    "tile-color-4": "auto",
+    "tile-color-5": "auto"
+  }
+}

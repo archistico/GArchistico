@@ -1,14 +1,26 @@
 # ROADMAP UNICA — GenerativeArt Studio
 
-**Aggiornamento:** 16 novembre 2026, M4D.4-R1: SDF riprogettato, 17 generatori e 81 ricette, build Release e 859/859 test Windows; Full HD/Studio/CLI e AA verificati. Questa è **l'unica roadmap autorevole**. Per lo stato verificato usare `CURRENT_STATE.md`.
+**Aggiornamento:** 17 novembre 2026, M4E.1-R3: fix regressione test `spaced-streamlines/frequency` rispetto al preset `vortex`; anteprima nativa e coordinatore renderer introdotti in R2, refactoring A1 ancora parziale; Fase D approvata e 17 default JSON embedded. **Esito Windows R2:** build riuscita, **879/880 test**, unico fallimento corretto nei sorgenti R3, da confermare con una nuova esecuzione. Questa è **l'unica roadmap autorevole**. Per lo stato verificato usare `CURRENT_STATE.md`.
+
+## Piano di sviluppo prioritario concordato (17/11/2026)
+
+**Fase A — prima di nuove funzionalità strutturali:** A0 distribuzione/manifesto (52 anteprime storiche mancanti) e 17 preset Studio (già integrati); **A1** modularizzare `StudioWindow.cs` (partial in R1, coordinatore render in R2; controller/lifecycle ancora aperti), mostrare quando un controllo dipende dal campo scelto (es. `frequency` non applicabile a `vortex`); **A2** anteprima calcolata **alla risoluzione di output** con `Adatta`/`100%` solo visivi (codice R2, QA desktop aperto); **A3** nuove ricette e algoritmi per test artistici/tecnici; **A4** qualità e dimensioni di output **8K (7680×4320)**, con 8192×8192 da valutare separatamente; **A5** gate Windows, benchmark e archivio completo.
+
+**Fase B — poi:** **M4C.3 compositore universale**, editor livelli, maschere, opacità e blend. L'API layer esistente non equivale a un compositore generale.
+
+**Fase D — dopo B:** workflow dell’artista: varianti, esplorazione semi/seed, A/B, galleria, contact sheet, preset personali condivisibili, export vettoriale selettivo più avanti. Nessun obbligo di implementare funzioni vettoriali per renderer raster-only.
+
+**Animazioni:** differite a una fase successiva, **dopo A/B/D secondo le future priorità**. Conservare gli strumenti animati attuali ma **non dare precedenza** a noise 4D, timeline, GIF/APNG e streaming rispetto ad A/B/D.
+
+**Specifiche, rischi, budget e criteri di accettazione:** [`M4E0_PIANO_A_B_DEFAULTS.md`](M4E0_PIANO_A_B_DEFAULTS.md). Le sezioni storiche M4–M8 più sotto restano come inventario di capacità e backlog, non ridefiniscono l'ordine concordato.
 
 ## 1. Obiettivo finale
 
-Un solo **framework C#/.NET 10**, una CLI headless e uno **Studio Avalonia (XAML/AXAML consentito; prima versione code-only)**, per scegliere, generare, parametrizzare, animare, confrontare ed esportare opere di arte generativa. Fonti artistiche: Gȧrt e jdxyw/generativeart, senza dipendenze di runtime dai linguaggi originali. Priorità: riproducibilità, prestazioni limitate da budget, qualità visuale e **animazioni**.
+Un solo **framework C#/.NET 10**, una CLI headless e uno **Studio Avalonia (XAML/AXAML consentito; prima versione code-only)**, per scegliere, generare, parametrizzare, animare, confrontare ed esportare opere di arte generativa. Fonti artistiche: Gȧrt e jdxyw/generativeart, senza dipendenze di runtime dai linguaggi originali. Priorità attuale: riproducibilità, qualità visuale, preview fedele e grandi formati; **animazioni rinviate**.
 
 ## 2. Stato milestone (verificato versus pianificato)
 
-| Milestone | Stato al 16/11/2026 | Evidenza / limite |
+| Milestone | Stato alla revisione del 17/11/2026 | Evidenza / limite |
 | --- | --- | --- |
 | Audit Gȧrt e Go | Completati per progettazione | Sorgenti studiati; non suite originali completa |
 | M0 — Solution, CI, xUnit | Validata Windows | Compilazione e test confermati nelle iterazioni successive |
@@ -41,9 +53,20 @@ Un solo **framework C#/.NET 10**, una CLI headless e uno **Studio Avalonia (XAML
 | **M4D.2-R1 — Pittura e generatori iniziali** | **Build Release e 733/733 test, 14 PNG Full HD, Studio e 12 frame CLI verificati (Codex Windows)** | Pennelli/paesaggi, evoluzione dei primi cinque renderer, catalogo a 15, 63 ricette, 13 PNG storici identici; desktop/DPI e altri OS aperti |
 | **M4D.3-R1 — Profondità** | **Build Release e 801/801 test, dieci PNG Full HD e Studio verificati (Codex Windows)** | Carta/bokeh e livelli riutilizzabili, paesaggi migliorati, 17 generatori e 73 ricette; 15 PNG precedenti identici. Editor livelli/maschere/blend ancora aperto |
 | **M4D.4-R1 — SDF macchie/fusioni** | **Build Release e 859/859 test; otto PNG Full HD, Studio, CLI e AA verificati** | SDF organico, pigmenti/vetro, 36 slider, sei palette, 81 ricette; classico e 15 hash PNG precedenti preservati |
-| M4–M8 — Motore artistico ed export avanzato | Pianificati | Vedi sotto; non dichiararli già implementati |
+| **M4D.4-R2 — Preset Studio da allegati** | **Codice e piano aggiornati; test Windows da confermare** | Diciassette ricette embedded; seed/parametri/animazione iniziali, compatibilità delle ricette importate |
+| **Fase A (A0–A5)** | **A0 parziale, A1 in corso, A2 implementata nel codice** | Packaging ancora aperto; editor in partial, coordinatore render testabile; QA preview nativa, nuovi algoritmi, 8K ancora aperti |
+| **M4E.1-R1 — Refactoring A1 (primo incremento)** | **Implementato; gate Windows aperto** | `StudioWindow.cs` ridotta a lifecycle e wiring; 7 partial per layout/catalogo/editor/preview/playback/file/stato, parser ricetta separato + test |
+| **M4E.1-R2 — Coordinatore A1 + anteprima A2** | **Build Windows OK, 879/880 test (utente)** | Preview/output alla stessa risoluzione; un test sulla frequenza con campo vortex fallito, corretto in R3. A1 e QA A2 ancora aperti |
+| **M4E.1-R3 — Fix test frequency/vortex** | **Preparata; test Windows da confermare** | Il test seleziona curl per verificare frequency; nuova regressione per vortex indipendente dalla frequenza, nessuna modifica ai renderer/preset |
+| **Fase B — M4C.3** | **Pianificata dopo A** | Compositore universale livelli/maschere/blend |
+| **Fase D — Workflow dell’artista** | **Pianificata dopo B** | Esplora seed, varianti, confronto A/B, galleria, contact sheet, preset, SVG selettivo in fase successiva |
+| M4–M8 — Motore artistico ed export avanzato | Pianificati in parte / storici | Vedi sotto; animazioni posticipate |
 
 Non abbiamo ancora risultati documentati per Linux/macOS, stress di animazioni lunghe o parità visiva multipiattaforma.
+
+### M4E.1-R1 — Primo refactoring Studio (A1)
+
+La finestra monolitica è stata ripartita in otto file `StudioWindow*.cs`, preservando handler, lifecycle e disposizione UI. La conversione/validazione testuale della ricetta è ora in `StudioRecipeFormParser` (Application, senza Avalonia) con regressioni indipendenti. **Non è ancora chiusa A1**: controller autonomi per preview/export e ulteriori test Studio headless sono i successivi interventi, prima di A2. Roadmap D dettagliata in [`M4E1_A1_WORKFLOW_D.md`](M4E1_A1_WORKFLOW_D.md).
 
 ### M4C.1-R1 — Finitura grana/dithering (implementazione non ancora validata)
 
@@ -53,7 +76,7 @@ Grana per-pixel deterministica da seed e coordinate, con dimensione cella 1–12
 
 Trama procedurale cotton/rough, pigmenti granulari da noise spaziale e assorbimento locale del colore scuro lungo i bordi, con ring buffer di tre righe. JSON v1 e comportamento storico preservati, cinque esempi Full HD e test dedicati. Specifica [`M4C2_MATERIA_CARTA_PIGMENTI.md`](M4C2_MATERIA_CARTA_PIGMENTI.md).
 
-**Priorità prossima:** nuovi algoritmi/ricette con profondità e controllo; estendere i livelli filtrati M4D.3 a editor/maschere/blend M4C.3, poi noise ciclico e loop fluidi M4B.2. Continuare QA desktop/DPI e poster.
+**Priorità prossima aggiornata:** **A0–A5 Fase A** (prima refactoring della finestra e anteprima nativa, poi algoritmi/ricette e 8K), **Fase B M4C.3 solo dopo A**, animazioni rinviate. Vedi il piano concordato all’inizio della roadmap.
 
 ## 3. R0 — Primo Studio utilizzabile
 
@@ -105,7 +128,7 @@ Marching Squares (casi ambigui e stitching), SDF 2D e operazioni CSG, campioname
 
 ### M4B — Noise e flussi avanzati
 
-**M4B.1-R1 implementata e verificata su Windows:** `DomainWarpNoise2D`, LIC discreta su RK2, artwork `domain-warp`/`lic-flow`, sette ricette Full HD e streamlines fino a 10000. Build Release, 558/558 test e output Full HD verificati da Codex. Dettagli in [`M4B1_DOMAIN_WARP_LIC.md`](M4B1_DOMAIN_WARP_LIC.md). **Da sviluppare in M4B.2:** derivate noise, noise 4D ciclico e loop dei nuovi artwork. Gate futuro animazioni: phase 0/1 equivalente, budget per campioni, risultati seeded e test numerici.
+**M4B.1-R1 implementata e verificata su Windows:** `DomainWarpNoise2D`, LIC discreta su RK2, artwork `domain-warp`/`lic-flow`, sette ricette Full HD e streamlines fino a 10000. Build Release, 558/558 test e output Full HD verificati da Codex. Dettagli in [`M4B1_DOMAIN_WARP_LIC.md`](M4B1_DOMAIN_WARP_LIC.md). **Da sviluppare in M4B.2, dopo le fasi A/B:** derivate noise, noise 4D ciclico e loop dei nuovi artwork. Gate futuro animazioni: phase 0/1 equivalente, budget per campioni, risultati seeded e test numerici.
 
 ### M4C — Pixel/colore/post-processing
 
@@ -123,7 +146,7 @@ Marching Squares (casi ambigui e stitching), SDF 2D e operazioni CSG, campioname
 
 Setole, pressione, pennellate organiche, simulazioni più ricche dell.acquerello, marbling, incisione e ombre. I semplici filtri cartacei/pigmenti sono già disponibili in M4C.2. **Crinis** è benchmark estetico prioritario. **Gate:** primitive riutilizzabili e opere visive di confronto.
 
-### M5A — Ricette evolve, varianti e Sweeper
+### M5A — Ricette evolve, varianti e Sweeper (Fase D, dopo B)
 
 Preset, confronto A/B, batch lazy con limiti, galleria, preferiti, contact sheet/poster. Scoring estetico solo opzionale e assistivo; non accumulare combinazioni o frame.
 
@@ -133,7 +156,7 @@ Ricetta embedded PNG con limiti/CRC/versione, ripristino immagini, indicizzazion
 
 ### M5C — GIF/APNG in streaming
 
-Encoder progressivi con tempo fotogrammi corretto, cancellazione e cleanup; **prima del video**, a causa dell'alta priorità delle animazioni Go. **Gate:** file decodificabili e memoria non proporzionale al numero totale dei frame.
+Encoder progressivi con tempo fotogrammi corretto, cancellazione e cleanup; **dopo le Fasi A e B**; prima di eventuali codec video. Animazioni Go rinviate su richiesta del 17/11/2026. **Gate:** file decodificabili e memoria non proporzionale al numero totale dei frame.
 
 ## 5. R2 — Produzione professionale
 
