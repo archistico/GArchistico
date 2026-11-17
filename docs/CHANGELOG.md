@@ -1,3 +1,8 @@
+## README — galleria dei 30 algoritmi
+
+- Griglia a tre colonne con miniature 480×270 ricavate dai render 4K, etichette e collegamenti alle ricette JSON; Voronoi mostra la variante stratificata.
+- Screenshot sotto il titolo e istruzioni di installazione/esecuzione conservati. Verificati tutti i 30 asset, le dimensioni, gli hash dei render originali e i collegamenti locali del README.
+- Solo documentazione e immagini: codice e ricette invariati; suite applicativa non rieseguita per questo aggiornamento. Aggiornati manifest e ZIP completo.
 > **STATO CORRENTE M4E.5-P4K-R1 — 17/11/2026:** priorità richiesta dall'utente: **4K per tutti i generatori e le ricette, con massima complessità e supersampling 2×; 8K generale successivamente**. Disponibili pulsante Studio **4K · qualità massima**, CLI `prepare-4k`, profilo opzionale `production` e 34 nuovi esempi: catalogo **30 generatori / 30 preset / 216 ricette**. **1.371 test Windows passati**, build Release zero avvisi/errori; azione Studio verificata sui 30 generatori e 30 file preset invariati, inclusi i 17 personali. [Guida e limiti](M4E5_4K_PRODUZIONE.md), [prove e misure](validation/P4K_R1_REPORT.md). Consegna completa `GenerativeArt_M4E5_P4K_R1_COMPLETO.zip`. Restano distinti QA artistico dell'utente, desktop/DPI, altri OS, Fase B/D e Crinis R10 in pausa. README solo descrizione/installazione/esecuzione con screenshot. **I blocchi delle versioni precedenti sotto sono archivio storico.**
 ## 17 novembre 2026 — M4E.4-V1-R1: Voronoi con mosaici in profondità
 
